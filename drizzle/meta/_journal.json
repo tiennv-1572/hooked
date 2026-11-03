@@ -1,0 +1,160 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1793632768348,
+      "tag": "0000_init",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1793671128020,
+      "tag": "0001_drop_activity",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1793678214130,
+      "tag": "0002_course_categories",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1793678226496,
+      "tag": "0003_course_categories_data",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1793678227242,
+      "tag": "0004_courses_drop_category",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1793679534112,
+      "tag": "0005_course_categories_drop_slug",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1793679534659,
+      "tag": "0006_course_categories_doc_slug",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1793680010556,
+      "tag": "0007_courses_drop_slug",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1793680011144,
+      "tag": "0008_courses_single_title",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1793685819532,
+      "tag": "0009_students_story_html",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1793687645814,
+      "tag": "0010_projects_drop_event_date",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "5",
+      "when": 1793687658779,
+      "tag": "0011_projects_single_name_rich_description",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "5",
+      "when": 1793688912655,
+      "tag": "0012_projects_drop_card_format",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "5",
+      "when": 1793689658861,
+      "tag": "0013_projects_layout_with_projects",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "5",
+      "when": 1793693041626,
+      "tag": "0014_partners_page_collaborations",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "5",
+      "when": 1793693042880,
+      "tag": "0015_drop_collaborations",
+      "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "5",
+      "when": 1793695977669,
+      "tag": "0016_academy_page_fixed_copy",
+      "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "5",
+      "when": 1793700622567,
+      "tag": "0017_academy_page_seo_only",
+      "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "5",
+      "when": 1793702101151,
+      "tag": "0018_students_page_seo_only",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "5",
+      "when": 1793702399760,
+      "tag": "0019_projects_blog_pages_seo_only",
+      "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "5",
+      "when": 1793702519363,
+      "tag": "0020_about_page_photo_blocks",
+      "breakpoints": true
+    },
+    {
+      "idx": 21,
+      "version": "5",
+      "when": 1793705677185,
+      "tag": "0021_contact_partners_page_copy",
+      "breakpoints": true
+    }
+  ]
+}

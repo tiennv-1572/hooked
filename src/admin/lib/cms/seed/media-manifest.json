@@ -1,0 +1,992 @@
+[
+  {
+    "url": "/icons/about-arrow-up-right-brand-24.svg",
+    "name": "about-arrow-up-right-brand-24.svg",
+    "folder": "icons",
+    "width": 24,
+    "height": 24,
+    "size": 335,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/academy-arrow-left-ink.svg",
+    "name": "academy-arrow-left-ink.svg",
+    "folder": "icons",
+    "width": 24,
+    "height": 24,
+    "size": 325,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/academy-arrow-left.svg",
+    "name": "academy-arrow-left.svg",
+    "folder": "icons",
+    "width": 24,
+    "height": 24,
+    "size": 323,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/academy-arrow-right-ink.svg",
+    "name": "academy-arrow-right-ink.svg",
+    "folder": "icons",
+    "width": 24,
+    "height": 24,
+    "size": 326,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/academy-arrow-right.svg",
+    "name": "academy-arrow-right.svg",
+    "folder": "icons",
+    "width": 24,
+    "height": 24,
+    "size": 324,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/academy-arrow-up-right-ink.svg",
+    "name": "academy-arrow-up-right-ink.svg",
+    "folder": "icons",
+    "width": 14,
+    "height": 14,
+    "size": 346,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/academy-orange-disc.svg",
+    "name": "academy-orange-disc.svg",
+    "folder": "icons",
+    "width": 40,
+    "height": 40,
+    "size": 245,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/academy-quote.svg",
+    "name": "academy-quote.svg",
+    "folder": "icons",
+    "width": 48,
+    "height": 48,
+    "size": 316,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/academy-row-arrow-dark.svg",
+    "name": "academy-row-arrow-dark.svg",
+    "folder": "icons",
+    "width": 15,
+    "height": 13,
+    "size": 324,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/academy-row-arrow.svg",
+    "name": "academy-row-arrow.svg",
+    "folder": "icons",
+    "width": 15,
+    "height": 13,
+    "size": 324,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/arrow-right-long.svg",
+    "name": "arrow-right-long.svg",
+    "folder": "icons",
+    "width": 49,
+    "height": 33,
+    "size": 350,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/arrow-up-right-accent-20.svg",
+    "name": "arrow-up-right-accent-20.svg",
+    "folder": "icons",
+    "width": 20,
+    "height": 20,
+    "size": 357,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/arrow-up-right-accent-24.svg",
+    "name": "arrow-up-right-accent-24.svg",
+    "folder": "icons",
+    "width": 24,
+    "height": 24,
+    "size": 341,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/arrow-up-right-dark-20.svg",
+    "name": "arrow-up-right-dark-20.svg",
+    "folder": "icons",
+    "width": 20,
+    "height": 20,
+    "size": 357,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/arrow-up-right-white-20.svg",
+    "name": "arrow-up-right-white-20.svg",
+    "folder": "icons",
+    "width": 20,
+    "height": 20,
+    "size": 363,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/arrow-up-right-white-24.svg",
+    "name": "arrow-up-right-white-24.svg",
+    "folder": "icons",
+    "width": 24,
+    "height": 24,
+    "size": 345,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/blog-arrow-up-right.svg",
+    "name": "blog-arrow-up-right.svg",
+    "folder": "icons",
+    "width": 20,
+    "height": 20,
+    "size": 357,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/chevron-left.svg",
+    "name": "chevron-left.svg",
+    "folder": "icons",
+    "width": 16,
+    "height": 28,
+    "size": 291,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/chevron-right.svg",
+    "name": "chevron-right.svg",
+    "folder": "icons",
+    "width": 16,
+    "height": 28,
+    "size": 290,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/close.svg",
+    "name": "close.svg",
+    "folder": "icons",
+    "width": 24,
+    "height": 24,
+    "size": 1292,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/contact-arrow-up-right-brand-48.svg",
+    "name": "contact-arrow-up-right-brand-48.svg",
+    "folder": "icons",
+    "width": 48,
+    "height": 48,
+    "size": 335,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/menu.svg",
+    "name": "menu.svg",
+    "folder": "icons",
+    "width": 24,
+    "height": 24,
+    "size": 1249,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/phone.svg",
+    "name": "phone.svg",
+    "folder": "icons",
+    "width": 18,
+    "height": 18,
+    "size": 1481,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/project-arrow-left.svg",
+    "name": "project-arrow-left.svg",
+    "folder": "icons",
+    "width": 24,
+    "height": 24,
+    "size": 1232,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/project-chevron-left.svg",
+    "name": "project-chevron-left.svg",
+    "folder": "icons",
+    "width": 44,
+    "height": 44,
+    "size": 170,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/project-chevron-right.svg",
+    "name": "project-chevron-right.svg",
+    "folder": "icons",
+    "width": 44,
+    "height": 44,
+    "size": 170,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/project-external-link.svg",
+    "name": "project-external-link.svg",
+    "folder": "icons",
+    "width": 13,
+    "height": 13,
+    "size": 327,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/projects-arrow-up-right-hover.svg",
+    "name": "projects-arrow-up-right-hover.svg",
+    "folder": "icons",
+    "width": 24,
+    "height": 24,
+    "size": 901,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/projects-arrow-up-right.svg",
+    "name": "projects-arrow-up-right.svg",
+    "folder": "icons",
+    "width": 24,
+    "height": 24,
+    "size": 897,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/projects-play.svg",
+    "name": "projects-play.svg",
+    "folder": "icons",
+    "width": 24,
+    "height": 24,
+    "size": 851,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/students-arrow-up-right.svg",
+    "name": "students-arrow-up-right.svg",
+    "folder": "icons",
+    "width": 18,
+    "height": 18,
+    "size": 355,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/turn-left-tile.svg",
+    "name": "turn-left-tile.svg",
+    "folder": "icons",
+    "width": 44,
+    "height": 44,
+    "size": 457,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/icons/turn-right-tile.svg",
+    "name": "turn-right-tile.svg",
+    "folder": "icons",
+    "width": 44,
+    "height": 44,
+    "size": 456,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/images/about/devoid-artists.jpg",
+    "name": "devoid-artists.jpg",
+    "folder": "images/about",
+    "width": 2048,
+    "height": 1365,
+    "size": 817011,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/about/devoid-dj-performance.jpg",
+    "name": "devoid-dj-performance.jpg",
+    "folder": "images/about",
+    "width": 2048,
+    "height": 1365,
+    "size": 983265,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/about/devoid-full-stage.jpg",
+    "name": "devoid-full-stage.jpg",
+    "folder": "images/about",
+    "width": 2048,
+    "height": 1365,
+    "size": 1064132,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/about/devoid-local-dj.jpg",
+    "name": "devoid-local-dj.jpg",
+    "folder": "images/about",
+    "width": 1365,
+    "height": 2048,
+    "size": 806018,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/about/frequency-dj.jpg",
+    "name": "frequency-dj.jpg",
+    "folder": "images/about",
+    "width": 1600,
+    "height": 2400,
+    "size": 837499,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/about/vui-fest-fire-performance.jpg",
+    "name": "vui-fest-fire-performance.jpg",
+    "folder": "images/about",
+    "width": 1600,
+    "height": 2400,
+    "size": 1282692,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/academy/course-mc.png",
+    "name": "course-mc.png",
+    "folder": "images/academy",
+    "width": 2550,
+    "height": 1440,
+    "size": 3922621,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/academy/course-producer.png",
+    "name": "course-producer.png",
+    "folder": "images/academy",
+    "width": 474,
+    "height": 388,
+    "size": 122619,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/blog-posts/hooked-thuc-chien-san-khau.png",
+    "name": "hooked-thuc-chien-san-khau.png",
+    "folder": "images/blog-posts",
+    "width": 1200,
+    "height": 800,
+    "size": 1602625,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/blog-posts/spin-awards-san-khau.png",
+    "name": "spin-awards-san-khau.png",
+    "folder": "images/blog-posts",
+    "width": 720,
+    "height": 404,
+    "size": 265606,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/blog-posts/spin-awards-trinh-dien.png",
+    "name": "spin-awards-trinh-dien.png",
+    "folder": "images/blog-posts",
+    "width": 720,
+    "height": 404,
+    "size": 270115,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/blog/abstract.png",
+    "name": "abstract.png",
+    "folder": "images/blog",
+    "width": 660,
+    "height": 1196,
+    "size": 228856,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/blog/preview-mask-left.png",
+    "name": "preview-mask-left.png",
+    "folder": "images/blog",
+    "width": 520,
+    "height": 748,
+    "size": 372341,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/blog/preview-mask-right.png",
+    "name": "preview-mask-right.png",
+    "folder": "images/blog",
+    "width": 520,
+    "height": 748,
+    "size": 457049,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/blog/static-surge.png",
+    "name": "static-surge.png",
+    "folder": "images/blog",
+    "width": 692,
+    "height": 990,
+    "size": 309561,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/brand/hooked-logo.png",
+    "name": "hooked-logo.png",
+    "folder": "images/brand",
+    "width": 1307,
+    "height": 361,
+    "size": 154807,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/brand/hooked-mark.svg",
+    "name": "hooked-mark.svg",
+    "folder": "images/brand",
+    "width": 30,
+    "height": 18,
+    "size": 564,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/images/brand/hooked-vector.svg",
+    "name": "hooked-vector.svg",
+    "folder": "images/brand",
+    "width": 180,
+    "height": 50,
+    "size": 4480,
+    "mime": "image/svg+xml"
+  },
+  {
+    "url": "/images/brand/hooked-wordmark-outline.png",
+    "name": "hooked-wordmark-outline.png",
+    "folder": "images/brand",
+    "width": 1195,
+    "height": 333,
+    "size": 26315,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/partners/jagermeister.png",
+    "name": "jagermeister.png",
+    "folder": "images/partners",
+    "width": 236,
+    "height": 51,
+    "size": 6233,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/partners/notfun-media.png",
+    "name": "notfun-media.png",
+    "folder": "images/partners",
+    "width": 121,
+    "height": 58,
+    "size": 4234,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/partners/sun-group.png",
+    "name": "sun-group.png",
+    "folder": "images/partners",
+    "width": 230,
+    "height": 72,
+    "size": 7130,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/partners/weeknd.png",
+    "name": "weeknd.png",
+    "folder": "images/partners",
+    "width": 190,
+    "height": 38,
+    "size": 2852,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/photos/about-glow.png",
+    "name": "about-glow.png",
+    "folder": "images/photos",
+    "width": 632,
+    "height": 1200,
+    "size": 330477,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/photos/crowd-smoke.png",
+    "name": "crowd-smoke.png",
+    "folder": "images/photos",
+    "width": 2550,
+    "height": 1440,
+    "size": 3943015,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/photos/devoid-music-festival.png",
+    "name": "devoid-music-festival.png",
+    "folder": "images/photos",
+    "width": 1200,
+    "height": 800,
+    "size": 1277531,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/photos/dj-crowd.jpg",
+    "name": "dj-crowd.jpg",
+    "folder": "images/photos",
+    "width": 1200,
+    "height": 800,
+    "size": 272581,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/photos/highlight-academy.png",
+    "name": "highlight-academy.png",
+    "folder": "images/photos",
+    "width": 474,
+    "height": 308,
+    "size": 122769,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/photos/highlight-projects.png",
+    "name": "highlight-projects.png",
+    "folder": "images/photos",
+    "width": 556,
+    "height": 363,
+    "size": 145469,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/photos/hooked-texture.jpg",
+    "name": "hooked-texture.jpg",
+    "folder": "images/photos",
+    "width": 1958,
+    "height": 745,
+    "size": 269535,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/photos/spin-awards.png",
+    "name": "spin-awards.png",
+    "folder": "images/photos",
+    "width": 720,
+    "height": 404,
+    "size": 263158,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/photos/stage-lights.png",
+    "name": "stage-lights.png",
+    "folder": "images/photos",
+    "width": 2550,
+    "height": 1440,
+    "size": 2778995,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/photos/vui-fest-audience.jpg",
+    "name": "vui-fest-audience.jpg",
+    "folder": "images/photos",
+    "width": 2400,
+    "height": 1600,
+    "size": 1302137,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/photos/vui-fest-cat-ba.jpg",
+    "name": "vui-fest-cat-ba.jpg",
+    "folder": "images/photos",
+    "width": 1200,
+    "height": 800,
+    "size": 234632,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/photos/vui-fest-performance.jpg",
+    "name": "vui-fest-performance.jpg",
+    "folder": "images/photos",
+    "width": 2400,
+    "height": 1600,
+    "size": 897522,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/photos/xom-huc-mua-2.png",
+    "name": "xom-huc-mua-2.png",
+    "folder": "images/photos",
+    "width": 1200,
+    "height": 675,
+    "size": 1002458,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/projects/covers/ambient-stage-light.png",
+    "name": "ambient-stage-light.png",
+    "folder": "images/projects/covers",
+    "width": 1584,
+    "height": 672,
+    "size": 1177226,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/projects/covers/devoid-music-festival.png",
+    "name": "devoid-music-festival.png",
+    "folder": "images/projects/covers",
+    "width": 2560,
+    "height": 1440,
+    "size": 4094494,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/projects/covers/frequency-arena.png",
+    "name": "frequency-arena.png",
+    "folder": "images/projects/covers",
+    "width": 2560,
+    "height": 1440,
+    "size": 1926461,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/projects/covers/spin-awards.png",
+    "name": "spin-awards.png",
+    "folder": "images/projects/covers",
+    "width": 2560,
+    "height": 1440,
+    "size": 4145195,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/projects/covers/vui-fest-cat-ba.png",
+    "name": "vui-fest-cat-ba.png",
+    "folder": "images/projects/covers",
+    "width": 2560,
+    "height": 1440,
+    "size": 3625975,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/projects/covers/xom-huc.png",
+    "name": "xom-huc.png",
+    "folder": "images/projects/covers",
+    "width": 2560,
+    "height": 1440,
+    "size": 2650253,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/projects/devoid-music-festival/photo-2.png",
+    "name": "photo-2.png",
+    "folder": "images/projects/devoid-music-festival",
+    "width": 1200,
+    "height": 800,
+    "size": 1464221,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/projects/devoid-music-festival/photo-3.png",
+    "name": "photo-3.png",
+    "folder": "images/projects/devoid-music-festival",
+    "width": 800,
+    "height": 1200,
+    "size": 1173051,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/projects/devoid-music-festival/video-rwY_5DMDL18.jpg",
+    "name": "video-rwY_5DMDL18.jpg",
+    "folder": "images/projects/devoid-music-festival",
+    "width": 1280,
+    "height": 720,
+    "size": 141085,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/projects/devoid-music-festival/video-UJvCMG7W6q8.jpg",
+    "name": "video-UJvCMG7W6q8.jpg",
+    "folder": "images/projects/devoid-music-festival",
+    "width": 1280,
+    "height": 720,
+    "size": 38877,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/projects/frequency-arena/photo-1.jpg",
+    "name": "photo-1.jpg",
+    "folder": "images/projects/frequency-arena",
+    "width": 960,
+    "height": 1200,
+    "size": 345825,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/projects/frequency-arena/photo-3.jpg",
+    "name": "photo-3.jpg",
+    "folder": "images/projects/frequency-arena",
+    "width": 1200,
+    "height": 800,
+    "size": 286916,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/projects/frequency-arena/photo-5.jpg",
+    "name": "photo-5.jpg",
+    "folder": "images/projects/frequency-arena",
+    "width": 1200,
+    "height": 800,
+    "size": 142847,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/projects/frequency-arena/photo-6.jpg",
+    "name": "photo-6.jpg",
+    "folder": "images/projects/frequency-arena",
+    "width": 800,
+    "height": 1200,
+    "size": 127034,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/projects/frequency-arena/video-8nDhAC2jDsQ.jpg",
+    "name": "video-8nDhAC2jDsQ.jpg",
+    "folder": "images/projects/frequency-arena",
+    "width": 1280,
+    "height": 720,
+    "size": 143130,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/projects/frequency-arena/video-paDDzE7QfI4.jpg",
+    "name": "video-paDDzE7QfI4.jpg",
+    "folder": "images/projects/frequency-arena",
+    "width": 1280,
+    "height": 720,
+    "size": 196712,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/projects/frequency-arena/video-SOTPf9y6peo.jpg",
+    "name": "video-SOTPf9y6peo.jpg",
+    "folder": "images/projects/frequency-arena",
+    "width": 1280,
+    "height": 720,
+    "size": 32745,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/projects/spin-awards/video--xmEKB-IR6M.png",
+    "name": "video--xmEKB-IR6M.png",
+    "folder": "images/projects/spin-awards",
+    "width": 720,
+    "height": 404,
+    "size": 250021,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/projects/spin-awards/video-I7A5KptHPgw.png",
+    "name": "video-I7A5KptHPgw.png",
+    "folder": "images/projects/spin-awards",
+    "width": 720,
+    "height": 404,
+    "size": 239774,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/projects/spin-awards/video-PdYnmncGQOg.png",
+    "name": "video-PdYnmncGQOg.png",
+    "folder": "images/projects/spin-awards",
+    "width": 720,
+    "height": 404,
+    "size": 232433,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/projects/vui-fest-cat-ba/photo-1.jpg",
+    "name": "photo-1.jpg",
+    "folder": "images/projects/vui-fest-cat-ba",
+    "width": 1200,
+    "height": 800,
+    "size": 269245,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/projects/vui-fest-cat-ba/photo-3.jpg",
+    "name": "photo-3.jpg",
+    "folder": "images/projects/vui-fest-cat-ba",
+    "width": 1200,
+    "height": 800,
+    "size": 309627,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/projects/vui-fest-cat-ba/photo-5.jpg",
+    "name": "photo-5.jpg",
+    "folder": "images/projects/vui-fest-cat-ba",
+    "width": 800,
+    "height": 1200,
+    "size": 243510,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/projects/vui-fest-cat-ba/video-EmbpvTQbrCs.jpg",
+    "name": "video-EmbpvTQbrCs.jpg",
+    "folder": "images/projects/vui-fest-cat-ba",
+    "width": 1280,
+    "height": 720,
+    "size": 81570,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/projects/vui-fest-cat-ba/video-iEmG7dcKxm8.jpg",
+    "name": "video-iEmG7dcKxm8.jpg",
+    "folder": "images/projects/vui-fest-cat-ba",
+    "width": 1280,
+    "height": 720,
+    "size": 107618,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/projects/xom-huc/photo-1.png",
+    "name": "photo-1.png",
+    "folder": "images/projects/xom-huc",
+    "width": 1200,
+    "height": 675,
+    "size": 666263,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/projects/xom-huc/photo-2.png",
+    "name": "photo-2.png",
+    "folder": "images/projects/xom-huc",
+    "width": 1200,
+    "height": 675,
+    "size": 764468,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/projects/xom-huc/photo-5.png",
+    "name": "photo-5.png",
+    "folder": "images/projects/xom-huc",
+    "width": 1200,
+    "height": 675,
+    "size": 762503,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/students/afterglow.jpg",
+    "name": "afterglow.jpg",
+    "folder": "images/students",
+    "width": 1365,
+    "height": 2048,
+    "size": 146170,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/students/jgrayson.jpg",
+    "name": "jgrayson.jpg",
+    "folder": "images/students",
+    "width": 1067,
+    "height": 1600,
+    "size": 222390,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/students/justwang.jpg",
+    "name": "justwang.jpg",
+    "folder": "images/students",
+    "width": 1200,
+    "height": 1600,
+    "size": 311168,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/students/kimmy.jpg",
+    "name": "kimmy.jpg",
+    "folder": "images/students",
+    "width": 1067,
+    "height": 1600,
+    "size": 193931,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/students/lil-v.jpg",
+    "name": "lil-v.jpg",
+    "folder": "images/students",
+    "width": 1067,
+    "height": 1600,
+    "size": 182745,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/students/mambo.jpg",
+    "name": "mambo.jpg",
+    "folder": "images/students",
+    "width": 1068,
+    "height": 1600,
+    "size": 366907,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/students/norriz.png",
+    "name": "norriz.png",
+    "folder": "images/students",
+    "width": 1200,
+    "height": 1600,
+    "size": 2322397,
+    "mime": "image/png"
+  },
+  {
+    "url": "/images/students/puzzle.jpg",
+    "name": "puzzle.jpg",
+    "folder": "images/students",
+    "width": 1065,
+    "height": 1600,
+    "size": 239875,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/students/simple.jpg",
+    "name": "simple.jpg",
+    "folder": "images/students",
+    "width": 3509,
+    "height": 3508,
+    "size": 4759512,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/students/t14.jpg",
+    "name": "t14.jpg",
+    "folder": "images/students",
+    "width": 1066,
+    "height": 1600,
+    "size": 210526,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/students/tiinix.jpg",
+    "name": "tiinix.jpg",
+    "folder": "images/students",
+    "width": 1067,
+    "height": 1600,
+    "size": 230365,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/students/tobi.jpg",
+    "name": "tobi.jpg",
+    "folder": "images/students",
+    "width": 1143,
+    "height": 1600,
+    "size": 291240,
+    "mime": "image/jpeg"
+  },
+  {
+    "url": "/images/students/vatuz.jpg",
+    "name": "vatuz.jpg",
+    "folder": "images/students",
+    "width": 1067,
+    "height": 1600,
+    "size": 156849,
+    "mime": "image/jpeg"
+  }
+]

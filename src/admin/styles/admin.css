@@ -1,0 +1,207 @@
+/*
+ * Hooked CMS (admin) stylesheet — loaded only by src/app/admin/layout.tsx (a separate root layout),
+ * so shadcn's tokens (primary, accent, muted…) never collide with the public site's tokens.
+ * Base: arhamkhnz/next-shadcn-admin-dashboard (shadcn/ui v4 + Tailwind v4).
+ */
+@import "tailwindcss" source(none);
+@source "../../admin";
+@source "../../app/admin";
+
+@import "tw-animate-css";
+@import "./shadcn.css";
+
+/* Theme presets (switchable in the header) */
+@import "./tangerine.css";
+@import "./soft-pop.css";
+@import "./brutalist.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: var(--font-inter-face), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-inter-face), ui-sans-serif, system-ui, sans-serif;
+  --font-brand: var(--font-manrope-face), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Default preset "Hooked": neutral surfaces + the brand orange (#E55624) as primary. */
+:root {
+  --radius: 0.625rem;
+  --background: oklch(0.985 0.002 60);
+  --foreground: oklch(0.18 0.01 40);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.01 40);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.01 40);
+  --primary: oklch(0.64 0.19 39);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.96 0.005 60);
+  --secondary-foreground: oklch(0.25 0.01 40);
+  --muted: oklch(0.96 0.005 60);
+  --muted-foreground: oklch(0.52 0.015 50);
+  --accent: oklch(0.95 0.025 50);
+  --accent-foreground: oklch(0.3 0.06 40);
+  --destructive: oklch(0.58 0.22 27);
+  --success: oklch(0.6 0.15 150);
+  --warning: oklch(0.75 0.15 75);
+  --border: oklch(0.91 0.006 60);
+  --input: oklch(0.91 0.006 60);
+  --ring: oklch(0.64 0.19 39);
+  --chart-1: oklch(0.64 0.19 39);
+  --chart-2: oklch(0.75 0.14 60);
+  --chart-3: oklch(0.55 0.12 250);
+  --chart-4: oklch(0.65 0.13 160);
+  --chart-5: oklch(0.45 0.05 40);
+  --sidebar: oklch(0.975 0.004 60);
+  --sidebar-foreground: oklch(0.25 0.01 40);
+  --sidebar-primary: oklch(0.64 0.19 39);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.94 0.02 50);
+  --sidebar-accent-foreground: oklch(0.25 0.04 40);
+  --sidebar-border: oklch(0.91 0.006 60);
+  --sidebar-ring: oklch(0.64 0.19 39);
+}
+
+.dark {
+  --background: oklch(0.16 0.006 40);
+  --foreground: oklch(0.96 0.004 60);
+  --card: oklch(0.2 0.008 40);
+  --card-foreground: oklch(0.96 0.004 60);
+  --popover: oklch(0.21 0.008 40);
+  --popover-foreground: oklch(0.96 0.004 60);
+  --primary: oklch(0.68 0.19 41);
+  --primary-foreground: oklch(0.14 0.01 40);
+  --secondary: oklch(0.26 0.01 40);
+  --secondary-foreground: oklch(0.96 0.004 60);
+  --muted: oklch(0.26 0.01 40);
+  --muted-foreground: oklch(0.7 0.015 50);
+  --accent: oklch(0.3 0.03 40);
+  --accent-foreground: oklch(0.96 0.004 60);
+  --destructive: oklch(0.68 0.2 25);
+  --success: oklch(0.7 0.15 150);
+  --warning: oklch(0.8 0.14 75);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.68 0.19 41);
+  --chart-1: oklch(0.68 0.19 41);
+  --chart-2: oklch(0.78 0.13 65);
+  --chart-3: oklch(0.62 0.12 250);
+  --chart-4: oklch(0.7 0.13 160);
+  --chart-5: oklch(0.55 0.04 40);
+  --sidebar: oklch(0.18 0.007 40);
+  --sidebar-foreground: oklch(0.94 0.004 60);
+  --sidebar-primary: oklch(0.68 0.19 41);
+  --sidebar-primary-foreground: oklch(0.14 0.01 40);
+  --sidebar-accent: oklch(0.26 0.015 40);
+  --sidebar-accent-foreground: oklch(0.96 0.004 60);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.68 0.19 41);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply font-sans;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [role="menuitem"],
+  [role="option"],
+  [role="tab"],
+  label[for],
+  select {
+    cursor: pointer;
+  }
+}
+
+@layer utilities {
+  [data-theme-preset]:not([data-theme-preset="hooked"]) .shadow-2xs {
+    box-shadow: var(--shadow-2xs);
+  }
+  [data-theme-preset]:not([data-theme-preset="hooked"]) .shadow-xs {
+    box-shadow: var(--shadow-xs);
+  }
+  [data-theme-preset]:not([data-theme-preset="hooked"]) .shadow-sm {
+    box-shadow: var(--shadow-sm);
+  }
+  [data-theme-preset]:not([data-theme-preset="hooked"]) .shadow {
+    box-shadow: var(--shadow);
+  }
+  [data-theme-preset]:not([data-theme-preset="hooked"]) .shadow-md {
+    box-shadow: var(--shadow-md);
+  }
+  [data-theme-preset]:not([data-theme-preset="hooked"]) .shadow-lg {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .disable-transitions * {
+    transition: none !important;
+  }
+
+  /* Checkerboard behind transparent images in media pickers. */
+  .bg-checker {
+    background-image:
+      linear-gradient(45deg, var(--muted) 25%, transparent 25%),
+      linear-gradient(-45deg, var(--muted) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, var(--muted) 75%),
+      linear-gradient(-45deg, transparent 75%, var(--muted) 75%);
+    background-size: 16px 16px;
+    background-position:
+      0 0,
+      0 8px,
+      8px -8px,
+      -8px 0;
+  }
+}
