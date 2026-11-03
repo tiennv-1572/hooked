@@ -9,22 +9,25 @@ import { isActivePath, newTabProps, routes, type NavItem } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 /**
- * Desktop navigation bar (≥ 1200px).
- * - Home (142:3): 64px, ember → black → ember gradient, Bold links, no active colour.
- * - Inner pages ("Navigation / Academy active", 2039:79): 80px, warm-brown gradient with a hairline
- *   copper border, ExtraBold links, the current section in accent.
+ * Desktop navigation bar (≥ 1200px): one size on every page — 80px + 1px hairline, the 1192px content column,
+ * ExtraBold links — so the logo and links never move between pages. Home's Figma bar (142:3: 64px, 48px inset,
+ * Bold links) was aligned to the inner pages on request; it keeps only its look:
+ * - Home: ember → black → ember gradient, no copper hairline, no active colour.
+ * - Inner pages ("Navigation / Academy active", 2039:79): warm-brown gradient with a copper hairline, the current
+ *   section in accent.
  */
 function DesktopBar({ pathname, items }: { pathname: string | null; items: NavItem[] }) {
   const home = pathname === null || pathname === routes.home;
   return (
     <div
       className={cn(
+        "border-b",
         home
-          ? "bg-[linear-gradient(90deg,var(--color-ember)_0%,#000_49.038%,var(--color-ember)_100%)]"
-          : "border-b border-copper/[0.13] bg-[linear-gradient(90deg,rgba(53,25,14,0.65)_0%,var(--color-ink)_48%,rgba(53,25,14,0.65)_100%)]",
+          ? "border-transparent bg-[linear-gradient(90deg,var(--color-ember)_0%,#000_49.038%,var(--color-ember)_100%)]"
+          : "border-copper/[0.13] bg-[linear-gradient(90deg,rgba(53,25,14,0.65)_0%,var(--color-ink)_48%,rgba(53,25,14,0.65)_100%)]",
       )}
     >
-      <Container className={cn("flex items-center justify-between", home ? "h-16 desktop:px-12" : "h-20")}>
+      <Container className="flex h-20 items-center justify-between">
         <Link href={routes.home} aria-label="Hooked — trang chủ" className="shrink-0">
           <HookedLogo eager />
         </Link>
@@ -39,9 +42,8 @@ function DesktopBar({ pathname, items }: { pathname: string | null; items: NavIt
                     {...newTabProps(item)}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "text-base uppercase transition-colors duration-150 hover:text-accent",
-                      home ? "font-bold text-muted" : "font-extrabold",
-                      !home && (active ? "text-accent" : "text-muted"),
+                      "text-base font-extrabold uppercase transition-colors duration-150 hover:text-accent",
+                      !home && active ? "text-accent" : "text-muted",
                     )}
                   >
                     {item.label}

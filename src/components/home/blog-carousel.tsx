@@ -8,7 +8,7 @@ import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icon";
 import type { BlogPreview } from "@/data/home";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
-import { wrapIndex } from "@/lib/utils";
+import { cn, wrapIndex } from "@/lib/utils";
 
 type Direction = 1 | -1;
 
@@ -65,10 +65,11 @@ export function BlogCarousel({ posts, initialIndex = 0 }: BlogCarouselProps) {
   const post = posts[active];
 
   return (
+    // Mobile (Home / Blog carousel / Mobile, 2826:5093): the 607px frame ends 19px under the card caption.
     <section
       aria-labelledby="blog-title"
       aria-roledescription="carousel"
-      className="grain bg-[linear-gradient(180deg,#872b06_0%,#ed5c0e_50%,#ffb259_100%)] pt-6 pb-8 tablet:pt-8 desktop:bg-none desktop:pt-10 desktop:pb-[29px] desktop:[&::after]:hidden"
+      className="grain bg-[linear-gradient(180deg,#872b06_0%,#ed5c0e_50%,#ffb259_100%)] pt-6 pb-[19px] tablet:pt-8 tablet:pb-8 desktop:bg-none desktop:pt-10 desktop:pb-[29px] desktop:[&::after]:hidden"
     >
       <Container className="desktop:max-w-none desktop:px-[50px]">
         <div className="flex h-14 items-center justify-between tablet:h-[72px] desktop:h-[88px]">
@@ -119,16 +120,22 @@ type StripProps = {
   onSettled?: () => void;
 };
 
-/** Three artwork cells; the strip translates by one cell and is re-centred on transition end. */
+/**
+ * Three artwork cells; the strip translates by one cell and is re-centred on transition end.
+ *
+ * At rest only the frame clips the current artwork: the strip sits on a margin (no transform, so no compositing
+ * layer of its own), the neighbours are hidden and the current cell does not clip its zoomed artwork. On a half-pixel
+ * frame (odd viewport width, 125% zoom…) the cell, layer and frame clips round differently, which left a 1px column
+ * of the neighbouring artwork (or of the frame background) at the frame edge. While sliding, each cell clips its own.
+ */
 function ArtworkStrip({ posts, index, moving, zoom, onSettled }: StripProps) {
   const cells = [-1, 0, 1].map((offset) => posts[wrapIndex(index + offset, posts.length)]);
-  const shift = moving === 1 ? -200 : moving === -1 ? 0 : -100;
 
   return (
     <div
-      className="flex h-full w-[300%]"
+      className="-ml-[100%] flex h-full w-[300%]"
       style={{
-        transform: `translate3d(${shift / 3}%, 0, 0)`,
+        transform: moving ? `translate3d(${(moving * -100) / 3}%, 0, 0)` : "none",
         transition: moving ? "transform 380ms var(--ease-carousel)" : "none",
       }}
       onTransitionEnd={(event) => {
@@ -138,7 +145,10 @@ function ArtworkStrip({ posts, index, moving, zoom, onSettled }: StripProps) {
       {cells.map((cell, position) => (
         // Keyed by slug so React moves the loaded <img> nodes instead of reloading them after each step
         // (with fewer than three items the strip repeats a slug, so fall back to the position).
-        <div key={posts.length >= 3 ? cell.slug : position} className="relative h-full w-1/3 overflow-hidden">
+        <div
+          key={posts.length >= 3 ? cell.slug : position}
+          className={cn("relative h-full w-1/3", moving ? "overflow-hidden" : position !== 1 && "invisible")}
+        >
           <Image
             src={cell.image.src}
             alt={position === 1 ? cell.image.alt : ""}

@@ -36,7 +36,7 @@ export function IntroSection({ titleLines, body }: IntroSectionProps) {
       <Container className="relative flex flex-col gap-6 py-10 tablet:py-15 desktop:items-center desktop:gap-[38px] desktop:py-15 desktop:text-center">
         <h1
           id="intro-title"
-          className="text-[44px] leading-[49px] font-extrabold text-white uppercase desktop:font-inter desktop:text-[75px] desktop:leading-[1.022] desktop:font-black"
+          className="text-[clamp(36px,13vw,44px)] leading-[1.114] font-extrabold text-white uppercase desktop:font-inter desktop:text-[75px] desktop:leading-[1.022] desktop:font-black"
         >
           {titleLines.map((line) => (
             <span key={line} className="block">

@@ -137,7 +137,8 @@ export type PostSummaryDto = {
 };
 
 export type PostDto = PostSummaryDto & {
-  intro: { text: string; parts: InlineRun[] };
+  /** Sanitized rich-text HTML (one or more `<p>`) and its plain text. */
+  intro: { html: string; text: string };
   introCta: LinkDto | null;
   blocks: PostBlockDto[];
   seo: { title: string; description: string; image: ImageDto | null };

@@ -87,7 +87,7 @@ function toArticleBlock(block: PostBlockDto): ArticleBlock {
 export function toBlogArticle(post: PostDto): BlogArticleData {
   return {
     title: post.title,
-    intro: post.intro.parts,
+    intro: post.intro.html,
     ...(post.introCta ? { introCta: post.introCta } : {}),
     hero: photo(post.cover),
     body: post.blocks.map(toArticleBlock),

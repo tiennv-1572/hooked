@@ -121,21 +121,25 @@ export function CourseProgramDialog({
           </aside>
         </div>
 
-        {/* Mobile / tablet sticky action bar */}
+        {/* Mobile / tablet sticky action bar; below 372px the price and the button no longer fit side by side, so the
+            button takes its own full-width row. */}
         <div
           className={cn(
             gutters,
-            "flex shrink-0 items-center justify-between gap-4 border-t border-[#49382d] pt-[18px] pb-[max(24px,env(safe-area-inset-bottom))] desktop:hidden",
+            "flex shrink-0 flex-wrap items-center justify-between gap-x-4 gap-y-3 border-t border-[#49382d] pt-[18px] pb-[max(24px,env(safe-area-inset-bottom))] desktop:hidden",
           )}
         >
           <div className="min-w-0">
-            <p className="text-lg leading-[1.45] font-bold text-ivory">{course.tuition}</p>
+            <p className="text-lg leading-[1.45] font-bold whitespace-nowrap text-ivory">{course.tuition}</p>
             <p className="mt-[5px] text-[11px] leading-[1.45] text-[#bcae9f]">Chưa gồm 8% VAT</p>
           </div>
           <button
             type="button"
             onClick={() => onRegister(course.id)}
-            className={cn(flowButtonVariants({ tone: "primary" }), "w-[162px] shrink-0 px-4 text-sm")}
+            className={cn(
+              flowButtonVariants({ tone: "primary" }),
+              "w-[162px] shrink-0 px-4 text-sm max-[371px]:w-full",
+            )}
           >
             Đăng ký tư vấn
           </button>

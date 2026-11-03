@@ -8,7 +8,7 @@ import { Button } from "@/admin/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/admin/components/ui/dialog";
 import { ToggleGroup, ToggleGroupItem } from "@/admin/components/ui/toggle-group";
 import { useSingleton } from "@/admin/lib/cms/hooks";
-import { excerptOf } from "@/admin/lib/cms/inline";
+import { htmlExcerpt } from "@/lib/html-text";
 import { cn } from "@/lib/utils";
 
 import type { PostForm } from "./post-schema";
@@ -120,7 +120,7 @@ function PreviewBody({ onClose }: { onClose: () => void }) {
                 cover={values.cover}
                 kicker={values.kicker ?? ""}
                 title={title}
-                excerpt={excerptOf(values.intro ?? "")}
+                excerpt={htmlExcerpt(values.intro ?? "")}
                 minutes={readingMinutes(postWordCount(article))}
               />
             </section>
@@ -128,7 +128,7 @@ function PreviewBody({ onClose }: { onClose: () => void }) {
               <h3 className="text-sm font-medium">Kết quả tìm kiếm Google</h3>
               <SearchPreview
                 title={seoTitle && template?.includes("%s") ? template.replace("%s", seoTitle) : seoTitle}
-                description={values.seo?.description?.trim() || excerptOf(values.intro ?? "")}
+                description={values.seo?.description?.trim() || htmlExcerpt(values.intro ?? "")}
                 path={`/blog/${values.slug ?? ""}`}
               />
               <h3 className="mt-4 text-sm font-medium">Ảnh khi chia sẻ</h3>

@@ -35,7 +35,7 @@ import { mediaSeed, userSeed } from "./seed/system";
 import type { MediaAsset } from "./types/shared";
 
 /** Bump when the seed shape changes: stored data from an older version is replaced by the new seed. */
-const SEED_VERSION = 14;
+const SEED_VERSION = 15;
 
 const collectionSeeds: { [K in CollectionKey]: CollectionMap[K][] } = {
   courseCategories: courseCategorySeed,

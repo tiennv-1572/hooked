@@ -63,7 +63,7 @@ export function countWords(text: string) {
 
 /** Words of the intro + body blocks. */
 export function postWordCount(post: Pick<Post, "intro" | "blocks">) {
-  return countWords([stripInline(post.intro ?? ""), ...(post.blocks ?? []).map(blockText)].join(" "));
+  return countWords([htmlToText(post.intro ?? ""), ...(post.blocks ?? []).map(blockText)].join(" "));
 }
 
 /** Estimated reading time (≈ 200 words per minute, at least 1 minute). */

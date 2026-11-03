@@ -22,10 +22,19 @@ export const courseCategorySeed: CourseCategory[] = [
   { id: "flip", label: "Flip" },
 ].map((category, index) => ({ ...stamp(category.id, 130), ...category, order: index }));
 
+/**
+ * Producer courses are worded differently by the carousel, overlays and mobile directory ("PRODUCER (EDM)") than by
+ * the desktop index ("Producer / EDM"); the CMS keeps one name, so they take the carousel wording.
+ */
+const COURSE_NAMES: Partial<Record<string, string>> = {
+  "producer-hiphop-rnb-ballad": "Producer (HipHop / R&B / Ballad)",
+  "producer-edm": "Producer (EDM)",
+};
+
 export const courseSeed: Course[] = siteCourses.map((course, index) => ({
   ...stamp(course.id, 120 - index, 20 - index),
   // The natural-case name ("DJ cơ bản"); the site upper-cases it where the design does.
-  title: course.indexTitle,
+  title: COURSE_NAMES[course.id] ?? course.indexTitle,
   categoryId: course.category.toLowerCase(),
   description: course.description,
   instructors: course.instructors.map((line) => ({ ...line })),

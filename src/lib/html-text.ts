@@ -1,4 +1,4 @@
-/** Helpers for the small HTML subset written by the CMS rich-text editor (student stories). */
+/** Helpers for the small HTML subset written by the CMS rich-text editor (student stories, blog posts). */
 
 const ENTITIES: Record<string, string> = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " " };
 
@@ -22,6 +22,15 @@ export function htmlToText(html: string) {
     .replace(/ *\n */g, "\n")
     .replace(/\n{2,}/g, "\n")
     .trim();
+}
+
+/** Plain-text summary of rich-text HTML, cut on a word boundary (blog cards, meta descriptions). */
+export function htmlExcerpt(html: string, max = 160): string {
+  const text = htmlToText(html).replace(/\s+/g, " ").trim();
+  if (text.length <= max) return text;
+  const cut = text.slice(0, max);
+  const space = cut.lastIndexOf(" ");
+  return `${(space > max * 0.6 ? cut.slice(0, space) : cut).replace(/[\s,.;:–-]+$/, "")}…`;
 }
 
 const escapeHtml = (text: string) => text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");

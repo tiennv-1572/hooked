@@ -1,4 +1,4 @@
-import type { ArticleBlock as DesignArticleBlock, Inline } from "@/data/blog";
+import type { ArticleBlock as DesignArticleBlock } from "@/data/blog";
 import type { Photo } from "@/data/home";
 
 /*
@@ -39,8 +39,8 @@ export type BlogPostCardData = {
 /** A blog post page. */
 export type BlogArticleData = {
   title: string;
-  /** Introduction paragraph: plain runs, bold lead-ins and inline links. */
-  intro: Inline[];
+  /** Introduction, sanitized CMS rich text (one or more `<p>`). */
+  intro: string;
   introCta?: { label: string; href: string };
   /** Cover, shown next to the introduction. */
   hero: Photo;

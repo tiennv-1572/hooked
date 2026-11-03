@@ -1,10 +1,10 @@
-import { excerptOf, parseInline, stripInline } from "@/admin/lib/cms/inline";
+import { parseInline, stripInline } from "@/admin/lib/cms/inline";
 import type { Course, CourseCategory, Student } from "@/admin/lib/cms/types/academy";
 import type { Post } from "@/admin/lib/cms/types/blog";
 import type { Partner, PartnerCollaboration } from "@/admin/lib/cms/types/pages";
 import type { Project, ProjectCategory } from "@/admin/lib/cms/types/projects";
 import type { ImageRef } from "@/admin/lib/cms/types/shared";
-import { htmlToText } from "@/lib/html-text";
+import { htmlExcerpt, htmlToText } from "@/lib/html-text";
 
 import type {
   CollaborationDto,
@@ -126,7 +126,7 @@ function words(text: string) {
 }
 
 export function readingMinutes(post: Post) {
-  let count = words(post.intro ?? "");
+  let count = words(htmlToText(post.intro ?? ""));
   for (const block of post.blocks ?? []) {
     if (block.type === "paragraph") count += words(htmlToText(block.html ?? ""));
     if (block.type === "heading" || block.type === "quote") count += words(block.text);
@@ -141,7 +141,7 @@ export function postSummaryDto(post: Post): PostSummaryDto {
     slug: post.slug,
     title: post.title,
     kicker: post.kicker,
-    excerpt: excerptOf(post.intro ?? ""),
+    excerpt: htmlExcerpt(post.intro ?? ""),
     cover: image(post.cover, post.title),
     tags: post.tags ?? [],
     author: post.author,
@@ -181,13 +181,13 @@ function blockDto(block: Post["blocks"][number], postTitle: string): PostBlockDt
 export function postDto(post: Post): PostDto {
   return {
     ...postSummaryDto(post),
-    intro: { text: post.intro ?? "", parts: parseInline(post.intro ?? "") },
+    intro: { html: sanitizeRichText(post.intro), text: htmlToText(post.intro ?? "") },
     introCta:
       post.introCta?.label && post.introCta.href ? { label: post.introCta.label, href: post.introCta.href } : null,
     blocks: (post.blocks ?? []).map((block) => blockDto(block, post.title)),
     seo: {
       title: post.seo?.title || post.title,
-      description: post.seo?.description || excerptOf(post.intro ?? ""),
+      description: post.seo?.description || htmlExcerpt(post.intro ?? ""),
       image: post.seo?.image?.url ? image(post.seo.image, post.seo.title || post.title) : null,
     },
   };

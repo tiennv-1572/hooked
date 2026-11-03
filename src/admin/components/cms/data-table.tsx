@@ -56,6 +56,7 @@ import { Separator } from "@/admin/components/ui/separator";
 import { Skeleton } from "@/admin/components/ui/skeleton";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/admin/components/ui/table";
 import { stripInline } from "@/admin/lib/cms/inline";
+import { htmlToText } from "@/lib/html-text";
 import { cn } from "@/lib/utils";
 
 export type FacetOption = { label: string; value: string; icon?: ReactNode };
@@ -148,7 +149,7 @@ export function DataTable<T>({
       const normalized = query.normalize("NFD").replace(/[̀-ͯ]/g, "");
       return searchKeys.some((key) => {
         const raw = row.original[key];
-        const text = stripInline(Array.isArray(raw) ? raw.join(" ") : String(raw ?? "")).toLowerCase();
+        const text = htmlToText(stripInline(Array.isArray(raw) ? raw.join(" ") : String(raw ?? ""))).toLowerCase();
         return text.includes(query) || text.normalize("NFD").replace(/[̀-ͯ]/g, "").includes(normalized);
       });
     },

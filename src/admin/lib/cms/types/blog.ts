@@ -3,8 +3,8 @@ import type { Entity, ID, ImageRef, LinkRef, PublishStatus } from "./shared";
 /**
  * Blog domain.
  *
- * `paragraph` blocks hold HTML from the rich-text editor (one block may hold several paragraphs; sanitized again on
- * the server). `list` items and `intro` use a tiny markdown subset:
+ * `paragraph` blocks and `intro` hold HTML from the rich-text editor (may hold several paragraphs; sanitized again on
+ * the server). `list` items use a tiny markdown subset:
  *   **bold lead-in**   and   [link text](/projects/devoid-music-festival)
  * (see `src/admin/lib/cms/inline.ts` for parse/serialise helpers).
  */
@@ -24,7 +24,7 @@ export type Post = Entity & {
   title: string;
   /** Short label for the index card ("Hooked × Sun Group"). */
   kicker: string;
-  /** Introduction paragraph (inline markdown); its first ~160 characters are the index card text and meta description. */
+  /** Introduction, rich-text HTML; its first ~160 characters are the index card text and meta description. */
   intro: string;
   introCta?: LinkRef;
   cover: ImageRef;

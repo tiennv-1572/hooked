@@ -26,7 +26,7 @@ export function BlogIndex({ title, description, posts }: BlogIndexProps) {
         <header className="flex flex-col gap-5 desktop:grid desktop:grid-cols-[minmax(0,1fr)_minmax(0,460px)] desktop:items-end desktop:gap-20">
           <div className="flex flex-col gap-3 desktop:gap-4">
             <Eyebrow>Hooked Entertainment</Eyebrow>
-            <h1 className="text-[56px] leading-[60px] font-extrabold tracking-[-0.03em] text-white uppercase tablet:text-[88px] tablet:leading-[92px] desktop:text-[120px] desktop:leading-[120px]">
+            <h1 className="text-[clamp(44px,16.5vw,56px)] leading-[60px] font-extrabold tracking-[-0.03em] text-white uppercase tablet:text-[88px] tablet:leading-[92px] desktop:text-[120px] desktop:leading-[120px]">
               {title}
             </h1>
           </div>

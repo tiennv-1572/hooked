@@ -9,7 +9,6 @@ import { EntityEditor, useEntityEditor } from "@/admin/components/cms/entity-edi
 import {
   FieldRow,
   FormSection,
-  RichTextField,
   SlugField,
   SwitchField,
   TagsField,
@@ -17,11 +16,12 @@ import {
   TextField,
 } from "@/admin/components/cms/form-fields";
 import { ImageField } from "@/admin/components/cms/image-fields";
+import { RichTextEditorField } from "@/admin/components/cms/rich-text-editor";
 import { Field, FieldError, FieldLabel } from "@/admin/components/ui/field";
 import { Tabs, TabsList, TabsTrigger } from "@/admin/components/ui/tabs";
 import { Textarea } from "@/admin/components/ui/textarea";
 import { useCollection, useSingleton } from "@/admin/lib/cms/hooks";
-import { excerptOf } from "@/admin/lib/cms/inline";
+import { htmlExcerpt } from "@/lib/html-text";
 
 import { BlockEditor } from "./block-editor";
 import { HrefField } from "./href-field";
@@ -145,13 +145,12 @@ function WritingColumn() {
       </FormSection>
 
       <FormSection title="Mở đầu">
-        <RichTextField
+        <RichTextEditorField
           name="intro"
           label="Đoạn mở đầu"
           required
-          rows={5}
           placeholder="Sự hợp tác chiến lược giữa Hooked Entertainment và…"
-          description="Dùng **chữ đậm** và [liên kết](/duong-dan). Phần đầu đoạn này hiển thị trên thẻ bài viết ở trang Blog."
+          description="Phần đầu đoạn này hiển thị trên thẻ bài viết ở trang Blog."
         />
         <SwitchField
           name="introCta.enabled"
@@ -214,7 +213,7 @@ function PostAside({ tagSuggestions }: { tagSuggestions: string[] }) {
   const seoTitle = (useWatch({ name: "seo.title" }) as string) ?? "";
   const seoDescription = (useWatch({ name: "seo.description" }) as string) ?? "";
   const intro = (useWatch({ name: "intro" }) as string) ?? "";
-  const excerpt = excerptOf(intro);
+  const excerpt = htmlExcerpt(intro);
   const blocks = (useWatch({ name: "blocks" }) as PostForm["blocks"]) ?? [];
   const minutes = readingMinutes(postWordCount({ intro, blocks }));
   const { data: settings } = useSingleton("settings");

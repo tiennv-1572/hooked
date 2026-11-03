@@ -48,7 +48,7 @@ flowchart LR
 | CORS              | `Access-Control-Allow-Origin: *` cho mọi endpoint public (có `OPTIONS` cho `POST /registrations`)                                                                                                                                                                                                                                                        |
 | Xác thực          | Không cần. Chỉ đọc, trừ `POST /registrations`.                                                                                                                                                                                                                                                                                                           |
 | Ảnh               | `Image = { url, alt, width?, height? }`. `url` tương đối với website (`/images/...`, `/uploads/2026/11/...`) hoặc URL https tuyệt đối. `alt` = tiêu đề của nội dung chứa ảnh: tên khóa học, dự án, bài viết, đối tác…; album dự án là "`<tên dự án>` – ảnh N"; ảnh hero là tên website; ảnh trang About là tiêu đề trang. CMS không có ô nhập alt riêng. |
-| Văn bản định dạng | Đoạn mở đầu, danh sách bài viết: markdown rút gọn trong `text` (`**đậm**`, `[nhãn](/link)`), `parts` là bản đã tách sẵn: `string \| { text, bold?, href? }`. Đoạn văn bài viết, câu chuyện học viên, mô tả dự án: HTML đã lọc (p, br, strong, em, u, a, ul, ol, li, blockquote).                                                                         |
+| Văn bản định dạng | Danh sách trong bài viết: markdown rút gọn trong `text` (`**đậm**`, `[nhãn](/link)`), `parts` là bản đã tách sẵn: `string \| { text, bold?, href? }`. Đoạn mở đầu và đoạn văn bài viết, câu chuyện học viên, mô tả dự án: HTML đã lọc (p, br, strong, em, u, a, ul, ol, li, blockquote).                                                                 |
 | Thứ tự            | Danh sách trả theo thứ tự kéo‑thả trong CMS (bài viết: mới nhất trước).                                                                                                                                                                                                                                                                                  |
 | Slug              | `{slug}` là slug của học viên, dự án, bài viết. Khóa học dùng id: `GET /courses/{id}`.                                                                                                                                                                                                                                                                   |
 
@@ -159,7 +159,7 @@ Menu chỉ gồm mục đang bật hiển thị trong CMS (Cài đặt → Đi�
 
 - `PostSummary = { id, slug, title, kicker, excerpt, cover, tags[], author, publishedAt, readingMinutes }`
   - `excerpt` không nhập trong CMS: là ~160 ký tự đầu của đoạn mở đầu (văn bản thuần, cắt theo từ). Cũng là mô tả SEO khi bài không có "Mô tả SEO".
-- `Post = PostSummary + { intro{text, parts}, introCta | null, blocks[], seo{title, description, image | null} }`
+- `Post = PostSummary + { intro{html, text}, introCta | null, blocks[], seo{title, description, image | null} }` — `intro.html` là HTML đã lọc (như khối `paragraph`), `intro.text` là văn bản thuần
 - Các loại block (`type`):
 
 | type        | Trường                 | Hiển thị                                |
@@ -317,7 +317,7 @@ Kết quả:
 | `/blog`: tiêu đề, mô tả         | –                               | Chữ cố định (`BLOG_INDEX_COPY`); `GET /pages/blog` chỉ trả `seo`       |
 | `/blog`: thẻ bài viết           | `GET /posts` (`getPosts`)       | `cover`, `kicker`, `title`, `excerpt`, `publishedAt`, `readingMinutes` |
 | Chi tiết: header bài            | `GET /posts/{slug}` (`getPost`) | `kicker`, `title`, `cover`, `author`, `publishedAt`, `readingMinutes`  |
-| Chi tiết: đoạn mở đầu + nút CTA | `GET /posts/{slug}`             | `intro.parts`, `introCta`                                              |
+| Chi tiết: đoạn mở đầu + nút CTA | `GET /posts/{slug}`             | `intro.html`, `introCta`                                               |
 | Chi tiết: thân bài              | `GET /posts/{slug}`             | `blocks[]` (mục 3.6)                                                   |
 | Chi tiết: `<title>`, OG         | `GET /posts/{slug}`             | `seo.title`, `seo.description`, `seo.image` (mặc định `cover`)         |
 | Đường dẫn build sẵn             | `getPostSlugs()`                | slug bài đã xuất bản                                                   |

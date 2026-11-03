@@ -13,7 +13,7 @@ import { Checkbox } from "@/admin/components/ui/checkbox";
 import { createId } from "@/admin/lib/cms/ids";
 import type { Post } from "@/admin/lib/cms/types/blog";
 import type { HomeBlogItem, HomePage } from "@/admin/lib/cms/types/pages";
-import { excerptOf } from "@/admin/lib/cms/inline";
+import { htmlExcerpt } from "@/lib/html-text";
 import { cn } from "@/lib/utils";
 
 import { TabLayout } from "../editor-tabs";
@@ -24,7 +24,7 @@ import { PreviewCard, PreviewEmpty, SiteCanvas } from "../site-preview";
 function fromPost(post: Post): Omit<HomeBlogItem, "id"> {
   return {
     title: post.title.toUpperCase(),
-    lines: [post.kicker, shortText(excerptOf(post.intro))],
+    lines: [post.kicker, shortText(htmlExcerpt(post.intro))],
     href: `/blog/${post.slug}`,
     image: post.cover,
   };

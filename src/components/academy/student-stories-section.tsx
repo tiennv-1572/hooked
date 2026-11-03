@@ -29,7 +29,9 @@ export function StudentStoriesSection({ students, headingLines, ctaLabel }: Stud
   if (!featured) return null;
 
   return (
-    <section aria-labelledby="student-stories-title">
+    // The carousel bleeds 32px past the column for its card shadows; at 1200–1255px that is wider than the 24px
+    // page gutter, so the section clips it horizontally instead of letting the page scroll sideways.
+    <section aria-labelledby="student-stories-title" className="overflow-x-clip">
       <Container className="flex flex-col gap-4 py-10 tablet:gap-8 desktop:pt-8 desktop:pb-15">
         <div className="flex items-center justify-between gap-6">
           <h2

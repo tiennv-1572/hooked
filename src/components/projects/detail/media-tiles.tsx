@@ -6,18 +6,20 @@ import { HoverFrame, MaskIcon, PlayBadge } from "@/components/projects/detail/me
 import { useProjectMedia } from "@/components/projects/detail/project-media-provider";
 import type { ProjectDetailData } from "@/components/projects/project-content";
 import type { ProjectPhoto, ProjectVideo } from "@/data/project-details";
+import { cn } from "@/lib/utils";
 
 /** Masonry tile widths: 386.67px column on desktop, half of the content column below 1200px. */
 const tileSizes = "(min-width: 1200px) 387px, (min-width: 768px) calc(50vw - 56px), calc(50vw - 30px)";
 
 /**
  * `03 · Project cover` (Devoid 2226:562 / mobile 2226:804; SPIN 2437:4388; Xóm Húc 2327:1283): the hero shown whole
- * at its own ratio — never cropped; a very tall image is letterboxed to fit the screen. Click → lightbox
- * (a project without photos or videos shows a plain image).
+ * at its own ratio — never cropped. A landscape hero spans the content column like the design; a portrait one is
+ * letterboxed to fit the screen. Click → lightbox (a project without photos or videos shows a plain image).
  */
 export function ProjectCover({ cover, label }: { cover: ProjectDetailData["cover"]; label: string }) {
   const { openMedia } = useProjectMedia();
   const { opens } = cover;
+  const portrait = cover.image.height > cover.image.width;
   const className = "group relative block w-full overflow-hidden rounded-[15px] bg-[#141414]";
   const image = (
     <Image
@@ -28,7 +30,7 @@ export function ProjectCover({ cover, label }: { cover: ProjectDetailData["cover
       sizes="(min-width: 1200px) 1192px, calc(100vw - 48px)"
       loading="eager"
       fetchPriority="high"
-      className="block h-auto max-h-[85dvh] w-full object-contain"
+      className={cn("block h-auto w-full", portrait && "max-h-[85dvh] object-contain")}
     />
   );
 

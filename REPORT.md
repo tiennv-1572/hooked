@@ -39,6 +39,7 @@ Cập nhật: 02/11/2026 — **Giai đoạn 4: MySQL, API công khai và tích h
   - Bài viết (03/11):
     - Bỏ ô "Tóm tắt": thẻ ở `/blog` và mô tả SEO mặc định lấy ~160 ký tự đầu của đoạn mở đầu (API vẫn trả `excerpt`, tự sinh).
     - Khối "Đoạn văn" dùng trình soạn thảo, một khối chứa được nhiều đoạn; các đoạn liền nhau của bài cũ đã gộp lại (Vui Fest Cát Bà 8 → 5 khối). Chuyển dữ liệu bằng `scripts/db-data-migrate.ts`, chạy cùng `pnpm db:migrate`.
+    - "Đoạn mở đầu" cũng dùng text editor (HTML, lọc lại trên server), giữ nguyên chữ và liên kết của 3 bài hiện có; `pnpm db:migrate` tự chuyển dữ liệu cũ. API: `intro{html, text}` trong `GET /posts/{slug}` (thay cho `intro{text, parts}`).
   - Section menu mới "Quản lý dự án" (03/11): Danh mục dự án, Dự án, Cài đặt hiển thị dự án.
     - Bỏ "Định dạng thẻ" ở từng dự án. Trang "Cài đặt hiển thị dự án" (`/admin/project-layout`) có danh sách ô (thêm không giới hạn, kéo thả); mỗi ô chọn định dạng và dự án, một dự án có thể nằm ở nhiều ô. Có xem trước lưới "Tất cả".
     - Mặc định giữ đúng bố cục cũ. API: `cardLayout[{format, projectId}]` trong `GET /pages/projects`. Migration `0012`–`0013`.
@@ -58,7 +59,14 @@ Cập nhật: 02/11/2026 — **Giai đoạn 4: MySQL, API công khai và tích h
   - Lead hiện ngay ở CMS → Đăng ký tư vấn, kèm nguồn (form được mở ở đâu).
 - **Kiểm tra:**
   - `typecheck`, `format:check`, `build` sạch; `lint` 0 lỗi (3 cảnh báo cũ).
-  - **Playwright 131 test đạt, 0 lỗi** (10 test bỏ qua có chủ đích theo viewport), chạy trên bản production, gồm cả luồng đăng nhập, mời người dùng, đăng xuất và đăng ký tư vấn thật.
+  - **Playwright 134 test đạt, 0 lỗi** (13 test bỏ qua có chủ đích theo viewport), chạy trên bản production, gồm cả luồng đăng nhập, mời người dùng, đăng xuất và đăng ký tư vấn thật.
+- **Rà soát giao diện & dữ liệu (03/11):**
+  - Dữ liệu trong MySQL khớp 100% với dữ liệu gốc (`pnpm db:seed` từ `src/data`). Hai chỗ seed lệch thiết kế đã sửa: tên dự án "“Xóm Húc” DJ Contest" (có ngoặc kép như Figma) và hai khóa Producer "Producer (HipHop / R&B / Ballad)", "Producer (EDM)" (như carousel, danh sách mobile, popup).
+  - So từng trang với Figma (15 frame mobile 390, 7 frame desktop 1440, frame tablet 1024 của Student Stories): chiều cao lệch ≤ 10px, trừ phần đã đổi theo yêu cầu (ảnh hero dự án hiện full).
+  - Sửa theo Figma: nút lọc `/projects` xuống nhiều dòng trên mobile (trang cao đúng 2886px như Figma); khối blog trang chủ mobile; khoảng cách hàng thẻ học viên trên tablet; footer tablet theo frame tablet (3 cột Liên hệ · Social · Company, chữ HOOKED full chiều ngang).
+  - Quét responsive 24 độ rộng (320–2560px) × 19 trang và các popup (menu, đăng ký, chương trình học, reader, lightbox ảnh/video): không tràn ngang, không ảnh hỏng, không lỗi JS. Đã sửa: tràn 8px ở `/academy` khi màn 1200–1255px; giá học phí bị ngắt giữa số ở màn 320px; chữ "SUPPORTING" (Home) và "BLOGPOST" (Blog) bị ngắt giữa từ ở màn 320px.
+  - Blog carousel trang chủ: khi độ rộng màn hình là số lẻ hoặc zoom 125%, mép khung lộ 1px ảnh của thẻ bên cạnh. Đã sửa: lúc đứng yên chỉ khung cắt ảnh hiện tại, ảnh bên cạnh ẩn; kiểm tra ở 15 cặp độ rộng × tỉ lệ màn hình, không còn pixel nào lọt.
+  - Ảnh hero dự án nằm ngang luôn full chiều rộng cột (trước đó bị co lại, lộ viền tối hai bên trên màn thấp); ảnh dọc vẫn thu vừa màn hình.
 
 ### Chạy
 
@@ -142,13 +150,13 @@ Ngoài ra em đã tự xem ảnh chụp từng trang và từng overlay ở cả
 
 - **Trang Blog tổng hợp `/blog` và trang 404/lỗi:** tự thiết kế, vì link "← Blogpost" trong bài viết cần có chỗ để quay về.
 - **Footer:** thêm 5 link (Academy, Student Stories, Partners, Blogpost, Contact). Figma chỉ có "About".
-- **Menu desktop:** trang con cao 80px, link của trang đang mở màu cam (theo Figma các trang con); Home giữ kiểu 64px.
+- **Menu desktop:** mọi trang dùng chung một kích thước — cao 80px (+ viền 1px), logo và link thẳng mép cột nội dung 1192px, chữ ExtraBold — nên logo/menu không xê dịch khi chuyển trang. Figma Home (64px, thụt vào 48px, chữ Bold) đã được chỉnh theo các trang con theo yêu cầu; Home chỉ giữ nền gradient cam riêng và không tô màu link đang mở. Trang con tô cam link của trang đang mở.
 - **Form đăng ký:** câu báo lỗi khi số điện thoại hoặc email sai định dạng, và khi gửi thất bại, là em tự viết.
 - **Academy desktop:** bấm vào một dòng trong danh sách khóa học thì mở modal chương trình học (Figma không vẽ cách mở trên desktop).
 - **Trang dự án:**
   - Bấm ảnh bìa mở lightbox ảnh. Riêng SPIN Awards mở video, vì dự án này không có album ảnh.
   - Nút "Xem toàn bộ album ảnh" mở lightbox.
-- **Projects mobile:** các nút lọc cuộn ngang thay vì xuống nhiều dòng, nên trang ngắn hơn Figma khoảng 200px.
+- **Projects mobile:** các nút lọc xuống nhiều dòng như Figma (03/11; trước đó cuộn ngang).
 - **About:** tên 5 năng lực của Hooked được gắn link sang Academy/Projects/Contact. Bỏ được trong `src/data/about.ts`.
 - **About — "Xem full portfolio":** trỏ tới file PDF trên Google Drive, theo link có sẵn trong prototype Figma.
 - **Bài blog:** em thêm link trong nội dung (tên dự án, đối tác, học viên). Nhãn và thời gian đọc trên trang Blog tổng hợp là em tự đặt.

@@ -620,7 +620,13 @@ export function buildOpenApiSpec(siteUrl?: string) {
           allOf: [
             ref("PostSummary"),
             obj({
-              intro: obj({ text: str(), parts: arrayOf(ref("InlineRun")) }),
+              intro: obj({
+                html: str(
+                  "HTML đã lọc: một hoặc nhiều <p>; strong, em, u, a, ul, ol, li, blockquote (liên kết ngoài có target=_blank)",
+                  '<p>Sự hợp tác chiến lược giữa Hooked Entertainment và tập đoàn <a href="/partners">Sun Group</a>…</p>',
+                ),
+                text: str("Văn bản thuần của đoạn mở đầu"),
+              }),
               introCta: nullable(ref("Link")),
               blocks: arrayOf(ref("PostBlock")),
               seo: obj({ title: str(), description: str(), image: nullable(ref("Image")) }),

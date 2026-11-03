@@ -1,7 +1,7 @@
 "use client";
 
-import { Bold, CalendarIcon, Link2, Lock, Plus, RefreshCw, Trash2, Unlock, X } from "lucide-react";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { CalendarIcon, Lock, Plus, RefreshCw, Trash2, Unlock, X } from "lucide-react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Controller, get, useFormContext, useWatch, type FieldValues, type Path } from "react-hook-form";
 
 import { DragHandle, SortableList } from "@/admin/components/cms/sortable-list";
@@ -16,7 +16,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Switch } from "@/admin/components/ui/switch";
 import { Textarea } from "@/admin/components/ui/textarea";
 import { slugify } from "@/admin/lib/cms/ids";
-import { parseInline } from "@/admin/lib/cms/inline";
 import { formatDate } from "@/admin/lib/format";
 import { cn } from "@/lib/utils";
 
@@ -237,108 +236,6 @@ export function TextareaField({
         aria-invalid={errors ? true : undefined}
         {...register(name)}
       />
-    </FieldShell>
-  );
-}
-
-/** Renders inline markdown (**bold**, [link](/href)) as the site would. */
-export function InlinePreview({ value, className }: { value: string; className?: string }) {
-  return (
-    <p className={cn("text-sm leading-relaxed", className)}>
-      {parseInline(value).map((part, index) =>
-        typeof part === "string" ? (
-          <span key={index}>{part}</span>
-        ) : part.href ? (
-          <a
-            key={index}
-            href={part.href}
-            target="_blank"
-            rel="noreferrer"
-            className="text-primary font-medium underline underline-offset-2"
-          >
-            {part.text}
-          </a>
-        ) : (
-          <strong key={index}>{part.text}</strong>
-        ),
-      )}
-    </p>
-  );
-}
-
-/**
- * Textarea with **bold** / [link](url) helpers and a live preview — for blog paragraphs, intros, list items.
- */
-export function RichTextField({
-  name,
-  label,
-  description,
-  required,
-  className,
-  rows = 4,
-  placeholder,
-  showPreview = true,
-}: BaseFieldProps & { rows?: number; placeholder?: string; showPreview?: boolean }) {
-  const { control, setValue } = useFormContext();
-  const ref = useRef<HTMLTextAreaElement | null>(null);
-  const value = (useWatch({ control, name }) as string | undefined) ?? "";
-
-  const wrap = (kind: "bold" | "link") => {
-    const area = ref.current;
-    if (!area) return;
-    const { selectionStart: start, selectionEnd: end } = area;
-    const selected = value.slice(start, end) || (kind === "bold" ? "chữ đậm" : "văn bản");
-    const insert = kind === "bold" ? `**${selected}**` : `[${selected}](/duong-dan)`;
-    setValue(name, value.slice(0, start) + insert + value.slice(end), { shouldDirty: true });
-    requestAnimationFrame(() => {
-      area.focus();
-      const caret = start + insert.length;
-      area.setSelectionRange(caret, caret);
-    });
-  };
-
-  return (
-    <FieldShell
-      name={name}
-      label={label}
-      description={description ?? "Dùng **chữ đậm** và [liên kết](/duong-dan)."}
-      required={required}
-      className={className}
-      aside={
-        <div className="flex gap-1">
-          <Button type="button" variant="ghost" size="icon-xs" onClick={() => wrap("bold")} aria-label="Chữ đậm">
-            <Bold />
-          </Button>
-          <Button type="button" variant="ghost" size="icon-xs" onClick={() => wrap("link")} aria-label="Chèn liên kết">
-            <Link2 />
-          </Button>
-        </div>
-      }
-    >
-      <Controller
-        control={control}
-        name={name}
-        render={({ field, fieldState }) => (
-          <Textarea
-            id={name}
-            rows={rows}
-            placeholder={placeholder}
-            aria-invalid={fieldState.error ? true : undefined}
-            value={field.value ?? ""}
-            onChange={field.onChange}
-            onBlur={field.onBlur}
-            ref={(element) => {
-              field.ref(element);
-              ref.current = element;
-            }}
-          />
-        )}
-      />
-      {showPreview && /\*\*|\]\(/.test(value) ? (
-        <div className="rounded-lg border border-dashed bg-muted/30 px-3 py-2">
-          <InlinePreview value={value} className="text-muted-foreground" />
-        </div>
-      ) : null}
     </FieldShell>
   );
 }

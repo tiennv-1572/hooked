@@ -1,5 +1,5 @@
 /**
- * Inline markdown subset used by CMS text fields (blog paragraphs, list items, intros):
+ * Inline markdown subset used by CMS text fields (blog list items; paragraphs and intros were migrated to HTML):
  *   **bold**            → { text, bold: true }
  *   [label](/href)      → { text, href }
  * Kept deliberately tiny so editors only need two rules; mirrors the site's `Inline` type in src/data/blog.ts.
@@ -67,13 +67,4 @@ export function inlineMarkdownToHtml(source: string): string {
           .join("<br>")}</p>`,
     )
     .join("");
-}
-
-/** Plain-text summary of inline-markdown copy, cut on a word boundary (blog cards, meta descriptions). */
-export function excerptOf(source: string, max = 160): string {
-  const text = stripInline(source).replace(/\s+/g, " ").trim();
-  if (text.length <= max) return text;
-  const cut = text.slice(0, max);
-  const space = cut.lastIndexOf(" ");
-  return `${(space > max * 0.6 ? cut.slice(0, space) : cut).replace(/[\s,.;:–-]+$/, "")}…`;
 }

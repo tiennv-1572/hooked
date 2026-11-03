@@ -13,7 +13,7 @@ export type SiteHeaderProps = {
 
 /**
  * Shared site header.
- * - ≥ 1200px: desktop bar — 64px on Home, 80px with active section on inner pages (see DesktopNav).
+ * - ≥ 1200px: desktop bar — 80px on every page; inner pages highlight the active section (see DesktopNav).
  * - < 1200px: 72px bar with current page label + hamburger (Figma Website / Navigation / Mobile, 2815:4703).
  */
 export function SiteHeader({ desktop, mobile }: SiteHeaderProps) {

@@ -54,6 +54,24 @@ export function SiteInline({ value }: { value: string }) {
   );
 }
 
+/**
+ * Editor HTML (Tiptap only emits its own schema: paragraphs, marks, links, lists, quotes) styled like the site's
+ * RichHtml; paragraphs keep the reading column's 20/24px rhythm.
+ */
+function SiteHtml({ html, className }: { html: string; className?: string }) {
+  return (
+    <div
+      className={cn(
+        "flex flex-col gap-5 @3xl:gap-6 [&_b]:font-bold [&_em]:italic [&_strong]:font-bold [&_u]:underline",
+        "[&_a]:underline [&_a]:decoration-[#e55624] [&_a]:decoration-1 [&_a]:underline-offset-[5px]",
+        "[&_blockquote]:border-l-2 [&_blockquote]:border-[#e55624] [&_blockquote]:pl-4 [&_blockquote]:italic [&_ol]:list-decimal [&_ol]:pl-6 [&_ul]:list-disc [&_ul]:pl-6",
+        className,
+      )}
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
+}
+
 function SiteCta({ label, href }: { label: string; href: string }) {
   return (
     <a
@@ -91,17 +109,7 @@ const ratio = (image?: ImageRef) => (image?.width && image?.height ? image.width
 function PreviewBlock({ block }: { block: PostFormBlock }) {
   switch (block.type) {
     case "paragraph":
-      // Editor HTML (Tiptap only emits its own schema: paragraphs, marks, links, lists, quotes).
-      return htmlToText(block.html ?? "") ? (
-        <div
-          className={cn(
-            "flex flex-col gap-5 @3xl:gap-6 [&_b]:font-bold [&_em]:italic [&_strong]:font-bold [&_u]:underline",
-            "[&_a]:underline [&_a]:decoration-[#e55624] [&_a]:decoration-1 [&_a]:underline-offset-[5px]",
-            "[&_blockquote]:border-l-2 [&_blockquote]:border-[#e55624] [&_blockquote]:pl-4 [&_blockquote]:italic [&_ol]:list-decimal [&_ol]:pl-6 [&_ul]:list-disc [&_ul]:pl-6",
-          )}
-          dangerouslySetInnerHTML={{ __html: block.html }}
-        />
-      ) : null;
+      return htmlToText(block.html ?? "") ? <SiteHtml html={block.html} /> : null;
     case "heading":
       return block.text?.trim() ? (
         <h2 className="text-[23px] leading-8 font-bold @3xl:text-[28px] @3xl:leading-[38px]">{block.text}</h2>
@@ -191,11 +199,13 @@ export function ArticlePreview({ post, className }: { post: ArticlePreviewData; 
 
         <div className="flex flex-col gap-7 @3xl:gap-10 @5xl:grid @5xl:grid-cols-[minmax(0,600fr)_minmax(0,664fr)] @5xl:items-start @5xl:gap-20">
           <div className="flex flex-col gap-5 @3xl:max-w-[760px] @5xl:gap-6">
-            <p
-              className={cn("text-[17px] leading-7 @3xl:text-xl @3xl:leading-8", !post.intro.trim() && "text-white/30")}
-            >
-              {post.intro.trim() ? <SiteInline value={post.intro} /> : "Đoạn mở đầu của bài viết sẽ hiển thị ở đây."}
-            </p>
+            {htmlToText(post.intro) ? (
+              <SiteHtml html={post.intro} className="text-[17px] leading-7 @3xl:text-xl @3xl:leading-8" />
+            ) : (
+              <p className="text-[17px] leading-7 text-white/30 @3xl:text-xl @3xl:leading-8">
+                Đoạn mở đầu của bài viết sẽ hiển thị ở đây.
+              </p>
+            )}
             {post.introCta?.label ? <SiteCta label={post.introCta.label} href={post.introCta.href} /> : null}
           </div>
           <SiteImage image={post.cover} />

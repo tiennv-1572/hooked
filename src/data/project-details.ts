@@ -256,7 +256,7 @@ const xomHucPhotos: ProjectPhoto[] = [
 
 const xomHuc: ProjectDetail = {
   slug: "xom-huc",
-  name: "Xóm Húc DJ Contest",
+  name: "“Xóm Húc” DJ Contest",
   title: "“XÓM HÚC” DJ CONTEST",
   services: ["Media", "Event Production", "DJ Contest"],
   partners: [],

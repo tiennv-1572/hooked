@@ -44,7 +44,7 @@ export const postSeed: Post[] = blogPosts.map((post, index) => ({
   slug: post.slug,
   title: post.title,
   kicker: post.kicker,
-  intro: serializeInline(post.intro),
+  intro: `<p>${inlineToHtml(post.intro)}</p>`,
   introCta: post.introCta ? { ...post.introCta } : undefined,
   cover: img(post.hero),
   blocks: toBlocks(post.body, post.slug),

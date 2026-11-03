@@ -62,7 +62,7 @@ export function buildPostSchema(takenSlugs: string[]) {
     title: requiredText("Nhập tiêu đề bài viết."),
     slug: slugSchema.refine((slug) => !takenSlugs.includes(slug), "Đường dẫn này đã được dùng cho bài viết khác."),
     kicker: requiredText("Nhập nhãn ngắn cho thẻ bài viết."),
-    intro: requiredText("Nhập đoạn mở đầu."),
+    intro: z.string().refine((html) => Boolean(htmlToText(html)), "Nhập đoạn mở đầu."),
     introCta: introCtaSchema,
     cover: imageRefSchema("Chọn ảnh bìa."),
     blocks: z.array(blockSchema),

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { ArticleCta } from "@/components/blog/article-cta";
 import type { BlogArticleData } from "@/components/blog/blog-content";
-import { RichText } from "@/components/blog/rich-text";
+import { RichHtml } from "@/components/ui/rich-html";
 
 type ArticleIntroProps = Pick<BlogArticleData, "intro" | "introCta" | "hero">;
 
@@ -16,9 +16,10 @@ export function ArticleIntro({ intro, introCta, hero }: ArticleIntroProps) {
   return (
     <div className="flex flex-col gap-7 tablet:gap-10 desktop:grid desktop:grid-cols-[minmax(0,600fr)_minmax(0,664fr)] desktop:items-start desktop:gap-20">
       <div className="flex flex-col gap-5 tablet:max-w-[760px] desktop:gap-6">
-        <p className="text-[17px] leading-7 text-white tablet:text-xl tablet:leading-8">
-          <RichText content={intro} />
-        </p>
+        <RichHtml
+          html={intro}
+          className="gap-5 text-[17px] leading-7 text-white tablet:gap-6 tablet:text-xl tablet:leading-8"
+        />
         {introCta ? <ArticleCta href={introCta.href}>{introCta.label}</ArticleCta> : null}
       </div>
       <Image
