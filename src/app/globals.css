@@ -34,7 +34,7 @@
 
   /* Motion */
   --ease-carousel: cubic-bezier(0.22, 1, 0.36, 1);
-  --animate-marquee: marquee var(--marquee-duration, 30s) linear infinite;
+  --animate-marquee: marquee 30s linear infinite; /* <Marquee> sets the duration inline */
   --animate-fade-in: fade-in 200ms ease-out;
   --animate-fade-out: fade-out 160ms ease-in;
 
@@ -50,12 +50,13 @@
     }
   }
 
+  /* Left → right: the track starts shifted by one half and slides back to 0. */
   @keyframes marquee {
     from {
-      transform: translate3d(0, 0, 0);
+      transform: translate3d(-50%, 0, 0);
     }
     to {
-      transform: translate3d(-50%, 0, 0);
+      transform: translate3d(0, 0, 0);
     }
   }
 }

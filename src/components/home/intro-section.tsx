@@ -44,7 +44,9 @@ export function IntroSection({ titleLines, body }: IntroSectionProps) {
             </span>
           ))}
         </h1>
-        <p className="max-w-[560px] text-base leading-6 text-muted desktop:line-clamp-3 desktop:max-w-[780px] desktop:font-display desktop:text-[32px] desktop:leading-10 desktop:font-bold desktop:text-white desktop:uppercase">
+        {/* The clamp clips at the box edge, which cut the stacked accents of capitals on the first line ("BỀ" showed
+            as "BÊ"): 12px of top padding (pulled back with a negative margin) gives them room. */}
+        <p className="max-w-[560px] text-base leading-6 text-muted desktop:-mt-3 desktop:line-clamp-3 desktop:max-w-[780px] desktop:pt-3 desktop:font-display desktop:text-[32px] desktop:leading-10 desktop:font-bold desktop:text-white desktop:uppercase">
           {body}
         </p>
       </Container>

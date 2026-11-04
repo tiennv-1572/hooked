@@ -220,7 +220,8 @@ test.describe("admin CMS", () => {
 
   test("sign-out ends the server session", async ({ page }) => {
     await signIn(page);
-    await page.getByRole("button", { name: /Hooked Admin/ }).click();
+    // By email: the display name is editable in the CMS.
+    await page.getByRole("button", { name: new RegExp(ADMIN.email) }).click();
     await page.getByRole("menuitem", { name: "Đăng xuất" }).click();
     await expect(page).toHaveURL(/\/admin\/login/);
     const me = await page.request.get("/api/admin/auth/me");

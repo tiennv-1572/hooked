@@ -1,0 +1,22 @@
+# Cau hinh noi DEN cho scripts/release.sh (hosting cPanel).
+#   cp deploy.config.example deploy.config   # roi dien gia tri that vao deploy.config
+# deploy.config chua mat khau database: da gitignore, KHONG commit.
+# Script tu choi chay neu mot gia tri van con la gia tri mau duoi day.
+
+# Ten mien that cua website (nhung vao ban build: Open Graph, sitemap, robots, OpenAPI)
+SITE_URL="https://tenmien.com"
+
+# Database tren hosting: cPanel tu them tien to tai khoan (vd taikhoan_hooked) — dien TEN THAT.
+# Mat khau co ky tu dac biet (@ # % &) cu dien nguyen, script tu ma hoa khi ghep DATABASE_URL.
+DB_HOST="localhost"
+DB_PORT="3306"
+DB_NAME="taikhoan_hooked"
+DB_USER="taikhoan_hooked"
+DB_PASS="dien-mat-khau-that"
+
+# Khoa ky phien dang nhap admin, >= 32 ky tu, KHAC voi .env o may local. Sinh moi:
+#   node -e "console.log(require('crypto').randomBytes(32).toString('base64url'))"
+AUTH_SECRET="sinh-chuoi-moi-truoc-khi-deploy"
+
+# So lan gui form "Dang ky tu van" toi da moi IP trong 10 phut (0 = tat, chi dung khi chay e2e)
+REGISTRATION_RATE_LIMIT="5"

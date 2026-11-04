@@ -21,7 +21,7 @@ import {
   UserRound,
 } from "lucide-react";
 import { useMemo, useState } from "react";
-import { Controller, FormProvider, useForm } from "react-hook-form";
+import { Controller, FormProvider, useForm, useWatch } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -64,6 +64,7 @@ import type { AdminRole, AdminUser } from "@/admin/lib/cms/types/shared";
 import { formatDate, formatRelative } from "@/admin/lib/format";
 import { cn } from "@/lib/utils";
 
+import { PasswordInput } from "./password-input";
 import {
   PERMISSIONS,
   ROLE_META,
@@ -79,6 +80,8 @@ type Guards = {
   isSelf: boolean;
   isLastOwner: boolean;
   canManage: boolean;
+  /** Set this user's password: same level or lower (owner → anyone, admin → admins and editors), never yourself. */
+  canSetPassword: boolean;
   /** Role / status / delete are locked (self, last owner, or not allowed). */
   locked: boolean;
   lockReason?: string;
@@ -98,7 +101,8 @@ function guardsFor(target: AdminUser, users: AdminUser[], meId: string | undefin
           ? "Biên tập viên không quản lý được người dùng."
           : "Chỉ chủ sở hữu mới thay đổi được chủ sở hữu khác."
         : undefined;
-  return { isSelf, isLastOwner, canManage, locked: Boolean(lockReason), lockReason };
+  const canSetPassword = canManage && !isSelf;
+  return { isSelf, isLastOwner, canManage, canSetPassword, locked: Boolean(lockReason), lockReason };
 }
 
 /** Roles the current user may assign. */
@@ -117,6 +121,7 @@ export function UsersPage() {
   const confirm = useConfirm();
   const [inviteOpen, setInviteOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [passwordFor, setPasswordFor] = useState<AdminUser | null>(null);
   const isMobile = useIsMobile();
 
   const users = useMemo(() => data ?? [], [data]);
@@ -300,6 +305,9 @@ export function UsersPage() {
         if (guards.canManage || guards.isSelf) {
           actions.push({ label: "Chỉnh sửa", icon: <Pencil />, onSelect: () => setEditingId(user.id) });
         }
+        if (guards.canSetPassword && user.status !== "invited") {
+          actions.push({ label: "Đổi mật khẩu", icon: <KeyRound />, onSelect: () => setPasswordFor(user) });
+        }
         if (guards.canManage && user.status === "invited") {
           actions.push({ label: "Tạo mật khẩu tạm mới", icon: <KeyRound />, onSelect: () => resendInvite(user) });
           actions.push({ label: "Kích hoạt thủ công", icon: <UserCheck />, onSelect: () => setStatus(user, "active") });
@@ -398,6 +406,7 @@ export function UsersPage() {
       </div>
 
       <InviteDialog open={inviteOpen} onOpenChange={setInviteOpen} users={users} roles={assignableRoles(myRole)} />
+      <SetPasswordDialog user={passwordFor} onClose={() => setPasswordFor(null)} />
       <UserSheet
         user={editing}
         users={users}
@@ -643,6 +652,139 @@ function InviteDialog({
             </DialogFooter>
           </form>
         </FormProvider>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+// ---------------------------------------------------------------------------------------------------------
+// Change another user's password (PATCH users/{id} with the write-only `password`; the server checks the roles)
+
+const NEW_PASSWORD_RULES: { label: string; test: (value: string) => boolean }[] = [
+  { label: "Ít nhất 8 ký tự", test: (value) => value.length >= 8 },
+  { label: "Có cả chữ và số", test: (value) => /[a-zA-Z]/.test(value) && /\d/.test(value) },
+];
+
+const setPasswordSchema = z
+  .object({
+    next: z.string().min(1, "Nhập mật khẩu mới."),
+    confirm: z.string().min(1, "Nhập lại mật khẩu mới."),
+  })
+  .superRefine((values, ctx) => {
+    const broken = NEW_PASSWORD_RULES.find((rule) => !rule.test(values.next));
+    if (values.next && broken) {
+      ctx.addIssue({ code: "custom", path: ["next"], message: `Mật khẩu chưa đạt: ${broken.label.toLowerCase()}.` });
+    }
+    if (values.confirm && values.confirm !== values.next) {
+      ctx.addIssue({ code: "custom", path: ["confirm"], message: "Mật khẩu xác nhận không khớp." });
+    }
+  });
+type SetPasswordValues = z.infer<typeof setPasswordSchema>;
+
+function SetPasswordDialog({ user, onClose }: { user: AdminUser | null; onClose: () => void }) {
+  const update = useUpdateItem("users", { silent: true });
+  const [visible, setVisible] = useState(false);
+  const form = useForm<SetPasswordValues>({
+    resolver: zodResolver(setPasswordSchema),
+    defaultValues: { next: "", confirm: "" },
+  });
+  const [next, confirm] = useWatch({ control: form.control, name: ["next", "confirm"] });
+  const { errors } = form.formState;
+
+  const close = () => {
+    onClose();
+    form.reset();
+    setVisible(false);
+  };
+
+  const generate = () => {
+    const password = temporaryPassword();
+    form.setValue("next", password, { shouldDirty: true });
+    form.setValue("confirm", password, { shouldDirty: true });
+    // Always valid: drop errors left by an earlier attempt.
+    form.clearErrors();
+    setVisible(true);
+  };
+
+  const onSubmit = async ({ next: password }: SetPasswordValues) => {
+    if (!user) return;
+    try {
+      await update.mutateAsync({ id: user.id, patch: { password } as Partial<AdminUser> });
+    } catch (failure) {
+      form.setError("next", { message: failure instanceof Error ? failure.message : "Không đổi được mật khẩu." });
+      return;
+    }
+    // Shown once: the server only keeps a hash.
+    toast.success(`Đã đổi mật khẩu cho ${user.name}.`, {
+      description: `${user.email} · mật khẩu mới: ${password} — gửi riêng cho người dùng.`,
+      duration: 60_000,
+      action: {
+        label: "Sao chép",
+        onClick: () => void navigator.clipboard?.writeText(`Email: ${user.email}\nMật khẩu: ${password}`),
+      },
+    });
+    close();
+  };
+
+  return (
+    <Dialog open={Boolean(user)} onOpenChange={(open) => !open && close()}>
+      <DialogContent className="sm:max-w-md">
+        <form onSubmit={form.handleSubmit(onSubmit)} noValidate className="flex flex-col gap-5">
+          <DialogHeader>
+            <DialogTitle>Đổi mật khẩu</DialogTitle>
+            <DialogDescription>
+              Đặt mật khẩu mới cho {user?.name} ({user?.email}). Mật khẩu cũ hết hiệu lực ngay; người dùng nên tự đổi
+              lại ở “Tài khoản của tôi” sau khi đăng nhập.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex flex-col gap-4">
+            <PasswordInput
+              id="set-password"
+              label="Mật khẩu mới"
+              autoComplete="new-password"
+              visible={visible}
+              onToggle={() => setVisible((value) => !value)}
+              error={errors.next?.message}
+              register={form.register("next")}
+            />
+            <PasswordInput
+              id="set-password-confirm"
+              label="Nhập lại mật khẩu mới"
+              autoComplete="new-password"
+              visible={visible}
+              error={errors.confirm?.message}
+              register={form.register("confirm")}
+            />
+            <ul className="grid gap-1.5 text-xs sm:grid-cols-2">
+              {[
+                ...NEW_PASSWORD_RULES.map((rule) => ({ label: rule.label, ok: rule.test(next) })),
+                { label: "Hai lần nhập khớp nhau", ok: Boolean(next) && next === confirm },
+              ].map((rule) => (
+                <li
+                  key={rule.label}
+                  className={cn("flex items-center gap-1.5", rule.ok ? "text-success" : "text-muted-foreground")}
+                >
+                  {rule.ok ? <Check className="size-3.5" /> : <Minus className="size-3.5" />}
+                  {rule.label}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <DialogFooter className="sm:justify-between">
+            <Button type="button" variant="ghost" onClick={generate}>
+              <RefreshCw /> Tạo ngẫu nhiên
+            </Button>
+            <div className="flex flex-col-reverse gap-2 sm:flex-row">
+              <Button type="button" variant="outline" onClick={close}>
+                Hủy
+              </Button>
+              <Button type="submit" disabled={update.isPending}>
+                {update.isPending ? <Spinner /> : <KeyRound />}
+                Đổi mật khẩu
+              </Button>
+            </div>
+          </DialogFooter>
+        </form>
       </DialogContent>
     </Dialog>
   );

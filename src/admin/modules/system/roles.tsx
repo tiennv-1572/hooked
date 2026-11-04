@@ -65,6 +65,7 @@ export const PERMISSIONS: {
     group: "Hệ thống",
     rows: [
       { label: "Mời & quản lý người dùng", owner: true, admin: "Trừ chủ sở hữu", editor: false },
+      { label: "Đổi mật khẩu người dùng khác", owner: true, admin: "Trừ chủ sở hữu", editor: false },
       { label: "Chỉ định chủ sở hữu", owner: true, admin: false, editor: false },
       { label: "Khôi phục dữ liệu mẫu", owner: true, admin: false, editor: false },
     ],

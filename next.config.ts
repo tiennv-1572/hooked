@@ -13,6 +13,9 @@ const nextConfig: NextConfig = {
   experimental: {
     // The site and the admin CMS are two root layouts, so unmatched URLs need app/global-not-found.tsx.
     globalNotFound: true,
+    // One sharp thread per image optimisation (default: CPU cores / 2). The cPanel host (CloudLinux) counts every
+    // thread as a process against the plan's limit — see server.js. Optimised images are cached on disk.
+    imgOptConcurrency: 1,
   },
   turbopack: {
     rules: {

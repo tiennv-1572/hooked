@@ -11,7 +11,7 @@ export const HERO_TAGLINE = "SUPPORT LOCAL ARTISTS";
  */
 export function HeroMarquee({ className }: { className?: string }) {
   return (
-    <Marquee duration={24} gap={38} className={className} label={`${HERO_TAGLINE} — Hooked Entertainment`}>
+    <Marquee duration={15} gap={38} className={className} label={`${HERO_TAGLINE} — Hooked Entertainment`}>
       <span className="text-4xl leading-[49px] font-bold whitespace-nowrap text-transparent uppercase [-webkit-text-stroke:1px_var(--color-brand)]">
         {HERO_TAGLINE}
       </span>

@@ -12,6 +12,7 @@
     "format:check": "prettier --check .",
     "test:e2e": "playwright test",
     "media:manifest": "node scripts/generate-media-manifest.mjs",
+    "lock:npm": "bash scripts/npm-lock.sh",
     "db:up": "docker compose up -d mysql",
     "db:down": "docker compose down",
     "db:generate": "drizzle-kit generate",

@@ -39,7 +39,7 @@ export function PartnersSection({ titleLines, body, cta, partners }: PartnersSec
       </Container>
 
       <Container className="mt-6 tablet:mt-10 desktop:mt-[105px] desktop:max-w-none desktop:px-0">
-        <Marquee fade duration={18} gap={58} label="Đối tác của Hooked">
+        <Marquee fade duration={15} gap={58} label="Đối tác của Hooked">
           {partners.map((partner) => (
             <Image
               key={partner.name}
