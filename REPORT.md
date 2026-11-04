@@ -65,7 +65,17 @@ Cập nhật: 02/11/2026 — **Giai đoạn 4: MySQL, API công khai và tích h
   - So từng trang với Figma (15 frame mobile 390, 7 frame desktop 1440, frame tablet 1024 của Student Stories): chiều cao lệch ≤ 10px, trừ phần đã đổi theo yêu cầu (ảnh hero dự án hiện full).
   - Sửa theo Figma: nút lọc `/projects` xuống nhiều dòng trên mobile (trang cao đúng 2886px như Figma); khối blog trang chủ mobile; khoảng cách hàng thẻ học viên trên tablet; footer tablet theo frame tablet (3 cột Liên hệ · Social · Company, chữ HOOKED full chiều ngang).
   - Quét responsive 24 độ rộng (320–2560px) × 19 trang và các popup (menu, đăng ký, chương trình học, reader, lightbox ảnh/video): không tràn ngang, không ảnh hỏng, không lỗi JS. Đã sửa: tràn 8px ở `/academy` khi màn 1200–1255px; giá học phí bị ngắt giữa số ở màn 320px; chữ "SUPPORTING" (Home) và "BLOGPOST" (Blog) bị ngắt giữa từ ở màn 320px.
-  - Blog carousel trang chủ: khi độ rộng màn hình là số lẻ hoặc zoom 125%, mép khung lộ 1px ảnh của thẻ bên cạnh. Đã sửa: lúc đứng yên chỉ khung cắt ảnh hiện tại, ảnh bên cạnh ẩn; kiểm tra ở 15 cặp độ rộng × tỉ lệ màn hình, không còn pixel nào lọt.
+  - Blog carousel trang chủ: khi độ rộng màn hình là số lẻ hoặc zoom 110–175%, mép khung lộ 1px ảnh của thẻ bên cạnh — lúc đứng yên, ngay khi bấm chuyển và cuối hiệu ứng — rồi "giật" về đúng khi dừng. Đã làm lại cơ chế trượt:
+    - Ảnh nằm trên một dải dài vô tận, chỉ dải trượt; khung hình cuối của hiệu ứng chính là trạng thái dừng (không đặt lại vị trí, không đổi cách cắt ảnh), nên hết "giật".
+    - Mỗi ảnh có 2px đệm bằng chính ảnh đó ở hai mép, nên làm tròn nửa pixel ở mép khung không bao giờ lộ ảnh bên cạnh.
+    - Ảnh kế tiếp được tải sẵn khi carousel sắp vào màn hình (trước đây chỉ tải lúc bấm). Ảnh ở khung xem trước không tải trên mobile (bị ẩn).
+    - Kiểm tra bằng cách dừng hiệu ứng ở khung đầu/cuối (19 trường hợp độ rộng × tỉ lệ màn hình × hướng): 0 pixel lọt, 0 khác biệt giữa cuối hiệu ứng và lúc dừng.
+  - Ảnh (03/11):
+    - Đã đối chiếu toàn bộ ảnh với Figma (mọi trang desktop/mobile và các trang thư viện "Original project media", "Student portraits", "Blog artwork"): 72/73 ảnh nội dung trên website giống từng byte với ảnh gốc trong Figma (ảnh còn lại là slide hero “logo trên nền giấy”, không còn trong Figma). Figma không có bản nào lớn hơn, nên website đang dùng đúng bản gốc lớn nhất. Mỗi ảnh một bản gốc (bản desktop); `next/image` tự cắt nhỏ cho từng màn hình.
+    - Chất lượng nén ảnh nâng từ 75 lên 90 (`images.qualities` trong `next.config.ts`).
+    - Sửa `sizes` để trình duyệt tải đúng độ nét: hero trang chủ (ảnh ngang trong khung dọc trên mobile), carousel blog (ảnh phóng 1.18–1.3 lần), thẻ dịch vụ, ảnh học viên SIMPLE (cắt 1.43 lần). Đo lại 323 ảnh trên 16 trang ở desktop ×2 và mobile ×3: không còn ảnh nào bị tải bản nhỏ hơn mức màn hình cần.
+    - DB sẵn sàng release: 183 tham chiếu ảnh (110 file) đều có file trong `public/`, kích thước lưu trong DB khớp file; bảng media khớp file; chưa có ảnh upload qua CMS (`storage/uploads` trống).
+    - Ảnh gốc trong Figma nhỏ hơn mức hiển thị (cần xin bản lớn hơn, thay trong CMS → Thư viện media): SPIN Awards 720px (cần ~2.800px), khóa Producer 474px, highlight Academy/Projects 474/556px (cần ~1.200px), hero Devoid / DJ crowd / Xóm Húc / Vui Fest 1.200px (cần ~2.400–3.000px), logo đối tác 121–236px (nên dùng SVG hoặc ≥600px).
   - Ảnh hero dự án nằm ngang luôn full chiều rộng cột (trước đó bị co lại, lộ viền tối hai bên trên màn thấp); ảnh dọc vẫn thu vừa màn hình.
 
 ### Chạy

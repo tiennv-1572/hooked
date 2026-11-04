@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import type { Service } from "@/data/home";
+import { coverSizes, type CoverFrame } from "@/lib/image-sizes";
 import { cn } from "@/lib/utils";
 
 /** `href`: where the card leads (CMS; Academy → /academy, the others → /projects?service=…). */
@@ -43,6 +44,13 @@ export function ServicesSection({ items }: { items: ServiceItem[] }) {
   );
 }
 
+/** Photo frames of a card (CSS px): desktop 344×320, tablet 340×220, mobile 304×196. */
+const SERVICE_FRAMES: CoverFrame[] = [
+  { media: "(min-width: 1200px)", width: 344, height: 320 },
+  { media: "(min-width: 768px)", width: 340, height: 220 },
+  { width: 304, height: 196 },
+];
+
 function ServiceCard({ service, featured }: { service: ServiceItem; featured: boolean }) {
   return (
     <Link
@@ -62,7 +70,7 @@ function ServiceCard({ service, featured }: { service: ServiceItem; featured: bo
           src={service.image.src}
           alt={service.image.alt}
           fill
-          sizes="(min-width: 1200px) 344px, 340px"
+          sizes={coverSizes(service.image, SERVICE_FRAMES)}
           className="object-cover select-none"
           draggable={false}
         />

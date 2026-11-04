@@ -2,13 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState, type CSSProperties, type PointerEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties, type PointerEvent, type RefObject } from "react";
 
 import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icon";
 import type { BlogPreview } from "@/data/home";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
-import { cn, wrapIndex } from "@/lib/utils";
+import { coverSizes, type CoverFrame } from "@/lib/image-sizes";
+import { wrapIndex } from "@/lib/utils";
 
 type Direction = 1 | -1;
 
@@ -21,37 +23,27 @@ type BlogCarouselProps = {
  * BLOGPOST — coherent five-item cyclic carousel (Figma Blogpost / BlogpostSection 2142:1077).
  *
  * Frames never move: the upright center card, the curved preview silhouettes and the caption stay put.
- * Only the artwork inside each frame slides (380ms), all slots together. Wrap-around is seamless because
- * every slot renders a 3-cell strip [previous, current, next] that is re-centred after each move.
+ * Only the artwork inside each frame slides (380ms), all slots together, along an endless strip (see ArtworkStrip);
+ * the caption and link follow once the slide lands.
  *
  * Desktop/tablet: inner-left preview · center card · inner-right preview. Mobile: center card only.
  */
 export function BlogCarousel({ posts, initialIndex = 0 }: BlogCarouselProps) {
   const reducedMotion = usePrefersReducedMotion();
-  const [active, setActive] = useState(initialIndex);
-  const [moving, setMoving] = useState<Direction | null>(null);
-  const movingRef = useRef<Direction | null>(null);
-  const count = posts.length;
+  // Unbounded slide positions (wrapped when read): `target` moves on click, `landed` once the slide has finished.
+  const [target, setTarget] = useState(initialIndex);
+  const [landed, setLanded] = useState(initialIndex);
+  const moving = target !== landed;
 
-  const settle = useCallback(() => {
-    const direction = movingRef.current;
-    if (!direction) return;
-    movingRef.current = null;
-    setActive((index) => wrapIndex(index + direction, count));
-    setMoving(null);
-  }, [count]);
+  const settle = useCallback(() => setLanded(target), [target]);
 
   const go = useCallback(
     (direction: Direction) => {
-      if (movingRef.current) return;
-      if (reducedMotion) {
-        setActive((index) => wrapIndex(index + direction, count));
-        return;
-      }
-      movingRef.current = direction;
-      setMoving(direction);
+      if (moving) return;
+      setTarget(target + direction);
+      if (reducedMotion) setLanded(target + direction);
     },
-    [count, reducedMotion],
+    [moving, target, reducedMotion],
   );
 
   // Safety net: settle even if `transitionend` never fires (background tab, interrupted transition).
@@ -62,11 +54,18 @@ export function BlogCarousel({ posts, initialIndex = 0 }: BlogCarouselProps) {
   }, [moving, settle]);
 
   const swipe = useSwipe(go);
-  const post = posts[active];
+  const post = posts[wrapIndex(landed, posts.length)];
+  const animate = !reducedMotion;
+  // Off-frame artworks are clipped, so lazy loading would only fetch the one sliding in after the click. Load them
+  // once the carousel is near; the previews only where they are shown (≥ 768px).
+  const sectionRef = useRef<HTMLElement>(null);
+  const near = useNearViewport(sectionRef);
+  const previewsShown = useMediaQuery("(min-width: 768px)");
 
   return (
     // Mobile (Home / Blog carousel / Mobile, 2826:5093): the 607px frame ends 19px under the card caption.
     <section
+      ref={sectionRef}
       aria-labelledby="blog-title"
       aria-roledescription="carousel"
       className="grain bg-[linear-gradient(180deg,#872b06_0%,#ed5c0e_50%,#ffb259_100%)] pt-6 pb-[19px] tablet:pt-8 tablet:pb-8 desktop:bg-none desktop:pt-10 desktop:pb-[29px] desktop:[&::after]:hidden"
@@ -87,14 +86,29 @@ export function BlogCarousel({ posts, initialIndex = 0 }: BlogCarouselProps) {
         className="mt-4 flex touch-pan-y items-start justify-center gap-4 overflow-hidden desktop:mt-3 desktop:h-[525px]"
         {...swipe}
       >
-        <PreviewSlot side="left" posts={posts} index={active - 1} moving={moving} onSelect={() => go(-1)} />
+        <PreviewSlot
+          side="left"
+          posts={posts}
+          index={target - 1}
+          animate={animate}
+          preload={near && previewsShown}
+          onSelect={() => go(-1)}
+        />
 
         <Link
           href={post.href}
           className="group flex w-[280px] shrink-0 flex-col gap-4 pt-10 tablet:w-[184px] tablet:pt-7 desktop:w-[260px] desktop:pt-10"
         >
           <div className="relative h-[366px] overflow-hidden rounded-lg bg-blog-frame tablet:h-[241px] desktop:h-[340px]">
-            <ArtworkStrip posts={posts} index={active} moving={moving} onSettled={settle} zoom={1.18} />
+            <ArtworkStrip
+              posts={posts}
+              index={target}
+              animate={animate}
+              preload={near}
+              onSettled={settle}
+              frames={CENTER_FRAMES}
+              zoom={1.18}
+            />
           </div>
           <div aria-live="polite" className="flex flex-col items-center gap-2 text-center font-inter text-white">
             <h3 className="text-lg leading-6 font-semibold underline-offset-4 group-hover:underline">{post.title}</h3>
@@ -106,7 +120,14 @@ export function BlogCarousel({ posts, initialIndex = 0 }: BlogCarouselProps) {
           </div>
         </Link>
 
-        <PreviewSlot side="right" posts={posts} index={active + 1} moving={moving} onSelect={() => go(1)} />
+        <PreviewSlot
+          side="right"
+          posts={posts}
+          index={target + 1}
+          animate={animate}
+          preload={near && previewsShown}
+          onSelect={() => go(1)}
+        />
       </div>
     </section>
   );
@@ -114,52 +135,74 @@ export function BlogCarousel({ posts, initialIndex = 0 }: BlogCarouselProps) {
 
 type StripProps = {
   posts: BlogPreview[];
+  /** Unbounded position of the artwork this frame shows. */
   index: number;
-  moving: Direction | null;
+  animate: boolean;
+  /** Load all three artworks now instead of lazily. */
+  preload: boolean;
+  /** Frame size per breakpoint, for `sizes`. */
+  frames: CoverFrame[];
   zoom: number;
   onSettled?: () => void;
 };
 
-/**
- * Three artwork cells; the strip translates by one cell and is re-centred on transition end.
- *
- * At rest only the frame clips the current artwork: the strip sits on a margin (no transform, so no compositing
- * layer of its own), the neighbours are hidden and the current cell does not clip its zoomed artwork. On a half-pixel
- * frame (odd viewport width, 125% zoom…) the cell, layer and frame clips round differently, which left a 1px column
- * of the neighbouring artwork (or of the frame background) at the frame edge. While sliding, each cell clips its own.
- */
-function ArtworkStrip({ posts, index, moving, zoom, onSettled }: StripProps) {
-  const cells = [-1, 0, 1].map((offset) => posts[wrapIndex(index + offset, posts.length)]);
+/** Frames an artwork covers (CSS px), for `sizes`. */
+const CENTER_FRAMES: CoverFrame[] = [
+  { media: "(min-width: 1200px)", width: 260, height: 340 },
+  { media: "(min-width: 768px)", width: 184, height: 241 },
+  { width: 280, height: 366 },
+];
+const PREVIEW_FRAMES: CoverFrame[] = [
+  { media: "(min-width: 1200px)", width: 260, height: 374 },
+  { width: 184, height: 265 }, // hidden below 768px
+];
 
+/** Each artwork shows 2px of itself beyond its frame-sized cell (see ArtworkStrip). */
+const BLEED = 2;
+
+/**
+ * Endless strip: the artwork for position `k` sits at `k` cell-steps along the strip, and the strip slides so the
+ * current position fills the frame. Only the strip's transform changes, so the last frame of a slide is exactly the
+ * resting state (nothing is re-centred or re-clipped when it lands), and wrap-around is seamless (positions keep
+ * counting, artworks repeat). Cells are 2px further apart than the frame and each shows 2px of its own (zoomed)
+ * artwork beyond its edges: wherever the frame's edge rounds to (half-pixel frames at odd viewport widths, 110–175%
+ * zoom), it falls on the current artwork, never on the next one.
+ */
+function ArtworkStrip({ posts, index, animate, preload, frames, zoom, onSettled }: StripProps) {
+  const step = `(100% + ${2 * BLEED}px)`;
   return (
     <div
-      className="-ml-[100%] flex h-full w-[300%]"
+      className="absolute inset-0"
       style={{
-        transform: moving ? `translate3d(${(moving * -100) / 3}%, 0, 0)` : "none",
-        transition: moving ? "transform 380ms var(--ease-carousel)" : "none",
+        transform: `translate3d(calc(${-index} * ${step}), 0, 0)`,
+        transition: animate ? "transform 380ms var(--ease-carousel)" : "none",
       }}
       onTransitionEnd={(event) => {
         if (event.target === event.currentTarget) onSettled?.();
       }}
     >
-      {cells.map((cell, position) => (
-        // Keyed by slug so React moves the loaded <img> nodes instead of reloading them after each step
-        // (with fewer than three items the strip repeats a slug, so fall back to the position).
-        <div
-          key={posts.length >= 3 ? cell.slug : position}
-          className={cn("relative h-full w-1/3", moving ? "overflow-hidden" : position !== 1 && "invisible")}
-        >
-          <Image
-            src={cell.image.src}
-            alt={position === 1 ? cell.image.alt : ""}
-            fill
-            sizes="(min-width: 1200px) 260px, 280px"
-            className="object-cover select-none"
-            style={{ scale: zoom }}
-            draggable={false}
-          />
-        </div>
-      ))}
+      {/* Previous, current and next positions; a cell keeps its node (and loaded image) while it stays in range. */}
+      {[index - 1, index, index + 1].map((position) => {
+        const cell = posts[wrapIndex(position, posts.length)];
+        return (
+          <div
+            key={position}
+            className="absolute inset-y-0 w-full"
+            style={{ left: `calc(${position} * ${step})`, clipPath: `inset(0 -${BLEED}px)` }}
+          >
+            <Image
+              src={cell.image.src}
+              alt={position === index ? cell.image.alt : ""}
+              fill
+              sizes={coverSizes(cell.image, frames, zoom)}
+              loading={preload ? "eager" : "lazy"}
+              className="object-cover select-none"
+              style={{ scale: zoom }}
+              draggable={false}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -168,12 +211,13 @@ type PreviewSlotProps = {
   side: "left" | "right";
   posts: BlogPreview[];
   index: number;
-  moving: Direction | null;
+  animate: boolean;
+  preload: boolean;
   onSelect: () => void;
 };
 
 /** Curved preview silhouette (Blogpost / CurvedPreviewSlot) — the frame is an alpha mask exported from Figma. */
-function PreviewSlot({ side, posts, index, moving, onSelect }: PreviewSlotProps) {
+function PreviewSlot({ side, posts, index, animate, preload, onSelect }: PreviewSlotProps) {
   const post = posts[wrapIndex(index, posts.length)];
   const maskUrl = `url(/images/blog/preview-mask-${side}.png)`;
   const mask: CSSProperties = {
@@ -193,7 +237,14 @@ function PreviewSlot({ side, posts, index, moving, onSelect }: PreviewSlotProps)
       className="hidden w-[184px] shrink-0 pt-[37px] transition-opacity duration-150 hover:opacity-90 tablet:block desktop:w-[260px] desktop:pt-[52px]"
     >
       <div className="relative h-[265px] overflow-hidden desktop:h-[374px]" style={mask}>
-        <ArtworkStrip posts={posts} index={index} moving={moving} zoom={1.3} />
+        <ArtworkStrip
+          posts={posts}
+          index={index}
+          animate={animate}
+          preload={preload}
+          frames={PREVIEW_FRAMES}
+          zoom={1.3}
+        />
       </div>
     </button>
   );
@@ -231,6 +282,21 @@ function NextArticleButton({ onClick }: { onClick: () => void }) {
       </span>
     </button>
   );
+}
+
+/** `true` once the element comes within a screen of the viewport (it then stays `true`). */
+function useNearViewport(ref: RefObject<HTMLElement | null>) {
+  const [near, setNear] = useState(false);
+  useEffect(() => {
+    const element = ref.current;
+    if (near || !element) return;
+    const observer = new IntersectionObserver(([entry]) => entry?.isIntersecting && setNear(true), {
+      rootMargin: "100% 0px",
+    });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [ref, near]);
+  return near;
 }
 
 /** Horizontal swipe → previous / next (mobile shows a single card). */

@@ -39,7 +39,8 @@ export function ProjectsPortfolio({ title, grid, projects, filters, videos, empt
           src="/images/projects/covers/ambient-stage-light.png"
           alt=""
           fill
-          sizes="100vw"
+          // 260px tall on mobile: the 2.36:1 texture covers it 614px wide.
+          sizes="(max-width: 767px) 614px, 100vw"
           className="object-cover"
         />
       </div>

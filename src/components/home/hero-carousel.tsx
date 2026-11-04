@@ -9,7 +9,7 @@ import { HookedLogo } from "@/components/brand/hooked-logo";
 import { HERO_TAGLINE, HeroMarquee } from "@/components/home/hero-marquee";
 import { ButtonLink } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
-import type { HeroSlide } from "@/data/home";
+import type { HeroSlide, Photo } from "@/data/home";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { routes } from "@/lib/site";
 import { cn, pad2 } from "@/lib/utils";
@@ -17,6 +17,19 @@ import { cn, pad2 } from "@/lib/utils";
 /** Seconds on screen: photos follow Figma (5 s); a video slide gets long enough to be seen moving. */
 const PHOTO_SECONDS = 5;
 const VIDEO_SECONDS = 15;
+
+/**
+ * Width a slide is drawn at: the photo covers a 100vw-wide box that is 520px (mobile), 640px (tablet) or
+ * clamp(600px, 58.4vw, 841px) (desktop) tall, so a landscape photo is wider than the screen on mobile. `sizes`
+ * says so, or the browser would fetch a screen-wide (blurry) variant. Rounded up where the box width varies.
+ */
+function coverSizes({ width, height }: Photo) {
+  const ratio = width / height;
+  const mobile = Math.max(767, Math.ceil(520 * ratio));
+  const tablet = Math.max(1199, Math.ceil(640 * ratio));
+  const desktop = Math.max(100, Math.ceil(58.4 * ratio));
+  return `(max-width: 767px) ${mobile}px, (max-width: 1199px) ${tablet}px, ${desktop}vw`;
+}
 
 /**
  * Home hero (Figma 02 · Hero 142:13 / Home / Hero carousel / Mobile 2820:4923).
@@ -75,7 +88,7 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
                 src={slide.image.src}
                 alt={slide.image.alt}
                 fill
-                sizes="100vw"
+                sizes={coverSizes(slide.image)}
                 loading={index === 0 ? "eager" : undefined}
                 fetchPriority={index === 0 ? "high" : undefined}
                 className="object-cover select-none"

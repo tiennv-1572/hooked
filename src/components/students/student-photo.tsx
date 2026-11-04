@@ -2,7 +2,7 @@ import Image from "next/image";
 import type { ComponentProps } from "react";
 
 import type { StudentPortrait } from "@/data/students";
-import { cn } from "@/lib/utils";
+import { cn, scaleSizes } from "@/lib/utils";
 
 type StudentPhotoProps = Pick<ComponentProps<typeof Image>, "sizes" | "loading" | "fetchPriority"> & {
   portrait: StudentPortrait;
@@ -24,7 +24,7 @@ export function StudentPhoto({ portrait, className, sizes, ...imageProps }: Stud
         alt={portrait.alt}
         width={portrait.width}
         height={portrait.height}
-        sizes={sizes}
+        sizes={sizes && scaleSizes(sizes, crop.scale)}
         // Percent margins resolve against the frame width, so the offset scales with the drawn image.
         style={{ width: `${crop.scale * 100}%`, marginTop: `${-crop.top * crop.scale * 100}%` }}
         className={cn("absolute top-0 left-0 h-auto max-w-none", className)}
