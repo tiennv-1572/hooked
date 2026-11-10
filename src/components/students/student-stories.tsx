@@ -55,6 +55,7 @@ export function StudentStories({ students, labels, className }: StudentStoriesPr
   return (
     <>
       <ul
+        data-reveal="stagger"
         role="list"
         className={cn(
           "grid grid-cols-1 gap-x-3 gap-y-6 min-[348px]:grid-cols-2 tablet:grid-cols-3 tablet:gap-x-6 tablet:gap-y-8 desktop:gap-y-6",

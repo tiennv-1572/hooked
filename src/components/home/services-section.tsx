@@ -23,7 +23,7 @@ export function ServicesSection({ items }: { items: ServiceItem[] }) {
   const [emblaRef] = useEmblaCarousel({ align: "start", dragFree: true, containScroll: "trimSnaps" });
 
   return (
-    <section aria-labelledby="service-title" className="py-10 desktop:py-15">
+    <section data-reveal="stagger" aria-labelledby="service-title" className="py-10 desktop:py-15">
       <Container>
         <SectionHeading id="service-title">OUR SERVICE</SectionHeading>
       </Container>

@@ -22,7 +22,10 @@ type BlogIndexProps = {
 export function BlogIndex({ title, description, posts }: BlogIndexProps) {
   return (
     <div className="grain bg-[radial-gradient(90%_55%_at_100%_0%,rgba(152,58,15,0.32)_0%,transparent_70%)]">
-      <EditorialContainer className="flex flex-col gap-10 pt-10 pb-16 tablet:gap-12 tablet:pt-14 tablet:pb-24 desktop:gap-14 desktop:pt-18 desktop:pb-28">
+      <EditorialContainer
+        data-reveal="stagger"
+        className="flex flex-col gap-10 pt-10 pb-16 tablet:gap-12 tablet:pt-14 tablet:pb-24 desktop:gap-14 desktop:pt-18 desktop:pb-28"
+      >
         <header className="flex flex-col gap-5 desktop:grid desktop:grid-cols-[minmax(0,1fr)_minmax(0,460px)] desktop:items-end desktop:gap-20">
           <div className="flex flex-col gap-3 desktop:gap-4">
             <Eyebrow>Hooked Entertainment</Eyebrow>
@@ -42,7 +45,10 @@ export function BlogIndex({ title, description, posts }: BlogIndexProps) {
           <span>{siteConfig.tagline}</span>
         </div>
 
-        <ul className="grid gap-12 tablet:grid-cols-2 tablet:gap-x-8 tablet:gap-y-14 desktop:grid-cols-3 desktop:gap-x-8">
+        <ul
+          data-reveal="stagger"
+          className="grid gap-12 tablet:grid-cols-2 tablet:gap-x-8 tablet:gap-y-14 desktop:grid-cols-3 desktop:gap-x-8"
+        >
           {posts.map((post, index) => (
             <li key={post.slug} className={index === 0 ? "tablet:col-span-2 desktop:col-span-1" : undefined}>
               <BlogPostCard post={post} featured={index === 0} priority={index === 0} />

@@ -5,6 +5,7 @@ import type {
   ProjectCardData,
   ProjectFilterOption,
   ProjectGridCell,
+  ProjectPreview,
   ProjectsEmptyCopy,
 } from "@/components/projects/project-content";
 import { Container } from "@/components/ui/container";
@@ -18,6 +19,8 @@ type ProjectsPortfolioProps = {
   filters: ProjectFilterOption[];
   /** Featured video per project slug, for the card play controls. */
   videos: Record<string, ProjectVideo>;
+  /** Hover preview per project slug (video or album slideshow). */
+  previews: Record<string, ProjectPreview>;
   emptyState: ProjectsEmptyCopy;
 };
 
@@ -28,7 +31,15 @@ type ProjectsPortfolioProps = {
  * The page background (00 · Background / Gradient + grain) stays ink, then warms up over the last ~230px
  * to the footer's first gradient stop (#120603 mobile/tablet, #240a05 desktop) so there is no seam.
  */
-export function ProjectsPortfolio({ title, grid, projects, filters, videos, emptyState }: ProjectsPortfolioProps) {
+export function ProjectsPortfolio({
+  title,
+  grid,
+  projects,
+  filters,
+  videos,
+  previews,
+  emptyState,
+}: ProjectsPortfolioProps) {
   return (
     <section
       aria-labelledby="projects-title"
@@ -45,14 +56,21 @@ export function ProjectsPortfolio({ title, grid, projects, filters, videos, empt
         />
       </div>
 
-      <Container className="relative flex flex-col gap-8 desktop:gap-12">
+      <Container data-reveal="stagger" className="relative flex flex-col gap-8 desktop:gap-12">
         <h1
           id="projects-title"
           className="pt-2 pb-4 text-[40px] leading-[52px] font-extrabold text-ivory tablet:text-[56px] tablet:leading-[72px] desktop:pb-5 desktop:text-[64px] desktop:leading-[84px]"
         >
           {title}
         </h1>
-        <ProjectGallery grid={grid} projects={projects} filters={filters} videos={videos} emptyState={emptyState} />
+        <ProjectGallery
+          grid={grid}
+          projects={projects}
+          filters={filters}
+          videos={videos}
+          previews={previews}
+          emptyState={emptyState}
+        />
       </Container>
     </section>
   );

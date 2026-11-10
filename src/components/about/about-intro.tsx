@@ -19,7 +19,7 @@ type AboutIntroProps = {
  */
 export function AboutIntro({ title, eyebrow, lead, headlineLines, body, aside }: AboutIntroProps) {
   return (
-    <section aria-labelledby="about-title" className="flex flex-col gap-8 tablet:gap-12">
+    <section data-reveal="stagger" aria-labelledby="about-title" className="flex flex-col gap-8 tablet:gap-12">
       <div className="flex flex-col gap-2">
         <h1
           id="about-title"

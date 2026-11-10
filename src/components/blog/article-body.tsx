@@ -16,7 +16,10 @@ import type { Photo } from "@/data/home";
 export function ArticleBody({ blocks }: { blocks: ArticleBlock[] }) {
   return (
     <div className="desktop:grid desktop:grid-cols-[minmax(0,324fr)_minmax(0,760px)_minmax(0,228fr)] desktop:gap-4">
-      <div className="flex max-w-[760px] flex-col gap-5 text-base leading-[26px] text-white tablet:gap-6 tablet:text-lg tablet:leading-[30px] desktop:col-start-2">
+      <div
+        data-reveal="stagger"
+        className="flex max-w-[760px] flex-col gap-5 text-base leading-[26px] text-white tablet:gap-6 tablet:text-lg tablet:leading-[30px] desktop:col-start-2"
+      >
         {blocks.map((block, index) => (
           <ArticleBlockView key={index} block={block} />
         ))}

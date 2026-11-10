@@ -132,7 +132,7 @@ export function RepeaterField<T extends FieldValues>({
                     type="button"
                     variant="ghost"
                     size="icon-sm"
-                    onClick={() => insert(index + 1, structuredClone(value))}
+                    onClick={() => insert(index + 1, duplicate(value, newItem))}
                     aria-label="Nhân bản"
                   >
                     <Copy />
@@ -173,4 +173,17 @@ export function RepeaterField<T extends FieldValues>({
       )}
     </div>
   );
+}
+
+/**
+ * Copy of an item for "Nhân bản". An item with an `id` gets a fresh one from `newItem()` (the list's own id
+ * scheme): a copied id would collide — duplicate React keys in previews and on the site.
+ */
+function duplicate<T>(value: T, newItem: () => T): T {
+  const copy = structuredClone(value);
+  if (copy && typeof copy === "object" && "id" in copy) {
+    const fresh = newItem();
+    if (fresh && typeof fresh === "object" && "id" in fresh) (copy as { id: unknown }).id = fresh.id;
+  }
+  return copy;
 }

@@ -18,6 +18,7 @@ const linkClassName = "text-white transition-colors duration-150 hover:text-acce
 export function ContactDetails({ labels, phone, companyName, address, socials }: ContactDetailsProps) {
   return (
     <section
+      data-reveal="stagger"
       aria-label="Thông tin liên hệ"
       className="grid gap-8 tablet:grid-cols-2 tablet:gap-x-6 tablet:gap-y-12 desktop:grid-cols-[260fr_520fr_404fr] desktop:gap-x-20"
     >

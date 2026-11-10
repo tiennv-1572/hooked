@@ -37,6 +37,7 @@
   --animate-marquee: marquee 30s linear infinite; /* <Marquee> sets the duration inline */
   --animate-fade-in: fade-in 200ms ease-out;
   --animate-fade-out: fade-out 160ms ease-in;
+  --animate-progress: progress 1s linear forwards; /* set the duration inline */
 
   @keyframes fade-in {
     from {
@@ -47,6 +48,15 @@
   @keyframes fade-out {
     to {
       opacity: 0;
+    }
+  }
+
+  @keyframes progress {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
     }
   }
 
@@ -124,6 +134,17 @@
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
+}
+
+/*
+ * First load: hide what the reveals will animate before the first paint, so the first screen does not flash (shown,
+ * hidden, then animated in). The inline script in the site layout sets the class (not under reduced motion);
+ * ScrollReveal removes it once it has taken over, or the script itself after 4s if the app never starts.
+ */
+html.reveal-pending main [data-reveal]:not([data-reveal="stagger"]):not(:has([data-reveal])),
+html.reveal-pending main [data-reveal="stagger"] > :not([data-reveal]):not(:has([data-reveal])),
+html.reveal-pending main [data-intro] {
+  opacity: 0;
 }
 
 /* Horizontal edge fade used by both marquees (Figma "Edge fade / Alpha mask": 0 → 6.5% → 93.5% → 100%). */

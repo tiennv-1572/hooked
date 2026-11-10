@@ -39,7 +39,7 @@ export function IntroSection({ titleLines, body }: IntroSectionProps) {
         <IntroReveal>
           <h1
             id="intro-title"
-            data-reveal="title"
+            data-intro="title"
             className="text-[clamp(36px,13vw,44px)] leading-[1.114] font-extrabold text-white uppercase desktop:font-inter desktop:text-[75px] desktop:leading-[1.022] desktop:font-black"
           >
             {titleLines.map((line) => (
@@ -51,7 +51,7 @@ export function IntroSection({ titleLines, body }: IntroSectionProps) {
           {/* The clamp clips at the box edge, which cut the stacked accents of capitals on the first line ("BỀ" showed
             as "BÊ"): 12px of top padding (pulled back with a negative margin) gives them room. */}
           <p
-            data-reveal="body"
+            data-intro="body"
             className="max-w-[560px] text-base leading-6 text-muted desktop:-mt-3 desktop:line-clamp-3 desktop:max-w-[780px] desktop:pt-3 desktop:font-display desktop:text-[32px] desktop:leading-10 desktop:font-bold desktop:text-white desktop:uppercase"
           >
             {body}

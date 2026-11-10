@@ -90,6 +90,12 @@ export type ProjectSummaryDto = {
   featuredVideo: ProjectVideoDto | null;
 };
 
+/**
+ * What a /projects card plays on hover: its video (the featured one, else the first) or its album photos. Website
+ * only — the public API's project summaries stay lean.
+ */
+export type ProjectPreviewDto = { slug: string; video: ProjectVideoDto | null; photos: (ImageDto & { id: string })[] };
+
 /** A cell of the /projects "Tất cả" grid (desktop), top to bottom. */
 export type ProjectGridCellDto = {
   format: "landscape" | "portrait" | "compact" | "wide" | "panorama";

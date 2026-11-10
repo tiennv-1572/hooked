@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from "next";
+import { Suspense } from "react";
+
 import { SiteFooter } from "@/components/layout/site-footer";
+import { ScrollReveal } from "@/components/layout/scroll-reveal";
 import { SiteHeader } from "@/components/layout/site-header";
 import { siteFontVariables } from "@/lib/fonts";
 import { getSite } from "@/server/content/queries";
@@ -16,6 +19,12 @@ export const viewport: Viewport = {
   themeColor: "#050101",
 };
 
+/**
+ * Runs while the HTML is parsed, before the first paint: lets globals.css hide what the reveals will animate
+ * (ScrollReveal removes the class); a 4s fallback shows everything if the app never starts.
+ */
+const REVEAL_PENDING = `(function(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;var r=document.documentElement;r.classList.add("reveal-pending");setTimeout(function(){r.classList.remove("reveal-pending")},4000)})()`;
+
 /** Header navigation, footer links, company details and socials: CMS `settings` + `navigation` (`getSite()`). */
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const chrome = toSiteChrome(await getSite());
@@ -23,9 +32,14 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="vi" className={siteFontVariables}>
       <body className="flex min-h-dvh flex-col">
+        <script dangerouslySetInnerHTML={{ __html: REVEAL_PENDING }} />
         <SiteHeader {...chrome.header} />
         <main className="flex-1">{children}</main>
         <SiteFooter {...chrome.footer} />
+        {/* usePathname suspends on routes with dynamic params (cacheComponents). */}
+        <Suspense fallback={null}>
+          <ScrollReveal />
+        </Suspense>
       </body>
     </html>
   );

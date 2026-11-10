@@ -16,7 +16,7 @@ type ContactHeroProps = {
  */
 export function ContactHero({ eyebrow, title, email }: ContactHeroProps) {
   return (
-    <section aria-labelledby="contact-title" className="flex flex-col gap-6 desktop:gap-8">
+    <section data-reveal="stagger" aria-labelledby="contact-title" className="flex flex-col gap-6 desktop:gap-8">
       <Eyebrow className="text-xs leading-5 tracking-normal">{eyebrow}</Eyebrow>
       <h1
         id="contact-title"

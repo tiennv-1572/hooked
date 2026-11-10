@@ -18,6 +18,7 @@ export function StagePhotos({ photos }: { photos: StagePhotoSet }) {
   if (isEmpty(photos)) return null;
   return (
     <section
+      data-reveal="stagger"
       aria-label="Hình ảnh sân khấu và nghệ sĩ"
       className="grid grid-cols-2 gap-3 tablet:grid-cols-[9fr_4fr_4fr] tablet:gap-4 desktop:grid-cols-[904.96fr_203.52fr_203.52fr]"
     >
@@ -56,6 +57,7 @@ export function LivePhotos({ photos }: { photos: LivePhotoSet }) {
   if (isEmpty(photos)) return null;
   return (
     <section
+      data-reveal="stagger"
       aria-label="Hình ảnh trải nghiệm live"
       className="grid grid-cols-2 gap-3 tablet:grid-cols-[664fr_239.385fr_408.615fr] tablet:gap-4"
     >

@@ -12,6 +12,7 @@ function ArticleFrame({ children, busy }: { children: ReactNode; busy?: boolean 
     <div className="grain">
       <EditorialContainer>
         <article
+          data-reveal="stagger"
           aria-busy={busy || undefined}
           className="flex flex-col gap-10 pt-10 pb-16 tablet:gap-12 tablet:pt-14 tablet:pb-24 desktop:gap-16 desktop:pt-18 desktop:pb-28"
         >

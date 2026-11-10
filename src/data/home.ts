@@ -120,10 +120,10 @@ export const highlights: Highlight[] = [
     href: routes.academy,
     align: "end",
     image: {
-      src: "/images/photos/highlight-academy.png",
-      alt: "Học viên sản xuất nhạc tại Hooked Academy",
-      width: 474,
-      height: 308,
+      src: "/images/about/frequency-dj.jpg",
+      alt: "DJ trẻ biểu diễn dưới ánh đèn xanh",
+      width: 1600,
+      height: 2400,
     },
   },
   {
@@ -132,10 +132,10 @@ export const highlights: Highlight[] = [
     href: routes.projects,
     align: "start",
     image: {
-      src: "/images/photos/highlight-projects.png",
-      alt: "Sân khấu lễ hội ngoài trời do Hooked tổ chức",
-      width: 556,
-      height: 363,
+      src: "/images/photos/vui-fest-performance.jpg",
+      alt: "Sân khấu Vui Fest Cát Bà do Hooked tổ chức",
+      width: 2400,
+      height: 1600,
     },
   },
 ];

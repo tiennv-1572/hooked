@@ -26,6 +26,12 @@ export type ProjectCardData = {
   cover: Photo;
 };
 
+/**
+ * What a card plays while hovered: its YouTube video (muted; `zoom` crops black bars baked into letterboxed videos) or
+ * a slideshow of its album.
+ */
+export type ProjectPreview = { type: "video"; youtubeId: string; zoom: number } | { type: "album"; photos: Photo[] };
+
 /** A cell of the desktop "Tất cả" grid (CMS "Cài đặt hiển thị dự án"): format + the project card it shows. */
 export type ProjectGridCell = { format: ProjectCardFormat; slug: string };
 

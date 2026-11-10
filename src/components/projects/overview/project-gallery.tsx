@@ -13,6 +13,7 @@ import {
   type ProjectCardData,
   type ProjectFilterOption,
   type ProjectGridCell,
+  type ProjectPreview,
   type ProjectsEmptyCopy,
 } from "@/components/projects/project-content";
 import type { ProjectVideo } from "@/data/project-details";
@@ -75,6 +76,8 @@ type ProjectGalleryProps = {
   filters: ProjectFilterOption[];
   /** Featured video per project slug (resolved on the server); projects without one get no play control. */
   videos: Record<string, ProjectVideo>;
+  /** Hover preview per project slug: the video, or a slideshow of the album. */
+  previews: Record<string, ProjectPreview>;
   emptyState: ProjectsEmptyCopy;
 };
 
@@ -87,7 +90,7 @@ type ProjectGalleryProps = {
  * - Play controls open the shared VideoLightbox (73 · OVERLAYS, built with the project detail pages);
  *   an empty filter shows ProjectsEmptyState.
  */
-export function ProjectGallery({ grid, projects, filters, videos, emptyState }: ProjectGalleryProps) {
+export function ProjectGallery({ grid, projects, filters, videos, previews, emptyState }: ProjectGalleryProps) {
   const [filter, setFilter] = useState(ALL_PROJECTS);
   const [videoOpen, setVideoOpen] = useState(false);
   const [video, setVideo] = useState<ProjectVideo | null>(null);
@@ -125,7 +128,7 @@ export function ProjectGallery({ grid, projects, filters, videos, emptyState }: 
   const activeLabel = filters.find((item) => item.id === filter)?.label ?? "";
 
   return (
-    <div className="flex flex-col gap-8 desktop:gap-10">
+    <div data-reveal="stagger" className="flex flex-col gap-8 desktop:gap-10">
       <ProjectFilterChips filters={filters} value={filter} onChange={selectFilter} />
 
       <h2 className="sr-only">Danh sách dự án</h2>
@@ -135,6 +138,7 @@ export function ProjectGallery({ grid, projects, filters, videos, emptyState }: 
 
       {cells.length > 0 ? (
         <ul
+          data-reveal="stagger"
           className={cn(
             "grid grid-cols-1 gap-y-16",
             editorial &&
@@ -151,6 +155,7 @@ export function ProjectGallery({ grid, projects, filters, videos, emptyState }: 
                   sizes={slot?.sizes ?? fullWidthSizes}
                   onPlay={featured ? (trigger) => openVideo(featured, trigger) : undefined}
                   playLabel={featured?.title}
+                  preview={previews[project.slug]}
                   largeMobileTitle={format === "wide"}
                   eager={index === 0}
                 />

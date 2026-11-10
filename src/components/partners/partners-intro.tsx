@@ -13,7 +13,7 @@ type PartnersIntroProps = { eyebrow: string; title: string; body: string };
  */
 export function PartnersIntro({ eyebrow, title, body }: PartnersIntroProps) {
   return (
-    <section aria-labelledby="partners-title" className={`flex flex-col gap-6 ${editorialGrid}`}>
+    <section data-reveal="stagger" aria-labelledby="partners-title" className={`flex flex-col gap-6 ${editorialGrid}`}>
       <Eyebrow className="text-xs leading-5 tracking-normal">{eyebrow}</Eyebrow>
       <div className={`flex flex-col gap-6 desktop:gap-8 ${editorialReadingColumn}`}>
         <h1

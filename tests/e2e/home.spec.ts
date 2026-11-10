@@ -32,6 +32,34 @@ test.describe("home", () => {
     await expect(caption).toHaveText("VUI FEST CÁT BÀ");
   });
 
+  test("blog carousel turns on a mouse drag without opening the post", async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name === "mobile", "Mouse drag; touch swipes use the same handler.");
+    await page.goto("/");
+    const section = page.locator("section", { has: page.locator("#blog-title") });
+    const caption = section.locator("h3").first();
+    const frame = section.getByRole("link").first().locator("div").first();
+    await frame.scrollIntoViewIfNeeded();
+    const box = (await frame.boundingBox())!;
+    const before = await caption.textContent();
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    await page.mouse.down();
+    await page.mouse.move(box.x + box.width / 2 - 120, box.y + box.height / 2, { steps: 8 });
+    await page.mouse.up();
+    await expect(caption).not.toHaveText(before ?? "");
+    await expect(page).toHaveURL("/");
+  });
+
+  test("blog carousel autoplays while the pointer is away", async ({ page }) => {
+    await page.goto("/");
+    const section = page.locator("section", { has: page.locator("#blog-title") });
+    const caption = section.locator("h3").first();
+    await section.evaluate((element) => element.scrollIntoView({ block: "center" }));
+    await page.mouse.move(0, 0);
+    const before = await caption.textContent();
+    // 2s per post + the 380ms slide.
+    await expect(caption).not.toHaveText(before ?? "", { timeout: 5_000 });
+  });
+
   test("blog center card opens the post", async ({ page }) => {
     await page.goto("/");
     await page

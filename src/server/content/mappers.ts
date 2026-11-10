@@ -17,6 +17,7 @@ import type {
   PostSummaryDto,
   ProjectCategoryDto,
   ProjectDto,
+  ProjectPreviewDto,
   ProjectSummaryDto,
   ProjectVideoDto,
   StudentDto,
@@ -106,18 +107,32 @@ export function projectSummaryDto(project: Project, categories: ProjectCategory[
   };
 }
 
+/** Album photos; the CMS has no per-photo text, so the alt is "<project> – ảnh <n>". */
+const projectPhotos = (project: Project) =>
+  (project.photos ?? []).map((photo, index) => ({
+    id: photo.id,
+    ...image(photo, `${project.name} – ảnh ${index + 1}`),
+  }));
+
 export function projectDto(project: Project, categories: ProjectCategory[]): ProjectDto {
   return {
     ...projectSummaryDto(project, categories),
     partners: project.partners ?? [],
     description: sanitizeRichText(project.description),
     hero: { image: image(project.heroImage, project.name) },
-    photos: (project.photos ?? []).map((photo, index) => ({
-      id: photo.id,
-      ...image(photo, `${project.name} – ảnh ${index + 1}`),
-    })),
+    photos: projectPhotos(project),
     videos: (project.videos ?? []).map(videoDto),
     albumLink: { label: project.albumLink?.label ?? "", href: project.albumLink?.href || null },
+  };
+}
+
+export function projectPreviewDto(project: Project): ProjectPreviewDto {
+  const videos = (project.videos ?? []).filter((video) => video.youtubeId);
+  const video = videos.find((entry) => entry.id === project.featuredVideoId) ?? videos[0];
+  return {
+    slug: project.slug,
+    video: video ? videoDto(video) : null,
+    photos: projectPhotos(project).filter((photo) => photo.url),
   };
 }
 

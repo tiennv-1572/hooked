@@ -23,7 +23,7 @@ export function StoriesIntro({ id, titleLines, description, collectionLabel, cou
   const title = titleLines.join(" ");
 
   return (
-    <header className="flex flex-col gap-4 desktop:gap-10">
+    <header data-reveal="stagger" className="flex flex-col gap-4 desktop:gap-10">
       <Breadcrumbs
         items={[{ label: "Home", href: routes.home }, { label: "Academy", href: routes.academy }, { label: title }]}
         className="desktop:[&_li]:gap-3 max-desktop:[&_li:first-child]:hidden max-tablet:[&_ol]:text-xs max-tablet:[&_ol]:leading-[18px] tablet:[&_ol]:leading-[21px] desktop:[&_ol]:gap-3 desktop:[&_ol]:leading-[22px]"

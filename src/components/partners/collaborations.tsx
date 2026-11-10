@@ -16,7 +16,7 @@ export function Collaborations({ items }: { items: Collaboration[] }) {
       <h2 id="collaborations-title" className="sr-only">
         Dự án hợp tác cùng đối tác
       </h2>
-      <ul className="grid gap-10 tablet:grid-cols-2 tablet:gap-8">
+      <ul data-reveal="stagger" className="grid gap-10 tablet:grid-cols-2 tablet:gap-8">
         {items.map((item) => (
           <li key={item.id}>
             <CollaborationCard item={item} />

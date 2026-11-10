@@ -40,7 +40,7 @@ export function CourseDirectory({ courses, categories, heading, columnLabel }: C
 
   return (
     <section aria-labelledby="course-directory-title" className="py-6 desktop:py-10">
-      <Container>
+      <Container data-reveal="stagger">
         <div className="hidden h-px bg-[#49382d] desktop:block" />
         <h2 id="course-directory-title" className="text-2xl leading-9 font-extrabold text-white desktop:sr-only">
           {heading}
@@ -82,6 +82,7 @@ export function CourseDirectory({ courses, categories, heading, columnLabel }: C
         </div>
 
         <ul
+          data-reveal="stagger"
           aria-live="polite"
           className="mt-4 grid gap-2 tablet:grid-cols-2 tablet:gap-x-6 desktop:mt-0 desktop:grid-cols-1 desktop:gap-0 desktop:border-b desktop:border-[#49382d]"
         >

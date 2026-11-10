@@ -21,7 +21,7 @@ export function ProjectDetailView({ project }: { project: ProjectDetailData }) {
 
   return (
     <ProjectMediaProvider title={project.name} photos={project.photos} videos={project.videos}>
-      <Container className={pageColumn}>
+      <Container data-reveal="stagger" className={pageColumn}>
         <BackLink href={routes.projects} className="w-fit">
           Tất cả dự án
         </BackLink>

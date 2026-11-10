@@ -26,6 +26,18 @@ export const partnersIntro = {
   body: "Hơn cả một academy, Hooked Entertainment là cầu nối thực chiến đưa học viên bước ra các sân khấu lớn. Với sự bảo chứng từ các đối tác tầm cỡ như tập đoàn Sun Group, thương hiệu toàn cầu Jägermeister cùng hệ thống club partner đỉnh cao (NOXX, Weeknd Hanoi, Weeknd Saigon...), Hooked liên tục kiến tạo những trải nghiệm âm nhạc đẳng cấp và xây dựng bệ phóng vững chắc cho thế hệ nghệ sĩ trẻ.",
 };
 
+/**
+ * "Trở thành đối tác" call to action closing the page (not drawn in Figma). Fixed copy; it mails the CMS company
+ * email (a plain `mailto:`, no subject or body).
+ */
+export const partnerCta = {
+  eyebrow: "Hợp tác",
+  title: "Trở thành đối tác của Hooked Entertainment",
+  lead: "Gửi ý tưởng hợp tác của bạn tới",
+  /** Text running around the arrow badge (two repeats fill the ring). */
+  ring: "Hợp tác cùng Hooked • Hợp tác cùng Hooked • ",
+};
+
 /** Logo wall order (2747:4692). Sizes are the intrinsic PNG sizes. */
 export const partnerLogos: PartnerLogo[] = [
   {

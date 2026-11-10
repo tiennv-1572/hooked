@@ -16,6 +16,7 @@ import type {
   ProjectCategoryDto,
   ProjectDto,
   ProjectGridCellDto,
+  ProjectPreviewDto,
   ProjectSummaryDto,
   SiteDto,
   StudentDto,
@@ -31,6 +32,7 @@ import {
   postDto,
   postSummaryDto,
   projectDto,
+  projectPreviewDto,
   projectSummaryDto,
   studentDto,
 } from "./mappers";
@@ -278,6 +280,13 @@ export async function getProjects(filter: { category?: string } = {}): Promise<P
         !filter.category ||
         project.categories.some((category) => category.slug === filter.category || category.id === filter.category),
     );
+}
+
+/** Hover previews of the /projects cards (website only, not served by the API). */
+export async function getProjectPreviews(): Promise<ProjectPreviewDto[]> {
+  "use cache";
+  tags("projects");
+  return (await listItems("projects")).filter(isPublished).map(projectPreviewDto);
 }
 
 export async function getProject(slug: string): Promise<ProjectDto | null> {

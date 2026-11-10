@@ -2,7 +2,19 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState, type CSSProperties, type PointerEvent, type RefObject } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type CSSProperties,
+  type DragEvent,
+  type FocusEvent,
+  type MouseEvent,
+  type PointerEvent,
+  type RefObject,
+} from "react";
 
 import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icon";
@@ -10,9 +22,14 @@ import type { BlogPreview } from "@/data/home";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { coverSizes, type CoverFrame } from "@/lib/image-sizes";
-import { wrapIndex } from "@/lib/utils";
+import { cn, wrapIndex } from "@/lib/utils";
 
 type Direction = 1 | -1;
+
+/** Autoplay: each post stays this long once its slide has landed. */
+const AUTOPLAY_MS = 2000;
+/** A drag released past this share of a frame turns the page; a shorter one springs back. */
+const DRAG_THRESHOLD = 0.15;
 
 type BlogCarouselProps = {
   posts: BlogPreview[];
@@ -24,9 +41,12 @@ type BlogCarouselProps = {
  *
  * Frames never move: the upright center card, the curved preview silhouettes and the caption stay put.
  * Only the artwork inside each frame slides (380ms), all slots together, along an endless strip (see ArtworkStrip);
- * the caption and link follow once the slide lands.
+ * the caption and link switch as the slide starts (fading in), not after it lands.
  *
  * Desktop/tablet: inner-left preview · center card · inner-right preview. Mobile: center card only.
+ * Next / previous: the ring button, the side previews, or dragging the artwork (mouse, touch, pen — it follows the
+ * pointer). Autoplays every 2s, paused while hovered, dragged, keyboard-focused, off screen, in a hidden tab, and
+ * under reduced motion.
  */
 export function BlogCarousel({ posts, initialIndex = 0 }: BlogCarouselProps) {
   const reducedMotion = usePrefersReducedMotion();
@@ -53,8 +73,10 @@ export function BlogCarousel({ posts, initialIndex = 0 }: BlogCarouselProps) {
     return () => window.clearTimeout(timer);
   }, [moving, settle]);
 
-  const swipe = useSwipe(go);
-  const post = posts[wrapIndex(landed, posts.length)];
+  const frameRef = useRef<HTMLDivElement>(null);
+  const drag = useDrag(frameRef, moving, (direction) => direction && go(direction));
+  // The destination post: caption and link change with the click, not 380ms later when the artwork lands.
+  const post = posts[wrapIndex(target, posts.length)];
   const animate = !reducedMotion;
   // Off-frame artworks are clipped, so lazy loading would only fetch the one sliding in after the click. Load them
   // once the carousel is near; the previews only where they are shown (≥ 768px).
@@ -62,12 +84,35 @@ export function BlogCarousel({ posts, initialIndex = 0 }: BlogCarouselProps) {
   const near = useNearViewport(sectionRef);
   const previewsShown = useMediaQuery("(min-width: 768px)");
 
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const inView = useInView(sectionRef);
+  const pageVisible = usePageVisible();
+  const autoplay =
+    !reducedMotion && !hovered && !focused && drag.offset === null && inView && pageVisible && posts.length > 1;
+
+  useEffect(() => {
+    if (!autoplay || moving) return;
+    const timer = window.setTimeout(() => go(1), AUTOPLAY_MS);
+    return () => window.clearTimeout(timer);
+  }, [autoplay, moving, landed, go]);
+
+  const strip = { offset: drag.offset ?? 0, dragging: drag.offset !== null };
+
   return (
     // Mobile (Home / Blog carousel / Mobile, 2826:5093): the 607px frame ends 19px under the card caption.
     <section
+      data-reveal="stagger"
       ref={sectionRef}
       aria-labelledby="blog-title"
       aria-roledescription="carousel"
+      onPointerEnter={(event) => event.pointerType === "mouse" && setHovered(true)}
+      onPointerLeave={(event) => event.pointerType === "mouse" && setHovered(false)}
+      // Keyboard focus only: a mouse click on the ring button focuses it too, which must not stop autoplay for good.
+      onFocus={(event) => (event.target as Element).matches(":focus-visible") && setFocused(true)}
+      onBlur={(event: FocusEvent<HTMLElement>) =>
+        !event.currentTarget.contains(event.relatedTarget as Node | null) && setFocused(false)
+      }
       className="grain bg-[linear-gradient(180deg,#872b06_0%,#ed5c0e_50%,#ffb259_100%)] pt-6 pb-[19px] tablet:pt-8 tablet:pb-8 desktop:bg-none desktop:pt-10 desktop:pb-[29px] desktop:[&::after]:hidden"
     >
       <Container className="desktop:max-w-none desktop:px-[50px]">
@@ -83,40 +128,56 @@ export function BlogCarousel({ posts, initialIndex = 0 }: BlogCarouselProps) {
       </Container>
 
       <div
-        className="mt-4 flex touch-pan-y items-start justify-center gap-4 overflow-hidden desktop:mt-3 desktop:h-[525px]"
-        {...swipe}
+        className={cn(
+          "mt-4 flex touch-pan-y items-start justify-center gap-4 overflow-hidden select-none desktop:mt-3 desktop:h-[525px]",
+          strip.dragging ? "cursor-grabbing" : "[@media(hover:hover)]:cursor-grab",
+        )}
+        {...drag.handlers}
       >
         <PreviewSlot
           side="left"
           posts={posts}
           index={target - 1}
           animate={animate}
+          strip={strip}
           preload={near && previewsShown}
           onSelect={() => go(-1)}
         />
 
         <Link
           href={post.href}
+          draggable={false}
           className="group flex w-[280px] shrink-0 flex-col gap-4 pt-10 tablet:w-[184px] tablet:pt-7 desktop:w-[260px] desktop:pt-10"
         >
-          <div className="relative h-[366px] overflow-hidden rounded-lg bg-blog-frame tablet:h-[241px] desktop:h-[340px]">
+          <div
+            ref={frameRef}
+            className="relative h-[366px] overflow-hidden rounded-lg bg-blog-frame tablet:h-[241px] desktop:h-[340px]"
+          >
             <ArtworkStrip
               posts={posts}
               index={target}
               animate={animate}
+              strip={strip}
               preload={near}
               onSettled={settle}
               frames={CENTER_FRAMES}
               zoom={1.18}
             />
           </div>
-          <div aria-live="polite" className="flex flex-col items-center gap-2 text-center font-inter text-white">
-            <h3 className="text-lg leading-6 font-semibold underline-offset-4 group-hover:underline">{post.title}</h3>
-            <p className="text-[13px] leading-[19px]">
-              {post.lines[0]}
-              <br />
-              {post.lines[1]}
-            </p>
+          {/* Announce user-driven changes only — not every autoplay step. The live region stays mounted; the caption
+              inside is keyed so each post fades in. */}
+          <div aria-live={autoplay ? "off" : "polite"}>
+            <div
+              key={target}
+              className="flex animate-fade-in flex-col items-center gap-2 text-center font-inter text-white motion-reduce:animate-none"
+            >
+              <h3 className="text-lg leading-6 font-semibold underline-offset-4 group-hover:underline">{post.title}</h3>
+              <p className="text-[13px] leading-[19px]">
+                {post.lines[0]}
+                <br />
+                {post.lines[1]}
+              </p>
+            </div>
           </div>
         </Link>
 
@@ -125,6 +186,7 @@ export function BlogCarousel({ posts, initialIndex = 0 }: BlogCarouselProps) {
           posts={posts}
           index={target + 1}
           animate={animate}
+          strip={strip}
           preload={near && previewsShown}
           onSelect={() => go(1)}
         />
@@ -133,11 +195,15 @@ export function BlogCarousel({ posts, initialIndex = 0 }: BlogCarouselProps) {
   );
 }
 
+/** Live drag: `offset` in frames (positive = towards the previous post), applied without transition. */
+type StripDrag = { offset: number; dragging: boolean };
+
 type StripProps = {
   posts: BlogPreview[];
   /** Unbounded position of the artwork this frame shows. */
   index: number;
   animate: boolean;
+  strip: StripDrag;
   /** Load all three artworks now instead of lazily. */
   preload: boolean;
   /** Frame size per breakpoint, for `sizes`. */
@@ -168,14 +234,15 @@ const BLEED = 2;
  * artwork beyond its edges: wherever the frame's edge rounds to (half-pixel frames at odd viewport widths, 110–175%
  * zoom), it falls on the current artwork, never on the next one.
  */
-function ArtworkStrip({ posts, index, animate, preload, frames, zoom, onSettled }: StripProps) {
+function ArtworkStrip({ posts, index, animate, strip, preload, frames, zoom, onSettled }: StripProps) {
   const step = `(100% + ${2 * BLEED}px)`;
   return (
     <div
       className="absolute inset-0"
       style={{
-        transform: `translate3d(calc(${-index} * ${step}), 0, 0)`,
-        transition: animate ? "transform 380ms var(--ease-carousel)" : "none",
+        // While dragged the strip follows the pointer; on release it slides on from there (next / back).
+        transform: `translate3d(calc(${strip.offset - index} * ${step}), 0, 0)`,
+        transition: animate && !strip.dragging ? "transform 380ms var(--ease-carousel)" : "none",
       }}
       onTransitionEnd={(event) => {
         if (event.target === event.currentTarget) onSettled?.();
@@ -212,12 +279,13 @@ type PreviewSlotProps = {
   posts: BlogPreview[];
   index: number;
   animate: boolean;
+  strip: StripDrag;
   preload: boolean;
   onSelect: () => void;
 };
 
 /** Curved preview silhouette (Blogpost / CurvedPreviewSlot) — the frame is an alpha mask exported from Figma. */
-function PreviewSlot({ side, posts, index, animate, preload, onSelect }: PreviewSlotProps) {
+function PreviewSlot({ side, posts, index, animate, strip, preload, onSelect }: PreviewSlotProps) {
   const post = posts[wrapIndex(index, posts.length)];
   const maskUrl = `url(/images/blog/preview-mask-${side}.png)`;
   const mask: CSSProperties = {
@@ -241,6 +309,7 @@ function PreviewSlot({ side, posts, index, animate, preload, onSelect }: Preview
           posts={posts}
           index={index}
           animate={animate}
+          strip={strip}
           preload={preload}
           frames={PREVIEW_FRAMES}
           zoom={1.3}
@@ -299,24 +368,93 @@ function useNearViewport(ref: RefObject<HTMLElement | null>) {
   return near;
 }
 
-/** Horizontal swipe → previous / next (mobile shows a single card). */
-function useSwipe(onSwipe: (direction: Direction) => void) {
-  const start = useRef<{ x: number; y: number } | null>(null);
+/** `true` while at least a quarter of the element is on screen. */
+function useInView(ref: RefObject<HTMLElement | null>) {
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    const observer = new IntersectionObserver(([entry]) => setInView(Boolean(entry?.isIntersecting)), {
+      threshold: 0.25,
+    });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [ref]);
+  return inView;
+}
+
+const subscribeVisibility = (onChange: () => void) => {
+  document.addEventListener("visibilitychange", onChange);
+  return () => document.removeEventListener("visibilitychange", onChange);
+};
+
+/** `false` while the tab is hidden. */
+function usePageVisible() {
+  return useSyncExternalStore(
+    subscribeVisibility,
+    () => document.visibilityState === "visible",
+    () => true,
+  );
+}
+
+/**
+ * Drag to turn the page, with the mouse, a finger or a pen: the artwork follows the pointer horizontally (vertical
+ * moves keep scrolling the page), and on release it turns to the next / previous post past DRAG_THRESHOLD of a
+ * frame, otherwise springs back. The click that ends a drag is swallowed, so dragging the center card does not open
+ * the post. `offset` is the live drag in frames, `null` when not dragging.
+ */
+function useDrag(
+  frame: RefObject<HTMLElement | null>,
+  disabled: boolean,
+  onRelease: (direction: Direction | 0) => void,
+) {
+  const [offset, setOffset] = useState<number | null>(null);
+  const gesture = useRef<{ id: number; x: number; y: number; width: number; active: boolean } | null>(null);
+  const dragged = useRef(false);
+
+  const finish = (event: PointerEvent<HTMLElement>, cancelled: boolean) => {
+    const current = gesture.current;
+    gesture.current = null;
+    if (!current?.active) return;
+    const moved = (event.clientX - current.x) / current.width;
+    setOffset(null);
+    onRelease(!cancelled && Math.abs(moved) > DRAG_THRESHOLD ? (moved < 0 ? 1 : -1) : 0);
+  };
+
   return {
-    onPointerDown: (event: PointerEvent) => {
-      if (event.pointerType === "mouse") return;
-      start.current = { x: event.clientX, y: event.clientY };
-    },
-    onPointerUp: (event: PointerEvent) => {
-      const origin = start.current;
-      start.current = null;
-      if (!origin) return;
-      const dx = event.clientX - origin.x;
-      const dy = event.clientY - origin.y;
-      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) onSwipe(dx < 0 ? 1 : -1);
-    },
-    onPointerCancel: () => {
-      start.current = null;
+    offset,
+    handlers: {
+      onPointerDown: (event: PointerEvent<HTMLElement>) => {
+        dragged.current = false;
+        if (disabled || !event.isPrimary || event.button !== 0) return;
+        const width = frame.current?.offsetWidth || 260;
+        gesture.current = { id: event.pointerId, x: event.clientX, y: event.clientY, width, active: false };
+      },
+      onPointerMove: (event: PointerEvent<HTMLElement>) => {
+        const current = gesture.current;
+        if (!current || event.pointerId !== current.id) return;
+        const dx = event.clientX - current.x;
+        const dy = event.clientY - current.y;
+        if (!current.active) {
+          // A mostly vertical move is a page scroll: let it go.
+          if (Math.abs(dy) > 10 && Math.abs(dy) > Math.abs(dx)) gesture.current = null;
+          if (Math.abs(dx) < 6 || Math.abs(dx) < Math.abs(dy)) return;
+          current.active = true;
+          dragged.current = true;
+          event.currentTarget.setPointerCapture(current.id);
+        }
+        setOffset(Math.max(-1, Math.min(1, dx / current.width)));
+      },
+      onPointerUp: (event: PointerEvent<HTMLElement>) => finish(event, false),
+      onPointerCancel: (event: PointerEvent<HTMLElement>) => finish(event, true),
+      onClickCapture: (event: MouseEvent<HTMLElement>) => {
+        if (!dragged.current) return;
+        dragged.current = false;
+        event.preventDefault();
+        event.stopPropagation();
+      },
+      // Native image / link dragging would cancel the pointer stream.
+      onDragStart: (event: DragEvent<HTMLElement>) => event.preventDefault(),
     },
   };
 }

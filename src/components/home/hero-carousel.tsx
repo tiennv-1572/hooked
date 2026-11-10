@@ -105,7 +105,11 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
 
       {/* < 1200px — readability gradient + lockup */}
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0.1)_55%,rgba(5,1,1,0.98)_100%)] desktop:hidden" />
-      <div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-4 px-6 pb-3 tablet:px-12 tablet:pb-10 desktop:hidden">
+      {/* Lockup and controls fade in on load (ScrollReveal); the photo itself does not, so it paints at once. */}
+      <div
+        data-reveal="stagger"
+        className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-4 px-6 pb-3 tablet:px-12 tablet:pb-10 desktop:hidden"
+      >
         <HookedLogo className="w-[260px]" eager />
         <p className="text-xs leading-[18px] font-semibold text-white">ENTERTAINMENT</p>
         <div className="flex gap-3">
@@ -124,7 +128,10 @@ export function HeroCarousel({ slides }: { slides: HeroSlide[] }) {
       </div>
 
       {/* ≥ 1200px — chevrons + marquee */}
-      <div className="pointer-events-none absolute inset-0 hidden items-center justify-between px-6 desktop:flex">
+      <div
+        data-reveal="stagger"
+        className="pointer-events-none absolute inset-0 hidden items-center justify-between px-6 desktop:flex"
+      >
         <HeroArrow direction="prev" onClick={scrollPrev} />
         <HeroArrow direction="next" onClick={scrollNext} />
       </div>

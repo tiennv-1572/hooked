@@ -24,7 +24,7 @@ type EcosystemSectionProps = {
 export function EcosystemSection({ titleLines, statement, body, capabilities, portfolio }: EcosystemSectionProps) {
   return (
     <section aria-labelledby="ecosystem-title" className={editorialGrid}>
-      <div className={`flex flex-col gap-7 tablet:gap-8 ${editorialReadingColumn}`}>
+      <div data-reveal="stagger" className={`flex flex-col gap-7 tablet:gap-8 ${editorialReadingColumn}`}>
         <h2
           id="ecosystem-title"
           className="text-[13px] leading-[21px] font-bold text-white tablet:text-base tablet:leading-6"

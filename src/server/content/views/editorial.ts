@@ -80,10 +80,19 @@ export function toContactMetadata({ contact }: ContactPageData): Metadata {
 // ---------------------------------------------------------------------------------------------------------
 // Partners
 
+/** Partners logo marquee: logos at their export size (Figma slots are 72px tall), large CMS uploads capped to fit. */
+const LOGO_MAX_HEIGHT = 72;
+
+function toPartnerLogo(logo: Parameters<typeof toPhoto>[0]) {
+  const photo = toPhoto(logo, { width: 220, height: LOGO_MAX_HEIGHT });
+  const scale = Math.min(1, LOGO_MAX_HEIGHT / photo.height);
+  return { ...photo, width: Math.round(photo.width * scale), height: Math.round(photo.height * scale) };
+}
+
 export function toPartnersView(page: PartnersPageData) {
   return {
     intro: { eyebrow: partnersIntro.eyebrow, title: page.title, body: page.body },
-    logos: page.logos.map((partner) => ({ name: partner.name, logo: toPhoto(partner.logo) })),
+    logos: page.logos.map((partner) => ({ name: partner.name, logo: toPartnerLogo(partner.logo) })),
     collaborations: page.collaborations.map((item) => ({
       id: item.id,
       title: item.title,

@@ -25,6 +25,54 @@ test.describe("projects", () => {
     await expect(page).toHaveURL(href!);
     await expect(page.getByRole("link", { name: /Tất cả dự án/ }).first()).toBeVisible();
   });
+
+  test("hovering a card without video runs its album as a slideshow", async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name === "mobile", "Hover previews need a mouse.");
+    await page.goto("/projects");
+    const card = page
+      .locator("article")
+      .filter({ hasText: /Xóm Húc/i })
+      .first();
+    await card.scrollIntoViewIfNeeded();
+    const media = card.locator("div").first();
+    const box = (await media.boundingBox())!;
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 4);
+    const layer = card.locator("[inert] > div");
+    await expect.poll(() => layer.evaluate((element) => getComputedStyle(element).opacity)).toBe("1");
+    // The photo on top (z-index 2) changes as the slideshow turns.
+    const top = () =>
+      card.evaluate((element) =>
+        Array.from(element.querySelectorAll("[inert] img"))
+          .find((image) => getComputedStyle(image).zIndex === "2")
+          ?.getAttribute("src"),
+      );
+    const first = await top();
+    await expect.poll(top, { timeout: 5_000 }).not.toBe(first);
+    await page.mouse.move(0, 0);
+    await expect.poll(() => layer.evaluate((element) => getComputedStyle(element).opacity)).toBe("0");
+  });
+
+  test("hovering a video card loads a muted YouTube preview that does not block the link", async ({
+    page,
+  }, testInfo) => {
+    test.skip(testInfo.project.name === "mobile", "Hover previews need a mouse.");
+    await page.goto("/projects");
+    const card = page
+      .locator("article")
+      .filter({ hasText: /Devoid/i })
+      .first();
+    const media = card.locator("div").first();
+    const box = (await media.boundingBox())!;
+    await page.mouse.move(box.x + box.width / 4, box.y + box.height / 4);
+    const frame = card.locator("iframe");
+    await expect(frame).toHaveAttribute("src", /youtube-nocookie\.com\/embed\/[\w-]{11}\?.*mute=1/);
+    await expect(frame).toHaveAttribute("tabindex", "-1");
+    // Still loading (YouTube's own controls show for ~4s): the play control spins instead of ▶.
+    const spinner = card.getByRole("button", { name: /Phát video/ }).locator("svg");
+    await expect.poll(() => spinner.evaluate((element) => getComputedStyle(element).opacity)).toBe("1");
+    await page.mouse.click(box.x + box.width / 4, box.y + box.height / 4);
+    await expect(page).toHaveURL("/projects/devoid-music-festival");
+  });
 });
 
 test.describe("project detail", () => {
@@ -123,5 +171,13 @@ test.describe("contact & partners", () => {
   test("partner collaborations link to project pages", async ({ page }) => {
     await page.goto("/partners");
     await expect(page.locator("main a[href^='/projects/']").first()).toBeVisible();
+  });
+
+  test("partners CTA mails the company", async ({ page }) => {
+    await page.goto("/partners");
+    const cta = page.getByRole("link", { name: /Trở thành đối tác của Hooked Entertainment/ });
+    await expect(cta).toBeVisible();
+    await expect(cta).toHaveAttribute("href", "mailto:hooked.vie@gmail.com");
+    await expect(page.getByRole("heading", { name: "Trở thành đối tác của Hooked Entertainment" })).toHaveCount(1);
   });
 });

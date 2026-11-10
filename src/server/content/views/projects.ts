@@ -8,6 +8,7 @@ import {
   type ProjectGridCell,
   type ProjectDetailData,
   type ProjectFilterOption,
+  type ProjectPreview,
   type ProjectsEmptyCopy,
 } from "@/components/projects/project-content";
 import { projectDetails, type MediaRef, type ProjectPhoto, type ProjectVideo } from "@/data/project-details";
@@ -19,6 +20,7 @@ import type {
   ProjectCategoryDto,
   ProjectDto,
   ProjectGridCellDto,
+  ProjectPreviewDto,
   ProjectSummaryDto,
   ProjectVideoDto,
 } from "../dto";
@@ -79,20 +81,36 @@ export function toProjectCard(project: ProjectSummaryDto): ProjectCardData {
   };
 }
 
+/** Photos a card cycles through on hover: a few seconds of slideshow, not the whole album. */
+const PREVIEW_PHOTOS = 8;
+
+/** Hover preview: the video when there is one (cropped like its lightbox poster), else the album; neither → none. */
+function toProjectPreview({ video, photos }: ProjectPreviewDto): ProjectPreview | null {
+  if (video) {
+    const { id, posterZoom } = toProjectVideo(video);
+    return { type: "video", youtubeId: id, zoom: posterZoom ?? 1 };
+  }
+  if (!photos.length) return null;
+  return { type: "album", photos: photos.slice(0, PREVIEW_PHOTOS).map((photo) => toPhoto(photo, PHOTO)) };
+}
+
 export function toProjectsOverview({
   grid,
   categories,
   projects,
+  previews,
 }: {
   grid: ProjectGridCellDto[];
   categories: ProjectCategoryDto[];
   projects: ProjectSummaryDto[];
+  previews: ProjectPreviewDto[];
 }): {
   title: string;
   grid: ProjectGridCell[];
   filters: ProjectFilterOption[];
   projects: ProjectCardData[];
   videos: Record<string, ProjectVideo>;
+  previews: Record<string, ProjectPreview>;
   emptyState: ProjectsEmptyCopy;
 } {
   // Only the featured videos reach the client gallery, not every project's media.
@@ -115,6 +133,12 @@ export function toProjectsOverview({
     ],
     projects: projects.map(toProjectCard),
     videos,
+    previews: Object.fromEntries(
+      previews.flatMap((preview) => {
+        const value = toProjectPreview(preview);
+        return value ? [[preview.slug, value]] : [];
+      }),
+    ),
     emptyState: PROJECTS_COPY.emptyState,
   };
 }
