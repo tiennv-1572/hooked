@@ -31,7 +31,9 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
   const chrome = toSiteChrome(await getSite());
 
   return (
-    <html lang="vi" className={siteFontVariables}>
+    // The REVEAL_PENDING script adds a class to <html> before hydration (and Lenis adds its own later): only <html>'s
+    // own attributes are exempt from the hydration check, not its children.
+    <html lang="vi" className={siteFontVariables} suppressHydrationWarning>
       <body className="flex min-h-dvh flex-col">
         <script dangerouslySetInnerHTML={{ __html: REVEAL_PENDING }} />
         <SiteHeader {...chrome.header} />

@@ -17,9 +17,10 @@ export function Collaborations({ items }: { items: Collaboration[] }) {
         Dự án hợp tác cùng đối tác
       </h2>
       <ul data-reveal="stagger" className="grid gap-10 tablet:grid-cols-2 tablet:gap-8">
-        {items.map((item) => (
+        {items.map((item, index) => (
           <li key={item.id}>
-            <CollaborationCard item={item} />
+            {/* The first row reaches the first screen on desktop (it is the page's largest paint there). */}
+            <CollaborationCard item={item} eager={index < 2} />
           </li>
         ))}
       </ul>
@@ -32,7 +33,7 @@ export function Collaborations({ items }: { items: Collaboration[] }) {
  * title + orange ↗, partner line. The whole card links to the project detail page.
  * Hover/focus (QA 90 media hover): 1px accent frame + slow zoom on the photo, accent title, arrow nudge.
  */
-export function CollaborationCard({ item }: { item: Collaboration }) {
+export function CollaborationCard({ item, eager }: { item: Collaboration; eager?: boolean }) {
   return (
     <Link href={item.href} className="group flex flex-col gap-4">
       <div className="relative aspect-[3/2] overflow-hidden bg-surface">
@@ -41,6 +42,7 @@ export function CollaborationCard({ item }: { item: Collaboration }) {
           alt={item.image.alt}
           fill
           sizes="(min-width: 1440px) 656px, (min-width: 768px) 50vw, 100vw"
+          loading={eager ? "eager" : undefined}
           className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
         />
         <span className="pointer-events-none absolute inset-0 border border-transparent transition-colors duration-150 group-hover:border-accent group-focus-visible:border-accent" />
