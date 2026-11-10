@@ -34,6 +34,8 @@ export function MobileHeader({ items }: { items: NavItem[] }) {
       </div>
 
       <Dialog.Portal>
+        {/* Invisible (the menu covers the screen), but Radix locks the page scroll through the overlay. */}
+        <Dialog.Overlay className="fixed inset-0 z-50" />
         <Dialog.Content
           aria-describedby={undefined}
           className="fixed inset-0 z-50 overflow-y-auto bg-[rgba(5,4,3,0.96)] px-6 pt-8 pb-12 data-[state=closed]:animate-fade-out data-[state=open]:animate-fade-in tablet:px-12"

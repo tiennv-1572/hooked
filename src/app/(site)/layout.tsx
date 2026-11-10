@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { ScrollReveal } from "@/components/layout/scroll-reveal";
 import { SiteHeader } from "@/components/layout/site-header";
+import { SmoothScroll } from "@/components/layout/smooth-scroll";
 import { siteFontVariables } from "@/lib/fonts";
 import { getSite } from "@/server/content/queries";
 import { toSiteChrome, toSiteMetadata } from "@/server/content/views/site";
@@ -36,6 +37,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         <SiteHeader {...chrome.header} />
         <main className="flex-1">{children}</main>
         <SiteFooter {...chrome.footer} />
+        <SmoothScroll />
         {/* usePathname suspends on routes with dynamic params (cacheComponents). */}
         <Suspense fallback={null}>
           <ScrollReveal />
