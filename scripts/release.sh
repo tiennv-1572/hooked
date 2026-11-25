@@ -288,6 +288,9 @@ ENVFILE
 # `.env` vua sinh o tren va `.env.example`. Lam nguoc lai - liet ke tung file can loai -
 # thi mai nay ai them `.env.production` la ro ri ma khong ai hay.
 #
+# Huong dan CMS: .huong-dan-stack/ la ban sao ca repo (kem node_modules) cua bo chup anh, .huong-dan-pdf/ la PDF
+# xuat ra, scripts/huong-dan/ la cong cu o may — khong vao goi. Anh cua huong dan (public/huong-dan/) thi GIU.
+#
 # GIU LAI: src/, drizzle/ va scripts/db-*.ts — `npm run db:migrate` tren hosting can ca
 # ba (drizzle.config.ts doc drizzle/, scripts/db-data-migrate.ts import tu src/).
 zip -qr "$CODE_ZIP" . \
@@ -301,6 +304,7 @@ zip -qr "$CODE_ZIP" . \
      'docker/*' 'docker-compose.yml' \
      'plan/*' 'REPORT.md' \
      'tests/*' 'test-results/*' 'playwright-report/*' 'playwright.config.ts' \
+     '.huong-dan-stack/*' '.huong-dan-pdf/*' 'scripts/huong-dan/*' 'playwright.huong-dan.config.ts' \
      '.claude/*' \
      'scripts/release.sh' \
      '.vscode/*' '.idea/*' \
@@ -320,7 +324,7 @@ zip -qr "$CODE_ZIP" . \
 unzip -Z1 "$CODE_ZIP" > "$WORK/code.list"
 
 # Chi duoc phep co dung `.env` (ban vua sinh) va `.env.example`.
-LEAK=$(grep -E '^(\.env($|\.)|node_modules/|\.next/(cache|dev)/|releases/|deploy\.config|docker/|docker-compose\.yml$|plan/|tests/|test-results/|playwright-report/|\.claude/|scripts/release\.sh$|tsconfig\.tsbuildinfo$|[^/]+\.zip$)' "$WORK/code.list" \
+LEAK=$(grep -E '^(\.env($|\.)|node_modules/|\.huong-dan-stack/|\.huong-dan-pdf/|\.next/(cache|dev)/|releases/|deploy\.config|docker/|docker-compose\.yml$|plan/|tests/|test-results/|playwright-report/|\.claude/|scripts/release\.sh$|tsconfig\.tsbuildinfo$|[^/]+\.zip$)' "$WORK/code.list" \
         | grep -vE '^\.env(\.example)?$' || true)
 [[ -z "$LEAK" ]] || die "Goi code lot file khong duoc phep:
 $LEAK"
