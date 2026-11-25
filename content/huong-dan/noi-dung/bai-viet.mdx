@@ -7,7 +7,15 @@ description: "Soạn, lên lịch, đăng và gỡ các bài viết trên trang 
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Mỗi bài trên trang Blog (`hooked.vn/blog`) là một mục ở màn này. Ở màn này bạn:
+
+- viết bài mới: tiêu đề, đoạn mở đầu, ảnh bìa và phần thân ghép từ các khối (đoạn văn, ảnh, trích dẫn…);
+- xem trước bài như trên website, trước khi lưu;
+- đăng ngay, hẹn giờ đăng, hoặc chuyển bài về bản nháp để gỡ khỏi website;
+- nhân bản, xóa bài.
+
+Tiêu đề và đoạn giới thiệu đầu trang Blog sửa ở [Trang › Blog](/huong-dan/trang/blog). Cả ba vai trò (Chủ sở hữu, Quản trị,
+Biên tập) đều dùng được màn này.
 
 ## Hiện ở đâu trên website
 
@@ -17,21 +25,333 @@ description: "Soạn, lên lịch, đăng và gỡ các bài viết trên trang 
     { label: "Trang một bài viết", path: "/blog/vui-fest-cat-ba" },
   ]}
 >
-  <Screenshot alt="Bài viết trên website" src="/huong-dan/anh/noi-dung/bai-viet-website.png" />
+  <Screenshot
+    alt="Thẻ bài viết trên trang Blog"
+    src="/huong-dan/anh/noi-dung/bai-viet-website.png"
+    caption="Trang Blog. ① Ảnh bìa ② Nhãn ngắn và thời gian đọc ③ Tiêu đề ④ Đầu đoạn mở đầu. Bài mới đăng đứng đầu."
+  />
+  <Screenshot
+    alt="Đầu trang một bài viết"
+    src="/huong-dan/anh/noi-dung/bai-viet-website-bai.png"
+    caption="Trang một bài viết. ① Tiêu đề ② Đoạn mở đầu ③ Liên kết dưới đoạn mở đầu ④ Ảnh bìa. Bên dưới là các khối nội dung."
+  />
 </OnWebsite>
+
+| Trên CMS                            | Trên website                                                                              |
+| ----------------------------------- | ----------------------------------------------------------------------------------------- |
+| Tiêu đề bài viết                    | Tiêu đề thẻ trên trang Blog, tiêu đề trang bài viết, tiêu đề tab trình duyệt              |
+| Đường dẫn (slug)                    | Địa chỉ trang bài viết: `hooked.vn/blog/` + slug                                          |
+| Nhãn ngắn                           | Dòng chữ cam trên thẻ, cạnh thời gian đọc                                                 |
+| Đoạn mở đầu                         | Đoạn đầu trang bài viết; phần đầu đoạn này hiện trên thẻ ở trang Blog                     |
+| Liên kết dưới đoạn mở đầu           | Dòng liên kết có mũi tên ↗ ngay dưới đoạn mở đầu. Tắt thì không có                        |
+| Ảnh bìa                             | Ảnh của thẻ trên trang Blog và ảnh lớn đầu trang bài viết                                 |
+| Nội dung bài viết (các khối)        | Phần thân bài, theo đúng thứ tự các khối                                                  |
+| Ngày đăng                           | Thứ tự bài trên trang Blog (mới nhất đứng đầu) và thời điểm bài bắt đầu hiện              |
+| Tiêu đề SEO, Mô tả SEO, Ảnh chia sẻ | Dòng kết quả trên Google và khung xem trước khi chia sẻ link lên mạng xã hội              |
+| Tác giả, Thẻ                        | Không hiện trên website: tác giả để ghi nhận trong CMS, thẻ chỉ dùng để lọc bài trong CMS |
 
 ## Các bước thao tác
 
-<Draft />
+### Xem danh sách
+
+Trên menu bên trái, bấm **Nội dung › Bài viết**.
+
+<Screenshot alt="Màn Bài viết" src="/huong-dan/anh/noi-dung/bai-viet-danh-sach.png" />
+
+- ① **Viết bài mới**.
+- ② **Trang Blog**: mở trang Blog trên website, ở tab mới.
+- ③ Ô tìm theo tiêu đề, nhãn ngắn, thẻ.
+- ④ Lọc theo **Trạng thái**, ⑤ lọc theo **Thẻ**.
+- ⑥ Trạng thái của bài: **Bản nháp**, **Đã lên lịch** hoặc **Đã xuất bản**.
+- ⑦ **Ngày đăng**. Bài đã lên lịch có biểu tượng lịch và giờ đăng.
+- ⑧ Nút **…**: menu thao tác của bài.
+
+Bấm vào một dòng để mở bài. Tích ô đầu dòng để chọn nhiều bài, rồi bấm **Xuất bản**, **Chuyển về nháp** hoặc **Xóa** cho
+cả nhóm. Dòng đầu trang ghi tổng số bài và số bài theo từng trạng thái.
+
+Menu **…** của một bài:
+
+<Screenshot alt="Menu thao tác của một bài viết" src="/huong-dan/anh/noi-dung/bai-viet-thao-tac.png" />
+
+- ① **Chỉnh sửa**: mở bài.
+- ② **Xem trên website**: mở trang của bài, ở tab mới. Chỉ có ở bài đã xuất bản hoặc đã lên lịch.
+- ③ **Chuyển về bản nháp**: gỡ bài khỏi website ngay. Bài đang nháp thì là **Xuất bản ngay**. Góc trên bên phải báo, ví dụ,
+  **Đã chuyển “…” về bản nháp.**
+- ④ **Nhân bản**: tạo bản sao ở trạng thái nháp, xem [Nhân bản](/huong-dan/bat-dau/quy-uoc-chung#nhân-bản).
+- ⑤ **Xóa**: xem [Xóa bài viết](#xóa-bài-viết).
+
+### Viết bài mới
+
+<Steps>
+<Step>
+Bấm **Viết bài mới**. Bài mới bắt đầu ở trạng thái **Bản nháp**.
+
+<Screenshot alt="Phần đầu form bài viết" src="/huong-dan/anh/noi-dung/bai-viet-form.png" />
+
+- ① **Soạn thảo** / **Xem trước**: xem trước bài như trên website, xem bước 6.
+- ② **Tiêu đề bài viết**.
+- ③ **Đường dẫn (slug)**: tự tạo từ tiêu đề, ví dụ "Xóm Húc mùa 2: đêm chung kết tại Hà Nội" thành
+  `xom-huc-mua-2-dem-chung-ket-tai-ha-noi`, tức trang `hooked.vn/blog/xom-huc-mua-2-dem-chung-ket-tai-ha-noi`.
+- ④ Nút khóa: giữ nguyên đường dẫn, không tự đổi theo tiêu đề nữa. Nút ↻ bên cạnh tạo lại đường dẫn từ tiêu đề.
+- ⑤ Thời gian đọc ước tính, số từ, số khối.
+- ⑥ **Bản nháp** / **Xuất bản**, ⑦ **Ngày đăng**: xem [Đăng bài và hẹn giờ](#đăng-bài-và-hẹn-giờ).
+- ⑧ **Tác giả**: mặc định "Hooked Entertainment"; gõ để chọn tên đã dùng hoặc tên người dùng CMS.
+
+</Step>
+<Step>
+Điền **Thẻ bài viết** và **Mở đầu**.
+
+<Screenshot alt="Phần Thẻ bài viết và Mở đầu" src="/huong-dan/anh/noi-dung/bai-viet-the-mo-dau.png" />
+
+- ① **Nhãn ngắn**: dòng chữ cam trên thẻ bài viết, ví dụ tên đối tác hoặc chủ đề. Tối đa 32 ký tự.
+- ② **Đoạn mở đầu**: đoạn đầu bài. Phần đầu đoạn này hiện trên thẻ ở trang Blog. Ô soạn thảo có in đậm, liên kết…, xem
+  [Ô soạn thảo](/huong-dan/bat-dau/quy-uoc-chung#ô-soạn-thảo).
+- ③ **Liên kết dưới đoạn mở đầu**: bật để thêm một dòng liên kết ngay dưới đoạn mở đầu, ví dụ dẫn tới dự án liên quan.
+- ④ **Nội dung liên kết** và ⑤ **Đường dẫn**: gõ đường dẫn bắt đầu bằng `/` hoặc `https://`, hoặc bấm một đường dẫn gợi ý
+  bên dưới ô.
+
+</Step>
+<Step>
+Viết **Nội dung bài viết**. Bài được ghép từ các khối nối tiếp nhau. Bài mới chưa có khối nào: bấm một loại khối ① để
+bắt đầu.
+
+<Screenshot alt="Chọn khối đầu tiên" src="/huong-dan/anh/noi-dung/bai-viet-chon-khoi.png" />
+
+Có bảy loại khối:
+
+| Khối             | Dùng để                                                         |
+| ---------------- | --------------------------------------------------------------- |
+| Đoạn văn         | Một hoặc nhiều đoạn văn: chữ đậm, nghiêng, liên kết, danh sách… |
+| Tiêu đề mục      | Tiêu đề phân đoạn, ví dụ "1. Xóm Húc – …"                       |
+| Danh sách        | Các ý ngắn, thường mở đầu bằng chữ đậm                          |
+| Ảnh              | Một ảnh lớn, kèm chú thích (không bắt buộc)                     |
+| Cặp ảnh          | Hai ảnh đặt cạnh nhau                                           |
+| Trích dẫn        | Câu nói nổi bật kèm nguồn trích                                 |
+| Liên kết nổi bật | Dòng liên kết có mũi tên ↗                                      |
+
+</Step>
+<Step>
+Thêm khối tiếp theo: bấm **Thêm khối** ① rồi chọn loại khối trong danh sách ②, hoặc bấm nhanh **Đoạn văn**, **Tiêu đề
+mục**, **Ảnh** cạnh chữ **Nhanh:** ③. Khối mới nằm cuối bài.
+
+<Screenshot alt="Thêm khối" src="/huong-dan/anh/noi-dung/bai-viet-them-khoi.png" />
+
+Sắp xếp và sửa các khối:
+
+<Screenshot alt="Các khối của bài viết" src="/huong-dan/anh/noi-dung/bai-viet-khoi.png" />
+
+- ① Nút kéo: kéo khối lên, xuống.
+- ② Tên khối (ví dụ **Đoạn văn #1**): bấm để thu gọn hoặc mở khối.
+- ③ Mũi tên lên, xuống: chuyển khối lên trên, xuống dưới một bậc.
+- ④ **Nhân bản** khối, ⑤ **Xóa khối**.
+- ⑥ Dấu **+** giữa hai khối (**Chèn khối tại đây**): chèn một khối mới đúng vị trí đó.
+- ⑦ **Thu gọn tất cả**: thu gọn mọi khối cho dễ nhìn khi bài dài.
+
+</Step>
+<Step>
+Ở cột bên phải, chọn **Ảnh bìa**, **Thẻ** và điền **SEO & chia sẻ**.
+
+<Screenshot alt="Ảnh bìa, thẻ và SEO" src="/huong-dan/anh/noi-dung/bai-viet-anh-bia-seo.png" />
+
+- ① **Ảnh bìa**: ảnh của thẻ ở trang Blog và ảnh lớn đầu bài. Cách chọn ảnh: xem
+  [Chọn ảnh](/huong-dan/bat-dau/quy-uoc-chung#chọn-ảnh).
+- ② **Thẻ bài viết trên trang Blog**: thẻ của bài sẽ trông như thế này.
+- ③ **Thẻ**: gõ rồi bấm <kbd>Enter</kbd>, hoặc bấm một thẻ gợi ý (**+ DJ Contest**…). Thẻ chỉ dùng để lọc bài trong CMS,
+  không hiện trên website.
+- ④ **Tiêu đề SEO** và ⑤ **Mô tả SEO**: không bắt buộc; để trống thì dùng tiêu đề bài và đoạn mở đầu. Số đếm bên phải là
+  độ dài nên dùng (60 và 160 ký tự).
+- ⑥ Bài sẽ hiện trên Google như thế này.
+- ⑦ **Ảnh chia sẻ**: ảnh khi chia sẻ link bài lên mạng xã hội. Để trống thì dùng ảnh bìa.
+
+</Step>
+<Step>
+Bấm **Xem trước** (cạnh **Soạn thảo**, góc trên) để xem bài như trên website, kể cả phần chưa lưu. Chọn ① **Máy tính**, ②
+**Điện thoại** hoặc ③ **Thẻ & Google** (thẻ ở trang Blog và dòng kết quả Google). Bấm ④ **Đóng** để quay lại soạn.
+
+<Screenshot alt="Xem trước bài viết" src="/huong-dan/anh/noi-dung/bai-viet-xem-truoc.png" />
+
+</Step>
+<Step>
+Bấm **Tạo mới**. Góc trên bên phải báo **Đã tạo bài viết.** Bài vẫn ở **Bản nháp** cho tới khi bạn xuất bản.
+</Step>
+</Steps>
+
+### Đăng bài và hẹn giờ
+
+Ở thẻ **Xuất bản** (cột bên phải):
+
+- **Bản nháp**: bài chỉ có trong CMS. Trang của bài trên website báo **Trang này không tồn tại**.
+- **Xuất bản**, không đặt **Ngày đăng**: bài lên website ngay khi bạn lưu; ngày đăng là lúc lưu.
+- **Xuất bản**, **Ngày đăng** trong tương lai: bài **được lên lịch**, tự hiện khi đến giờ.
+
+Đặt ngày đăng: bấm ô **Ngày đăng**, chọn ngày trên lịch ①, sửa giờ ②; **Bây giờ** ③ đặt ngay lúc này; ba nút **Mai 9:00**,
+**+3 ngày**, **Tuần sau** ④ đặt nhanh lúc 9:00 sáng của ngày đó.
+
+<Screenshot alt="Chọn ngày đăng" src="/huong-dan/anh/noi-dung/bai-viet-ngay-dang.png" />
+
+Khi đã chọn **Xuất bản** ① và một ngày trong tương lai ③, dòng ② ghi giờ bài sẽ hiện. Bấm **Lưu thay đổi**: bài có nhãn
+**Đã lên lịch**. Bấm dấu × cạnh ô ngày để bỏ ngày đăng.
+
+<Screenshot alt="Bài đã lên lịch" src="/huong-dan/anh/noi-dung/bai-viet-len-lich.png" />
+
+<Callout type="warn" title="Bài hẹn giờ có thể lên danh sách Blog chậm tới khoảng một giờ">
+  Đến giờ, trang riêng của bài mở được ngay. Nhưng danh sách bài ở trang Blog được website lưu tạm và làm mới chậm hơn,
+  có khi tới khoảng một giờ sau giờ hẹn. Muốn bài lên danh sách đúng giờ: sau giờ hẹn, vào màn Bài viết, sửa và **Lưu**
+  một bài bất kỳ, danh sách được làm mới ngay.
+</Callout>
+
+Ngay sau khi bấm **Xuất bản** rồi lưu (không đặt ngày), nhãn của bài có thể vẫn ghi **Đã lên lịch** trong khoảng một phút
+rồi tự chuyển **Đã xuất bản**. Bài đã lên website ngay từ lúc lưu.
+
+**Gỡ bài khỏi website**: chọn **Bản nháp** rồi lưu, hoặc dùng **Chuyển về bản nháp** trong menu **…** của danh sách. Bài
+biến khỏi trang Blog ngay; trang của bài báo **Trang này không tồn tại**.
+
+### Sửa bài
+
+Bấm vào bài trong danh sách, sửa, rồi bấm **Lưu thay đổi**. Website cập nhật ngay.
+
+<Callout type="warn" title="Đổi đường dẫn thì link cũ hỏng">
+  Với bài đã có, đổi tiêu đề **không** đổi đường dẫn. Nếu bạn sửa ô **Đường dẫn (slug)**, link cũ của bài (đã chia sẻ
+  trên mạng xã hội, gắn trong bài khác, ở [Blog carousel](/huong-dan/noi-dung/trang-chu#blog-carousel) trang chủ) sẽ báo
+  **Trang này không tồn tại**: website không tự chuyển sang link mới. Tránh đổi đường dẫn sau khi đã chia sẻ bài.
+</Callout>
+
+### Xóa bài viết
+
+Bấm **…** ở cuối dòng rồi **Xóa** (hoặc nút **Xóa** khi đang mở bài), rồi bấm **Xóa** ① trong hộp hỏi lại. Góc trên bên
+phải báo **Đã xóa bài viết.**
+
+<Screenshot alt="Hộp hỏi lại trước khi xóa bài" src="/huong-dan/anh/noi-dung/bai-viet-xoa.png" />
+
+Bài biến khỏi trang Blog ngay; link của bài báo **Trang này không tồn tại**. Không khôi phục được: muốn tạm gỡ thì chuyển
+về bản nháp thay vì xóa.
+
+<Callout type="warn" title="Bài đang có ở Blog carousel trang chủ">
+  Thẻ ở [Blog carousel](/huong-dan/noi-dung/trang-chu#blog-carousel) là bản chép của bài, không tự biến mất khi bài bị
+  xóa hay chuyển về nháp. Sau khi xóa, gỡ bài, đổi đường dẫn hay đổi tiêu đề một bài đang có trên băng chuyền, mở
+  **Trang chủ › Blog carousel** để xóa hoặc điền lại thẻ.
+</Callout>
 
 ## Các trường thông tin
 
-<Draft />
+<FieldTable
+  fields={[
+    {
+      name: "Tiêu đề bài viết",
+      required: true,
+      description: "Tiêu đề thẻ trên trang Blog và tiêu đề trang bài viết.",
+      example: "Xóm Húc mùa 2: đêm chung kết tại Hà Nội",
+    },
+    {
+      name: "Đường dẫn (slug)",
+      required: true,
+      description:
+        "Phần cuối địa chỉ trang bài viết. Tự tạo từ tiêu đề khi viết bài mới. Chỉ chữ thường không dấu, số và dấu gạch ngang; không trùng bài khác.",
+      example: "xom-huc-mua-2-dem-chung-ket-tai-ha-noi",
+    },
+    {
+      name: "Nhãn ngắn",
+      required: true,
+      description: "Dòng chữ cam trên thẻ bài viết, tối đa 32 ký tự.",
+      example: "DJ Contest",
+    },
+    {
+      name: "Đoạn mở đầu",
+      required: true,
+      description: "Đoạn đầu bài; phần đầu hiện trên thẻ ở trang Blog.",
+      example: "Đêm chung kết Xóm Húc mùa 2 quy tụ 16 DJ trẻ…",
+    },
+    {
+      name: "Liên kết dưới đoạn mở đầu",
+      description:
+        "Bật để có một dòng liên kết dưới đoạn mở đầu. Khi bật thì Nội dung liên kết và Đường dẫn là bắt buộc.",
+      example: "Xem các khóa học DJ tại Hooked → /academy",
+    },
+    {
+      name: "Nội dung bài viết",
+      description: "Các khối nối tiếp nhau. Khối đã thêm thì không được để trống: điền hoặc xóa khối.",
+      example: "Đoạn văn, Ảnh, Trích dẫn",
+    },
+    {
+      name: "Trạng thái",
+      description: "Bản nháp (chỉ trong CMS) hoặc Xuất bản (hiện trên website, ngay hoặc theo ngày đăng).",
+      example: "Xuất bản",
+    },
+    {
+      name: "Ngày đăng",
+      description:
+        "Để trống: ngày đăng là lúc xuất bản. Ngày trong tương lai: bài được lên lịch. Quyết định thứ tự bài trên trang Blog.",
+      example: "26/11/2026 09:00",
+    },
+    {
+      name: "Tác giả",
+      required: true,
+      description: "Người viết, ghi nhận trong CMS; website không hiển thị.",
+      example: "Hooked Entertainment",
+    },
+    {
+      name: "Ảnh bìa",
+      required: true,
+      description: "Ảnh của thẻ ở trang Blog và ảnh lớn đầu bài.",
+      example: "Poster Xóm Húc mùa 2",
+    },
+    {
+      name: "Thẻ",
+      description: "Từ khóa để tìm, lọc bài trong CMS. Không hiện trên website.",
+      example: "DJ Contest",
+    },
+    {
+      name: "Tiêu đề SEO",
+      description: "Tiêu đề trên Google, nên dưới 60 ký tự. Để trống thì dùng tiêu đề bài.",
+      example: "Xóm Húc mùa 2: chung kết DJ tại Hà Nội",
+    },
+    {
+      name: "Mô tả SEO",
+      description: "Dòng mô tả trên Google, nên dưới 160 ký tự. Để trống thì dùng đoạn mở đầu.",
+      example: "16 DJ trẻ tranh tài tại đêm chung kết Xóm Húc mùa 2…",
+    },
+    {
+      name: "Ảnh chia sẻ",
+      description: "Ảnh khi chia sẻ link bài lên mạng xã hội. Để trống thì dùng ảnh bìa.",
+      example: "Ảnh ngang của sự kiện",
+    },
+  ]}
+/>
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+### "Nhập tiêu đề bài viết."
+
+Bấm **Tạo mới** (hoặc **Lưu thay đổi**) khi còn ô bắt buộc để trống. Câu báo lỗi hiện dưới ô thiếu ①, thanh lưu báo còn
+mấy trường chưa hợp lệ ②, góc trên bên phải báo **Vui lòng kiểm tra các trường được đánh dấu.** ③
+
+<Screenshot alt="Lưu bài viết khi còn trống" src="/huong-dan/anh/noi-dung/bai-viet-loi.png" />
+
+Các câu báo thiếu khác: **Nhập đường dẫn.**, **Nhập nhãn ngắn cho thẻ bài viết.**, **Nhập đoạn mở đầu.**, **Chọn ảnh
+bìa.**, **Nhập tên tác giả.** Trong phần thân bài: **Nhập nội dung đoạn văn hoặc xóa khối này.**, **Nhập tiêu đề mục.**,
+**Thêm ít nhất một ý.**, **Chọn ảnh cho khối này.**, **Chọn ảnh bên trái.**, **Chọn ảnh bên phải.**, **Nhập câu trích
+dẫn.**, **Nhập nội dung liên kết.** Điền ô bị tô đỏ, hoặc xóa khối không dùng.
+
+### "Đường dẫn này đã được dùng cho bài viết khác."
+
+Đã có bài cùng đường dẫn, thường vì hai bài cùng tiêu đề. Sửa ô **Đường dẫn (slug)**, ví dụ thêm năm hay số mùa vào cuối.
+
+### "Chỉ dùng chữ thường không dấu, số và dấu gạch ngang."
+
+Đường dẫn có dấu, chữ hoa, dấu cách hay ký tự đặc biệt. Bấm nút ↻ cạnh ô để tạo lại từ tiêu đề.
+
+### Bài đã xuất bản nhưng trang Blog chưa có
+
+Kiểm tra nhãn của bài: **Đã lên lịch** nghĩa là chưa tới ngày đăng. Nếu đã quá giờ hẹn mà danh sách Blog chưa có bài, xem
+[lưu ý về bài hẹn giờ](#đăng-bài-và-hẹn-giờ): lưu một bài bất kỳ để danh sách được làm mới.
+
+### Link bài báo "Trang này không tồn tại"
+
+Bài đang là bản nháp, đã bị xóa, hoặc đã đổi đường dẫn. Mở bài trong CMS để kiểm tra trạng thái và đường dẫn hiện tại.
 
 ## Liên quan
 
-<Draft />
+- [Trang › Blog](/huong-dan/trang/blog): tiêu đề và đoạn giới thiệu đầu trang Blog.
+- [Trang chủ › Blog carousel](/huong-dan/noi-dung/trang-chu#blog-carousel): băng chuyền bài viết ở trang chủ.
+- [Quy ước dùng chung](/huong-dan/bat-dau/quy-uoc-chung): lưu, hoàn tác, chọn ảnh, ô soạn thảo.
+- [Thư viện media](/huong-dan/he-thong/thu-vien-media): ảnh dùng trong bài.

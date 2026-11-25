@@ -7,26 +7,370 @@ description: "Nội dung từng khối của trang chủ, theo thứ tự từ t
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Màn này sửa nội dung trang chủ `hooked.vn`. Trang chủ có sáu khối, mỗi khối là một tab, theo đúng thứ tự từ trên xuống:
+
+- **Hero**: ảnh, video chạy lần lượt ở đầu trang;
+- **Giới thiệu**: câu tuyên ngôn chữ lớn ngay dưới;
+- **Highlight**: hai thẻ ảnh lớn dẫn sang Academy, Projects;
+- **Dịch vụ**: dải thẻ **OUR SERVICE**;
+- **Blog carousel**: băng chuyền **BLOGPOST**;
+- **Đối tác**: lời giới thiệu, dải logo đối tác và nút kêu gọi.
+
+Logo trong dải đối tác không sửa ở đây mà ở màn [Đối tác](/huong-dan/noi-dung/doi-tac). Menu đầu trang, chân trang sửa ở
+[Menu & điều hướng](/huong-dan/he-thong/menu-dieu-huong) và [Cài đặt website](/huong-dan/he-thong/cai-dat-website). Cả ba
+vai trò (Chủ sở hữu, Quản trị, Biên tập) đều dùng được màn này.
 
 ## Hiện ở đâu trên website
 
 <OnWebsite pages={[{ label: "Trang chủ", path: "/" }]}>
-  <Screenshot alt="Trang chủ trên website" src="/huong-dan/anh/noi-dung/trang-chu-website.png" />
+  <Screenshot
+    alt="Đầu trang chủ trên website"
+    src="/huong-dan/anh/noi-dung/trang-chu-website-hero.png"
+    caption="① Khối Hero: ảnh trình chiếu ② Nút chuyển ảnh ③ Dòng chữ chạy SUPPORT LOCAL ARTISTS (cố định, không sửa trong CMS)."
+  />
 </OnWebsite>
+
+| Tab trên CMS  | Trên trang chủ                                                                             |
+| ------------- | ------------------------------------------------------------------------------------------ |
+| Hero          | Ảnh, video chạy lần lượt ở đầu trang                                                       |
+| Giới thiệu    | Tiêu đề chữ lớn (SUPPORTING LOCAL ARTISTS.) và đoạn chữ in hoa bên dưới                    |
+| Highlight     | Khối **HIGHLIGHT**: hai thẻ ảnh lớn                                                        |
+| Dịch vụ       | Khối **OUR SERVICE**: các thẻ dịch vụ, kéo ngang để xem hết                                |
+| Blog carousel | Khối **BLOGPOST**: băng chuyền thẻ bài viết                                                |
+| Đối tác       | Khối "đồng hành cùng các thương hiệu lớn": tiêu đề, đoạn giới thiệu, nút (trên điện thoại) |
+
+Website cập nhật ngay khi bạn lưu: tải lại trang chủ là thấy.
 
 ## Các bước thao tác
 
-<Draft />
+### Sửa một khối
+
+<Steps>
+<Step>
+Trên menu bên trái, bấm **Nội dung › Trang chủ**.
+
+<Screenshot alt="Màn Trang chủ" src="/huong-dan/anh/noi-dung/trang-chu-tong-quan.png" />
+
+- ① Các tab, mỗi tab một khối. Số cạnh tên tab là số ảnh, số thẻ của khối đó.
+- ② **Xem trang**: mở trang chủ trên website, ở tab mới.
+- ③ **Khôi phục mặc định**: điền lại form bằng nội dung gốc, xem
+  [Nội dung các trang](/huong-dan/bat-dau/quy-uoc-chung#nội-dung-các-trang).
+- ④ **Xem trước**: khối đó sẽ trông thế nào trên website, đổi ngay theo những gì bạn gõ. Link **Trên website** mở trang
+  chủ thật.
+- ⑤ **Lưu thay đổi** (<kbd>Ctrl</kbd> + <kbd>S</kbd>).
+
+</Step>
+<Step>
+Bấm tab của khối cần sửa và sửa các ô. Bạn có thể sửa nhiều tab rồi lưu một lần.
+</Step>
+<Step>
+Bấm **Lưu thay đổi**. Góc trên bên phải báo **Đã lưu Trang chủ.** Cả sáu tab được lưu cùng lúc.
+</Step>
+</Steps>
+
+Mọi ô có **Liên kết** dùng chung một cách nhập: gõ đường dẫn trong website bắt đầu bằng `/` (ví dụ `/academy`), hoặc địa
+chỉ trang khác bắt đầu bằng `https://`. Bấm **Chọn** bên phải ô để chọn nhanh một trang, dự án hay bài viết; tên trang
+đang chọn hiện ở góc phải phía trên ô.
+
+### Hero
+
+Tab **Hero** là danh sách ảnh và video chạy lần lượt ở đầu trang chủ: mỗi ảnh hiện 5 giây, mỗi video 15 giây.
+
+<Screenshot alt="Tab Hero" src="/huong-dan/anh/noi-dung/trang-chu-hero.png" />
+
+- ① **Thêm ảnh**: chọn ảnh trong thư viện hoặc tải ảnh lên, xem [Chọn ảnh](/huong-dan/bat-dau/quy-uoc-chung#chọn-ảnh).
+  Nên dùng ảnh ngang. Ảnh mới nằm cuối danh sách.
+- ② **Thêm video YouTube**: xem bên dưới.
+- ③ Nút kéo ở góc mỗi ô: kéo để đổi thứ tự. Số cạnh nút kéo là thứ tự chạy.
+- ④ Đưa chuột lên một ô thì hiện hai nút: **Thay ảnh** (↻) và **Gỡ ảnh** (thùng rác). Gỡ chỉ bỏ ảnh khỏi trang chủ, ảnh vẫn
+  còn trong thư viện.
+
+Bấm vào một ô để xem ảnh đó trong khung **Xem trước**. Ô video có nhãn **▶ Video**.
+
+**Thêm video YouTube**: bấm nút ②, dán link video vào ô ① rồi bấm **Thêm video** ②. Video được thêm vào cuối danh sách,
+ảnh chờ (hiện trong lúc video đang tải) lấy tự động từ YouTube. Trên website video phát không tiếng và lặp lại.
+
+<Screenshot alt="Thêm video YouTube" src="/huong-dan/anh/noi-dung/trang-chu-hero-video.png" />
+
+### Giới thiệu
+
+Khối chữ lớn ngay dưới phần Hero.
+
+<Screenshot alt="Tab Giới thiệu" src="/huong-dan/anh/noi-dung/trang-chu-gioi-thieu.png" />
+
+- ① **Tiêu đề**: mỗi ô là một dòng trên website, tối đa 4 dòng. Kéo nút ⋮⋮ để đổi thứ tự, bấm thùng rác để xóa dòng.
+- ② **Thêm dòng**.
+- ③ **Đoạn giới thiệu**: tối đa 130 ký tự.
+- ④ Số dòng đoạn văn chiếm trên máy tính. Website chỉ hiện 3 dòng: quá 3 thì dòng này chuyển đỏ, rút ngắn đoạn văn.
+- ⑤ Xem trước.
+
+<Screenshot alt="Khối giới thiệu trên website" src="/huong-dan/anh/noi-dung/trang-chu-website-gioi-thieu.png" />
+
+Trên website: ① các dòng tiêu đề, ② đoạn giới thiệu. Website tự in hoa tiêu đề; đoạn giới thiệu in hoa trên máy tính.
+
+### Highlight
+
+Hai thẻ ảnh lớn, mỗi thẻ dẫn tới một trang: khung **Thẻ trái** và khung **Thẻ phải**, cùng các ô như nhau.
+
+<Screenshot alt="Tab Highlight" src="/huong-dan/anh/noi-dung/trang-chu-highlight.png" />
+
+- ① **Tiêu đề**: chữ lớn trên thẻ, tối đa 14 ký tự.
+- ② **Liên kết** và ③ nút **Chọn**: trang mở ra khi bấm thẻ.
+- ④ **Vị trí chữ trên desktop**: chữ nằm góc trái hay góc phải của thẻ.
+- ⑤ **Ảnh nền**: ảnh của thẻ, được cắt theo khung ngang của thẻ.
+- ⑥ **Đổi vị trí 2 thẻ**: đổi chỗ thẻ trái và thẻ phải.
+
+<Screenshot alt="Khối Highlight trên website" src="/huong-dan/anh/noi-dung/trang-chu-website-highlight.png" />
+
+Trên website: ① thẻ trái, ② thẻ phải.
+
+### Dịch vụ
+
+Các thẻ của khối **OUR SERVICE**, theo đúng thứ tự trong danh sách. Bấm tên một dịch vụ để mở phần sửa.
+
+<Screenshot alt="Tab Dịch vụ, mở dịch vụ đầu tiên" src="/huong-dan/anh/noi-dung/trang-chu-dich-vu.png" />
+
+- ① Tên dịch vụ trong danh sách: bấm để mở hoặc thu gọn. Nút kéo ⋮⋮ bên trái để đổi thứ tự, hai nút bên phải để nhân bản,
+  xóa dịch vụ. Xem [Danh sách trong form](/huong-dan/bat-dau/quy-uoc-chung#danh-sách-trong-form).
+- ② **Tên dịch vụ** và ③ **Liên kết**: trang mở ra khi bấm thẻ. Thẻ ACADEMY dẫn tới `/academy`; các thẻ khác dẫn tới
+  trang Projects đã lọc sẵn theo dịch vụ, ví dụ `/projects?service=media` (xem
+  [Danh mục dự án](/huong-dan/quan-ly-du-an/danh-muc-du-an)).
+- ④ **Xuống dòng trên desktop**: không bắt buộc. Muốn tên dài xuống dòng đúng chỗ trên máy tính thì bấm **Thêm dòng** và gõ
+  từng dòng, ví dụ `ARTISTS MANAGEMENT` rồi `& BOOKING`. Để trống thì website dùng **Tên dịch vụ**.
+- ⑤ **Mô tả**: tối đa 220 ký tự.
+- ⑥ **Ảnh** của thẻ.
+- ⑦ **Thêm dịch vụ**.
+
+<Screenshot alt="Khối OUR SERVICE trên website" src="/huong-dan/anh/noi-dung/trang-chu-website-dich-vu.png" />
+
+Trên website: ① ảnh, ② tên, ③ mô tả của dịch vụ. Thẻ đầu tiên luôn có nền cam. Trên máy tính, khách kéo ngang dải thẻ để
+xem các dịch vụ còn lại.
+
+### Blog carousel
+
+Băng chuyền **BLOGPOST**: mỗi thẻ có ảnh dọc, tiêu đề, hai dòng chú thích và một liên kết, thường tới một bài viết.
+
+<Screenshot alt="Tab Blog carousel, mở thẻ thứ hai" src="/huong-dan/anh/noi-dung/trang-chu-blog.png" />
+
+- ① **Thêm từ bài viết**: chọn một bài viết, CMS thêm vào cuối danh sách một thẻ điền sẵn: tiêu đề bài (in hoa), dòng
+  chú thích 1 là **Nhãn ngắn** của bài, dòng 2 là đầu đoạn mở đầu, ảnh bìa và liên kết tới bài. Góc trên bên phải báo
+  **Đã thêm “…” vào cuối danh sách.**
+- ② **Thẻ giữa**: thẻ nằm giữa băng chuyền khi trang chủ vừa mở. Luôn có đúng một thẻ giữa.
+- ③ **Điền từ bài viết**: điền lại thẻ đang mở bằng nội dung của một bài viết.
+- ④ **Tiêu đề**, ⑤ **Liên kết**, ⑥ **Chú thích dòng 1** (bắt buộc, tối đa 32 ký tự); **Chú thích dòng 2** không bắt buộc.
+  **Ảnh** nên là ảnh dọc.
+- ⑦ **Thêm thẻ trống**: thêm một thẻ để tự điền, ví dụ thẻ dẫn tới một dự án.
+
+Hộp chọn bài viết: gõ vào ô tìm ① rồi bấm vào bài ②.
+
+<Screenshot alt="Hộp chọn bài viết" src="/huong-dan/anh/noi-dung/trang-chu-blog-chon-bai.png" />
+
+<Callout type="warn" title="Thẻ là bản chép, không tự đổi theo bài viết">
+  Thẻ chỉ chép nội dung bài viết lúc bạn thêm. Sau đó đổi tiêu đề, ảnh hay đường dẫn của bài ở màn [Bài
+  viết](/huong-dan/noi-dung/bai-viet) thì thẻ **không** đổi theo; xóa bài thì thẻ vẫn còn và bấm vào sẽ ra trang **Trang
+  này không tồn tại**. Khi sửa hay xóa một bài đang có thẻ ở đây, quay lại tab này: bấm **Điền từ bài viết** để cập nhật
+  thẻ, hoặc xóa thẻ.
+</Callout>
+
+<Screenshot alt="Khối BLOGPOST trên website" src="/huong-dan/anh/noi-dung/trang-chu-website-blog.png" />
+
+Trên website: ① ảnh của thẻ giữa, ② tiêu đề, ③ hai dòng chú thích. Các thẻ hai bên chỉ hiện ảnh; ④ nút mũi tên chuyển sang
+thẻ tiếp theo.
+
+### Đối tác
+
+Khối cuối trang chủ: lời giới thiệu, dải logo chạy ngang và nút kêu gọi.
+
+<Screenshot alt="Tab Đối tác" src="/huong-dan/anh/noi-dung/trang-chu-doi-tac.png" />
+
+- ① **Tiêu đề**: mỗi ô một dòng, tối đa 4 dòng.
+- ② **Nội dung**: tối đa 480 ký tự.
+- ③ **Nhãn nút** và ④ **Liên kết** của nút kêu gọi.
+
+Các logo trong khung **Xem trước** là các đối tác đang bật **Dải logo trang chủ** ở màn [Đối tác](/huong-dan/noi-dung/doi-tac):
+thêm, bớt, đổi thứ tự logo ở màn đó.
+
+<Tabs items={["Máy tính", "Điện thoại"]}>
+<Tab>
+<Screenshot alt="Khối đối tác trên website, máy tính" src="/huong-dan/anh/noi-dung/trang-chu-website-doi-tac.png" />
+
+① Tiêu đề, ② nội dung, ③ dải logo. Trên máy tính khối này **không có** nút kêu gọi.
+
+</Tab>
+<Tab>
+<Screenshot
+  alt="Khối đối tác trên điện thoại"
+  src="/huong-dan/anh/noi-dung/trang-chu-website-doi-tac-mobile.png"
+  device="mobile"
+/>
+
+Trên điện thoại và máy tính bảng, nút kêu gọi ① hiện dưới dải logo.
+
+</Tab>
+</Tabs>
 
 ## Các trường thông tin
 
-<Draft />
+<FieldTable
+  fields={[
+    {
+      name: "Hero › Ảnh & video banner",
+      required: true,
+      description:
+        "Ảnh, video YouTube chạy lần lượt ở đầu trang chủ: ảnh 5 giây, video 15 giây. Cần ít nhất 1. Nên dùng ảnh ngang.",
+      example: "5 ảnh sự kiện",
+    },
+    {
+      name: "Giới thiệu › Tiêu đề",
+      required: true,
+      description: "Các dòng chữ lớn, mỗi ô một dòng, 1 đến 4 dòng.",
+      example: "SUPPORTING / LOCAL / ARTISTS.",
+    },
+    {
+      name: "Giới thiệu › Đoạn giới thiệu",
+      required: true,
+      description: "Tối đa 130 ký tự; website chỉ hiện 3 dòng trên máy tính.",
+      example: "HOOKED ENTERTAINMENT SẼ LÀ BỆ PHÓNG CHO…",
+    },
+    {
+      name: "Highlight › Tiêu đề",
+      required: true,
+      description: "Chữ lớn trên thẻ, tối đa 14 ký tự.",
+      example: "ACADEMY",
+    },
+    {
+      name: "Highlight › Liên kết",
+      required: true,
+      description: "Trang mở ra khi bấm thẻ.",
+      example: "/academy",
+    },
+    {
+      name: "Highlight › Vị trí chữ trên desktop",
+      description: "Chữ ở góc trái hay góc phải của thẻ, trên máy tính.",
+      example: "Bên phải",
+    },
+    {
+      name: "Highlight › Ảnh nền",
+      required: true,
+      description: "Ảnh của thẻ, được cắt theo khung ngang của thẻ.",
+      example: "Ảnh DJ biểu diễn",
+    },
+    {
+      name: "Dịch vụ › Tên dịch vụ",
+      required: true,
+      description: "Tên trên thẻ dịch vụ.",
+      example: "MEDIA",
+    },
+    {
+      name: "Dịch vụ › Liên kết",
+      required: true,
+      description: "Trang mở ra khi bấm thẻ.",
+      example: "/projects",
+    },
+    {
+      name: "Dịch vụ › Xuống dòng trên desktop",
+      description: "Tên chia thành từng dòng trên máy tính, tối đa 3 dòng. Để trống thì dùng Tên dịch vụ.",
+      example: "ARTISTS MANAGEMENT / & BOOKING",
+    },
+    {
+      name: "Dịch vụ › Mô tả",
+      required: true,
+      description: "Đoạn ngắn dưới tên, tối đa 220 ký tự.",
+      example: "Hỗ trợ tối đa cho các nghệ sĩ về mặt hình ảnh & truyền thông…",
+    },
+    {
+      name: "Dịch vụ › Ảnh",
+      required: true,
+      description: "Ảnh của thẻ dịch vụ.",
+      example: "Poster sự kiện",
+    },
+    {
+      name: "Blog carousel › Tiêu đề",
+      required: true,
+      description: "Tiêu đề dưới ảnh của thẻ giữa.",
+      example: "VUI FEST CÁT BÀ",
+    },
+    {
+      name: "Blog carousel › Liên kết",
+      required: true,
+      description: "Trang mở ra khi bấm thẻ, thường là một bài viết.",
+      example: "/blog/vui-fest-cat-ba",
+    },
+    {
+      name: "Blog carousel › Chú thích dòng 1, dòng 2",
+      required: true,
+      description: "Hai dòng chữ nhỏ dưới tiêu đề, mỗi dòng tối đa 32 ký tự. Dòng 2 không bắt buộc.",
+      example: "Hooked × Sun Group / Bệ phóng cho nghệ sĩ trẻ",
+    },
+    {
+      name: "Blog carousel › Ảnh",
+      required: true,
+      description: "Ảnh của thẻ, nên là ảnh dọc.",
+      example: "Ảnh bìa bài viết",
+    },
+    {
+      name: "Blog carousel › Thẻ giữa",
+      description: "Thẻ nằm giữa khi trang chủ vừa mở. Luôn có đúng một thẻ.",
+      example: "VUI FEST CÁT BÀ",
+    },
+    {
+      name: "Đối tác › Tiêu đề",
+      required: true,
+      description: "Các dòng tiêu đề của khối, 1 đến 4 dòng.",
+      example: "HOOKED ENTERTAINMENT / ĐỒNG HÀNH CÙNG CÁC / THƯƠNG HIỆU LỚN",
+    },
+    {
+      name: "Đối tác › Nội dung",
+      required: true,
+      description: "Đoạn giới thiệu, tối đa 480 ký tự.",
+      example: "Hơn cả một academy, Hooked Entertainment là cầu nối…",
+    },
+    {
+      name: "Đối tác › Nhãn nút, Liên kết",
+      required: true,
+      description: "Nút kêu gọi dưới dải logo, chỉ hiện trên điện thoại và máy tính bảng.",
+      example: "Đối tác của Hooked → /partners",
+    },
+  ]}
+/>
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+### "Tối đa 130 ký tự (3 dòng)."
+
+Đoạn giới thiệu ở tab **Giới thiệu** quá dài. Khi bấm lưu mà còn ô sai, CMS mở ngay tab có lỗi, tab đó có chấm đỏ ①, câu
+báo lỗi hiện dưới ô ②, và dòng đếm số dòng ③ chuyển đỏ. Rút ngắn đoạn văn rồi lưu lại.
+
+<Screenshot alt="Lỗi đoạn giới thiệu quá dài" src="/huong-dan/anh/noi-dung/trang-chu-loi.png" />
+
+Các tab khác cũng vậy: tab nào có chấm đỏ thì mở tab đó và sửa ô tô đỏ. Các câu báo thiếu thường gặp: **Nhập ít nhất 1
+dòng tiêu đề.**, **Nhập đoạn giới thiệu.**, **Nhập tiêu đề thẻ.**, **Chọn ảnh nền.**, **Nhập tên dịch vụ.**, **Nhập mô
+tả ngắn.**, **Chọn ảnh.**, **Nhập dòng chú thích 1.**, **Nhập nội dung.**, **Nhập nhãn.**, **Nhập đường dẫn.**
+
+### "Cần ít nhất 1 ảnh hoặc video banner."
+
+Tab **Hero** không còn ảnh hay video nào. Thêm ít nhất một ảnh rồi lưu lại.
+
+### "Bắt đầu bằng / hoặc https://"
+
+Ô **Liên kết** phải là đường dẫn trong website (bắt đầu bằng `/`, ví dụ `/academy`) hoặc địa chỉ đầy đủ (bắt đầu bằng
+`https://`). Bấm **Chọn** để chọn trang thay vì gõ tay.
+
+### "Không đọc được link. Dán link YouTube (watch, youtu.be, shorts…) hoặc ID 11 ký tự."
+
+Link dán vào hộp **Thêm video YouTube** không phải link YouTube. Mở video trên YouTube, bấm **Chia sẻ**, sao chép link rồi
+dán lại. Nếu báo **Video không công khai hoặc không cho phép nhúng.**: video đang để riêng tư, hoặc chủ kênh tắt nhúng
+video; đổi sang video công khai.
+
+### Thẻ ở Blog carousel dẫn tới "Trang này không tồn tại"
+
+Bài viết của thẻ đã bị xóa, chuyển về bản nháp hoặc đổi đường dẫn. Mở tab **Blog carousel**, bấm **Điền từ bài viết** để
+điền lại thẻ, hoặc xóa thẻ, rồi lưu.
 
 ## Liên quan
 
-<Draft />
+- [Đối tác](/huong-dan/noi-dung/doi-tac): logo trong dải đối tác của trang chủ.
+- [Bài viết](/huong-dan/noi-dung/bai-viet): bài viết dùng cho Blog carousel.
+- [Danh mục dự án](/huong-dan/quan-ly-du-an/danh-muc-du-an): liên kết `?service=` của các thẻ dịch vụ.
+- [Nội dung các trang](/huong-dan/bat-dau/quy-uoc-chung#nội-dung-các-trang): Xem trang, Khôi phục mặc định, thanh lưu.
+- [Sửa ở đâu, hiện ở đâu](/huong-dan/tham-khao/sua-o-dau-hien-o-dau): bảng tra cho toàn website.
