@@ -1,6 +1,6 @@
 "use client";
 
-import { Bell, ExternalLink } from "lucide-react";
+import { Bell, BookOpen, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -35,6 +35,17 @@ export function AdminHeader() {
               </a>
             </Button>
           ) : null}
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Button variant="ghost" size="icon" asChild>
+                {/* New tab: the reader keeps the screen they are working on. */}
+                <a href="/huong-dan" target="_blank" rel="noopener" aria-label="Hướng dẫn sử dụng">
+                  <BookOpen />
+                </a>
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>Hướng dẫn sử dụng</TooltipContent>
+          </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>
               <Button variant="ghost" size="icon" asChild className="relative">
