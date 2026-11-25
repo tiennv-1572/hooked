@@ -43,14 +43,18 @@ export async function login(page: Page, role: Role = "owner") {
 }
 
 /** A numbered mark: an outline around `target` and its number in a badge at the top-left corner. */
+export type MarkPlace = "above" | "below" | "corner" | "left" | "right";
+
 export type Mark = {
   n: number;
   target: Locator;
   /**
    * Where the number sits: "corner" (default, top-left corner of the outline), "right" or "left" (beside it,
-   * centred). Beside it for a target that is just text: the corner badge would cover its first letter.
+   * centred), "below" or "above" (under or over it, centred). Beside it for a target that is just text: the corner
+   * badge would cover its first letter; below or above it for a row of buttons or icons, where numbers beside them
+   * would collide.
    */
-  at?: "corner" | "left" | "right";
+  at?: MarkPlace;
   /** Outline the text itself rather than its element (a block of text is as wide as its container). */
   tight?: boolean;
 };
@@ -95,7 +99,8 @@ export async function shot(page: Page, file: string, options: ShotOptions = {}) 
 
   // One scroll, then every box is measured in the same window.
   await scrollClearOfHeader(page, area ?? marks[0]?.target);
-  const clip = area ? await clipAround(page, area, padding) : undefined;
+  // A picture above that finishes loading can still push everything down: measure once nothing moves.
+  await untilStill(area ?? marks[0]?.target);
   const boxes = await Promise.all(
     marks.map(async (mark) => ({
       ...(mark.tight ? await textBoxOf(mark.target, mark.n) : await boxOf(mark.target, mark.n)),
@@ -103,6 +108,8 @@ export async function shot(page: Page, file: string, options: ShotOptions = {}) 
       n: mark.n,
     })),
   );
+  // The area grows to take in every mark and its number (a number beside a full-width box is outside the box).
+  const clip = area ? await clipAround(page, area, padding, boxes.map(markExtent)) : undefined;
 
   for (const locator of hide)
     await locator.evaluateAll((nodes) => nodes.forEach((node) => node.setAttribute("data-huong-dan-hidden", "")));
@@ -241,7 +248,7 @@ function drawMarks({
   boxes,
   color,
 }: {
-  boxes: { at: "corner" | "left" | "right"; height: number; n: number; width: number; x: number; y: number }[];
+  boxes: { at: MarkPlace; height: number; n: number; width: number; x: number; y: number }[];
   color: string;
 }) {
   if (boxes.length === 0) return;
@@ -261,7 +268,11 @@ function drawMarks({
         ? [box.x + box.width + 10, middle]
         : box.at === "left"
           ? [box.x - 36, middle]
-          : [box.x - 16, box.y - 16];
+          : box.at === "below"
+            ? [box.x + box.width / 2 - 13, box.y + box.height + 8]
+            : box.at === "above"
+              ? [box.x + box.width / 2 - 13, box.y - 34]
+              : [box.x - 16, box.y - 16];
     badge.style.cssText = `position:absolute;left:${Math.max(left, 2)}px;top:${Math.max(top, 2)}px;width:26px;height:26px;border-radius:50%;background:${color};color:#fff;font:700 14px/26px system-ui,sans-serif;text-align:center;box-shadow:0 0 0 2px #fff,0 2px 6px rgba(0,0,0,.3)`;
     layer.append(outline, badge);
   }
@@ -269,24 +280,65 @@ function drawMarks({
   layer.showPopover();
 }
 
-async function clipAround(page: Page, area: Locator, padding: number) {
+type Box = { height: number; width: number; x: number; y: number };
+
+/** What a mark draws: its outline (4px out) and its number, as placed by drawMarks. */
+function markExtent(box: Box & { at: MarkPlace }): Box {
+  const middle = box.y + box.height / 2 - 13;
+  const badge =
+    box.at === "right"
+      ? { x: box.x + box.width + 10, y: middle }
+      : box.at === "left"
+        ? { x: box.x - 36, y: middle }
+        : box.at === "below"
+          ? { x: box.x + box.width / 2 - 13, y: box.y + box.height + 8 }
+          : box.at === "above"
+            ? { x: box.x + box.width / 2 - 13, y: box.y - 34 }
+            : { x: box.x - 16, y: box.y - 16 };
+  const left = Math.min(box.x - 4, badge.x) - 4;
+  const top = Math.min(box.y - 4, badge.y) - 4;
+  const right = Math.max(box.x + box.width + 4, badge.x + 26) + 4;
+  const bottom = Math.max(box.y + box.height + 4, badge.y + 26) + 4;
+  return { height: bottom - top, width: right - left, x: left, y: top };
+}
+
+async function clipAround(page: Page, area: Locator, padding: number, include: Box[] = []) {
   const box = await boxOf(area, 0);
   const viewport = page.viewportSize() ?? { height: 800, width: 1280 };
-  const x = Math.max(box.x - padding, 0);
-  const y = Math.max(box.y - padding, 0);
+  const all = [
+    { height: box.height + 2 * padding, width: box.width + 2 * padding, x: box.x - padding, y: box.y - padding },
+    ...include,
+  ];
+  const x = Math.max(Math.min(...all.map((b) => b.x)), 0);
+  const y = Math.max(Math.min(...all.map((b) => b.y)), 0);
   return {
-    height: Math.min(box.y + box.height + padding, viewport.height) - y,
-    width: Math.min(box.x + box.width + padding, viewport.width) - x,
+    height: Math.min(Math.max(...all.map((b) => b.y + b.height)), viewport.height) - y,
+    width: Math.min(Math.max(...all.map((b) => b.x + b.width)), viewport.width) - x,
     x,
     y,
   };
 }
 
-/** The innermost block that holds every one of `parts`, e.g. a form card around a field and its title. */
+/**
+ * The innermost block that holds every one of `parts`, e.g. a form card around a field and its title. The parts must
+ * be page-level locators (`page.getBy…`): one chained from another element is looked for inside each candidate.
+ */
 export function container(page: Page, ...parts: Locator[]): Locator {
   let block = page.locator("div, section, aside, article, header, form");
   for (const part of parts) block = block.filter({ has: part });
   return block.last();
+}
+
+/** Waits (at most ~3s) until `target` keeps the same box for two checks in a row. */
+async function untilStill(target: Locator | undefined) {
+  if (!target) return;
+  let last = "";
+  for (let i = 0; i < 15; i += 1) {
+    const box = JSON.stringify(await target.boundingBox());
+    if (box === last) return;
+    last = box;
+    await target.page().waitForTimeout(200);
+  }
 }
 
 /** Into view, and not under a sticky page header (the CMS's is 56px, the website's taller). */

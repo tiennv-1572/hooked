@@ -3,4 +3,62 @@ title: "Vai trò và quyền truy cập"
 description: "Chủ sở hữu, Quản trị và Biên tập: mỗi vai trò làm được gì trong CMS."
 ---
 
-<Draft />
+Mỗi tài khoản CMS có một trong ba vai trò: **Chủ sở hữu**, **Quản trị** hoặc **Biên tập**. Vai trò quyết định bạn được
+quản lý người dùng hay không; còn với nội dung website, cả ba vai trò làm được như nhau.
+
+## Xem vai trò của bạn
+
+Vai trò hiện cạnh tên bạn ở đầu màn [Tài khoản của tôi](/huong-dan/bat-dau/tai-khoan-cua-toi) ①, và ở dòng dưới tên khi
+bấm vào menu tài khoản cuối menu bên trái.
+
+<Screenshot alt="Vai trò cạnh tên trong Tài khoản của tôi" src="/huong-dan/anh/bat-dau/vai-tro-cua-toi.png" />
+
+## Mỗi vai trò làm được gì
+
+| Việc                                                                                                        | Chủ sở hữu    | Quản trị                         | Biên tập |
+| ----------------------------------------------------------------------------------------------------------- | ------------- | -------------------------------- | -------- |
+| Xem, thêm, sửa, xóa nội dung: khóa học, học viên, dự án, bài viết, đối tác, các trang, menu, thư viện media | Có            | Có                               | Có       |
+| Xuất bản, chuyển về nháp                                                                                    | Có            | Có                               | Có       |
+| Xử lý [đăng ký tư vấn](/huong-dan/tong-quan/dang-ky-tu-van)                                                 | Có            | Có                               | Có       |
+| Sửa [Cài đặt website](/huong-dan/he-thong/cai-dat-website)                                                  | Có            | Có                               | Có       |
+| Sửa hồ sơ, đổi mật khẩu của chính mình                                                                      | Có            | Có                               | Có       |
+| Mời người dùng, đổi vai trò, khóa, xóa, cấp mật khẩu tạm                                                    | Có            | Có, trừ tài khoản Chủ sở hữu     | Không    |
+| Giao vai trò cho người khác                                                                                 | Cả ba vai trò | Chỉ **Quản trị** và **Biên tập** | Không    |
+| [Khôi phục dữ liệu mẫu](/huong-dan/he-thong/khoi-phuc-du-lieu-mau)                                          | Có            | Không                            | Không    |
+
+Với mọi vai trò:
+
+- không ai tự đổi vai trò, tự khóa hay tự xóa tài khoản của chính mình;
+- CMS luôn cần ít nhất một **Chủ sở hữu** đang hoạt động: không đổi vai trò, khóa hay xóa được Chủ sở hữu cuối cùng.
+
+Cách mời người dùng và đổi vai trò: xem [Người dùng](/huong-dan/he-thong/nguoi-dung).
+
+## Biên tập viên ở màn Người dùng
+
+Tài khoản **Biên tập** vẫn mở được màn **Người dùng** để xem ai đang dùng CMS, nhưng nút **Mời người dùng** bị mờ ① và
+màn báo **Bạn đang xem với quyền Biên tập** ②.
+
+<Screenshot
+  alt="Màn Người dùng khi đăng nhập bằng tài khoản Biên tập"
+  src="/huong-dan/anh/bat-dau/vai-tro-bien-tap-nguoi-dung.png"
+/>
+
+<Callout type="warn" title="Bảng quyền trên màn Người dùng chưa khớp với CMS">
+  Màn **Người dùng** có một bảng quyền ghi rằng Biên tập chỉ xuất bản được bản nháp, không xóa được nội dung, chỉ xem
+  đăng ký tư vấn và không sửa được Cài đặt website. Hiện CMS **chưa chặn** những việc đó: tài khoản Biên tập vẫn làm
+  được như bảng ở trên. Chỉ giao tài khoản (kể cả Biên tập) cho người tin cậy, và thống nhất trong nhóm ai được xóa nội
+  dung, ai được sửa Cài đặt website.
+</Callout>
+
+## Chọn vai trò nào cho ai
+
+- **Chủ sở hữu**: một hai người chịu trách nhiệm cuối cùng về website. Nên có ít nhất hai Chủ sở hữu để không bị khóa
+  ngoài khi một người quên mật khẩu.
+- **Quản trị**: người phụ trách vận hành hằng ngày, cần mời người mới và cấp lại mật khẩu cho đồng nghiệp.
+- **Biên tập**: người soạn và cập nhật nội dung.
+
+## Liên quan
+
+- [Người dùng](/huong-dan/he-thong/nguoi-dung): mời người dùng, đổi vai trò, khóa tài khoản, cấp mật khẩu tạm.
+- [Tài khoản của tôi](/huong-dan/bat-dau/tai-khoan-cua-toi): hồ sơ và mật khẩu của bạn.
+- [Khôi phục dữ liệu mẫu](/huong-dan/he-thong/khoi-phuc-du-lieu-mau): việc chỉ Chủ sở hữu làm được.
