@@ -1,0 +1,6 @@
+{
+  "title": "Bắt đầu",
+  "pages": ["dang-nhap", "giao-dien-cms", "vai-tro", "tai-khoan-cua-toi", "quy-uoc-chung"],
+  "icon": "Rocket",
+  "defaultOpen": true
+}
