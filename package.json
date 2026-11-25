@@ -20,7 +20,9 @@
     "db:studio": "drizzle-kit studio",
     "db:seed": "tsx scripts/db-seed.ts",
     "db:reset": "tsx scripts/db-seed.ts --reset",
-    "db:setup": "pnpm db:migrate && pnpm db:seed"
+    "db:setup": "pnpm db:migrate && pnpm db:seed",
+    "docs:stack": "bash scripts/huong-dan/stack.sh",
+    "docs:screenshots": "playwright test -c playwright.huong-dan.config.ts"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

@@ -20,7 +20,9 @@ type ScreenshotProps = {
  */
 export function Screenshot({ alt, caption, device = "desktop", src }: ScreenshotProps) {
   const size = guideImageSize(src);
-  const frame = device === "mobile" ? "mx-auto max-w-[320px]" : "";
+  // At its own size, centred, never wider than the column: a dialog cropped at 450px is not blown up to the column's
+  // width (blurry, oversized), a full window still fills it.
+  const frame = device === "mobile" ? "mx-auto max-w-[320px]" : "mx-auto w-fit max-w-full";
 
   return (
     <figure className={`not-prose my-6 ${frame}`}>
@@ -29,7 +31,14 @@ export function Screenshot({ alt, caption, device = "desktop", src }: Screenshot
           <ImageZoom alt={alt} height={size.height} src={src} width={size.width}>
             {/* `unoptimized`: the pictures sit behind the guide's sign-in (proxy.ts), which the image optimizer's
                 own request, made without the reader's cookie, cannot pass. They are PNGs sized for the page. */}
-            <Image alt={alt} className="h-auto w-full" height={size.height} src={src} unoptimized width={size.width} />
+            <Image
+              alt={alt}
+              className={device === "mobile" ? "h-auto w-full" : "h-auto w-auto max-w-full"}
+              height={size.height}
+              src={src}
+              unoptimized
+              width={size.width}
+            />
           </ImageZoom>
         </div>
       ) : (
