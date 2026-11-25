@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Admin guide: fumadocs-mdx output and the screenshot stack's copy of the repo (scripts/huong-dan/stack.sh).
+    ".source/**",
+    ".huong-dan-stack/**",
   ]),
 ]);
 

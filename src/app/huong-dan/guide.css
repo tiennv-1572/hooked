@@ -1,0 +1,16 @@
+/*
+ * Styles of the CMS guide (/huong-dan) only — imported by its root layout, never by the website or the CMS.
+ * Its own Tailwind entry, so Fumadocs' preset (colours, typography, layout) is generated here and nowhere
+ * else.
+ */
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+
+/* The CMS's own primary colour and font (src/admin/styles/admin.css): links, the active page in the menu, focus rings. */
+@theme {
+  --font-sans: var(--font-inter-face), ui-sans-serif, system-ui, sans-serif;
+  --color-fd-primary: oklch(0.64 0.19 39);
+  --color-fd-primary-foreground: #ffffff;
+  --color-fd-ring: oklch(0.64 0.19 39);
+}

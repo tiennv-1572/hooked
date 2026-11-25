@@ -54,3 +54,8 @@ next-env.d.ts
 # release packages and hosting credentials (scripts/release.sh)
 /releases/
 /deploy.config
+
+# Hướng dẫn Admin: fumadocs-mdx output, screenshot stack, PDF
+/.source
+/.huong-dan-stack
+/.huong-dan-pdf
