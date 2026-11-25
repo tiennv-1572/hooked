@@ -1,6 +1,7 @@
 import type { NewItem } from "@/admin/lib/cms/registry";
 import { ADMIN_ONLY_COLLECTIONS, affectedKeys, collectionKey } from "@/server/api/admin-keys";
 import { HttpError, invalidate, withAdmin } from "@/server/api/http";
+import { assertCanCreateUser } from "@/server/auth/user-permissions";
 import { setUserPassword, takePassword } from "@/server/auth/users";
 import { createItem, listItems } from "@/server/cms/repository";
 
@@ -20,6 +21,7 @@ export const POST = withAdmin<Context>(async (request, { params }, user) => {
   }
   // `users` may carry a write-only temporary password (invite flow); it is hashed into its own column.
   const { password, rest } = takePassword((await request.json()) as Record<string, unknown>);
+  if (key === "users") assertCanCreateUser(user, rest);
   const item = await createItem(key, rest as NewItem<typeof key>);
   if (key === "users" && password) await setUserPassword(item.id, password);
   invalidate(...affectedKeys(key));

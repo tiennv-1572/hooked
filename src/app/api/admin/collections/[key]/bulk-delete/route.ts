@@ -2,6 +2,7 @@ import { z } from "zod";
 
 import { ADMIN_ONLY_COLLECTIONS, affectedKeys, collectionKey } from "@/server/api/admin-keys";
 import { HttpError, invalidate, parseJson, withAdmin } from "@/server/api/http";
+import { assertCanDeleteUsers } from "@/server/auth/user-permissions";
 import { removeItems } from "@/server/cms/repository";
 
 type Context = { params: Promise<{ key: string }> };
@@ -14,6 +15,7 @@ export const POST = withAdmin<Context>(async (request, { params }, user) => {
     throw new HttpError(403, "forbidden", "Bạn không có quyền thực hiện thao tác này.");
   }
   const { ids } = await parseJson(request, body);
+  if (key === "users") await assertCanDeleteUsers(user, ids);
   await removeItems(key, ids);
   invalidate(...affectedKeys(key));
   return new Response(null, { status: 204 });

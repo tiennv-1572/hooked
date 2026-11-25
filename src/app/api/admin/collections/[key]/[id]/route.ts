@@ -1,6 +1,7 @@
 import type { CollectionKey } from "@/admin/lib/cms/registry";
 import { ADMIN_ONLY_COLLECTIONS, affectedKeys, collectionKey } from "@/server/api/admin-keys";
 import { errorResponse, HttpError, invalidate, withAdmin } from "@/server/api/http";
+import { assertCanDeleteUsers, assertCanUpdateUser } from "@/server/auth/user-permissions";
 import { setUserPassword, takePassword } from "@/server/auth/users";
 import type { SessionUser } from "@/server/auth/session";
 import { getItem, removeItems, updateItem } from "@/server/cms/repository";
@@ -22,6 +23,7 @@ export const PATCH = withAdmin<Context>(async (request, { params }, user) => {
     throw new HttpError(403, "forbidden", "Bạn không có quyền thực hiện thao tác này.");
   }
   const { password, rest } = takePassword((await request.json()) as Record<string, unknown>);
+  if (key === "users") await assertCanUpdateUser(user, id, rest);
   if (password) await assertCanSetPassword(key, id, user);
   const item = await updateItem(key, id, rest);
   if (password) await setUserPassword(id, password);
@@ -54,6 +56,7 @@ export const DELETE = withAdmin<Context>(async (_request, { params }, user) => {
   if (ADMIN_ONLY_COLLECTIONS.includes(key) && user.role === "editor") {
     throw new HttpError(403, "forbidden", "Bạn không có quyền thực hiện thao tác này.");
   }
+  if (key === "users") await assertCanDeleteUsers(user, [id]);
   await removeItems(key, [id]);
   invalidate(...affectedKeys(key));
   return new Response(null, { status: 204 });
