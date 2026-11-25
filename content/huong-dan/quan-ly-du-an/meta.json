@@ -1,0 +1,5 @@
+{
+  "title": "Quản lý dự án",
+  "pages": ["danh-muc-du-an", "du-an", "cai-dat-hien-thi-du-an"],
+  "icon": "FolderKanban"
+}

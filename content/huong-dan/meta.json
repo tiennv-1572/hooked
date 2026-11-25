@@ -1,5 +1,15 @@
 {
   "title": "Hướng dẫn CMS",
   "root": true,
-  "pages": ["index"]
+  "pages": [
+    "index",
+    "bat-dau",
+    "tong-quan",
+    "quan-ly-academy",
+    "quan-ly-du-an",
+    "noi-dung",
+    "trang",
+    "he-thong",
+    "tham-khao"
+  ]
 }
