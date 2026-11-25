@@ -1,32 +1,168 @@
 ---
 title: "Partners"
-description: "Giới thiệu và các dự án hợp tác trên trang Partners (logo đối tác sửa ở mục Đối tác)."
+description: "Giới thiệu và các thẻ dự án hợp tác trên trang Partners. Logo đối tác sửa ở mục Đối tác."
 ---
 
 <AdminPath trail={["Trang", "Partners"]} href="/admin/pages/partners" />
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Màn này sửa trang Partners (`/partners`):
+
+- **Giới thiệu**: tiêu đề lớn và đoạn giới thiệu đầu trang;
+- **Dự án hợp tác**: các thẻ dự án làm cùng đối tác (ảnh, tên dự án, tên đối tác, liên kết).
+
+Dải logo đối tác (**Lưới logo**) chỉ hiện lại ở đây để xem: thêm, bớt, đổi thứ tự logo ở màn
+[Đối tác](/huong-dan/noi-dung/doi-tac), bằng nút **Trang Partners** của từng đối tác. Cả ba vai trò (Chủ sở hữu, Quản trị,
+Biên tập) đều dùng được màn này.
 
 ## Hiện ở đâu trên website
 
 <OnWebsite pages={[{ label: "Trang Partners", path: "/partners" }]}>
-  <Screenshot alt="Partners trên website" src="/huong-dan/anh/trang/partners-website.png" />
+  <Screenshot
+    alt="Trang Partners trên website"
+    src="/huong-dan/anh/trang/partners-website.png"
+    caption="① Tiêu đề, ② giới thiệu, ④–⑥ thẻ dự án hợp tác: sửa ở màn này. ③ Dải logo: sửa ở Đối tác. ⑦ Khối Trở thành đối tác: cố định, email lấy ở Cài đặt website."
+  />
 </OnWebsite>
+
+| Trên CMS                           | Trên trang Partners                                                         |
+| ---------------------------------- | --------------------------------------------------------------------------- |
+| Giới thiệu › Tiêu đề               | Tiêu đề lớn ①                                                               |
+| Giới thiệu › Nội dung              | Đoạn giới thiệu ② (cũng là mô tả của trang trên Google và khi chia sẻ link) |
+| Lưới logo (sửa ở Đối tác)          | Dải logo chạy ngang ③                                                       |
+| Dự án hợp tác › Ảnh                | Ảnh của thẻ ④                                                               |
+| Dự án hợp tác › Tên dự án, Đối tác | Tên dự án ⑤ và dòng tên đối tác ⑥ dưới ảnh                                  |
+| Dự án hợp tác › Liên kết           | Trang mở ra khi bấm thẻ (cả thẻ bấm được), thường là trang của dự án        |
+
+Chữ **PARTNERS** nhỏ màu cam đầu trang và khối ⑦ **Trở thành đối tác của Hooked Entertainment** là chữ cố định; bấm khối ⑦
+thì mở email gửi tới địa chỉ email ở [Cài đặt website](/huong-dan/he-thong/cai-dat-website). Tiêu đề tab trình duyệt luôn
+là **Partners · Hooked Entertainment**.
+
+Website cập nhật ngay khi bạn lưu: tải lại trang Partners là thấy.
 
 ## Các bước thao tác
 
-<Draft />
+### Sửa và lưu
+
+Trên menu bên trái, bấm **Trang › Partners**. Sửa các khung, rồi bấm **Lưu thay đổi** (<kbd>Ctrl</kbd> + <kbd>S</kbd>) ở
+thanh dưới cùng. Góc trên bên phải báo **Đã lưu Trang partners.** Phần giới thiệu và các thẻ dự án hợp tác được lưu cùng
+lúc. Hai nút **Xem trang** và **Khôi phục mặc định** ở đầu màn: xem
+[Nội dung các trang](/huong-dan/bat-dau/quy-uoc-chung#nội-dung-các-trang).
+
+### Giới thiệu và lưới logo
+
+<Screenshot alt="Khung Giới thiệu và Lưới logo" src="/huong-dan/anh/trang/partners.png" />
+
+- ① **Tiêu đề**: tiêu đề lớn đầu trang. Số đếm /90 là độ dài nên dùng; CMS vẫn cho lưu dài hơn.
+- ② **Nội dung**: đoạn giới thiệu, có thanh công cụ in đậm, nghiêng, gạch chân, liên kết, danh sách, trích dẫn. Xem
+  [Ô soạn thảo](/huong-dan/bat-dau/quy-uoc-chung#ô-soạn-thảo).
+- ③ **Lưới logo**: các logo đang hiện trên trang Partners, đúng thứ tự. Chỉ để xem.
+- ④ **Quản lý đối tác**: mở màn [Đối tác](/huong-dan/noi-dung/doi-tac) để thêm, bớt, sắp xếp logo.
+
+### Dự án hợp tác
+
+Mỗi thẻ là một dòng trong danh sách. Bấm vào một dòng để mở các ô của thẻ đó.
+
+<Screenshot alt="Khung Dự án hợp tác, mở thẻ đầu tiên" src="/huong-dan/anh/trang/partners-du-an-hop-tac.png" />
+
+- ① Dòng của thẻ: bấm để mở hoặc thu gọn. Nút kéo ⋮⋮ bên trái để đổi thứ tự, hai nút bên phải để nhân bản, xóa thẻ. Xem
+  [Danh sách trong form](/huong-dan/bat-dau/quy-uoc-chung#danh-sách-trong-form).
+- ② **Điền từ dự án**: chọn một dự án, CMS điền lại thẻ đang mở bằng tên dự án, các đối tác, liên kết tới trang dự án và
+  ảnh của dự án.
+- ③ **Tên dự án**, ④ **Đối tác**: chữ dưới ảnh của thẻ.
+- ⑤ **Liên kết**: trang mở ra khi bấm thẻ. Bấm **Chọn** bên phải ô để chọn một dự án, trang hay bài viết; tên trang đang
+  chọn hiện ở góc phải phía trên ô.
+- ⑥ **Ảnh** của thẻ, nên là ảnh ngang (3:2).
+- ⑦ **Thêm thẻ trống**: thêm một thẻ để tự điền.
+- ⑧ **Thêm từ dự án**: thêm một thẻ đã điền sẵn từ một dự án.
+
+**Thêm từ dự án**: bấm nút ⑧, gõ tên dự án vào ô tìm ①, rồi bấm vào dự án ②. Thẻ mới được thêm vào cuối danh sách, góc
+trên bên phải báo **Đã thêm “…” vào cuối danh sách.** Bên phải mỗi dự án là trạng thái của dự án (đã xuất bản hay bản
+nháp); dự án chưa có đối tác thì ghi **Chưa có đối tác**, khi đó bạn tự gõ ô **Đối tác** của thẻ.
+
+<Screenshot alt="Hộp chọn dự án" src="/huong-dan/anh/trang/partners-chon-du-an.png" />
+
+<Callout type="warn" title="Thẻ là bản chép, không tự đổi theo dự án">
+  Thẻ chỉ chép tên, đối tác, đường dẫn và ảnh của dự án lúc bạn thêm. Sau đó đổi đường dẫn (slug), chuyển dự án về bản
+  nháp hay xóa dự án ở màn [Dự án](/huong-dan/quan-ly-du-an/du-an#đổi-đường-dẫn-slug) thì thẻ **không** đổi theo, và bấm
+  vào sẽ ra trang **Trang này không tồn tại**. Khi đó quay lại đây: mở thẻ, bấm **Điền từ dự án** để điền lại, hoặc xóa
+  thẻ, rồi lưu.
+</Callout>
 
 ## Các trường thông tin
 
-<Draft />
+<FieldTable
+  fields={[
+    {
+      name: "Giới thiệu › Tiêu đề",
+      required: true,
+      description: "Tiêu đề lớn đầu trang. Nên dưới 90 ký tự.",
+      example: "HOOKED ENTERTAINMENT ĐỒNG HÀNH CÙNG CÁC THƯƠNG HIỆU LỚN",
+    },
+    {
+      name: "Giới thiệu › Nội dung",
+      required: true,
+      description: "Đoạn giới thiệu dưới tiêu đề; cũng là mô tả của trang trên Google và khi chia sẻ.",
+      example: "Hơn cả một academy, Hooked Entertainment là cầu nối thực chiến…",
+    },
+    {
+      name: "Dự án hợp tác › Tên dự án",
+      required: true,
+      description: "Tên dưới ảnh của thẻ.",
+      example: "Vui Fest Cát Bà",
+    },
+    {
+      name: "Dự án hợp tác › Đối tác",
+      required: true,
+      description: "Dòng chữ nhỏ dưới tên dự án: các đối tác của dự án.",
+      example: "Golden Sky Media - Sun Group",
+    },
+    {
+      name: "Dự án hợp tác › Liên kết",
+      required: true,
+      description: "Trang mở ra khi bấm thẻ. Bắt đầu bằng / hoặc https://.",
+      example: "/projects/vui-fest-cat-ba",
+    },
+    {
+      name: "Dự án hợp tác › Ảnh",
+      required: true,
+      description: "Ảnh của thẻ, nên là ảnh ngang.",
+      example: "Ảnh đội ngũ tại sự kiện",
+    },
+  ]}
+/>
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+### "Nhập tên dự án.", "Nhập tên đối tác.", "Nhập đường dẫn.", "Chọn ảnh."
+
+Một thẻ dự án hợp tác còn thiếu ô, thường là thẻ vừa thêm bằng **Thêm thẻ trống**. Câu báo lỗi hiện dưới từng ô của
+thẻ ①–④. Điền đủ các ô, hoặc xóa thẻ, hoặc bấm **Hoàn tác** để bỏ các thay đổi chưa lưu.
+
+<Screenshot alt="Lỗi của một thẻ còn trống" src="/huong-dan/anh/trang/partners-loi.png" />
+
+### "Nhập tiêu đề." và "Nhập nội dung."
+
+Ô **Tiêu đề** hoặc **Nội dung** của khung Giới thiệu còn trống.
+
+### "Bắt đầu bằng / hoặc https://"
+
+Ô **Liên kết** phải là đường dẫn trong website (bắt đầu bằng `/`, ví dụ `/projects/vui-fest-cat-ba`) hoặc địa chỉ đầy đủ
+(bắt đầu bằng `https://`). Bấm **Chọn** để chọn thay vì gõ tay.
+
+### Bấm thẻ dự án hợp tác ra "Trang này không tồn tại"
+
+Dự án của thẻ đã đổi đường dẫn, về bản nháp hoặc bị xóa. Xem
+[Thẻ là bản chép, không tự đổi theo dự án](#dự-án-hợp-tác) ở trên.
+
+### Logo đối tác không có trong lưới logo
+
+Mở màn [Đối tác](/huong-dan/noi-dung/doi-tac), bật **Trang Partners** cho đối tác đó rồi lưu.
 
 ## Liên quan
 
-<Draft />
+- [Đối tác](/huong-dan/noi-dung/doi-tac): logo trong dải logo.
+- [Dự án](/huong-dan/quan-ly-du-an/du-an): dự án dùng cho các thẻ dự án hợp tác.
+- [Cài đặt website](/huong-dan/he-thong/cai-dat-website): email của khối Trở thành đối tác.
+- [Nội dung các trang](/huong-dan/bat-dau/quy-uoc-chung#nội-dung-các-trang): Xem trang, Khôi phục mặc định, thanh lưu.

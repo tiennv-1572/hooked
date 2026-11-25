@@ -1,32 +1,88 @@
 ---
 title: "Học viên tiêu biểu"
-description: "Tiêu đề và giới thiệu của trang Học viên tiêu biểu (câu chuyện học viên sửa ở mục Học viên)."
+description: "Tiêu đề và mô tả của trang Học viên tiêu biểu trên Google và khi chia sẻ. Câu chuyện học viên sửa ở mục Học viên."
 ---
 
 <AdminPath trail={["Trang", "Học viên tiêu biểu"]} href="/admin/pages/students" />
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Màn này chỉ sửa **SEO** của trang Học viên tiêu biểu (`/academy/students`): tiêu đề và mô tả của trang trên Google, trên
+tab trình duyệt và khi chia sẻ link. Các câu chuyện học viên (chân dung, tên, câu chuyện, thứ tự) sửa ở màn
+[Học viên](/huong-dan/quan-ly-academy/hoc-vien).
+
+Tiêu đề **Học viên tiêu biểu**, dòng giới thiệu bên dưới và chữ **Tất cả câu chuyện** là chữ cố định của website, không
+sửa được trong CMS. Cả ba vai trò đều dùng được màn này.
 
 ## Hiện ở đâu trên website
 
 <OnWebsite pages={[{ label: "Trang Học viên tiêu biểu", path: "/academy/students" }]}>
-  <Screenshot alt="Học viên tiêu biểu trên website" src="/huong-dan/anh/trang/hoc-vien-tieu-bieu-website.png" />
+  <Screenshot
+    alt="Trang Học viên tiêu biểu trên website"
+    src="/huong-dan/anh/trang/hoc-vien-tieu-bieu-website.png"
+    caption="① Tiêu đề và ② dòng giới thiệu: cố định. ③ Số học viên: website tự đếm. ④ Các thẻ học viên: sửa ở Học viên."
+  />
 </OnWebsite>
+
+| Trên CMS    | Hiện ở đâu                                                                                                                |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Tiêu đề SEO | Tên tab trình duyệt và dòng chữ xanh trên Google: **Học viên tiêu biểu · Hooked Entertainment**; tiêu đề khi chia sẻ link |
+| Mô tả SEO   | Dòng mô tả dưới tiêu đề trên Google; đoạn mô tả khi chia sẻ link                                                          |
+
+Mô tả SEO hiện có trùng chữ với dòng giới thiệu ② trên trang, nhưng hai chỗ này độc lập: sửa mô tả SEO không đổi dòng ②.
+Đuôi “· Hooked Entertainment” và ảnh khi chia sẻ lấy ở [Cài đặt website](/huong-dan/he-thong/cai-dat-website). Website
+cập nhật ngay khi bạn lưu.
 
 ## Các bước thao tác
 
-<Draft />
+<Steps>
+<Step>
+Trên menu bên trái, bấm **Trang › Học viên tiêu biểu**.
+
+<Screenshot alt="Màn Trang Học viên tiêu biểu" src="/huong-dan/anh/trang/hoc-vien-tieu-bieu.png" />
+</Step>
+<Step>
+Sửa ① **Tiêu đề SEO** và ② **Mô tả SEO**, xem trước ở khung ③.
+</Step>
+<Step>
+Bấm ④ **Lưu thay đổi**. Góc trên bên phải báo **Đã lưu Trang học viên tiêu biểu.**
+</Step>
+</Steps>
+
+Màn này giống hệt màn [Trang › Academy](/huong-dan/trang/academy): cùng hai ô, cùng giới hạn ký tự, cùng câu báo lỗi.
 
 ## Các trường thông tin
 
-<Draft />
+<FieldTable
+  fields={[
+    {
+      name: "Tiêu đề SEO",
+      required: true,
+      description:
+        "Tên trang trên tab trình duyệt, Google và khi chia sẻ. Website tự thêm “· Hooked Entertainment”. Nên dưới 50 ký tự, tối đa 70.",
+      example: "Học viên tiêu biểu",
+    },
+    {
+      name: "Mô tả SEO",
+      required: true,
+      description: "Đoạn mô tả dưới tiêu đề trên Google và khi chia sẻ. Nên dưới 160 ký tự, tối đa 200.",
+      example: "Những câu chuyện từ cộng đồng học viên Hooked.",
+    },
+  ]}
+/>
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+Các câu báo lỗi **Nhập tiêu đề SEO.**, **Nhập mô tả SEO.**, **Tối đa 70 ký tự.**, **Tối đa 200 ký tự.**: xem
+[Trang › Academy](/huong-dan/trang/academy#lưu-ý-và-lỗi-thường-gặp).
+
+### Thêm học viên rồi mà số học viên trên trang chưa đổi
+
+Số ③ chỉ đếm học viên **đã xuất bản**. Mở học viên đó ở màn [Học viên](/huong-dan/quan-ly-academy/hoc-vien) và kiểm tra
+trạng thái xuất bản.
 
 ## Liên quan
 
-<Draft />
+- [Học viên](/huong-dan/quan-ly-academy/hoc-vien): các câu chuyện trên trang này.
+- [Trang › Academy](/huong-dan/trang/academy): màn cùng kiểu, có ảnh câu báo lỗi.
+- [Cài đặt website](/huong-dan/he-thong/cai-dat-website): mẫu tiêu đề và ảnh chia sẻ dùng chung.
