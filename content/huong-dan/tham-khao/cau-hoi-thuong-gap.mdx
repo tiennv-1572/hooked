@@ -3,4 +3,109 @@ title: "Câu hỏi khi vận hành"
 description: "Những câu hỏi hay gặp khi cập nhật nội dung website Hooked."
 ---
 
-<Draft />
+Bấm vào một câu hỏi để xem câu trả lời. Mỗi câu trả lời dẫn tới trang hướng dẫn chi tiết.
+
+## Website và nội dung
+
+<Accordions type="multiple">
+  <Accordion id="da-luu-ma-website-chua-doi" title="Đã lưu mà website chưa đổi">
+    Tải lại trang trên website (<kbd>F5</kbd>): mọi thay đổi hiện ngay sau khi bạn lưu. Nếu vẫn chưa thấy, kiểm tra lần lượt:
+
+    - mục đó đang ở **Bản nháp**? Bản nháp không hiện trên website (xem [Xuất bản và bản nháp](/huong-dan/bat-dau/quy-uoc-chung#xuất-bản-và-bản-nháp));
+    - dự án mới xuất bản chưa có trong lưới **Tất cả** của trang Projects: thêm một ô cho nó ở [Cài đặt hiển thị dự án](/huong-dan/quan-ly-du-an/cai-dat-hien-thi-du-an);
+    - danh mục khóa học mới chỉ có nút lọc khi có khóa học đã xuất bản (xem [Danh mục khóa học](/huong-dan/quan-ly-academy/danh-muc-khoa-hoc));
+    - bài viết hẹn giờ: đến giờ, trang của bài mở được ngay, nhưng **danh sách trang Blog** có thể chậm tới khoảng một giờ. Muốn bài lên danh sách ngay, sửa và lưu một bài viết bất kỳ (xem [Đăng bài và hẹn giờ](/huong-dan/noi-dung/bai-viet#đăng-bài-và-hẹn-giờ)).
+
+  </Accordion>
+  <Accordion id="dang-ky-moi-khong-hien" title="Có học viên vừa gửi đăng ký mà màn Đăng ký tư vấn chưa có">
+    Màn đang mở không tự cập nhật. Tải lại trang (<kbd>F5</kbd>) hoặc mở lại màn: đăng ký mới hiện ở đầu danh sách, số
+    đăng ký mới ở menu và ở chuông cũng cập nhật theo. Xem [Đăng ký tư vấn](/huong-dan/tong-quan/dang-ky-tu-van).
+  </Accordion>
+  <Accordion id="muon-sua-chu-khong-thay-o" title="Muốn sửa một dòng chữ trên website mà không thấy ô nào trong CMS">
+    Tra bảng [Sửa ở đâu, hiện ở đâu](/huong-dan/tham-khao/sua-o-dau-hien-o-dau). Một số chữ là chữ cố định của website
+    (ví dụ tiêu đề **ACADEMY**, **Hooked Projects**, **BLOGPOST**, chữ trong hộp đăng ký khóa học), không sửa được trong
+    CMS: xem mục [Không sửa được trong CMS](/huong-dan/tham-khao/sua-o-dau-hien-o-dau#không-sửa-được-trong-cms).
+  </Accordion>
+  <Accordion id="doi-duong-dan" title="Đổi đường dẫn (slug) bài viết hay dự án thì cần làm gì thêm?">
+    Link cũ báo **Trang này không tồn tại** ngay, website không tự chuyển sang link mới. Những chỗ chép sẵn link cũ
+    **không tự đổi theo**, phải sửa tay:
+
+    - mục trỏ tới bài hay dự án đó ở [Menu & điều hướng](/huong-dan/he-thong/menu-dieu-huong);
+    - thẻ ở [Blog carousel](/huong-dan/noi-dung/trang-chu#blog-carousel) của trang chủ (với bài viết);
+    - thẻ [Dự án hợp tác](/huong-dan/trang/partners#dự-án-hợp-tác) ở trang Partners (với dự án);
+    - link bạn đã đăng lên mạng xã hội hay gửi cho người khác.
+
+    Xóa bài viết hay dự án cũng vậy. Đổi tiêu đề thì đường dẫn **không** đổi, nên đổi tiêu đề an toàn.
+
+  </Accordion>
+  <Accordion id="tam-an" title="Muốn tạm ẩn một mục khỏi website mà không xóa">
+    Chuyển mục đó về **Bản nháp** rồi lưu (khóa học, học viên, dự án, bài viết). Logo đối tác thì tắt **Dải logo trang
+    chủ** hoặc **Trang Partners** của đối tác đó (hoặc dùng **Ẩn khỏi trang chủ** trong menu **…**) ở
+    [Đối tác](/huong-dan/noi-dung/doi-tac); mục menu thì tắt **Hiện** ở [Menu & điều hướng](/huong-dan/he-thong/menu-dieu-huong).
+  </Accordion>
+  <Accordion id="xoa-nham" title="Lỡ xóa nhầm thì làm sao?">
+    CMS không có thùng rác: mục đã xóa không khôi phục được. Cách làm lại:
+
+    - khóa học, học viên, dự án, bài viết, đối tác: thêm lại từ đầu (ảnh vẫn còn trong [Thư viện media](/huong-dan/he-thong/thu-vien-media));
+    - danh mục: thêm lại cùng tên rồi chọn lại danh mục cho các khóa học hay dự án;
+    - đăng ký tư vấn: mất hẳn. Nên [xuất CSV](/huong-dan/tong-quan/dang-ky-tu-van#xuất-csv) định kỳ để có bản lưu;
+    - ảnh đã xóa khỏi thư viện: nội dung đang dùng ảnh đó vẫn hiện ảnh; muốn chọn lại ảnh ở chỗ khác thì tải lên lại.
+
+    Lần sau, muốn tạm ẩn thì dùng **Bản nháp** thay vì xóa.
+
+  </Accordion>
+  <Accordion id="anh-nen-co-nao" title="Ảnh nên cỡ nào, định dạng gì?">
+    Nhận PNG, JPG, WebP, SVG, GIF, AVIF, tối đa 8 MB mỗi ảnh. CMS không tự cắt hay thu nhỏ ảnh, nên chọn ảnh đúng hướng
+    (ngang hay dọc) và đủ nét như ô yêu cầu: trang hướng dẫn của từng màn ghi rõ. Ảnh chụp thẳng từ máy ảnh thường quá 8
+    MB: xuất lại ở chiều rộng khoảng 2000 điểm ảnh. Đặt tên tệp dễ hiểu trước khi tải lên, vì không đổi được sau đó. Xem
+    [Thư viện media](/huong-dan/he-thong/thu-vien-media).
+  </Accordion>
+  <Accordion id="bo-dem-ky-tu" title="Ô hiện bộ đếm như &quot;45/40&quot; mà vẫn gõ tiếp được?">
+    Số ở góc ô là bộ đếm ký tự. Có ô **chặn khi lưu** và báo **Tối đa … ký tự** (ví dụ tên danh mục): rút gọn rồi lưu
+    lại. Có ô **chỉ gợi ý** độ dài nên dùng (ví dụ tiêu đề, mô tả SEO): dài hơn vẫn lưu được, nhưng Google có thể cắt bớt
+    khi hiện. Trang hướng dẫn của từng màn ghi rõ ô nào chặn, ô nào chỉ gợi ý.
+  </Accordion>
+  <Accordion id="khoi-phuc-du-lieu-mau" title="Có nên bấm Khôi phục dữ liệu mẫu?">
+    Không, trên website thật. Chức năng này xóa toàn bộ nội dung và mọi đăng ký tư vấn, thay bằng dữ liệu mẫu, và không
+    hoàn tác được. Xem [Khôi phục dữ liệu mẫu](/huong-dan/he-thong/khoi-phuc-du-lieu-mau).
+  </Accordion>
+</Accordions>
+
+## Làm việc trong CMS
+
+<Accordions type="multiple">
+  <Accordion id="mat-phan-chua-luu" title="Sửa xong bấm sang màn khác thì mất hết">
+    Bấm sang một màn khác trong menu CMS lúc còn thay đổi chưa lưu thì CMS **không** hỏi lại: phần chưa lưu bị bỏ (chỉ
+    khi tải lại trang hoặc đóng tab, trình duyệt mới hỏi). Luôn bấm **Lưu thay đổi** (<kbd>Ctrl</kbd> + <kbd>S</kbd>)
+    trước khi rời màn. Xem [Sửa và lưu](/huong-dan/bat-dau/quy-uoc-chung#sửa-và-lưu).
+  </Accordion>
+  <Accordion id="bi-dua-ve-dang-nhap" title="Đang làm thì bị đưa về trang đăng nhập">
+    Phiên đăng nhập hết hạn: 12 giờ, hoặc 30 ngày nếu chọn **Ghi nhớ đăng nhập**. Tài khoản vừa bị khóa cũng bị đưa ra
+    ngay. Đăng nhập lại, CMS mở lại đúng màn đang làm. Xem [Đăng nhập và đăng
+    xuất](/huong-dan/bat-dau/dang-nhap#đăng-nhập-được-giữ-bao-lâu).
+  </Accordion>
+  <Accordion id="quen-mat-khau" title="Quên mật khẩu">
+    CMS không gửi email đặt lại mật khẩu. Nhờ một Chủ sở hữu hoặc Quản trị tạo **mật khẩu tạm** mới cho bạn ở màn [Người
+    dùng](/huong-dan/he-thong/nguoi-dung#cấp-mật-khẩu-mới-cho-người-quên-mật-khẩu), đăng nhập bằng mật khẩu tạm, rồi
+    [đổi mật khẩu](/huong-dan/bat-dau/tai-khoan-cua-toi#đổi-mật-khẩu) của riêng bạn.
+  </Accordion>
+  <Accordion id="ai-duoc-lam-gi" title="Ai được làm gì trong CMS?">
+    Ba vai trò **Chủ sở hữu**, **Quản trị**, **Biên tập** làm được như nhau với nội dung website. Khác nhau ở việc quản
+    lý người dùng và khôi phục dữ liệu mẫu. Xem bảng ở [Vai trò và quyền truy cập](/huong-dan/bat-dau/vai-tro).
+  </Accordion>
+  <Accordion id="nguoi-moi" title="Có người mới vào nhóm">
+    Chủ sở hữu hoặc Quản trị mời người đó ở màn [Người dùng](/huong-dan/he-thong/nguoi-dung#mời-người-dùng), rồi gửi cho
+    họ email đăng nhập và mật khẩu tạm (CMS không tự gửi email). Người mới đăng nhập rồi đổi mật khẩu của mình.
+  </Accordion>
+  <Accordion id="thong-tin-hoc-vien" title="Thông tin học viên trong đăng ký tư vấn">
+    Họ tên, số điện thoại, email của học viên là thông tin cá nhân: chỉ dùng để liên hệ tư vấn. Không chụp màn hình,
+    không gửi file CSV hay chép danh sách ra ngoài nhóm làm việc. Xem [Đăng ký tư
+    vấn](/huong-dan/tong-quan/dang-ky-tu-van).
+  </Accordion>
+</Accordions>
+
+## Liên quan
+
+- [Sửa ở đâu, hiện ở đâu](/huong-dan/tham-khao/sua-o-dau-hien-o-dau): bảng tra từng phần của website.
+- [Thuật ngữ](/huong-dan/tham-khao/thuat-ngu): giải thích các từ dùng trong CMS.
+- [Quy ước dùng chung](/huong-dan/bat-dau/quy-uoc-chung): lưu, hoàn tác, xóa, chọn ảnh.
