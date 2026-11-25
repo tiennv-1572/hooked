@@ -13,7 +13,7 @@
   limit. A Node process has libuv's pool (4 by default), V8's workers (4), GC and sharp while optimising images (CPU
   cores / 2 — shared servers often have 32–64 cores). libuv creates its pool on first use, so setting it here is in
   time; V8's pool can only be set with a command-line flag: NODE_OPTIONS="--v8-pool-size=2" in Setup Node.js App.
-  Sharp is capped in next.config.ts (experimental.imgOptConcurrency).
+  Sharp is capped in next.config.mjs (experimental.imgOptConcurrency).
 */
 process.env.UV_THREADPOOL_SIZE ||= "2";
 

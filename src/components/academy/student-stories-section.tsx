@@ -1,8 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import type { FeaturedStory } from "@/components/academy/academy-content";
-import { StoryCarousel } from "@/components/academy/story-carousel";
+import { MobileStoryCarousel, StoryCarousel } from "@/components/academy/story-carousel";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Icon } from "@/components/ui/icon";
@@ -20,8 +19,8 @@ type StudentStoriesSectionProps = {
  * HỌC VIÊN TIÊU BIỂU (featured students = CMS students with `featured`).
  * - ≥ 768px (`Academy / Shared student stories` 2071:194): heading + outline "Tất cả câu chuyện →",
  *   then the story carousel (3 slides).
- * - < 768px (`Academy / Featured student` 2823:5099): one static student (portrait, name, headline)
- *   with "Xem câu chuyện" / "Tất cả câu chuyện" pills.
+ * - < 768px (`Academy / Featured student` 2823:5099): the featured students as a swipeable carousel advancing every 2s
+ *   (portrait, name, headline, "Xem câu chuyện"), then the "Tất cả câu chuyện" pill.
  */
 export function StudentStoriesSection({ students, headingLines, ctaLabel }: StudentStoriesSectionProps) {
   const [featured] = students;
@@ -51,23 +50,9 @@ export function StudentStoriesSection({ students, headingLines, ctaLabel }: Stud
 
         <StoryCarousel students={students} className="hidden tablet:block" />
 
-        {/* Mobile: single featured student */}
+        {/* Mobile: swipeable featured students, then the link to every story. */}
         <div className="flex flex-col gap-4 tablet:hidden">
-          <div className="relative h-[360px] overflow-hidden">
-            <Image
-              src={featured.portrait.src}
-              alt={featured.portrait.alt}
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
-          </div>
-          <h3 className="text-[28px] leading-[31px] font-extrabold text-white">{featured.name}</h3>
-          <p className="text-base leading-6 text-muted">{featured.headline}</p>
-          <ButtonLink href={featured.href} variant="accent" className="w-full">
-            Xem câu chuyện
-            <Icon name="arrow-up-right-dark-20" />
-          </ButtonLink>
+          <MobileStoryCarousel students={students} />
           <ButtonLink href={routes.students} variant="coal" className="w-full">
             {ctaLabel}
             <Icon name="arrow-up-right-accent-20" />

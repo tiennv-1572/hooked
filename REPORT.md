@@ -72,7 +72,7 @@ Cập nhật: 02/11/2026 — **Giai đoạn 4: MySQL, API công khai và tích h
     - Kiểm tra bằng cách dừng hiệu ứng ở khung đầu/cuối (19 trường hợp độ rộng × tỉ lệ màn hình × hướng): 0 pixel lọt, 0 khác biệt giữa cuối hiệu ứng và lúc dừng.
   - Ảnh (03/11):
     - Đã đối chiếu toàn bộ ảnh với Figma (mọi trang desktop/mobile và các trang thư viện "Original project media", "Student portraits", "Blog artwork"): 72/73 ảnh nội dung trên website giống từng byte với ảnh gốc trong Figma (ảnh còn lại là slide hero “logo trên nền giấy”, không còn trong Figma). Figma không có bản nào lớn hơn, nên website đang dùng đúng bản gốc lớn nhất. Mỗi ảnh một bản gốc (bản desktop); `next/image` tự cắt nhỏ cho từng màn hình.
-    - Chất lượng nén ảnh nâng từ 75 lên 90 (`images.qualities` trong `next.config.ts`).
+    - Chất lượng nén ảnh nâng từ 75 lên 90 (`images.qualities` trong `next.config.mjs`).
     - Sửa `sizes` để trình duyệt tải đúng độ nét: hero trang chủ (ảnh ngang trong khung dọc trên mobile), carousel blog (ảnh phóng 1.18–1.3 lần), thẻ dịch vụ, ảnh học viên SIMPLE (cắt 1.43 lần). Đo lại 323 ảnh trên 16 trang ở desktop ×2 và mobile ×3: không còn ảnh nào bị tải bản nhỏ hơn mức màn hình cần.
     - DB sẵn sàng release: 183 tham chiếu ảnh (110 file) đều có file trong `public/`, kích thước lưu trong DB khớp file; bảng media khớp file; chưa có ảnh upload qua CMS (`storage/uploads` trống).
     - Ảnh gốc trong Figma nhỏ hơn mức hiển thị (cần xin bản lớn hơn, thay trong CMS → Thư viện media): SPIN Awards 720px (cần ~2.800px), khóa Producer 474px, highlight Academy/Projects 474/556px (cần ~1.200px), hero Devoid / DJ crowd / Xóm Húc / Vui Fest 1.200px (cần ~2.400–3.000px), logo đối tác 121–236px (nên dùng SVG hoặc ≥600px).
