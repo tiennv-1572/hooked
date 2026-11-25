@@ -81,7 +81,61 @@ Màn chỉ một vai trò dùng được (ví dụ **Khôi phục dữ liệu m�
 
 ## Chụp ảnh
 
-Chưa có — viết ở bước 2 (bộ chụp ảnh tự động trên một bản chạy ở máy với MySQL riêng và dữ liệu seed).
+Ảnh chụp bằng Playwright trên một **stack chạy ở máy**, không bao giờ trên DB của bạn hay production: kịch bản tạo, sửa,
+xóa dữ liệu để chụp từng bước.
+
+```bash
+colima start                               # (hoặc Docker Desktop) nếu Docker chưa chạy
+pnpm docs:stack up                         # lần đầu, hoặc khi muốn DB mới tinh
+pnpm docs:screenshots                      # chụp mọi trang
+pnpm docs:screenshots danh-muc-khoa-hoc    # chụp một trang
+pnpm docs:stack down                       # tắt khi xong (cổng 3101, 33307 trống)
+```
+
+`docs:stack` (`scripts/huong-dan/stack.sh`) dựng hai thứ:
+
+| Phần | Ở đâu                                                       | Ghi chú                                                                                                                                                                                                                                                                |
+| ---- | ----------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| DB   | Docker `huong-dan-mysql`, cổng 33307, DB `hooked_huong_dan` | Dựng mới mỗi lần `db`/`up`: `db:migrate`, `db:seed` (dữ liệu seed cố định), rồi `scripts/huong-dan/prepare-db.ts`. Không đụng `hooked-mysql` của docker-compose                                                                                                        |
+| Web  | cổng 3101                                                   | Build production từ bản sao thư mục làm việc (`.huong-dan-stack/web`), không đụng `.next` của repo hay `next dev` đang chạy. Chạy bằng biến môi trường riêng (DB của stack, `AUTH_SECRET` riêng, `NEXT_PUBLIC_SITE_URL=https://hooked.vn`), không dùng `.env` của repo |
+
+`prepare-db.ts`:
+
+- **dời mọi mốc thời gian** (cột `datetime` và ngày giờ trong `doc`) sao cho đăng ký tư vấn mới nhất là hôm nay. Seed neo vào
+  một ngày cố định (`SEED_NOW`), nên càng về sau CMS càng hiện "45 ngày trước" và biểu đồ 30 ngày của Dashboard trống dần;
+  dời xong thì chụp ngày nào ảnh cũng như nhau. Ngày không có giờ (ngày sự kiện…) là nội dung, giữ nguyên;
+- **email, số điện thoại đăng ký tư vấn** thành `…@example.com`, `0900000…` (seed sinh ngẫu nhiên dạng gmail, có thể trùng
+  người thật).
+
+Sửa code website thì chạy lại `pnpm docs:stack web`. Dữ liệu stack bị một lần thử làm lệch thì `pnpm docs:stack up` (DB mới,
+web build lại — web giữ bộ nhớ đệm của dữ liệu cũ nên không chỉ dựng lại DB).
+
+Kịch bản cho một trang: `scripts/huong-dan/shots/<nhóm>/<trang>.shot.ts`. Mẫu: `quan-ly-academy/danh-muc-khoa-hoc.shot.ts`.
+
+- `login(page, role)` — `owner` (Chủ sở hữu, mặc định), `admin` (Quản trị), `editor` (Biên tập): tài khoản seed, mật khẩu
+  `hooked2026` trên stack.
+- `shot(page, "<nhóm>/<trang>-<mô-tả>", { marks, area, fitHeight, hide, allowEmails, padding })`:
+  - `marks: [{ n: 1, target: locator }]` vẽ khung đỏ và số; hiện được cả trên hộp thoại. Mục tiêu chỉ là chữ (câu báo lỗi,
+    tên trong danh sách) thì thêm `at: "right"` (số đặt bên phải, không đè chữ cái đầu) và `tight: true` (khung ôm sát chữ,
+    không rộng hết khối);
+  - `area` chỉ chụp một vùng: hộp thoại (`dialog(page, "Tên hộp")`), một thẻ (`card(locator)`); `fitHeight` kéo cửa sổ cao
+    bằng trang (form dài);
+  - `hide` ẩn phần tử khi chụp;
+  - địa chỉ localhost trong ô nhập, chữ, placeholder hiện thành `https://hooked.vn`.
+- Chặn lộ dữ liệu: script dừng nếu DB stack còn email đăng ký không phải `@example.com`; `shot()` báo lỗi khi ảnh có email
+  không phải `@example.com`, email nhân viên `@hooked.vn` hay email liên hệ của website (thêm ngoại lệ bằng `allowEmails`).
+- `noToasts(page)` chờ thông báo góc màn hình tắt trước ảnh kế tiếp; `localSql("…")` chạy SQL trên DB stack (dọn bản ghi mẫu
+  còn sót từ lần chạy hỏng).
+- Mỗi kịch bản tự tạo dữ liệu mẫu (tên như thật, đúng nghiệp vụ) và tự xóa ở cuối, để chạy lại vẫn ra cùng ảnh.
+- Mở trang website trong cùng context: `page.context().newPage()` (giữ `baseURL`, giảm chuyển động của cấu hình).
+- Khi menu (Radix) đang mở, phần còn lại của trang bị ẩn khỏi cây trợ năng: tìm nút bằng `[aria-label="…"]` thay vì
+  `getByRole`.
+
+Sau mỗi lần chạy: ghép ảnh (`contact-sheet.py` của skill) và **xem bằng mắt** — đúng vùng, số không đè chữ, không lộ
+localhost, không dữ liệu rác.
+
+Trang mẫu đã viết đủ: [Danh mục khóa học](/huong-dan/quan-ly-academy/danh-muc-khoa-hoc)
+(`content/huong-dan/quan-ly-academy/danh-muc-khoa-hoc.mdx`).
 
 ## Bản PDF
 

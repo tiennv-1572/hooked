@@ -7,26 +7,194 @@ description: "Các nhóm khóa học (DJ, MC, Producer…) dùng làm nút lọc
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Danh mục khóa học là các nhóm khóa học của Hooked Academy: DJ, MC, Producer, Flip. Mỗi khóa học thuộc đúng một danh
+mục. Trên website, mỗi danh mục là một nút lọc trong phần **Tất cả khóa học** của trang Academy. Ở màn này bạn:
+
+- thêm danh mục mới;
+- đổi tên danh mục;
+- sắp xếp thứ tự các nút lọc;
+- xem khóa học nào thuộc danh mục nào;
+- xóa danh mục không còn dùng.
+
+Việc gán một khóa học vào danh mục làm ở màn [Khóa học](/huong-dan/quan-ly-academy/khoa-hoc), ô **Danh mục** trong mục
+**Phân loại** của từng khóa học. Cả ba vai trò (Chủ sở hữu, Quản trị, Biên tập) đều dùng được màn này.
 
 ## Hiện ở đâu trên website
 
-<OnWebsite pages={[{ label: "Trang Academy", path: "/academy" }]}>
-  <Screenshot alt="Danh mục khóa học trên website" src="/huong-dan/anh/quan-ly-academy/danh-muc-khoa-hoc-website.png" />
+<OnWebsite pages={[{ label: "Phần Tất cả khóa học trên trang Academy", path: "/academy" }]}>
+  <Screenshot
+    alt="Thanh lọc khóa học trên trang Academy"
+    src="/huong-dan/anh/quan-ly-academy/danh-muc-khoa-hoc-website.png"
+    caption="① Mỗi danh mục là một nút lọc, xếp sau nút Tất cả, đúng thứ tự trên CMS. ② Tên danh mục cũng hiện dưới tên từng khóa học."
+  />
 </OnWebsite>
+
+| Trên CMS               | Trên website                                                                                              |
+| ---------------------- | --------------------------------------------------------------------------------------------------------- |
+| Tên danh mục           | Nút lọc trong phần **Tất cả khóa học** của trang Academy; dòng chữ nhỏ dưới tên mỗi khóa học của danh mục |
+| Thứ tự trong danh sách | Thứ tự các nút lọc, sau nút **Tất cả**                                                                    |
+
+Website cập nhật ngay khi bạn lưu: tải lại trang Academy là thấy.
+
+<Callout title="Nút lọc chỉ hiện khi danh mục có khóa học đã xuất bản">
+  Danh mục mới, hoặc danh mục chỉ có khóa học nháp, chưa hiện trên website. Khung **Thanh lọc trên website** bên phải
+  màn này luôn cho thấy trước thanh lọc đang trông thế nào.
+</Callout>
 
 ## Các bước thao tác
 
-<Draft />
+### Xem danh sách
+
+Trên menu bên trái, bấm **Quản lý Academy › Danh mục khóa học**.
+
+<Screenshot alt="Màn Danh mục khóa học" src="/huong-dan/anh/quan-ly-academy/danh-muc-khoa-hoc-danh-sach.png" />
+
+- ① **Thêm danh mục**: mở hộp thêm danh mục mới.
+- ② Nút kéo ở đầu dòng: giữ và kéo lên, xuống để đổi thứ tự.
+- ③ Tên danh mục: bấm vào để đổi tên nhanh.
+- ④ Số khóa học thuộc danh mục: bấm để xem đó là những khóa học nào.
+- ⑤ Nút **…**: mở menu **Sửa**, **Xóa**.
+- ⑥ Khung **Thanh lọc trên website**: thanh lọc trên trang Academy sẽ trông như thế này.
+
+Nút **Xem trang Academy** cạnh nút ① mở trang Academy trên website ở tab mới.
+
+### Thêm danh mục
+
+<Steps>
+<Step>
+Bấm **Thêm danh mục** ở góc trên bên phải màn hình.
+</Step>
+<Step>
+Gõ tên vào ô **Tên danh mục** ①, tối đa 24 ký tự. Số ở góc phải phía trên ô cho biết đã gõ bao nhiêu ký tự.
+
+<Screenshot alt="Hộp Thêm danh mục đã điền tên" src="/huong-dan/anh/quan-ly-academy/danh-muc-khoa-hoc-them-moi.png" />
+</Step>
+<Step>
+Bấm **Thêm danh mục** ②. Hộp đóng lại, góc trên bên phải báo **Đã tạo danh mục.** Danh mục mới nằm cuối danh sách ①.
+
+<Screenshot
+  alt="Danh mục mới ở cuối danh sách"
+  src="/huong-dan/anh/quan-ly-academy/danh-muc-khoa-hoc-sau-khi-them.png"
+/>
+
+Dòng chữ nhỏ dưới khung Thanh lọc ② báo danh mục mới **chưa hiện trên website**, vì chưa có khóa học nào đã xuất bản
+thuộc danh mục này.
+
+</Step>
+<Step>
+Mở màn [Khóa học](/huong-dan/quan-ly-academy/khoa-hoc), chọn danh mục mới cho các khóa học thuộc nhóm này. Khi có ít nhất
+một khóa học đã xuất bản, nút lọc hiện trên website.
+</Step>
+</Steps>
+
+### Đổi tên
+
+**Đổi tên nhanh**: bấm vào tên danh mục trong danh sách, tên biến thành ô nhập ①. Gõ tên mới rồi bấm <kbd>Enter</kbd> (hoặc
+bấm ra chỗ khác) để lưu; bấm <kbd>Esc</kbd> để bỏ. Lưu xong, góc trên bên phải báo **Đã đổi tên thành “…”.**
+
+<Screenshot
+  alt="Đổi tên nhanh ngay trong danh sách"
+  src="/huong-dan/anh/quan-ly-academy/danh-muc-khoa-hoc-doi-ten-nhanh.png"
+/>
+
+**Hoặc dùng hộp Sửa**: bấm **…** ở cuối dòng rồi bấm **Sửa** ①. Hộp **Sửa danh mục** giống hộp thêm, có thêm dòng cho
+biết danh mục đang được những khóa học nào dùng. Sửa tên rồi bấm **Lưu thay đổi**.
+
+<Screenshot alt="Menu Sửa, Xóa của một danh mục" src="/huong-dan/anh/quan-ly-academy/danh-muc-khoa-hoc-thao-tac.png" />
+
+Tên mới hiện ngay trên nút lọc và dưới tên các khóa học của danh mục đó trên website.
+
+### Sắp xếp thứ tự
+
+Giữ chuột vào nút kéo ở đầu dòng (nút ② ở ảnh [danh sách](#xem-danh-sách)), kéo lên hoặc xuống rồi thả ra. Thứ tự được lưu
+ngay, không cần bấm lưu. Các nút lọc trên website xếp theo đúng thứ tự mới.
+
+### Xem khóa học thuộc danh mục
+
+Bấm vào số khóa học ① ở dòng của danh mục. Danh sách khóa học hiện ra ngay bên dưới; bấm tên một khóa học để mở khóa học
+đó. Khóa học chưa xuất bản có nhãn **Nháp**.
+
+<Screenshot
+  alt="Các khóa học thuộc danh mục DJ"
+  src="/huong-dan/anh/quan-ly-academy/danh-muc-khoa-hoc-khoa-hoc-thuoc-danh-muc.png"
+/>
+
+### Xóa danh mục
+
+Bấm **…** ở cuối dòng rồi bấm **Xóa**. Có hai trường hợp:
+
+<Tabs items={["Danh mục chưa có khóa học", "Danh mục đang có khóa học"]}>
+<Tab>
+Hộp hỏi lại hiện ra. Bấm **Xóa** ① để xóa, **Hủy** nếu đổi ý. Xóa xong, góc trên bên phải báo **Đã xóa danh mục.**
+
+<Screenshot alt="Hộp hỏi lại trước khi xóa" src="/huong-dan/anh/quan-ly-academy/danh-muc-khoa-hoc-xoa-xac-nhan.png" />
+</Tab>
+<Tab>
+Không xóa thẳng được: mỗi khóa học phải luôn thuộc một danh mục. Hộp **Xóa danh mục “…”** liệt kê các khóa học đang thuộc
+danh mục này.
+
+<Screenshot
+  alt="Chuyển khóa học sang danh mục khác trước khi xóa"
+  src="/huong-dan/anh/quan-ly-academy/danh-muc-khoa-hoc-xoa-con-khoa-hoc.png"
+/>
+
+1. Ở ô **Chuyển sang danh mục** ①, chọn danh mục mới cho các khóa học (ô chọn sẵn danh mục đầu tiên còn lại).
+2. Bấm **Chuyển … khóa học & xóa** ②. Các khóa học được chuyển sang danh mục đã chọn, rồi danh mục cũ bị xóa. Góc trên
+   bên phải báo, ví dụ: **Đã chuyển 1 khóa học sang “DJ” và xóa “Flip”.**
+
+Nếu đây là danh mục duy nhất, hộp báo cần thêm một danh mục khác trước, và nút xóa bị mờ.
+
+</Tab>
+</Tabs>
+
+<Callout type="warn" title="Xóa rồi không hoàn tác được">
+  Nút lọc của danh mục biến khỏi trang Academy ngay. Lỡ xóa nhầm: thêm lại danh mục cùng tên, rồi chọn lại danh mục đó
+  cho các khóa học ở màn [Khóa học](/huong-dan/quan-ly-academy/khoa-hoc).
+</Callout>
 
 ## Các trường thông tin
 
-<Draft />
+<FieldTable
+  fields={[
+    {
+      name: "Tên danh mục",
+      required: true,
+      description:
+        "Tên nút lọc trên trang Academy và dòng chữ nhỏ dưới tên các khóa học. Tối đa 24 ký tự. Không được trùng tên danh mục khác (không phân biệt chữ hoa, chữ thường).",
+      example: "Producer",
+    },
+  ]}
+/>
+
+Thứ tự danh mục không phải là ô nhập: đổi bằng cách [kéo thả](#sắp-xếp-thứ-tự).
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+### "Nhập tên danh mục."
+
+Bấm **Thêm danh mục** (hoặc **Lưu thay đổi**) khi ô tên còn trống. Gõ tên rồi bấm lại.
+
+<Screenshot alt="Lỗi chưa nhập tên" src="/huong-dan/anh/quan-ly-academy/danh-muc-khoa-hoc-loi-de-trong.png" />
+
+### "Tên này đã tồn tại."
+
+Đã có danh mục cùng tên, không phân biệt chữ hoa, chữ thường: "dj" trùng với "DJ". Đặt tên khác.
+
+<Screenshot alt="Lỗi trùng tên" src="/huong-dan/anh/quan-ly-academy/danh-muc-khoa-hoc-loi-trung-ten.png" />
+
+Khi đổi tên nhanh trong danh sách, câu này hiện ở góc trên bên phải và danh mục giữ tên cũ.
+
+### "Tối đa 24 ký tự để nút lọc gọn gàng."
+
+Tên dài hơn 24 ký tự. Ô vẫn cho gõ tiếp nhưng không lưu được. Rút gọn tên.
+
+### Đã thêm danh mục nhưng trang Academy chưa có nút lọc
+
+Nút lọc chỉ hiện khi danh mục có ít nhất một khóa học **đã xuất bản**. Mở màn
+[Khóa học](/huong-dan/quan-ly-academy/khoa-hoc), chọn danh mục này cho khóa học và kiểm tra khóa học đang được xuất bản.
 
 ## Liên quan
 
-<Draft />
+- [Khóa học](/huong-dan/quan-ly-academy/khoa-hoc): chọn danh mục cho khóa học, xuất bản khóa học.
+- [Trang › Academy](/huong-dan/trang/academy): các phần khác của trang Academy.
+- [Sửa ở đâu, hiện ở đâu](/huong-dan/tham-khao/sua-o-dau-hien-o-dau): bảng tra cho toàn website.
