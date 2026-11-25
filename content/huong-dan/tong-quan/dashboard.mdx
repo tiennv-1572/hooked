@@ -7,24 +7,96 @@ description: "Số liệu đăng ký tư vấn, nội dung mới cập nhật v�
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Dashboard là màn đầu tiên sau khi đăng nhập. Nhìn một lượt để biết:
+
+- có bao nhiêu đăng ký tư vấn mới đang chờ gọi lại;
+- học viên đăng ký nhiều hay ít so với tháng trước, quan tâm khóa học nào;
+- nội dung nào còn là bản nháp, thiếu mô tả SEO hay thiếu câu giới thiệu.
+
+Hầu hết các ô bấm được và đưa tới đúng màn cần làm. Dashboard chỉ để xem: không sửa được gì ở đây. Cả ba vai trò
+đều thấy màn này.
 
 ## Hiện ở đâu trên website
 
-Màn này không trực tiếp hiển thị ra website.
+Màn này không hiện ra website. Số liệu đăng ký lấy từ form **Đăng ký tư vấn** trên trang Academy (xem
+[Đăng ký tư vấn](/huong-dan/tong-quan/dang-ky-tu-van#hiện-ở-đâu-trên-website)).
 
 ## Các bước thao tác
 
-<Draft />
+### Phần trên cùng
+
+<Screenshot alt="Phần trên cùng của Dashboard" src="/huong-dan/anh/tong-quan/dashboard-tong-quan.png" />
+
+- ① Dòng dưới lời chào cho biết có bao nhiêu đăng ký mới đang chờ liên hệ (bấm vào số để mở danh sách các đăng ký đó) và
+  có nhóm nội dung nào cần hoàn thiện không (xem [Nội dung cần chú ý](#nội-dung-cần-chú-ý)).
+- ② Lối tắt: **Tạo bài viết**, **Thêm khóa học**, **Thêm dự án**, **Tải ảnh lên**, **Sửa trang chủ**.
+- ③ **Đăng ký tư vấn · 30 ngày**: số đăng ký nhận được trong 30 ngày gần nhất, và tăng hay giảm bao nhiêu phần trăm so với
+  30 ngày trước đó (xanh là tăng, đỏ là giảm).
+- ④ **Đăng ký mới chưa xử lý**: số đăng ký đang ở trạng thái **Mới** (chưa ai liên hệ), kèm thời gian của đăng ký đã chờ
+  lâu nhất. Bấm để mở danh sách các đăng ký này.
+- ⑤ **Tỉ lệ ghi danh**: trong tất cả đăng ký từ trước tới nay, bao nhiêu phần trăm đã ở trạng thái **Đã ghi danh**.
+- ⑥ **Nội dung đã xuất bản**: số khóa học, dự án, bài viết đang hiện trên website, và số bản nháp của từng loại. Bấm một
+  dòng để mở danh sách tương ứng.
+
+Ô ③, ⑤ bấm vào cũng mở màn [Đăng ký tư vấn](/huong-dan/tong-quan/dang-ky-tu-van) (ô ⑤ lọc sẵn các đăng ký **Đã ghi
+danh**).
+
+### Phân tích đăng ký tư vấn
+
+<Screenshot alt="Phân tích đăng ký tư vấn" src="/huong-dan/anh/tong-quan/dashboard-phan-tich.png" />
+
+- ① Chọn khoảng thời gian: **7 ngày**, **30 ngày** (mặc định) hoặc **90 ngày**. Mọi số liệu trong phần này tính theo
+  khoảng đã chọn; các ô ở phần trên cùng không đổi theo.
+- ② **Đăng ký tư vấn theo ngày**: số đăng ký mỗi ngày, tổng trong khoảng đã chọn và so với khoảng liền trước. Rê chuột lên
+  biểu đồ để xem số của từng ngày. **Xem tất cả** mở màn Đăng ký tư vấn.
+- ③ **Trạng thái xử lý**: trong các đăng ký của khoảng đã chọn, bao nhiêu đang **Mới**, **Đã liên hệ**, **Đã ghi danh**,
+  **Đã đóng**. Bấm một trạng thái để mở danh sách đăng ký ở trạng thái đó.
+- ④ **Đăng ký theo khóa học**: khóa học nào được hỏi nhiều nhất trong khoảng đã chọn.
+
+### Đăng ký mới nhất và Nội dung cần chú ý
+
+<Screenshot alt="Đăng ký mới nhất và Nội dung cần chú ý" src="/huong-dan/anh/tong-quan/dashboard-danh-sach.png" />
+
+**Đăng ký mới nhất** liệt kê 6 đăng ký gần đây nhất ②: tên, khóa học quan tâm, thời gian và trạng thái. Bấm một dòng hoặc
+**Tất cả** ① để mở màn [Đăng ký tư vấn](/huong-dan/tong-quan/dang-ky-tu-van).
+
+#### Nội dung cần chú ý
+
+CMS tự rà ba việc hay bị quên:
+
+| Mục                                   | Báo khi                                                     | Vì sao cần sửa                                  |
+| ------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------- |
+| Bản nháp chưa xuất bản                | Có khóa học, dự án, bài viết hoặc học viên đang là bản nháp | Bản nháp không hiện trên website                |
+| Bài viết thiếu mô tả SEO              | Có bài viết chưa điền mô tả SEO                             | Mô tả hiện trên Google và khi chia sẻ link      |
+| Học viên nổi bật thiếu câu giới thiệu | Học viên được gắn sao nhưng chưa có câu giới thiệu          | Câu giới thiệu hiện trên carousel trang Academy |
+
+Khi có việc cần làm, dòng đó đổi thành cảnh báo ③ và liệt kê từng mục ④; bấm một mục để mở đúng màn sửa mục đó. Khi mọi
+thứ ổn, dòng có dấu tích xanh.
 
 ## Các trường thông tin
 
-<Draft />
+Màn này không có ô nhập: mọi con số được tính từ dữ liệu ở các màn khác.
+
+| Con số                    | Tính thế nào                                                                                  |
+| ------------------------- | --------------------------------------------------------------------------------------------- |
+| Đăng ký tư vấn · 30 ngày  | Đăng ký gửi trong 30 ngày gần nhất (tính cả hôm nay), so với 30 ngày ngay trước đó            |
+| Đăng ký mới chưa xử lý    | Mọi đăng ký đang ở trạng thái **Mới**, không giới hạn thời gian                               |
+| Tỉ lệ ghi danh            | Số đăng ký **Đã ghi danh** chia cho tổng số đăng ký từ trước tới nay                          |
+| Phần trăm so với kỳ trước | Chỉ hiện khi kỳ trước có ít nhất một đăng ký; nếu không, ô ghi "Chưa có dữ liệu … để so sánh" |
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+### Số liệu không đổi sau khi có đăng ký mới
+
+Dashboard tính số liệu lúc mở màn. Học viên vừa gửi form trên website thì tải lại trang (<kbd>F5</kbd>) để thấy.
+
+### Tỉ lệ ghi danh ở Dashboard khác Tỉ lệ chuyển đổi ở màn Đăng ký tư vấn
+
+Hai con số cùng cách tính, nhưng màn Đăng ký tư vấn chỉ tính các đăng ký trong khoảng thời gian và khóa học đang lọc ở màn đó
+(mặc định là toàn bộ), còn Dashboard luôn tính trên toàn bộ đăng ký.
 
 ## Liên quan
 
-<Draft />
+- [Đăng ký tư vấn](/huong-dan/tong-quan/dang-ky-tu-van): gọi lại học viên, đổi trạng thái, ghi chú.
+- [Quy ước dùng chung](/huong-dan/bat-dau/quy-uoc-chung#xuất-bản-và-bản-nháp): xuất bản và bản nháp.
+- [Làm quen giao diện CMS](/huong-dan/bat-dau/giao-dien-cms): menu, chuông báo đăng ký mới.

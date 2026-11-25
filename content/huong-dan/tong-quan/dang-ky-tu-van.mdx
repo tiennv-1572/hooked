@@ -7,26 +7,292 @@ description: "Thông tin học viên gửi qua form Đăng ký tư vấn trên t
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Mỗi khi một học viên gửi form **Đăng ký tư vấn** trên trang Academy, một đăng ký mới xuất hiện ở màn này với trạng thái
+**Mới**. Đội Hooked gọi lại tư vấn, rồi cập nhật trạng thái theo từng bước cho tới khi học viên ghi danh (hoặc thôi). Ở màn
+này bạn:
+
+- xem, tìm, lọc các đăng ký;
+- gọi điện, nhắn Zalo, gửi email cho học viên ngay từ CMS;
+- đổi trạng thái, ghi chú nội bộ, xem lịch sử xử lý;
+- thêm đăng ký nhận qua hotline, mạng xã hội, tại trung tâm;
+- xuất danh sách ra file CSV (mở bằng Excel, Google Sheets);
+- xóa đăng ký.
+
+Cả ba vai trò (Chủ sở hữu, Quản trị, Biên tập) đều dùng được màn này.
+
+<Callout type="warn" title="Thông tin cá nhân của học viên">
+  Màn này có họ tên, số điện thoại, email thật của học viên. Không chụp màn hình, không gửi danh sách hay file CSV ra
+  ngoài đội Hooked. Người trong ảnh của tài liệu này là người mẫu.
+</Callout>
 
 ## Hiện ở đâu trên website
 
 <OnWebsite pages={[{ label: "Form Đăng ký tư vấn trên trang Academy", path: "/academy" }]}>
-  <Screenshot alt="Đăng ký tư vấn trên website" src="/huong-dan/anh/tong-quan/dang-ky-tu-van-website.png" />
+  <Screenshot
+    alt="Form Đăng ký tư vấn trên trang Academy"
+    src="/huong-dan/anh/tong-quan/dang-ky-tu-van-website.png"
+    caption="Form mở ra khi học viên bấm Đăng ký ngay ở một khóa học trên trang Academy."
+  />
+  <Screenshot
+    alt="Học viên đã gửi đăng ký"
+    src="/huong-dan/anh/tong-quan/dang-ky-tu-van-website-da-gui.png"
+    caption="Học viên thấy màn này sau khi gửi thành công."
+  />
 </OnWebsite>
+
+| Trên form của website             | Trên CMS                                                                  |
+| --------------------------------- | ------------------------------------------------------------------------- |
+| ① Khóa học quan tâm               | Cột **Khóa học**                                                          |
+| ② Họ và tên                       | Cột **Người đăng ký** (dòng đậm)                                          |
+| ③ Số điện thoại, ④ Email          | Cột **Người đăng ký** (dòng nhỏ dưới tên); email không bắt buộc           |
+| Chỗ học viên bấm **Đăng ký ngay** | Cột **Nguồn**, ví dụ "Academy · carousel", "Academy · danh sách khóa học" |
+
+Đăng ký gửi từ website luôn bắt đầu ở trạng thái **Mới**. Ô ① chỉ có các khóa học đang xuất bản ở màn
+[Khóa học](/huong-dan/quan-ly-academy/khoa-hoc). Chữ trong hộp đăng ký (tiêu đề, lời nhắn sau khi gửi) cố định trên website,
+không sửa trong CMS.
+
+<Callout title="Màn đang mở không tự cập nhật">
+  Đăng ký mới chỉ hiện khi bạn tải lại trang (<kbd>F5</kbd>) hoặc mở lại màn. Số đăng ký mới ở menu và ở chuông cũng
+  vậy.
+</Callout>
 
 ## Các bước thao tác
 
-<Draft />
+### Xem danh sách
+
+Trên menu bên trái, bấm **Tổng quan › Đăng ký tư vấn**.
+
+<Screenshot alt="Màn Đăng ký tư vấn" src="/huong-dan/anh/tong-quan/dang-ky-tu-van-danh-sach.png" />
+
+- ① Số cạnh **Đăng ký tư vấn** trên menu: số đăng ký đang **Mới**.
+- ② Chuông ở thanh trên cùng: cũng là số đăng ký mới; bấm để mở danh sách các đăng ký **Mới** từ bất kỳ màn nào.
+- ③ **Xuất CSV**: tải danh sách đang hiện về máy (xem [Xuất CSV](#xuất-csv)).
+- ④ **Thêm đăng ký**: thêm đăng ký nhận qua hotline, Zalo… (xem [Thêm đăng ký thủ công](#thêm-đăng-ký-thủ-công)).
+- ⑤ Các ô số liệu **Tổng đăng ký**, **Mới**, **Đã liên hệ**, **Đã ghi danh**: bấm một ô để chỉ xem các đăng ký ở trạng thái
+  đó. Ô **Tỉ lệ chuyển đổi** cho biết bao nhiêu phần trăm đã ghi danh.
+
+Mỗi dòng là một đăng ký, mới nhất ở trên cùng. Chấm cam ở góc chữ viết tắt tên đánh dấu đăng ký **Mới**; biểu tượng tin
+nhắn cạnh tên cho biết đăng ký đó có ghi chú nội bộ. Bấm vào một dòng để [mở chi tiết](#gọi-lại-và-cập-nhật-trạng-thái).
+
+### Tìm và lọc
+
+<Screenshot alt="Các ô tìm và lọc" src="/huong-dan/anh/tong-quan/dang-ky-tu-van-loc.png" />
+
+- ① Thẻ trạng thái: **Tất cả**, **Mới**, **Đã liên hệ**, **Đã ghi danh**, **Đã đóng**, kèm số đăng ký của từng thẻ.
+- ② Khoảng thời gian: **7 ngày**, **30 ngày**, **90 ngày** hoặc **Tất cả** (mặc định).
+- ③ Ô tìm: gõ một phần tên, số điện thoại hoặc email.
+- ④ **Khóa học**, ⑤ **Nguồn**: chọn một hay nhiều giá trị. Khi đang lọc có thêm nút **Xóa lọc** để bỏ hết.
+- ⑥ Nút trạng thái ở mỗi dòng: đổi trạng thái ngay trong danh sách, không cần mở chi tiết.
+
+<Screenshot
+  alt="Đổi trạng thái ngay trong danh sách"
+  src="/huong-dan/anh/tong-quan/dang-ky-tu-van-doi-trang-thai.png"
+/>
+
+Bấm nút trạng thái rồi chọn trạng thái mới ① trong menu **Chuyển trạng thái**. Dưới mỗi trạng thái có một dòng giải thích.
+
+### Gọi lại và cập nhật trạng thái
+
+Mỗi đăng ký đi qua các trạng thái sau:
+
+| Trạng thái      | Nghĩa là                                     |
+| --------------- | -------------------------------------------- |
+| **Mới**         | Chưa liên hệ, cần gọi lại sớm                |
+| **Đã liên hệ**  | Đã gọi hoặc nhắn tin tư vấn                  |
+| **Đã ghi danh** | Đã đăng ký học và đóng học phí               |
+| **Đã đóng**     | Không tiếp tục (không liên lạc được, đổi ý…) |
+
+<Steps>
+<Step>
+Bấm vào dòng của học viên. Bảng chi tiết mở ra bên phải.
+
+<Screenshot alt="Chi tiết một đăng ký" src="/huong-dan/anh/tong-quan/dang-ky-tu-van-chi-tiet.png" />
+
+- ① **Gọi** (trên điện thoại sẽ mở màn gọi với số của học viên), **Zalo** (mở Zalo với số của học viên), **Email** (mở ứng dụng email, tiêu đề
+  soạn sẵn theo khóa học).
+- ② Bốn bước trạng thái: bấm một bước để chuyển đăng ký sang bước đó.
+- ③ Nút đi tiếp: **Đánh dấu đã liên hệ** khi đang **Mới**, **Xác nhận đã ghi danh** khi đang **Đã liên hệ**. Nút **Đóng
+  đăng ký** bên cạnh chuyển sang **Đã đóng**.
+- ④ Nút sao chép số điện thoại (email cũng có nút sao chép).
+- ⑤ **Đổi khóa học**: khi học viên muốn học khóa khác. Chọn xong, góc trên bên phải báo **Đã đổi khóa học.**
+
+</Step>
+<Step>
+Sau khi gọi, bấm **Đánh dấu đã liên hệ**. Góc trên bên phải báo tên học viên và trạng thái mới. Lỡ bấm nhầm: bấm
+**Hoàn tác** ① ngay trên thông báo đó (trước khi thông báo tắt) để trả lại trạng thái cũ.
+
+<Screenshot alt="Thông báo đổi trạng thái có nút Hoàn tác" src="/huong-dan/anh/tong-quan/dang-ky-tu-van-da-lien-he.png" />
+</Step>
+<Step>
+Ghi lại nội dung trao đổi vào ô **Ghi chú nội bộ** ① (lịch học thử, mong muốn của học viên…), rồi bấm **Lưu ghi chú** ②.
+Góc trên bên phải báo **Đã lưu ghi chú.** Ghi chú chỉ đội Hooked thấy, học viên không thấy.
+
+<Screenshot alt="Ghi chú và lịch sử của một đăng ký" src="/huong-dan/anh/tong-quan/dang-ky-tu-van-ghi-chu.png" />
+
+Phần **Lịch sử** ③ ghi lại mỗi lần đổi trạng thái: ai đổi, lúc nào. Đăng ký gửi từ website có sẵn hai dòng đầu: **Gửi đăng
+ký tư vấn** (kèm nguồn) và **Chuyển sang “Mới”** (bởi Website).
+
+</Step>
+<Step>
+Khi học viên đã đăng ký học và đóng học phí, bấm **Xác nhận đã ghi danh**. Học viên thôi không học: bấm **Đóng đăng ký**.
+</Step>
+</Steps>
+
+Đóng bảng chi tiết bằng nút **Đóng** hoặc phím <kbd>Esc</kbd>. Khi bảng chi tiết đang mở, địa chỉ trang trên trình duyệt trỏ
+thẳng tới đăng ký đó: gửi địa chỉ này cho đồng nghiệp (cũng đăng nhập CMS) để họ mở đúng đăng ký.
+
+### Thêm đăng ký thủ công
+
+Dùng khi học viên đăng ký qua hotline, Facebook, Zalo, tại trung tâm hoặc được giới thiệu.
+
+<Steps>
+<Step>
+Bấm **Thêm đăng ký** ở góc trên bên phải màn hình.
+</Step>
+<Step>
+Điền form:
+
+<Screenshot alt="Form Thêm đăng ký thủ công đã điền" src="/huong-dan/anh/tong-quan/dang-ky-tu-van-them.png" />
+
+- ① **Họ và tên**, ② **Số điện thoại**: bắt buộc. **Email** không bắt buộc.
+- ③ **Khóa học quan tâm**: bắt buộc.
+- ④ **Nguồn**: học viên liên hệ qua đâu. Gõ, hoặc bấm một gợi ý bên dưới: **Hotline**, **Facebook / Messenger**,
+  **Zalo**, **Tại trung tâm**, **Giới thiệu**.
+- ⑤ **Trạng thái**: mặc định **Mới**; chọn **Đã liên hệ** nếu bạn vừa tư vấn xong.
+- **Ghi chú**: không bắt buộc, tối đa 500 ký tự.
+
+</Step>
+<Step>
+Bấm **Thêm đăng ký** ⑥. Góc trên bên phải báo **Đã tạo đăng ký.** và bảng chi tiết của đăng ký mới mở ra.
+</Step>
+</Steps>
+
+Số điện thoại đã có trong danh sách thì form báo ngay dưới ô **Số điện thoại** ①: số đó đã đăng ký mấy lần, lần gần nhất khi
+nào, tên gì. Kiểm tra lại để khỏi tạo trùng cho cùng một người.
+
+<Screenshot alt="Form báo số điện thoại đã đăng ký" src="/huong-dan/anh/tong-quan/dang-ky-tu-van-trung-so.png" />
+
+### Làm cùng lúc nhiều đăng ký
+
+Đánh dấu ô chọn ở đầu các dòng. Thanh phía trên bảng có:
+
+<Screenshot alt="Đã chọn hai đăng ký" src="/huong-dan/anh/tong-quan/dang-ky-tu-van-chon-nhieu.png" />
+
+- ① **Chuyển trạng thái**: chuyển mọi đăng ký đã chọn sang cùng một trạng thái.
+- ② **Xuất CSV**: chỉ xuất các đăng ký đã chọn.
+- ③ **Xóa**: xóa các đăng ký đã chọn (có hỏi lại).
+
+Bấm **Bỏ chọn** để thôi chọn. Cách chọn nhiều dòng giống mọi danh sách khác, xem
+[Quy ước dùng chung](/huong-dan/bat-dau/quy-uoc-chung#làm-cùng-lúc-trên-nhiều-dòng).
+
+### Xuất CSV
+
+Bấm **Xuất CSV** ở góc trên bên phải: CMS tải về file `dang-ky-tu-van-<ngày>.csv` gồm **các đăng ký đang hiện** theo bộ lọc
+(muốn lấy hết thì bấm **Xóa lọc** và chọn khoảng thời gian **Tất cả** trước). Góc trên bên phải báo, ví dụ, **Đã xuất 12 đăng
+ký ra CSV.**
+
+File có các cột: Mã, Họ và tên, Số điện thoại, Email, Khóa học, Trạng thái, Nguồn, Ghi chú, Thời gian đăng ký. Mở bằng Excel
+hoặc Google Sheets, tiếng Việt hiện đúng dấu.
+
+<Callout type="warn" title="File CSV chứa thông tin cá nhân">
+  Lưu ở nơi chỉ đội Hooked mở được, xóa khỏi máy khi không cần nữa, không gửi qua nhóm chat công khai.
+</Callout>
+
+### Xóa đăng ký
+
+Bấm **…** cuối dòng rồi bấm **Xóa** (hoặc **Xóa đăng ký** ở đáy bảng chi tiết). Hộp hỏi lại hiện ra; bấm **Xóa** ① để xóa,
+**Hủy** nếu đổi ý. Góc trên bên phải báo **Đã xóa đăng ký.**
+
+<Screenshot alt="Hộp hỏi lại trước khi xóa đăng ký" src="/huong-dan/anh/tong-quan/dang-ky-tu-van-xoa.png" />
+
+<Callout type="error" title="Xóa là mất hẳn">
+  Thông tin liên hệ, ghi chú và lịch sử bị xóa vĩnh viễn. Học viên thôi không học thì chuyển sang **Đã đóng** để vẫn giữ
+  lại thông tin.
+</Callout>
+
+Menu **…** cuối dòng còn có **Xem chi tiết**, **Gọi điện**, **Gửi email**, **Sao chép số điện thoại**.
 
 ## Các trường thông tin
 
-<Draft />
+Form **Thêm đăng ký thủ công**:
+
+<FieldTable
+  fields={[
+    { name: "Họ và tên", required: true, description: "Tối đa 120 ký tự.", example: "Phạm Gia Bảo" },
+    {
+      name: "Số điện thoại",
+      required: true,
+      description: "Số Việt Nam 10 chữ số bắt đầu bằng 0 (hoặc +84). Gõ có dấu cách cũng được, CMS tự bỏ khi lưu.",
+      example: "0912 345 678",
+    },
+    { name: "Email", description: "Không bắt buộc. Phải đúng dạng email.", example: "giabao@example.com" },
+    {
+      name: "Khóa học quan tâm",
+      required: true,
+      description: "Chọn trong danh sách khóa học. Đổi lại được trong bảng chi tiết.",
+      example: "MC cơ bản",
+    },
+    {
+      name: "Nguồn",
+      required: true,
+      description: "Học viên liên hệ qua đâu. Mặc định Hotline; có gợi ý bấm nhanh.",
+      example: "Zalo",
+    },
+    { name: "Trạng thái", description: "Mặc định Mới.", example: "Đã liên hệ" },
+    {
+      name: "Ghi chú",
+      description: "Ghi chú nội bộ, tối đa 500 ký tự.",
+      example: "Muốn học buổi tối, đã có controller",
+    },
+  ]}
+/>
+
+Form trên website chỉ có **Khóa học quan tâm**, **Họ và tên**, **Số điện thoại** (bắt buộc) và **Email** (không bắt buộc);
+**Nguồn** do website tự ghi.
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+### Học viên nói đã gửi nhưng danh sách không có
+
+- Tải lại trang (<kbd>F5</kbd>): màn đang mở không tự cập nhật.
+- Kiểm tra bộ lọc: bấm **Xóa lọc**, chọn thẻ **Tất cả** và khoảng thời gian **Tất cả**.
+- Tìm theo số điện thoại thay vì tên (học viên có thể gõ tên khác).
+
+### "Nhập họ và tên." / "Nhập số điện thoại." / "Chọn khóa học."
+
+Form **Thêm đăng ký thủ công** còn ô bắt buộc để trống. Điền rồi bấm **Thêm đăng ký** lại. Ô **Nguồn** để trống báo
+**Nhập nguồn liên hệ.**
+
+### "Số điện thoại chưa đúng định dạng (0xxxxxxxxx)."
+
+Số không phải số Việt Nam 10 chữ số. Kiểm tra thiếu hay thừa chữ số. Email gõ sai dạng thì báo **Email chưa đúng định
+dạng.**
+
+### Cột Khóa học ghi "Khóa học đã xóa"
+
+Khóa học mà học viên quan tâm đã bị xóa ở màn Khóa học. Đăng ký vẫn còn; mở chi tiết và chọn khóa học khác ở ô **Đổi khóa
+học** nếu cần.
+
+### Học viên báo lỗi khi gửi form trên website
+
+<Accordions>
+  <Accordion title="Vui lòng nhập họ và tên. / Nhập số điện thoại để Hooked liên hệ.">
+    Học viên chưa điền ô bắt buộc.
+  </Accordion>
+  <Accordion title="Số điện thoại chưa đúng định dạng. / Email chưa đúng định dạng.">
+    Số điện thoại không phải số Việt Nam 10 chữ số, hoặc email gõ sai. Nhờ học viên kiểm tra lại.
+  </Accordion>
+  <Accordion title="Bạn đã gửi quá nhiều lần, vui lòng thử lại sau ít phút.">
+    Một mạng chỉ gửi được 5 lần trong 10 phút (chặn gửi rác). Học viên chờ khoảng 10 phút rồi gửi lại, hoặc bạn [thêm
+    thủ công](#thêm-đăng-ký-thủ-công) đăng ký đó.
+  </Accordion>
+  <Accordion title="Chưa gửi được thông tin. Vui lòng thử lại.">
+    Mất mạng hoặc website gặp sự cố. Nhờ học viên thử lại; vẫn lỗi thì báo bộ phận kỹ thuật và thêm thủ công đăng ký đó.
+  </Accordion>
+</Accordions>
 
 ## Liên quan
 
-<Draft />
+- [Dashboard](/huong-dan/tong-quan/dashboard): số đăng ký theo ngày, theo khóa học, tỉ lệ ghi danh.
+- [Khóa học](/huong-dan/quan-ly-academy/khoa-hoc): các khóa học học viên chọn được trong form.
+- [Làm quen giao diện CMS](/huong-dan/bat-dau/giao-dien-cms): chuông và số đăng ký mới trên menu.
