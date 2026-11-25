@@ -71,6 +71,10 @@ Màn chỉ một vai trò dùng được (ví dụ **Khôi phục dữ liệu m�
 - Điều chưa chắc thì thử trên bản chạy ở máy rồi mới viết. Hành vi lạ thì ghi đúng hành vi hiện tại kèm cách tránh.
 - Frontmatter: luôn bọc `title`, `description` trong nháy kép (một dấu `:` không bọc làm hỏng YAML, cả build hỏng).
 - Không viết `<chữ>` trần trong MDX (bị hiểu là thẻ và làm hỏng trang): bọc trong dấu \` hoặc viết khác đi.
+- Danh sách đứng ngay trước `</Step>` (hay `</Tab>`, `</Accordion>`): để một dòng trống trước thẻ đóng. Không có dòng trống,
+  Prettier thụt thẻ đóng vào trong danh sách và trang hỏng khi build.
+- Câu hỏi trong `<Accordion>` cần link tới được thì đặt `id` không dấu (`<Accordion id="quen-mat-khau" title="…">`); dấu
+  nháy trong `title` viết `&quot;`.
 
 ## Kiểm tra
 
@@ -88,7 +92,7 @@ xóa dữ liệu để chụp từng bước.
 colima start                               # (hoặc Docker Desktop) nếu Docker chưa chạy
 pnpm docs:stack up                         # lần đầu, hoặc khi muốn DB mới tinh
 pnpm docs:screenshots                      # chụp mọi trang
-pnpm docs:screenshots danh-muc-khoa-hoc    # chụp một trang
+pnpm docs:screenshots quan-ly-academy/danh-muc-khoa-hoc.shot   # chụp một trang
 pnpm docs:stack down                       # tắt khi xong (cổng 3101, 33307 trống)
 ```
 
@@ -111,15 +115,21 @@ Sửa code website thì chạy lại `pnpm docs:stack web`. Dữ liệu stack b�
 web build lại — web giữ bộ nhớ đệm của dữ liệu cũ nên không chỉ dựng lại DB).
 
 Kịch bản cho một trang: `scripts/huong-dan/shots/<nhóm>/<trang>.shot.ts`. Mẫu: `quan-ly-academy/danh-muc-khoa-hoc.shot.ts`.
+Chụp riêng một trang thì lọc bằng đường dẫn đủ riêng (`quan-ly-academy/khoa-hoc.shot`): Playwright lọc theo chuỗi con, nên
+`khoa-hoc` khớp cả `danh-muc-khoa-hoc`, `du-an` khớp cả `danh-muc-du-an`.
 
 - `login(page, role)` — `owner` (Chủ sở hữu, mặc định), `admin` (Quản trị), `editor` (Biên tập): tài khoản seed, mật khẩu
   `hooked2026` trên stack.
 - `shot(page, "<nhóm>/<trang>-<mô-tả>", { marks, area, fitHeight, hide, allowEmails, padding })`:
   - `marks: [{ n: 1, target: locator }]` vẽ khung đỏ và số; hiện được cả trên hộp thoại. Mục tiêu chỉ là chữ (câu báo lỗi,
     tên trong danh sách) thì thêm `at: "right"` (số đặt bên phải, không đè chữ cái đầu) và `tight: true` (khung ôm sát chữ,
-    không rộng hết khối);
-  - `area` chỉ chụp một vùng: hộp thoại (`dialog(page, "Tên hộp")`), một thẻ (`card(locator)`); `fitHeight` kéo cửa sổ cao
-    bằng trang (form dài);
+    không rộng hết khối). `at: "above"` / `"below"` cho hàng nút, hàng icon sát nhau; `at: "left"` khi bên phải không còn chỗ;
+  - `shot()` chờ vùng chụp (hoặc mục tiêu của số ① nếu không có vùng) đứng yên rồi mới đo, nên hộp thoại đang mở dần, menu
+    đang trượt ra không làm lệch khung;
+  - `area` chỉ chụp một vùng: hộp thoại (`dialog(page, "Tên hộp")`), một thẻ (`card(locator)`), khối nhỏ nhất chứa đủ các
+    phần (`container(page, …)`: truyền locator cấp `page`, không dùng `.first()` bên trong các phần). Vùng tự nở để chứa đủ
+    mọi số; `include: [locator]` nở thêm cho phần thòng ra ngoài vùng (danh sách thả xuống, menu). `fitHeight` kéo cửa sổ
+    cao bằng trang (form dài);
   - `hide` ẩn phần tử khi chụp;
   - địa chỉ localhost trong ô nhập, chữ, placeholder hiện thành `https://hooked.vn`.
 - Chặn lộ dữ liệu: script dừng nếu DB stack còn email đăng ký không phải `@example.com`; `shot()` báo lỗi khi ảnh có email
@@ -130,6 +140,7 @@ Kịch bản cho một trang: `scripts/huong-dan/shots/<nhóm>/<trang>.shot.ts`.
 - Mở trang website trong cùng context: `page.context().newPage()` (giữ `baseURL`, giảm chuyển động của cấu hình).
 - Khi menu (Radix) đang mở, phần còn lại của trang bị ẩn khỏi cây trợ năng: tìm nút bằng `[aria-label="…"]` thay vì
   `getByRole`.
+- Rê chuột làm dòng hay nút đổi màu: đưa chuột ra chỗ trống (`page.mouse.move(0, 0)`) trước khi chụp.
 
 Sau mỗi lần chạy: ghép ảnh (`contact-sheet.py` của skill) và **xem bằng mắt** — đúng vùng, số không đè chữ, không lộ
 localhost, không dữ liệu rác.
