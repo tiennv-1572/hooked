@@ -5,6 +5,8 @@
  * A .mjs config needs no compiler. scripts/release.sh refuses to package a next.config.ts.
  */
 
+import { PHASE_PRODUCTION_SERVER } from "next/constants.js";
+
 /** @type {import("next").NextConfig} */
 const nextConfig = {
   cacheComponents: true,
@@ -30,7 +32,25 @@ const nextConfig = {
         as: "*.css",
       },
     },
+    ignoreIssue: [
+      {
+        // The Admin guide's search highlights matches with ::highlight(fd-search) (Fumadocs). Lightning CSS does not
+        // know that pseudo-element yet: it warns but keeps the rule. Only this warning, only for guide.css.
+        description: /'highlight' is not recognized as a valid pseudo-element/,
+        path: "**/src/app/huong-dan/guide.css",
+      },
+    ],
   },
 };
 
-export default nextConfig;
+/**
+ * The Admin guide (/huong-dan) is MDX compiled by fumadocs-mdx (source.config.ts → .source/), which `createMDX` sets up
+ * for `next dev` and `next build`. Not when the built app starts (server.js on the cPanel host): `createMDX` would
+ * recompile source.config.ts with esbuild on every start, a file the release package does not carry, in a process
+ * whose threads CloudLinux counts against the plan's limit. The built app does not need it — the pages are compiled in.
+ */
+export default async function config(phase) {
+  if (phase === PHASE_PRODUCTION_SERVER) return nextConfig;
+  const { createMDX } = await import("fumadocs-mdx/next");
+  return createMDX()(nextConfig);
+}
