@@ -1,32 +1,114 @@
 ---
 title: "Academy"
-description: "Nội dung riêng của trang Academy (khóa học và học viên sửa ở mục riêng)."
+description: "Tiêu đề và mô tả của trang Academy trên Google và khi chia sẻ. Khóa học, học viên sửa ở mục riêng."
 ---
 
 <AdminPath trail={["Trang", "Academy"]} href="/admin/pages/academy" />
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Màn này chỉ sửa **SEO** của trang Academy: tiêu đề và mô tả của trang trên Google, trên tab trình duyệt, và khi ai đó
+chia sẻ link trang lên Facebook, Zalo. Nội dung trang Academy sửa ở các màn khác:
+
+- carousel và danh sách khóa học: [Khóa học](/huong-dan/quan-ly-academy/khoa-hoc);
+- các nút lọc DJ, MC, Producer…: [Danh mục khóa học](/huong-dan/quan-ly-academy/danh-muc-khoa-hoc);
+- carousel học viên tiêu biểu: [Học viên](/huong-dan/quan-ly-academy/hoc-vien) (học viên được gắn sao);
+- thông tin học viên gửi qua form đăng ký: [Đăng ký tư vấn](/huong-dan/tong-quan/dang-ky-tu-van).
+
+Chữ cố định của trang (tiêu đề **ACADEMY**, tên các khối, chữ trong hộp đăng ký) nằm trong mã nguồn website, không sửa
+được trong CMS. Cả ba vai trò (Chủ sở hữu, Quản trị, Biên tập) đều dùng được màn này.
 
 ## Hiện ở đâu trên website
 
 <OnWebsite pages={[{ label: "Trang Academy", path: "/academy" }]}>
-  <Screenshot alt="Academy trên website" src="/huong-dan/anh/trang/academy-website.png" />
+  <Screenshot
+    alt="Trang Academy trên website"
+    src="/huong-dan/anh/trang/academy-website.png"
+    caption="① Tiêu đề ACADEMY: cố định. ② Carousel khóa học và ④ danh sách khóa học: sửa ở Khóa học. ③ Nút lọc: sửa ở Danh mục khóa học."
+  />
 </OnWebsite>
+
+Tiêu đề và mô tả SEO không nằm trong trang mà hiện ở những chỗ sau:
+
+| Trên CMS    | Hiện ở đâu                                                                                                                     |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Tiêu đề SEO | Tên tab trình duyệt và dòng chữ xanh trên Google, ví dụ **Academy · Hooked Entertainment**; tiêu đề khi chia sẻ link trang này |
+| Mô tả SEO   | Dòng mô tả dưới tiêu đề trên Google; đoạn mô tả khi chia sẻ link trang này                                                     |
+
+Phần đuôi “· Hooked Entertainment” website tự thêm, theo ô **Mẫu tiêu đề** ở
+[Cài đặt website](/huong-dan/he-thong/cai-dat-website). Ảnh hiện khi chia sẻ link trang này là **Ảnh mặc định** của mục
+**Ảnh chia sẻ**, cũng ở Cài đặt website.
+
+Website cập nhật ngay khi bạn lưu: tải lại trang Academy là tab trình duyệt hiện tiêu đề mới.
 
 ## Các bước thao tác
 
-<Draft />
+<Steps>
+<Step>
+Trên menu bên trái, bấm **Trang › Academy**.
+
+<Screenshot alt="Màn Trang Academy" src="/huong-dan/anh/trang/academy.png" />
+</Step>
+<Step>
+Sửa ① **Tiêu đề SEO** và ② **Mô tả SEO**. Khung ③ **Xem trước kết quả tìm kiếm** cho thấy trang sẽ hiện trên Google ra
+sao, đổi ngay theo những gì bạn gõ.
+</Step>
+<Step>
+Bấm ④ **Lưu thay đổi** (<kbd>Ctrl</kbd> + <kbd>S</kbd>). Góc trên bên phải báo **Đã lưu Trang academy.**
+</Step>
+</Steps>
+
+Hai nút **Xem trang** và **Khôi phục mặc định** ở đầu màn: xem
+[Nội dung các trang](/huong-dan/bat-dau/quy-uoc-chung#nội-dung-các-trang).
+
+Số ở góc phải phía trên mỗi ô (ví dụ `7/50`) là độ dài nên dùng để Google hiện đủ: tiêu đề dưới 50 ký tự, mô tả dưới 160
+ký tự. CMS vẫn cho lưu dài hơn, tới 70 và 200 ký tự.
 
 ## Các trường thông tin
 
-<Draft />
+<FieldTable
+  fields={[
+    {
+      name: "Tiêu đề SEO",
+      required: true,
+      description:
+        "Tên trang trên tab trình duyệt, trên Google và khi chia sẻ link. Website tự thêm “· Hooked Entertainment” phía sau. Nên dưới 50 ký tự, tối đa 70.",
+      example: "Academy",
+    },
+    {
+      name: "Mô tả SEO",
+      required: true,
+      description: "Đoạn mô tả dưới tiêu đề trên Google và khi chia sẻ link. Nên dưới 160 ký tự, tối đa 200.",
+      example: "Khóa học DJ, MC Hype & Producer từ cơ bản đến chuyên nghiệp tại Hooked Academy.",
+    },
+  ]}
+/>
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+### "Tối đa 70 ký tự."
+
+Tiêu đề SEO dài hơn 70 ký tự. Số đếm ① cho biết tiêu đề đang dài bao nhiêu; câu báo lỗi ② hiện dưới ô khi bạn bấm lưu.
+Rút ngắn tiêu đề rồi lưu lại.
+
+<Screenshot alt="Lỗi tiêu đề quá dài và thiếu mô tả" src="/huong-dan/anh/trang/academy-loi.png" />
+
+### "Nhập mô tả SEO."
+
+Ô **Mô tả SEO** còn trống ③. Tương tự, để trống **Tiêu đề SEO** thì báo **Nhập tiêu đề SEO.** Cả hai ô đều bắt buộc.
+
+### "Tối đa 200 ký tự."
+
+Mô tả SEO dài hơn 200 ký tự. Rút gọn còn một, hai câu.
+
+### Đã lưu nhưng Google vẫn hiện tiêu đề cũ
+
+Tab trình duyệt đổi ngay khi bạn tải lại trang, nhưng Google chỉ thấy tiêu đề mới ở lần nó ghé lại trang, có khi sau vài
+ngày. Facebook, Zalo cũng giữ bản xem trước cũ của link một thời gian.
 
 ## Liên quan
 
-<Draft />
+- [Khóa học](/huong-dan/quan-ly-academy/khoa-hoc), [Danh mục khóa học](/huong-dan/quan-ly-academy/danh-muc-khoa-hoc),
+  [Học viên](/huong-dan/quan-ly-academy/hoc-vien): nội dung của trang Academy.
+- [Cài đặt website](/huong-dan/he-thong/cai-dat-website): mẫu tiêu đề và ảnh chia sẻ dùng chung.
+- [Nội dung các trang](/huong-dan/bat-dau/quy-uoc-chung#nội-dung-các-trang): Xem trang, Khôi phục mặc định, thanh lưu.

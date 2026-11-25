@@ -7,7 +7,15 @@ description: "Câu chuyện học viên trên trang Học viên tiêu biểu; h�
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Mỗi học viên Hooked Academy có ảnh chân dung, tên (nghệ danh), vai trò, đơn vị và một câu chuyện. Trên website:
+
+- mọi học viên **đã xuất bản** có một thẻ trên trang **Học viên tiêu biểu**; bấm vào thẻ thì câu chuyện mở ra;
+- học viên được **gắn sao** còn hiện trong carousel **Học viên tiêu biểu** trên trang Academy, kèm một câu trích dẫn về
+  thành tích.
+
+Ở màn này bạn thêm và sửa câu chuyện học viên, chọn học viên cho carousel trang Academy, sắp xếp thứ tự, tạm ẩn hoặc xóa.
+Cả ba vai trò (Chủ sở hữu, Quản trị, Biên tập) đều dùng được màn này. Tiêu đề và lời giới thiệu của trang Học viên tiêu
+biểu sửa ở [Trang › Học viên tiêu biểu](/huong-dan/trang/hoc-vien-tieu-bieu).
 
 ## Hiện ở đâu trên website
 
@@ -17,21 +25,232 @@ description: "Câu chuyện học viên trên trang Học viên tiêu biểu; h�
     { label: "Carousel trên trang Academy", path: "/academy" },
   ]}
 >
-  <Screenshot alt="Học viên trên website" src="/huong-dan/anh/quan-ly-academy/hoc-vien-website.png" />
+  <Screenshot
+    alt="Trang Học viên tiêu biểu"
+    src="/huong-dan/anh/quan-ly-academy/hoc-vien-website-trang.png"
+    caption="① Số học viên đang hiện. ② Mỗi học viên một thẻ: ảnh chân dung, số thứ tự, tên, vai trò · đơn vị. Bấm vào thẻ để mở câu chuyện."
+  />
+  <Screenshot
+    alt="Câu chuyện của một học viên"
+    src="/huong-dan/anh/quan-ly-academy/hoc-vien-website-cau-chuyen.png"
+    caption="Câu chuyện mở ra trên trang Học viên tiêu biểu. ① Ảnh chân dung ② Tên ③ Vai trò · Đơn vị ④ Câu chuyện."
+  />
+  <Screenshot
+    alt="Carousel Học viên tiêu biểu trên trang Academy"
+    src="/huong-dan/anh/quan-ly-academy/hoc-vien-website-carousel.png"
+    caption="Carousel trên trang Academy, chỉ gồm học viên được gắn sao. ① Tên ② Vai trò · Đơn vị ③ Câu trích dẫn ④ Mở câu chuyện của học viên. Ảnh chân dung ở bên phải."
+  />
+  <Screenshot
+    alt="Carousel Học viên tiêu biểu trên điện thoại"
+    src="/huong-dan/anh/quan-ly-academy/hoc-vien-website-carousel-dien-thoai.png"
+    device="mobile"
+    caption="Trên điện thoại: mỗi học viên một trang, tự chuyển sau 2 giây. ① Các chấm cho biết đang ở học viên nào."
+  />
 </OnWebsite>
+
+| Trên CMS                                           | Trên website                                                                           |
+| -------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Tên / nghệ danh                                    | Tên trên thẻ, trong câu chuyện, trong carousel                                         |
+| Vai trò, Đơn vị                                    | Dòng "Vai trò · Đơn vị" dưới tên, ví dụ "DJ · Hooked Academy"                          |
+| Ảnh chân dung                                      | Ảnh của thẻ, của câu chuyện và của carousel                                            |
+| Câu chuyện                                         | Nội dung khi mở câu chuyện                                                             |
+| Đưa vào carousel Academy (ngôi sao), Câu trích dẫn | Carousel Học viên tiêu biểu trên trang Academy; câu trích dẫn là dòng chữ lớn giữa thẻ |
+| Thứ tự                                             | Số 01, 02… và thứ tự thẻ trên trang Học viên tiêu biểu; thứ tự trong carousel          |
+| Xuất bản                                           | Học viên ở **Bản nháp** không hiện ở đâu trên website, kể cả khi đã gắn sao            |
+
+Website cập nhật ngay khi bạn lưu: tải lại trang là thấy.
+
+<Callout title="Link tới câu chuyện của một học viên">
+  Nút **Xem câu chuyện** dẫn tới địa chỉ dạng `hooked.vn/academy/students?story=jgrayson`. Gửi địa chỉ này cho ai đó thì
+  câu chuyện mở ra ngay. Phần cuối (`jgrayson`) được tạo từ tên lúc thêm học viên và **giữ nguyên khi đổi tên** sau đó,
+  nên các link đã gửi vẫn mở được.
+</Callout>
 
 ## Các bước thao tác
 
-<Draft />
+### Xem danh sách
+
+Trên menu bên trái, bấm **Quản lý Academy › Học viên**.
+
+<Screenshot alt="Màn Học viên" src="/huong-dan/anh/quan-ly-academy/hoc-vien-danh-sach.png" />
+
+- ① **Thêm học viên**: mở form thêm mới.
+- ② **Sắp xếp**: đổi thứ tự học viên trên trang Học viên tiêu biểu và trong carousel, xem
+  [Sắp xếp thứ tự](/huong-dan/bat-dau/quy-uoc-chung#sắp-xếp-thứ-tự).
+- ③ Những học viên đang ở carousel trang Academy. **Chỉ xem tiêu biểu** lọc nhanh danh sách theo họ.
+- ④ **Dạng lưới** (ảnh chân dung) hoặc **Dạng bảng**.
+- ⑤ Thẻ học viên: bấm để mở. Học viên chưa xuất bản có nhãn **Bản nháp** trên ảnh.
+- ⑥ Ngôi sao: đưa vào hoặc bỏ khỏi carousel trang Academy. Sao tô màu là đang ở carousel.
+- ⑦ Nút **…**: menu thao tác.
+
+Phía trên lưới có ô **Tìm học viên…** (theo tên, đơn vị) và các nút lọc **Vai trò**, **Tiêu biểu** (Trong carousel /
+Không), **Trạng thái**. Rê chuột vào thẻ thì hiện ô chọn ở góc thẻ: chọn nhiều học viên để **Xuất bản**, **Chuyển về
+nháp** hoặc **Xóa** cùng lúc.
+
+Menu **…** của một học viên:
+
+<Screenshot alt="Menu thao tác của một học viên" src="/huong-dan/anh/quan-ly-academy/hoc-vien-thao-tac.png" />
+
+- ① **Chỉnh sửa**: mở học viên.
+- ② **Đưa vào carousel** (đang ở carousel thì là **Bỏ khỏi carousel**): giống bấm ngôi sao.
+- ③ **Chuyển về bản nháp** (đang nháp thì là **Xuất bản**): đổi trạng thái ngay. Góc trên bên phải báo, ví dụ, **Đã chuyển 1
+  học viên về bản nháp.**
+- ④ **Xem trên website**: mở câu chuyện của học viên trên website, ở tab mới.
+- ⑤ **Xóa**: xem [Xóa học viên](#tạm-ẩn-hoặc-xóa-học-viên).
+
+### Đưa học viên vào carousel trang Academy
+
+Bấm ngôi sao trên thẻ học viên (hoặc **…** › **Đưa vào carousel**):
+
+- học viên đã có câu trích dẫn thì vào carousel ngay, góc trên bên phải báo **Đã đưa … vào carousel Academy.**;
+- học viên chưa có câu trích dẫn thì hộp **Đưa … vào carousel** hiện ra, gợi ý sẵn câu đầu tiên của câu chuyện ①. Sửa cho
+  gọn thành một thành tích nổi bật (tối đa 160 ký tự), rồi bấm **Đưa vào carousel** ②.
+
+<Screenshot
+  alt="Hộp nhập câu trích dẫn khi đưa học viên vào carousel"
+  src="/huong-dan/anh/quan-ly-academy/hoc-vien-dua-vao-carousel.png"
+/>
+
+Bỏ khỏi carousel: bấm lại ngôi sao, góc trên bên phải báo **Đã bỏ … khỏi carousel Academy.** Câu trích dẫn vẫn được giữ cho
+lần sau. Carousel xếp học viên theo đúng thứ tự trong danh sách; nên chọn 3–5 người.
+
+### Thêm học viên
+
+<Steps>
+<Step>
+Bấm **Thêm học viên**. Học viên mới bắt đầu ở trạng thái **Bản nháp**; ô **Vai trò** và **Đơn vị** điền sẵn "DJ" và
+"Hooked Academy", sửa lại nếu cần.
+</Step>
+<Step>
+Điền form. Ảnh dưới đây là một học viên đã có, để thấy form khi đã điền đủ.
+
+<Screenshot alt="Form học viên" src="/huong-dan/anh/quan-ly-academy/hoc-vien-form.png" />
+
+- ① **Tên / nghệ danh**: tối đa 40 ký tự.
+- ② **Vai trò**: ví dụ DJ, MC HYPE; tối đa 32 ký tự. Bộ lọc **Vai trò** ở danh sách dùng đúng chữ này.
+- ③ **Đơn vị**: tối đa 60 ký tự.
+- ④ **Ảnh chân dung**: ảnh dọc (tỉ lệ 3:4), mặt ở nửa trên ảnh. Xem [Chọn ảnh](/huong-dan/bat-dau/quy-uoc-chung#chọn-ảnh).
+- ⑤ **Câu chuyện**: viết trong ô soạn thảo, có in đậm, liên kết, danh sách…, xem
+  [Ô soạn thảo](/huong-dan/bat-dau/quy-uoc-chung#ô-soạn-thảo).
+- ⑥ **Xuất bản**: để **Bản nháp** khi chưa xong.
+- ⑦ **Xem trước**: thẻ của học viên trên trang Học viên tiêu biểu, đổi ngay khi bạn sửa tên, vai trò, ảnh.
+
+</Step>
+<Step>
+Nếu muốn học viên lên carousel trang Academy, dùng phần **Học viên tiêu biểu** bên phải.
+
+<Screenshot alt="Phần Học viên tiêu biểu" src="/huong-dan/anh/quan-ly-academy/hoc-vien-form-tieu-bieu.png" />
+
+- ① Bật **Đưa vào carousel Academy**.
+- ② **Câu trích dẫn**: bắt buộc khi đã bật, tối đa 160 ký tự.
+- ③ **Xem trước carousel Academy**: thẻ của học viên trong carousel.
+
+</Step>
+<Step>
+Bấm **Tạo mới**. Góc trên bên phải báo **Đã tạo học viên.**, màn hình chuyển sang trang của học viên vừa tạo. Học viên
+mới đứng cuối danh sách. Khi xong, chọn **Đã xuất bản** rồi bấm **Lưu thay đổi** để học viên hiện trên website.
+</Step>
+</Steps>
+
+### Sửa học viên
+
+Bấm vào thẻ học viên. Form giống form thêm; thanh lưu và các nút **Xem trên website** (mở câu chuyện trên website), **Nhân
+bản**, **Xóa** dùng như mọi màn sửa khác, xem [Sửa và lưu](/huong-dan/bat-dau/quy-uoc-chung#sửa-và-lưu). Đổi tên không làm
+đổi link tới câu chuyện.
+
+### Tạm ẩn hoặc xóa học viên
+
+**Tạm ẩn**: chuyển học viên về **Bản nháp** (trong form hoặc **…** › **Chuyển về bản nháp**). Học viên biến khỏi trang Học
+viên tiêu biểu và khỏi carousel, link tới câu chuyện chỉ còn mở trang Học viên tiêu biểu. Xuất bản lại thì học viên hiện
+ở đúng vị trí cũ, sao vẫn giữ.
+
+**Xóa**: bấm **…** › **Xóa**. Hộp hỏi lại: **Xóa học viên "…"? Câu chuyện sẽ biến mất khỏi trang Học viên tiêu biểu (và
+carousel Academy nếu đang được chọn). Không thể hoàn tác.** Bấm **Xóa**, góc trên bên phải báo **Đã xóa học viên.** Nút
+**Xóa** ở màn sửa học viên cũng xóa được, hộp hỏi lại ở đó ngắn hơn: **Xóa học viên này?**
+
+<Callout type="error" title="Xóa rồi không lấy lại được">
+  Câu chuyện biến khỏi website ngay và không khôi phục được. Muốn tạm ẩn thì chuyển về **Bản nháp** thay vì xóa.
+</Callout>
 
 ## Các trường thông tin
 
-<Draft />
+<FieldTable
+  fields={[
+    { name: "Tên / nghệ danh", required: true, description: "Tối đa 40 ký tự.", example: "JGRAYSON" },
+    {
+      name: "Vai trò",
+      required: true,
+      description: "Tối đa 32 ký tự. Hiện trước dấu · dưới tên, và là giá trị của bộ lọc Vai trò.",
+      example: "DJ",
+    },
+    { name: "Đơn vị", required: true, description: "Tối đa 60 ký tự.", example: "Hooked Academy" },
+    {
+      name: "Ảnh chân dung",
+      required: true,
+      description: "Ảnh dọc tỉ lệ 3:4, rõ mặt. Dùng cho thẻ, câu chuyện và carousel.",
+      example: "Ảnh chân dung của học viên",
+    },
+    {
+      name: "Câu chuyện",
+      required: true,
+      description: "Hành trình và thành tích của học viên, viết trong ô soạn thảo.",
+      example: "Sau khóa học DJ Chuyên Nghiệp tại Hooked Entertainment…",
+    },
+    {
+      name: "Xuất bản",
+      description: "Đã xuất bản: hiện trên website. Bản nháp: ẩn. Học viên mới mặc định là Bản nháp.",
+      example: "Đã xuất bản",
+    },
+    {
+      name: "Đưa vào carousel Academy",
+      description:
+        "Bật để học viên hiện trong carousel Học viên tiêu biểu trên trang Academy (cùng với ngôi sao ở danh sách).",
+      example: "Bật",
+    },
+    {
+      name: "Câu trích dẫn",
+      required: true,
+      description:
+        "Chỉ có và chỉ bắt buộc khi đã bật Đưa vào carousel Academy. Một câu về thành tích nổi bật, tối đa 160 ký tự.",
+      example: "Top 3 Xóm Húc 2024 và Á quân Spin Awards HipHop Edition 2025.",
+    },
+  ]}
+/>
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+### Các câu báo lỗi khi lưu
+
+CMS không lưu khi còn ô thiếu hoặc sai, xem
+[Trường bắt buộc và câu báo lỗi](/huong-dan/bat-dau/quy-uoc-chung#trường-bắt-buộc-và-câu-báo-lỗi).
+
+| Câu báo lỗi                                                | Ở ô                  | Cách sửa                                            |
+| ---------------------------------------------------------- | -------------------- | --------------------------------------------------- |
+| "Nhập tên học viên."                                       | Tên / nghệ danh      | Gõ tên                                              |
+| "Nhập vai trò."                                            | Vai trò              | Gõ vai trò                                          |
+| "Nhập đơn vị (ví dụ: Hooked Academy)."                     | Đơn vị               | Gõ đơn vị                                           |
+| "Tối đa 40 ký tự.", "Tối đa 32 ký tự.", "Tối đa 60 ký tự." | Tên, Vai trò, Đơn vị | Rút gọn                                             |
+| "Chọn ảnh chân dung."                                      | Ảnh chân dung        | Chọn hoặc tải ảnh lên                               |
+| "Viết câu chuyện."                                         | Câu chuyện           | Viết câu chuyện                                     |
+| "Nhập câu trích dẫn để hiển thị trong carousel Academy."   | Câu trích dẫn        | Gõ câu trích dẫn, hoặc tắt Đưa vào carousel Academy |
+| "Tối đa 160 ký tự."                                        | Câu trích dẫn        | Rút gọn câu trích dẫn                               |
+
+### Nút "Đưa vào carousel" trong hộp bị mờ
+
+Ô câu trích dẫn đang trống, hoặc dài quá 160 ký tự (bộ đếm chuyển đỏ). Sửa câu trích dẫn thì nút sáng lại.
+
+### Đã gắn sao nhưng không thấy trong carousel
+
+Kiểm tra học viên đang **Đã xuất bản**: học viên ở bản nháp không hiện trên website dù đã gắn sao (hộp gắn sao cũng nhắc
+điều này). Rồi tải lại trang Academy.
+
+### Link câu chuyện chỉ mở trang Học viên tiêu biểu
+
+Học viên đó đang ở **Bản nháp** hoặc đã bị xóa. Xuất bản lại học viên thì link mở được câu chuyện như cũ.
 
 ## Liên quan
 
-<Draft />
+- [Trang › Học viên tiêu biểu](/huong-dan/trang/hoc-vien-tieu-bieu): tiêu đề và lời giới thiệu của trang.
+- [Trang › Academy](/huong-dan/trang/academy): các phần khác của trang Academy.
+- [Khóa học](/huong-dan/quan-ly-academy/khoa-hoc): các khóa học trên trang Academy.
+- [Thư viện media](/huong-dan/he-thong/thu-vien-media): ảnh chân dung đã tải lên.

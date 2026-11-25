@@ -1,32 +1,92 @@
 ---
 title: "Projects"
-description: "Tiêu đề và giới thiệu của trang Projects (dự án và danh mục sửa ở mục riêng)."
+description: "Tiêu đề và mô tả của trang Projects trên Google và khi chia sẻ. Dự án và danh mục sửa ở mục riêng."
 ---
 
 <AdminPath trail={["Trang", "Projects"]} href="/admin/pages/projects" />
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Màn này chỉ sửa **SEO** của trang Projects: tiêu đề và mô tả của trang trên Google, trên tab trình duyệt và khi chia sẻ
+link. Nội dung trang Projects sửa ở các màn khác:
+
+- các dự án và trang chi tiết của từng dự án: [Dự án](/huong-dan/quan-ly-du-an/du-an);
+- các nút lọc theo dịch vụ: [Danh mục dự án](/huong-dan/quan-ly-du-an/danh-muc-du-an);
+- lưới **Tất cả** (ô nào hiện dự án nào): [Cài đặt hiển thị dự án](/huong-dan/quan-ly-du-an/cai-dat-hien-thi-du-an).
+
+Tiêu đề **Hooked Projects**, nút **Tất cả** và câu báo khi một danh mục chưa có dự án là chữ cố định của website. Cả ba
+vai trò đều dùng được màn này.
 
 ## Hiện ở đâu trên website
 
 <OnWebsite pages={[{ label: "Trang Projects", path: "/projects" }]}>
-  <Screenshot alt="Projects trên website" src="/huong-dan/anh/trang/projects-website.png" />
+  <Screenshot
+    alt="Trang Projects trên website"
+    src="/huong-dan/anh/trang/projects-website.png"
+    caption="① Tiêu đề Hooked Projects: cố định. ② Nút lọc: sửa ở Danh mục dự án. ③ Thẻ dự án: sửa ở Dự án, vị trí trong lưới sửa ở Cài đặt hiển thị dự án."
+  />
 </OnWebsite>
+
+| Trên CMS    | Hiện ở đâu                                                                                                      |
+| ----------- | --------------------------------------------------------------------------------------------------------------- |
+| Tiêu đề SEO | Tên tab trình duyệt và dòng chữ xanh trên Google: **Projects · Hooked Entertainment**; tiêu đề khi chia sẻ link |
+| Mô tả SEO   | Dòng mô tả dưới tiêu đề trên Google; đoạn mô tả khi chia sẻ link                                                |
+
+Đuôi “· Hooked Entertainment” và ảnh khi chia sẻ lấy ở [Cài đặt website](/huong-dan/he-thong/cai-dat-website). Màn
+này chỉ áp dụng cho trang danh sách `/projects`, không cho trang của từng dự án. Website cập nhật ngay khi bạn lưu.
 
 ## Các bước thao tác
 
-<Draft />
+<Steps>
+<Step>
+Trên menu bên trái, bấm **Trang › Projects**.
+
+<Screenshot alt="Màn Trang Projects" src="/huong-dan/anh/trang/projects.png" />
+</Step>
+<Step>
+Sửa ① **Tiêu đề SEO** và ② **Mô tả SEO**, xem trước ở khung ③.
+</Step>
+<Step>
+Bấm ④ **Lưu thay đổi**. Góc trên bên phải báo **Đã lưu Trang projects.**
+</Step>
+</Steps>
+
+Màn này giống hệt màn [Trang › Academy](/huong-dan/trang/academy): cùng hai ô, cùng giới hạn ký tự, cùng câu báo lỗi.
 
 ## Các trường thông tin
 
-<Draft />
+<FieldTable
+  fields={[
+    {
+      name: "Tiêu đề SEO",
+      required: true,
+      description:
+        "Tên trang trên tab trình duyệt, Google và khi chia sẻ. Website tự thêm “· Hooked Entertainment”. Nên dưới 50 ký tự, tối đa 70.",
+      example: "Projects",
+    },
+    {
+      name: "Mô tả SEO",
+      required: true,
+      description: "Đoạn mô tả dưới tiêu đề trên Google và khi chia sẻ. Nên dưới 160 ký tự, tối đa 200.",
+      example: "Các dự án sự kiện, media và booking của Hooked Entertainment.",
+    },
+  ]}
+/>
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+Các câu báo lỗi **Nhập tiêu đề SEO.**, **Nhập mô tả SEO.**, **Tối đa 70 ký tự.**, **Tối đa 200 ký tự.**: xem
+[Trang › Academy](/huong-dan/trang/academy#lưu-ý-và-lỗi-thường-gặp).
+
+### Dự án mới không có trong lưới Tất cả
+
+Lưới **Tất cả** chỉ hiện các dự án được đặt vào ô ở màn
+[Cài đặt hiển thị dự án](/huong-dan/quan-ly-du-an/cai-dat-hien-thi-du-an); dự án mới chỉ hiện khi lọc theo danh mục của
+nó. Xem [Dự án đã xuất bản nhưng không thấy trên trang Projects](/huong-dan/quan-ly-du-an/du-an#dự-án-đã-xuất-bản-nhưng-không-thấy-trên-trang-projects).
 
 ## Liên quan
 
-<Draft />
+- [Dự án](/huong-dan/quan-ly-du-an/du-an), [Danh mục dự án](/huong-dan/quan-ly-du-an/danh-muc-du-an),
+  [Cài đặt hiển thị dự án](/huong-dan/quan-ly-du-an/cai-dat-hien-thi-du-an): nội dung của trang Projects.
+- [Trang › Academy](/huong-dan/trang/academy): màn cùng kiểu, có ảnh câu báo lỗi.
+- [Cài đặt website](/huong-dan/he-thong/cai-dat-website): mẫu tiêu đề và ảnh chia sẻ dùng chung.

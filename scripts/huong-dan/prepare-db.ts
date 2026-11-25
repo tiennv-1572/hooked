@@ -5,9 +5,10 @@
  *
  * 1. Dates. The seed is anchored to a fixed day (SEED_NOW), so as weeks pass the CMS shows its registrations as
  *    ever older ("45 ngày trước") and the dashboard's last-30-days figures empty out. Every timestamp — datetime
- *    columns and ISO date-times inside `doc` — moves by the same number of days, so the newest registration is
- *    today: pictures taken on any day look the same. Day-only dates (an event's date) are content and stay.
- *    Running it again moves nothing (the newest registration is already today).
+ *    columns and ISO date-times inside `doc` — moves by the same whole number of days, so the newest registration
+ *    is today, or yesterday when its time of day has not come yet: never in the future (the CMS would show a future
+ *    time as "9 giờ trước" and list it first). Pictures taken on any day look the same. Day-only dates (an event's
+ *    date) are content and stay. Running it again moves nothing.
  * 2. Registrations (leads) are generated people, but with plausible gmail addresses and phone numbers that could be
  *    someone's: they become `<name>@example.com` and `0900 000 0NN`, as kit.ts's email guard expects.
  *
@@ -47,7 +48,14 @@ async function main() {
   try {
     // 1. Dates
     const [[newest]] = await db.query<mysql.RowDataPacket[]>("select max(created_at) as at from leads");
-    const days = newest?.at ? vietnamDay(new Date()) - vietnamDay(new Date(newest.at)) : 0;
+    let days = 0;
+    if (newest?.at) {
+      const now = Date.now();
+      const at = new Date(newest.at).getTime();
+      days = vietnamDay(new Date(now)) - vietnamDay(new Date(at));
+      // Not yet that time of day: one day less, so nothing lands in the future.
+      if (at + days * DAY > now) days -= 1;
+    }
     if (days !== 0) {
       const [columns] = await db.query<mysql.RowDataPacket[]>(
         "select table_name as t, column_name as c, data_type as type from information_schema.columns " +
@@ -69,7 +77,7 @@ async function main() {
         }
       }
     }
-    console.log(`Ngày tháng: dời ${days} ngày (đăng ký tư vấn mới nhất là hôm nay).`);
+    console.log(`Ngày tháng: dời ${days} ngày (đăng ký tư vấn mới nhất là hôm nay hoặc hôm qua, không ở tương lai).`);
 
     // 2. Registrations: sample contacts
     const [leads] = await db.query<mysql.RowDataPacket[]>("select id, email, doc from leads");

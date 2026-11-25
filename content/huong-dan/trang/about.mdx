@@ -1,32 +1,265 @@
 ---
 title: "About"
-description: "Nội dung trang giới thiệu Hooked."
+description: "Nội dung trang giới thiệu Hooked: phần mở đầu, hệ sinh thái, năng lực, portfolio và hai khối ảnh."
 ---
 
 <AdminPath trail={["Trang", "About"]} href="/admin/pages/about" />
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Màn này sửa gần như toàn bộ trang About (`/about`). Màn có ba tab, theo thứ tự trang từ trên xuống:
+
+- **Mở đầu**: tiêu đề trang, câu mở đầu chữ lớn và đoạn câu chuyện;
+- **Hệ sinh thái**: khối "Một hệ sinh thái cho nghệ sĩ Việt", danh sách năng lực đánh số và liên kết portfolio;
+- **Hình ảnh**: hai khối ảnh, mỗi khối bốn ảnh.
+
+Menu đầu trang, chân trang sửa ở [Menu & điều hướng](/huong-dan/he-thong/menu-dieu-huong) và
+[Cài đặt website](/huong-dan/he-thong/cai-dat-website). Cả ba vai trò (Chủ sở hữu, Quản trị, Biên tập) đều dùng được màn
+này.
 
 ## Hiện ở đâu trên website
 
 <OnWebsite pages={[{ label: "Trang About", path: "/about" }]}>
-  <Screenshot alt="About trên website" src="/huong-dan/anh/trang/about-website.png" />
+  <Screenshot
+    alt="Phần mở đầu trang About"
+    src="/huong-dan/anh/trang/about-website-mo-dau.png"
+    caption="Phần mở đầu: số trên ảnh trùng với số các ô ở tab Mở đầu bên dưới."
+  />
 </OnWebsite>
+
+| Tab trên CMS | Trên trang About                                                                                       |
+| ------------ | ------------------------------------------------------------------------------------------------------ |
+| Mở đầu       | Phần đầu trang: tiêu đề nhỏ ABOUT HOOKED, câu mở đầu chữ lớn, tiêu đề nhỏ và hai đoạn câu chuyện       |
+| Hình ảnh     | Khối ảnh trên (ngay sau phần mở đầu) và khối ảnh dưới (cuối trang)                                     |
+| Hệ sinh thái | Khối giữa trang: tiêu đề nhỏ, câu tuyên bố chữ lớn, đoạn mô tả, liên kết portfolio, danh sách năng lực |
+
+Trang About không có ô SEO riêng: tiêu đề tab trình duyệt luôn là **About · Hooked Entertainment**, còn dòng mô tả trên
+Google và khi chia sẻ link lấy từ **Câu mở đầu**.
+
+Website cập nhật ngay khi bạn lưu: tải lại trang About là thấy.
 
 ## Các bước thao tác
 
-<Draft />
+### Sửa và lưu
+
+<Steps>
+  <Step>Trên menu bên trái, bấm **Trang › About**.</Step>
+  <Step>
+    Bấm tab cần sửa (**Mở đầu**, **Hệ sinh thái**, **Hình ảnh**) và sửa các ô. Bạn có thể sửa nhiều tab rồi lưu một lần.
+  </Step>
+  <Step>
+    Bấm **Lưu thay đổi** (<kbd>Ctrl</kbd> + <kbd>S</kbd>) ở thanh dưới cùng. Góc trên bên phải báo **Đã lưu Trang
+    about.** Cả ba tab được lưu cùng lúc.
+  </Step>
+</Steps>
+
+Hai nút **Xem trang** và **Khôi phục mặc định** ở đầu màn: xem
+[Nội dung các trang](/huong-dan/bat-dau/quy-uoc-chung#nội-dung-các-trang).
+
+### Mở đầu
+
+<Screenshot alt="Tab Mở đầu" src="/huong-dan/anh/trang/about-mo-dau.png" />
+
+- ① **Tiêu đề trang**: dòng chữ nhỏ đầu trang, ví dụ `ABOUT HOOKED`.
+- ② **Dòng nhãn cam (mobile)**: dòng chữ cam dưới tiêu đề, **chỉ hiện trên điện thoại**. Không bắt buộc.
+- ③ **Câu mở đầu**: câu chữ lớn. Câu này cũng là mô tả của trang trên Google.
+- ④ **Tiêu đề nhỏ — dòng 1** và **dòng 2**: hai dòng tiêu đề nhỏ của đoạn câu chuyện.
+- ⑤ **Đoạn chính**: đoạn câu chuyện bên trái.
+- ⑥ **Đoạn phụ**: đoạn chữ nhạt bên phải. Không bắt buộc; để trống thì website không có cột này.
+- ⑦ **Xem trước**: phần đầu trang sẽ trông thế nào, đổi ngay theo những gì bạn gõ.
+
+<Tabs items={["Máy tính", "Điện thoại"]}>
+<Tab>
+Trên website (ảnh ở mục [Hiện ở đâu trên website](#hiện-ở-đâu-trên-website)): ① tiêu đề trang, ③ câu mở đầu, ④ tiêu đề
+nhỏ, ⑤ đoạn chính, ⑥ đoạn phụ.
+
+</Tab>
+<Tab>
+<Screenshot alt="Phần đầu trang About trên điện thoại" src="/huong-dan/anh/trang/about-website-mobile.png" device="mobile" />
+
+Trên điện thoại, dòng nhãn cam ② hiện ngay dưới tiêu đề trang ①.
+
+</Tab>
+</Tabs>
+
+### Hệ sinh thái
+
+Tab **Hệ sinh thái** có ba khung: **Hệ sinh thái**, **Năng lực** và **Portfolio**.
+
+<Screenshot alt="Tab Hệ sinh thái" src="/huong-dan/anh/trang/about-he-sinh-thai.png" />
+
+- ① **Tiêu đề nhỏ**: mỗi ô là một dòng, tối đa 3 dòng. Kéo nút ⋮⋮ để đổi thứ tự, bấm thùng rác để xóa dòng, **Thêm dòng**
+  để thêm.
+- ② **Câu tuyên bố**: câu chữ lớn của khối.
+- ③ **Đoạn mô tả**: đoạn chữ nhỏ bên trái.
+- ④ **Năng lực**: danh sách năng lực, website tự đánh số 01, 02… theo thứ tự này. Xem bên dưới.
+- ⑤ **Portfolio**: **Nhãn** và **Liên kết** của dòng chữ cam dưới đoạn mô tả, thường là file PDF trên Google Drive.
+
+Bấm vào một năng lực để mở các ô của nó:
+
+<Screenshot alt="Một năng lực đang mở" src="/huong-dan/anh/trang/about-nang-luc.png" />
+
+- ① Dòng năng lực: bấm để mở hoặc thu gọn. Nút kéo ⋮⋮ bên trái để đổi thứ tự, thùng rác bên phải để xóa. Xem
+  [Danh sách trong form](/huong-dan/bat-dau/quy-uoc-chung#danh-sách-trong-form).
+- ② **Phần in đậm**: phần đầu, chữ đậm.
+- ③ **Phần tiếp theo**: phần chữ thường nối liền sau phần in đậm. CMS tự thêm dấu cách giữa hai phần khi cần.
+- ④ **Liên kết của phần in đậm**: không bắt buộc. Có liên kết thì phần in đậm trên website bấm được, ví dụ `/academy`.
+- ⑤ **Thêm năng lực**: thêm một dòng vào cuối danh sách.
+
+<Screenshot alt="Khối hệ sinh thái trên website" src="/huong-dan/anh/trang/about-website-he-sinh-thai.png" />
+
+Trên website: ① tiêu đề nhỏ, ② câu tuyên bố, ③ đoạn mô tả, ④ danh sách năng lực, ⑤ liên kết portfolio (mở ở tab mới khi
+là địa chỉ ngoài website).
+
+### Hình ảnh
+
+Tab **Hình ảnh** có hai khung, **Khối ảnh trên** và **Khối ảnh dưới**, mỗi khung bốn ô ảnh đánh số. Cả tám ô đều bắt
+buộc.
+
+<Screenshot alt="Tab Hình ảnh" src="/huong-dan/anh/trang/about-hinh-anh.png" />
+
+- ① **Xem trước**: khối ảnh xếp đúng như trên website, mỗi ảnh mang số của ô tương ứng.
+- ② Tên ô cho biết số thứ tự và dáng ảnh: **Ảnh lớn**, **Ảnh ngang** là ảnh ngang (3:2); **Ảnh dọc** là ảnh dọc (2:3).
+  Chọn ảnh đúng dáng để website không phải cắt nhiều.
+- Đưa chuột lên một ảnh thì hiện hai nút: ③ **Thay ảnh** (chọn ảnh khác trong thư viện hoặc tải lên, xem
+  [Chọn ảnh](/huong-dan/bat-dau/quy-uoc-chung#chọn-ảnh)) và ④ **Gỡ**. Gỡ chỉ bỏ ảnh khỏi ô; ảnh vẫn còn trong thư viện.
+- ⑤ **Khối ảnh dưới**: cùng cách dùng.
+
+Trên website, số trên ảnh trùng với số các ô:
+
+<Tabs items={["Khối ảnh trên", "Khối ảnh dưới"]}>
+<Tab>
+<Screenshot alt="Khối ảnh trên trên website" src="/huong-dan/anh/trang/about-website-anh-tren.png" />
+
+Ngay sau phần mở đầu: ① ảnh lớn bên trái, ② ảnh ngang, ③ ảnh dọc trái, ④ ảnh dọc phải.
+
+</Tab>
+<Tab>
+<Screenshot alt="Khối ảnh dưới trên website" src="/huong-dan/anh/trang/about-website-anh-duoi.png" />
+
+Cuối trang, sau khối hệ sinh thái: ① ảnh lớn, ② ảnh dọc, ③ ảnh ngang trái, ④ ảnh ngang phải.
+
+</Tab>
+</Tabs>
 
 ## Các trường thông tin
 
-<Draft />
+<FieldTable
+  fields={[
+    {
+      name: "Mở đầu › Tiêu đề trang",
+      required: true,
+      description: "Dòng chữ nhỏ đầu trang.",
+      example: "ABOUT HOOKED",
+    },
+    {
+      name: "Mở đầu › Dòng nhãn cam (mobile)",
+      description: "Dòng chữ cam dưới tiêu đề, chỉ hiện trên điện thoại.",
+      example: "SUPPORT LOCAL ARTIST",
+    },
+    {
+      name: "Mở đầu › Câu mở đầu",
+      required: true,
+      description:
+        "Câu chữ lớn đầu trang, cũng là mô tả trang trên Google và khi chia sẻ. Số đếm /140 là độ dài nên dùng; CMS vẫn cho lưu dài hơn.",
+      example:
+        "Với những ai theo dõi âm nhạc điện tử lâu năm tại Việt Nam, HOOKED có lẽ không còn là cái tên quá xa lạ.",
+    },
+    {
+      name: "Mở đầu › Tiêu đề nhỏ — dòng 1, dòng 2",
+      required: true,
+      description: "Hai dòng tiêu đề nhỏ của đoạn câu chuyện.",
+      example: "TỪ TINH THẦN / SUPPORT LOCAL ARTIST",
+    },
+    {
+      name: "Mở đầu › Đoạn chính",
+      required: true,
+      description: "Đoạn câu chuyện bên trái.",
+      example: "Với tinh thần “support local artist”, Hooked Management đóng vai trò quản lý…",
+    },
+    {
+      name: "Mở đầu › Đoạn phụ",
+      description: "Đoạn chữ nhạt bên phải. Để trống thì không có cột này.",
+      example: "Bất cứ nơi nào có âm nhạc chất lượng, Hooked đều ở đó…",
+    },
+    {
+      name: "Hệ sinh thái › Tiêu đề nhỏ",
+      required: true,
+      description: "Các dòng tiêu đề nhỏ của khối, 1 đến 3 dòng.",
+      example: "MỘT HỆ SINH THÁI / CHO NGHỆ SĨ VIỆT",
+    },
+    {
+      name: "Hệ sinh thái › Câu tuyên bố",
+      required: true,
+      description: "Câu chữ lớn của khối.",
+      example: "Hooked vẫn giữ vững tinh thần từ những ngày đầu tiên…",
+    },
+    {
+      name: "Hệ sinh thái › Đoạn mô tả",
+      required: true,
+      description: "Đoạn chữ nhỏ bên trái, trên liên kết portfolio.",
+      example: "Bên cạnh việc quản lý & định hướng nghệ sĩ…",
+    },
+    {
+      name: "Năng lực › Phần in đậm",
+      required: true,
+      description: "Phần đầu của một dòng năng lực, chữ đậm. Cần ít nhất 1 năng lực.",
+      example: "Đào tạo chuyên môn & định hướng hình ảnh",
+    },
+    {
+      name: "Năng lực › Phần tiếp theo",
+      description: "Phần chữ thường nối sau phần in đậm.",
+      example: "DJ, MC Hype & Music Producer.",
+    },
+    {
+      name: "Năng lực › Liên kết của phần in đậm",
+      description: "Trang mở ra khi bấm phần in đậm. Bắt đầu bằng / hoặc https://.",
+      example: "/academy",
+    },
+    {
+      name: "Portfolio › Nhãn, Liên kết",
+      required: true,
+      description: "Dòng chữ cam dưới đoạn mô tả và địa chỉ nó mở ra, thường là file PDF trên Google Drive.",
+      example: "Xem full portfolio → https://drive.google.com/…",
+    },
+    {
+      name: "Hình ảnh › Khối ảnh trên, Khối ảnh dưới",
+      required: true,
+      description: "Mỗi khối 4 ảnh. Ảnh lớn, ảnh ngang dùng ảnh ngang (3:2); ảnh dọc dùng ảnh dọc (2:3).",
+      example: "Ảnh sân khấu Devoid Music Festival",
+    },
+  ]}
+/>
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+### "Chọn ảnh."
+
+Một ô ảnh còn trống, thường do lỡ bấm **Gỡ**. Khi bấm lưu mà còn ô sai, tab chứa ô đó có chấm đỏ ①, câu báo lỗi hiện dưới
+ô ②. Chọn ảnh cho ô đó, hoặc bấm **Hoàn tác** để bỏ các thay đổi chưa lưu.
+
+<Screenshot alt="Lỗi ô ảnh còn trống" src="/huong-dan/anh/trang/about-loi.png" />
+
+Các tab khác cũng vậy: tab nào có chấm đỏ thì mở tab đó và sửa ô tô đỏ. Các câu báo thiếu thường gặp: **Nhập tiêu đề
+trang.**, **Nhập câu mở đầu.**, **Nhập dòng 1.**, **Nhập dòng 2.**, **Nhập đoạn nội dung.**, **Nhập ít nhất 1 dòng tiêu
+đề.**, **Nhập câu tuyên bố.**, **Nhập đoạn mô tả.**, **Nhập phần in đậm.**, **Nhập nhãn.**, **Nhập đường dẫn.**
+
+### "Cần ít nhất 1 năng lực."
+
+Đã xóa hết các năng lực. Bấm **Thêm năng lực** và điền ít nhất một dòng.
+
+### "Bắt đầu bằng / hoặc https://"
+
+Ô liên kết (portfolio, liên kết của năng lực) phải là đường dẫn trong website (bắt đầu bằng `/`, ví dụ `/academy`) hoặc
+địa chỉ đầy đủ (bắt đầu bằng `https://`). Bấm **Chọn** bên phải ô để chọn trang thay vì gõ tay.
+
+### Đổi ảnh xong mà ảnh trên website bị cắt mất đầu hoặc chân
+
+Website cắt ảnh cho vừa khung: ảnh dọc đặt vào ô ngang (hoặc ngược lại) sẽ bị cắt nhiều. Chọn ảnh cùng dáng với tên ô.
 
 ## Liên quan
 
-<Draft />
+- [Nội dung các trang](/huong-dan/bat-dau/quy-uoc-chung#nội-dung-các-trang): Xem trang, Khôi phục mặc định, thanh lưu.
+- [Chọn ảnh](/huong-dan/bat-dau/quy-uoc-chung#chọn-ảnh) và [Thư viện media](/huong-dan/he-thong/thu-vien-media): ảnh của
+  hai khối ảnh.
+- [Sửa ở đâu, hiện ở đâu](/huong-dan/tham-khao/sua-o-dau-hien-o-dau): bảng tra cho toàn website.

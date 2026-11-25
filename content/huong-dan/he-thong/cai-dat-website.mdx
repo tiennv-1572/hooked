@@ -1,13 +1,20 @@
 ---
 title: "Cài đặt website"
-description: "Thông tin dùng chung cho toàn website: header, footer, trang Contact và thẻ chia sẻ mạng xã hội."
+description: "Thông tin dùng chung cho toàn website: tên và mô tả, công ty và liên hệ ở chân trang, mạng xã hội, tiêu đề trang và ảnh chia sẻ."
 ---
 
 <AdminPath trail={["Hệ thống", "Cài đặt website"]} href="/admin/settings" />
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Màn này giữ những thông tin dùng chung cho mọi trang của website, chia thành bốn thẻ:
+
+- **Thông tin chung**: tên website và mô tả mặc định;
+- **Công ty & liên hệ**: tên công ty, địa chỉ, email, số điện thoại ở chân trang và trang Contact;
+- **Mạng xã hội**: các liên kết Facebook, Instagram… ở chân trang và trang Contact;
+- **SEO**: tiêu đề trên tab trình duyệt và Google, ảnh hiện khi chia sẻ link website.
+
+Sửa một lần ở đây thì mọi trang cùng đổi. Cả ba vai trò (Chủ sở hữu, Quản trị, Biên tập) đều dùng được màn này.
 
 ## Hiện ở đâu trên website
 
@@ -17,21 +24,194 @@ description: "Thông tin dùng chung cho toàn website: header, footer, trang Co
     { label: "Trang Contact", path: "/contact" },
   ]}
 >
-  <Screenshot alt="Cài đặt website trên website" src="/huong-dan/anh/he-thong/cai-dat-website-website.png" />
+  <Screenshot
+    alt="Chân trang của website"
+    src="/huong-dan/anh/he-thong/cai-dat-website-website.png"
+    caption="① Email và ② số điện thoại, ③ mạng xã hội, ④ tên công ty và địa chỉ: sửa ở màn này. Cột Company: sửa ở Menu & điều hướng."
+  />
 </OnWebsite>
+
+| Trên CMS                    | Trên website                                                                                                                  |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Tên website                 | Tên website khi chia sẻ link lên mạng xã hội và trong kết quả Google; tên hiện khi thêm website vào màn hình chính điện thoại |
+| Mô tả                       | Dòng mô tả trên Google của trang chủ và của những trang không có mô tả riêng                                                  |
+| Tên pháp lý, Địa chỉ        | Cuối chân trang ④; cột **ĐỊA CHỈ** trang Contact                                                                              |
+| Email                       | Chân trang ①; email lớn trên trang Contact; nút liên hệ ở trang Partners; dòng mô tả trên Google của trang Contact            |
+| Số điện thoại, Liên kết gọi | Chân trang ②; cột **GỌI HOOKED** trang Contact. Bấm vào số trên điện thoại là gọi                                             |
+| Mạng xã hội                 | Cột **Social** ở chân trang ③; cột **KẾT NỐI** trang Contact, đúng thứ tự trên CMS                                            |
+| Mẫu tiêu đề                 | Tiêu đề trên tab trình duyệt và trên Google của mọi trang, ví dụ **Academy · Hooked Entertainment**                           |
+| Tiêu đề mặc định            | Tiêu đề trên tab trình duyệt và trên Google của trang chủ                                                                     |
+| Ảnh mặc định (Ảnh chia sẻ)  | Ảnh hiện khi dán link website vào Facebook, Messenger, Zalo, với những trang không có ảnh riêng                               |
+
+Trang Contact hiện lại các thông tin công ty, liên hệ, mạng xã hội: xem ảnh ở [Contact](/huong-dan/trang/contact). Website
+cập nhật ngay khi bạn lưu: tải lại trang là thấy.
 
 ## Các bước thao tác
 
-<Draft />
+Trên menu bên trái, bấm **Hệ thống › Cài đặt website**. Chọn thẻ cần sửa, sửa, rồi bấm **Lưu thay đổi** (<kbd>Ctrl</kbd> +
+
+<kbd>S</kbd>) ở thanh lưu dưới đáy. Một lần lưu lưu cả bốn thẻ; góc trên bên phải báo **Đã lưu Thông tin website.** Bên
+phải mỗi thẻ là khung xem trước, cập nhật ngay khi bạn gõ (chưa cần lưu).
+
+### Thông tin chung
+
+<Screenshot alt="Thẻ Thông tin chung" src="/huong-dan/anh/he-thong/cai-dat-website-thong-tin-chung.png" />
+
+- ① Bốn thẻ của màn.
+- ② **Tên website**.
+- ③ **Khẩu hiệu**: hiện website chưa hiển thị ô này ở đâu.
+- ④ **Mô tả**: số ở góc phải phía trên ô đếm ký tự; nên dưới 160 ký tự (vượt thì số chuyển màu đỏ nhưng vẫn lưu được).
+- ⑤ **Kết quả Google**: xem trước trang chủ trên Google.
+
+### Công ty & liên hệ
+
+<Screenshot alt="Thẻ Công ty và liên hệ" src="/huong-dan/anh/he-thong/cai-dat-website-cong-ty.png" />
+
+- ① **Tên pháp lý** và ② **Địa chỉ** của công ty.
+- ③ **Email** liên hệ.
+- ④ **Số điện thoại**: gõ đúng như muốn hiện trên website, ví dụ `0966 609 807`.
+- ⑤ **Liên kết gọi**: tự tạo từ số điện thoại (ví dụ `tel:+84966609807`), dùng khi người xem bấm vào số trên điện thoại.
+- ⑥ **Tự động**: để bật. Chỉ tắt khi cần gõ liên kết gọi khác với số hiển thị.
+- ⑦ Xem trước chân trang. Link **Trên website** ở góc khung mở trang Contact.
+
+### Mạng xã hội
+
+<Screenshot alt="Thẻ Mạng xã hội" src="/huong-dan/anh/he-thong/cai-dat-website-mang-xa-hoi.png" />
+
+- ① Nút kéo: đổi thứ tự (đúng thứ tự trên website).
+- ② **Tên** hiện trên website và ③ **Đường dẫn** tới trang mạng xã hội. Icon bên trái tự nhận theo đường dẫn.
+- ④ Mở đường dẫn ở tab mới, để kiểm tra link đúng chưa.
+- ⑤ Xóa liên kết.
+- ⑥ **Thêm liên kết**: thêm một dòng trống.
+- ⑦ **Thêm nhanh**: bấm tên một mạng (X, LinkedIn, Spotify, SoundCloud, Threads, Zalo) để thêm dòng có sẵn tên; chỉ còn điền
+  đường dẫn.
+
+Gõ đường dẫn thiếu `https://` (ví dụ `facebook.com/hookedvn`) thì CMS tự thêm khi bạn rời ô.
+
+### SEO
+
+<Screenshot alt="Thẻ SEO" src="/huong-dan/anh/he-thong/cai-dat-website-seo.png" />
+
+- ① **Mẫu tiêu đề**: `%s` được thay bằng tên từng trang. Mẫu `%s · Hooked Entertainment` cho tiêu đề
+  **Academy · Hooked Entertainment** ở trang Academy.
+- ② **Tiêu đề mặc định**: tiêu đề của trang chủ (và của trang không có tiêu đề riêng). Nên dưới 60 ký tự để Google không cắt
+  bớt.
+- ③ **Ảnh mặc định**: ảnh hiện khi chia sẻ link. Nên dùng ảnh ngang 1200 × 630; ảnh lệch tỉ lệ hoặc nhỏ hơn 600 điểm ảnh
+  thì CMS nhắc **Ảnh hiện tại sẽ bị cắt bớt khi chia sẻ.** hoặc **Ảnh hiện tại hơi nhỏ, có thể bị mờ khi chia sẻ.** Cách
+  chọn ảnh: xem [Chọn ảnh](/huong-dan/bat-dau/quy-uoc-chung#chọn-ảnh).
+- ④ **Xem với**: đổi trang để xem trước tiêu đề của trang đó trên Google.
+- ⑤ Xem trước khi chia sẻ lên Facebook.
+
+<Callout title="Website hiện chưa có ảnh chia sẻ mặc định">
+  Ô **Ảnh mặc định** đang trống, nên khi dán link trang chủ (và các trang không có ảnh riêng) vào Facebook, Zalo, bài
+  chia sẻ không có ảnh. Chọn một ảnh ngang đẹp của Hooked rồi lưu. Bài viết và dự án dùng ảnh của chính nó.
+</Callout>
+
+Tiêu đề và mô tả riêng của từng trang (Academy, Projects, Blog…) sửa ở màn của trang đó trong nhóm
+[Trang](/huong-dan/trang/academy).
 
 ## Các trường thông tin
 
-<Draft />
+<FieldTable
+  fields={[
+    { name: "Tên website", required: true, description: "Tên của website.", example: "Hooked Entertainment" },
+    {
+      name: "Khẩu hiệu",
+      description: "Hiện website chưa hiển thị ô này.",
+      example: "Support Local Artists",
+    },
+    {
+      name: "Mô tả",
+      required: true,
+      description: "Mô tả mặc định trên Google. Nên dưới 160 ký tự.",
+      example: "Hooked Entertainment sẽ là bệ phóng cho những nghệ sỹ âm nhạc điện tử…",
+    },
+    {
+      name: "Tên pháp lý",
+      required: true,
+      description: "Tên đăng ký của công ty, hiện cuối chân trang.",
+      example: "CÔNG TY TNHH HOOKED ENTERTAINMENT",
+    },
+    { name: "Địa chỉ", required: true, description: "Địa chỉ công ty.", example: "Số 142B phố Đê La Thành…" },
+    {
+      name: "Email",
+      required: true,
+      description: "Email liên hệ, phải đúng dạng email.",
+      example: "hooked.vie@gmail.com",
+    },
+    {
+      name: "Số điện thoại",
+      required: true,
+      description: "Viết như muốn hiển thị, có thể có dấu cách.",
+      example: "0966 609 807",
+    },
+    {
+      name: "Liên kết gọi",
+      description: "Tự tạo từ số điện thoại. Gõ tay (sau khi tắt Tự động) thì phải có dạng tel: và chỉ gồm chữ số.",
+      example: "tel:+84966609807",
+    },
+    {
+      name: "Mạng xã hội: Tên, Đường dẫn",
+      required: true,
+      description: "Mỗi dòng phải có tên và đường dẫn đầy đủ bắt đầu bằng https:// .",
+      example: "Facebook — https://www.facebook.com/hookedvn",
+    },
+    {
+      name: "Mẫu tiêu đề",
+      required: true,
+      description: "Phải có %s (chỗ đặt tên từng trang).",
+      example: "%s · Hooked Entertainment",
+    },
+    {
+      name: "Tiêu đề mặc định",
+      required: true,
+      description: "Tiêu đề trang chủ. Nên dưới 60 ký tự.",
+      example: "Hooked Entertainment — Support Local Artists",
+    },
+    {
+      name: "Ảnh mặc định",
+      description: "Ảnh chia sẻ link, ảnh ngang 1200 × 630.",
+      example: "Ảnh sân khấu Vui Fest",
+    },
+  ]}
+/>
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+Bấm lưu khi còn ô sai thì CMS không lưu: thẻ có ô sai có chấm đỏ cạnh tên ① ②, câu báo lỗi hiện dưới ô ③, thanh lưu báo
+còn mấy trường chưa hợp lệ. Mở từng thẻ có chấm đỏ để sửa, hoặc bấm **Hoàn tác** để quay về nội dung đang dùng.
+
+<Screenshot alt="Lưu khi còn ô sai" src="/huong-dan/anh/he-thong/cai-dat-website-loi.png" />
+
+### "Email không hợp lệ."
+
+Email thiếu `@` hoặc tên miền, ví dụ `hooked.vie` thay vì `hooked.vie@gmail.com`.
+
+### "Mẫu cần chứa %s — vị trí của tiêu đề từng trang."
+
+Ô **Mẫu tiêu đề** thiếu `%s`. Thêm `%s` vào chỗ muốn đặt tên trang, ví dụ `%s · Hooked Entertainment`.
+
+### "Dạng tel:+84966609807 (chỉ chữ số)."
+
+Đã tắt **Tự động** và gõ liên kết gọi sai dạng. Bật lại **Tự động**, hoặc gõ đúng dạng `tel:` rồi số, không dấu cách.
+
+### "Nhập URL đầy đủ, bắt đầu bằng https://"
+
+Đường dẫn mạng xã hội không phải link, ví dụ chỉ gõ tên trang. Mở trang mạng xã hội trên trình duyệt, sao chép link trên
+thanh địa chỉ rồi dán vào.
+
+### Các ô còn trống
+
+Câu báo lỗi: **Nhập tên website.**, **Nhập mô tả website.**, **Nhập tên pháp lý.**, **Nhập địa chỉ.**, **Nhập số điện
+thoại.**, **Nhập tên mạng xã hội.**, **Nhập mẫu tiêu đề.**, **Nhập tiêu đề mặc định.**
+
+### Đã sửa số điện thoại ở trang Contact nhưng không thấy ô nào
+
+Màn Trang › Contact chỉ sửa dòng nhãn và tiêu đề. Số điện thoại, email, địa chỉ sửa ở thẻ **Công ty & liên hệ** của màn
+này.
 
 ## Liên quan
 
-<Draft />
+- [Menu & điều hướng](/huong-dan/he-thong/menu-dieu-huong): cột Company ở chân trang, menu đầu trang.
+- [Contact](/huong-dan/trang/contact): trang liên hệ dùng các thông tin của màn này.
+- [Sửa ở đâu, hiện ở đâu](/huong-dan/tham-khao/sua-o-dau-hien-o-dau): bảng tra cho toàn website.

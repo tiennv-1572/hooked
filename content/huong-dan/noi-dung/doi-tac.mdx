@@ -7,7 +7,17 @@ description: "Logo thương hiệu đồng hành, hiển thị ở dải logo tr
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Mỗi thương hiệu đồng hành cùng Hooked (Sun Group, Jägermeister, Weeknd…) là một mục ở màn này, gồm tên và logo. Logo chạy
+ngang thành một dải ở cuối trang chủ và ở trang Partners. Ở màn này bạn:
+
+- thêm đối tác, sửa tên, thay logo;
+- chọn logo hiện ở trang chủ, ở trang Partners, hay cả hai;
+- sắp xếp thứ tự các logo;
+- xóa đối tác.
+
+Màn này chỉ quản lý **logo**. Các thẻ **Dự án hợp tác cùng đối tác** trên trang Partners sửa ở
+[Trang › Partners](/huong-dan/trang/partners); lời giới thiệu phía trên dải logo trang chủ sửa ở
+[Trang chủ](/huong-dan/noi-dung/trang-chu#đối-tác). Cả ba vai trò (Chủ sở hữu, Quản trị, Biên tập) đều dùng được màn này.
 
 ## Hiện ở đâu trên website
 
@@ -17,21 +27,155 @@ description: "Logo thương hiệu đồng hành, hiển thị ở dải logo tr
     { label: "Trang Partners", path: "/partners" },
   ]}
 >
-  <Screenshot alt="Đối tác trên website" src="/huong-dan/anh/noi-dung/doi-tac-website.png" />
+  <Screenshot
+    alt="Dải logo đối tác trên trang chủ"
+    src="/huong-dan/anh/noi-dung/doi-tac-website-trang-chu.png"
+    caption="Cuối trang chủ: ① dải logo các đối tác bật Dải logo trang chủ, chạy ngang liên tục."
+  />
+  <Screenshot
+    alt="Logo đối tác trên trang Partners"
+    src="/huong-dan/anh/noi-dung/doi-tac-website-partners.png"
+    caption="Trang Partners: ① dải logo các đối tác bật Trang Partners. ② Dự án hợp tác: sửa ở Trang › Partners, không phải màn này."
+  />
 </OnWebsite>
+
+| Trên CMS                            | Trên website                                                    |
+| ----------------------------------- | --------------------------------------------------------------- |
+| Logo                                | Logo trong dải logo                                             |
+| Tên đối tác                         | Tên đọc thay cho logo (cho người dùng trình đọc màn hình)       |
+| Dải logo trang chủ / Trang Partners | Logo có trong dải logo của trang chủ / trang Partners hay không |
+| Thứ tự                              | Thứ tự các logo trong dải                                       |
+| Website                             | Không hiện trên website: logo không có link                     |
+
+Website cập nhật ngay khi bạn lưu: tải lại trang là thấy.
 
 ## Các bước thao tác
 
-<Draft />
+### Xem danh sách
+
+Trên menu bên trái, bấm **Nội dung › Đối tác**.
+
+<Screenshot alt="Màn Đối tác" src="/huong-dan/anh/noi-dung/doi-tac-danh-sach.png" />
+
+- ① **Thêm đối tác**.
+- ② **Sắp xếp**: đổi thứ tự logo, xem [Sắp xếp thứ tự](/huong-dan/bat-dau/quy-uoc-chung#sắp-xếp-thứ-tự).
+- ③ Ô tìm theo tên.
+- ④ Lọc theo nơi hiển thị.
+- ⑤ Nơi logo đang hiện: **Trang chủ**, **Trang Partners**, hoặc **Ẩn** nếu không hiện ở đâu.
+- ⑥ Thứ tự trong dải logo: **#1** đứng đầu.
+- ⑦ Nút **…**: menu thao tác.
+
+Bấm vào một dòng để mở đối tác. Tích ô đầu dòng để chọn nhiều đối tác, rồi bấm **Hiện trên trang chủ** hoặc **Xóa** cho cả
+nhóm.
+
+Menu **…** của một đối tác:
+
+<Screenshot alt="Menu thao tác của một đối tác" src="/huong-dan/anh/noi-dung/doi-tac-thao-tac.png" />
+
+- ① **Chỉnh sửa**: mở đối tác.
+- ② **Ẩn khỏi trang chủ**: bỏ logo khỏi dải logo trang chủ ngay, không hỏi lại; logo vẫn ở trang Partners. Khi logo đang
+  ẩn, mục này là **Hiện trên trang chủ**.
+- ③ **Xem trang Partners**: mở trang Partners trên website, ở tab mới.
+- ④ **Xóa**: xem [Xóa đối tác](#xóa-đối-tác).
+
+Sau khi ẩn, cột **Hiển thị** của đối tác chỉ còn **Trang Partners** ①:
+
+<Screenshot alt="Đối tác đã ẩn khỏi trang chủ" src="/huong-dan/anh/noi-dung/doi-tac-an-trang-chu.png" />
+
+### Thêm hoặc sửa đối tác
+
+<Steps>
+<Step>
+Bấm **Thêm đối tác**, hoặc bấm vào một đối tác trong danh sách.
+</Step>
+<Step>
+Điền form:
+
+<Screenshot alt="Màn sửa một đối tác" src="/huong-dan/anh/noi-dung/doi-tac-sua.png" />
+
+- ① **Tên đối tác**.
+- ② **Website**: không bắt buộc, gõ đủ `https://…`. Hiện website chỉ lưu để tham khảo, logo không gắn link.
+- ③ **Logo**: nên dùng logo màu trắng, nền trong suốt (PNG hoặc SVG), vì dải logo nằm trên nền đen. Cách chọn ảnh: xem
+  [Chọn ảnh](/huong-dan/bat-dau/quy-uoc-chung#chọn-ảnh).
+- ④ **Dải logo trang chủ** và ⑤ **Trang Partners**: bật ở nơi muốn logo hiện. Đối tác mới bật sẵn cả hai.
+- ⑥ **Xem trước**: logo trên nền tối như trên website. Logo màu tối sẽ gần như không thấy.
+- ⑦ **Xem trên website**: mở trang Partners, ở tab mới.
+
+</Step>
+<Step>
+Bấm **Tạo mới** (đối tác mới) hoặc **Lưu thay đổi**. Góc trên bên phải báo **Đã tạo đối tác.** hoặc **Đã lưu thay đổi.**
+Đối tác mới đứng **cuối** dải logo; đổi chỗ bằng nút **Sắp xếp** ở danh sách.
+</Step>
+</Steps>
+
+### Xóa đối tác
+
+Bấm **…** ở cuối dòng rồi **Xóa** (hoặc nút **Xóa** khi đang mở đối tác). Bấm **Xóa** ① để xóa, **Hủy** ② nếu đổi ý. Góc
+trên bên phải báo **Đã xóa đối tác.**
+
+<Screenshot alt="Hộp hỏi lại trước khi xóa đối tác" src="/huong-dan/anh/noi-dung/doi-tac-xoa.png" />
+
+Logo biến khỏi trang chủ và trang Partners ngay. Không khôi phục được: muốn tạm ẩn thì tắt **Dải logo trang chủ** và
+**Trang Partners** thay vì xóa.
 
 ## Các trường thông tin
 
-<Draft />
+<FieldTable
+  fields={[
+    {
+      name: "Tên đối tác",
+      required: true,
+      description: "Tên thương hiệu; website đọc tên này thay cho logo với người dùng trình đọc màn hình.",
+      example: "Sun Group",
+    },
+    {
+      name: "Website",
+      description: "Địa chỉ trang của đối tác, gõ đủ https://. Không hiện trên website.",
+      example: "https://…",
+    },
+    {
+      name: "Logo",
+      required: true,
+      description: "Logo trong dải logo. Nên dùng logo màu trắng, nền trong suốt, ảnh ngang.",
+      example: "Logo Sun Group màu trắng",
+    },
+    {
+      name: "Dải logo trang chủ",
+      description: "Bật thì logo có trong dải logo cuối trang chủ.",
+      example: "Bật",
+    },
+    {
+      name: "Trang Partners",
+      description: "Bật thì logo có trong dải logo trang Partners.",
+      example: "Bật",
+    },
+  ]}
+/>
+
+Thứ tự logo không phải là ô nhập: đổi bằng nút **Sắp xếp** ở danh sách.
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+### "Nhập tên đối tác."
+
+Bấm lưu khi chưa điền tên ①. Các câu khác trong form: **Đường dẫn không hợp lệ.** ② (ô **Website** phải gõ đủ, ví dụ
+`https://…`, hoặc để trống) và **Chọn logo.** ③ (chưa có logo).
+
+<Screenshot alt="Lỗi khi lưu đối tác" src="/huong-dan/anh/noi-dung/doi-tac-loi.png" />
+
+### Logo trên website bị mờ, khó thấy
+
+Dải logo nằm trên nền đen. Logo màu đen hoặc màu tối gần như không thấy, logo có nền trắng thành một ô trắng. Xin đối tác
+bản logo màu trắng, nền trong suốt, rồi bấm **Thay ảnh** ở ô **Logo**. Logo nhỏ (dưới 600px chiều ngang) có thể bị mờ:
+nên dùng bản SVG hoặc ảnh lớn hơn.
+
+### Đã thêm đối tác nhưng trang chủ không có logo
+
+Kiểm tra đối tác đã bật **Dải logo trang chủ** (cột **Hiển thị** có **Trang chủ**). Đối tác mới đứng cuối dải logo, dải
+chạy liên tục nên có khi phải chờ vài giây mới tới.
 
 ## Liên quan
 
-<Draft />
+- [Trang chủ](/huong-dan/noi-dung/trang-chu#đối-tác): lời giới thiệu và nút kêu gọi phía trên, dưới dải logo trang chủ.
+- [Trang › Partners](/huong-dan/trang/partners): giới thiệu và các dự án hợp tác trên trang Partners.
+- [Thư viện media](/huong-dan/he-thong/thu-vien-media): tải logo lên.

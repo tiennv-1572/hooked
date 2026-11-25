@@ -7,26 +7,288 @@ description: "Thêm, sửa, ẩn hiện và sắp xếp các khóa học hiển 
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Mỗi khóa học của Hooked Academy (DJ cơ bản, MC toàn diện, Producer…) là một mục ở màn này. Khóa học **đã xuất bản** hiện ở
+ba chỗ trên trang Academy: carousel đầu trang, danh sách **Tất cả khóa học** (bấm vào một dòng thì mở chương trình học), và
+ô chọn khóa học của form [Đăng ký tư vấn](/huong-dan/tong-quan/dang-ky-tu-van). Ở màn này bạn:
+
+- thêm khóa học, sửa mô tả, học phí, giảng viên, lịch học, chương trình học;
+- xuất bản, hoặc chuyển về bản nháp để tạm ẩn;
+- sắp xếp thứ tự các khóa học trên website;
+- xem số đăng ký tư vấn của từng khóa;
+- xóa khóa học.
+
+Mỗi khóa học thuộc một [danh mục](/huong-dan/quan-ly-academy/danh-muc-khoa-hoc) (DJ, MC, Producer, Flip). Cả ba vai trò
+(Chủ sở hữu, Quản trị, Biên tập) đều dùng được màn này.
 
 ## Hiện ở đâu trên website
 
-<OnWebsite pages={[{ label: "Trang Academy", path: "/academy" }]}>
-  <Screenshot alt="Khóa học trên website" src="/huong-dan/anh/quan-ly-academy/khoa-hoc-website.png" />
+<OnWebsite pages={[{ label: "Carousel và danh sách khóa học trên trang Academy", path: "/academy" }]}>
+  <Screenshot
+    alt="Thẻ khóa học trong carousel trang Academy"
+    src="/huong-dan/anh/quan-ly-academy/khoa-hoc-website-carousel.png"
+    caption="Carousel đầu trang Academy, mỗi khóa học một thẻ, ảnh khóa học làm nền. ① Tên ② Mô tả ③ Giảng viên ④ Lộ trình ⑤ Giờ học ⑥ Nút mở form Đăng ký tư vấn với khóa học này."
+  />
+  <Screenshot
+    alt="Khóa học trong danh sách Tất cả khóa học"
+    src="/huong-dan/anh/quan-ly-academy/khoa-hoc-website-danh-sach.png"
+    caption="① Danh sách Tất cả khóa học: số thứ tự, tên, danh mục, lộ trình. Bấm vào dòng để mở chương trình học."
+  />
+  <Screenshot
+    alt="Hộp chương trình học của một khóa học"
+    src="/huong-dan/anh/quan-ly-academy/khoa-hoc-website-chuong-trinh.png"
+    caption="Hộp chương trình học. ① Mô tả ② Chương trình học ③ Quyền lợi ④ Học phí ⑤ Giảng viên ⑥ Lộ trình ⑦ Giờ học ⑧ Nút mở form Đăng ký tư vấn."
+  />
 </OnWebsite>
+
+| Trên CMS         | Trên website                                                                                                                                |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Ảnh khóa học     | Nền của thẻ trong carousel; ảnh nhỏ ở hai bên carousel                                                                                      |
+| Tên khóa học     | Tiêu đề thẻ carousel (viết hoa), dòng trong danh sách, tiêu đề hộp chương trình học, ô chọn khóa học của form đăng ký                       |
+| Mô tả            | Đoạn giới thiệu trong thẻ carousel và đầu hộp chương trình học                                                                              |
+| Học phí          | Chỉ trong hộp chương trình học                                                                                                              |
+| Giảng viên       | Thẻ carousel và hộp chương trình học                                                                                                        |
+| Lộ trình         | Thẻ carousel, cột **Lộ trình** của danh sách, hộp chương trình học                                                                          |
+| Giờ học          | Thẻ carousel và hộp chương trình học                                                                                                        |
+| Chương trình học | Các học phần đánh số 01, 02… trong hộp chương trình học                                                                                     |
+| Quyền lợi        | Các dòng có dấu ✓ trong hộp chương trình học                                                                                                |
+| Danh mục         | Chữ nhỏ dưới tên khóa học trong danh sách, và nút lọc của danh sách (xem [Danh mục khóa học](/huong-dan/quan-ly-academy/danh-muc-khoa-hoc)) |
+| Thứ tự           | Thứ tự thẻ trong carousel và thứ tự (số 01, 02…) trong danh sách                                                                            |
+
+Website cập nhật ngay khi bạn lưu: tải lại trang Academy là thấy.
+
+<Callout title="Chỉ khóa học đã xuất bản hiện trên website">
+  Khóa học ở trạng thái **Bản nháp** không có trong carousel, danh sách, và cũng không có trong ô chọn khóa học của form
+  đăng ký. Các dòng chữ cố định như "Chi phí chưa bao gồm 8% VAT", "Đăng ký tư vấn, chưa cần thanh toán." nằm sẵn trên
+  website, không sửa trong CMS.
+</Callout>
 
 ## Các bước thao tác
 
-<Draft />
+### Xem danh sách
+
+Trên menu bên trái, bấm **Quản lý Academy › Khóa học**.
+
+<Screenshot alt="Màn Khóa học" src="/huong-dan/anh/quan-ly-academy/khoa-hoc-danh-sach.png" />
+
+- ① **Thêm khóa học**: mở form thêm mới.
+- ② **Sắp xếp**: đổi thứ tự khóa học trên website, xem [Sắp xếp thứ tự](/huong-dan/bat-dau/quy-uoc-chung#sắp-xếp-thứ-tự).
+- ③ Ô tìm theo tên khóa học.
+- ④ Lọc theo danh mục, ⑤ lọc theo trạng thái (**Đã xuất bản**, **Bản nháp**).
+- ⑥ Cột **Đăng ký**: tổng số đăng ký tư vấn của khóa, kèm số đăng ký **mới** chưa xử lý. Bấm vào để mở màn
+  [Đăng ký tư vấn](/huong-dan/tong-quan/dang-ky-tu-van) đã lọc sẵn theo khóa này.
+- ⑦ Nút **…**: menu thao tác của khóa học.
+
+Bấm vào một dòng để mở khóa học. Cột **Thứ tự** là vị trí trên website: **#1** đứng đầu carousel và đầu danh sách. Cách
+tìm, lọc, sắp xếp cột, chọn nhiều dòng giống mọi danh sách khác, xem [Danh sách](/huong-dan/bat-dau/quy-uoc-chung#danh-sách).
+
+Menu **…** của một khóa học:
+
+<Screenshot alt="Menu thao tác của một khóa học" src="/huong-dan/anh/quan-ly-academy/khoa-hoc-thao-tac.png" />
+
+- ① **Chỉnh sửa**: mở khóa học.
+- ② **Chuyển về bản nháp** (khóa đang nháp thì là **Xuất bản**): đổi trạng thái ngay, không cần mở khóa học. Góc trên bên
+  phải báo, ví dụ, **Đã chuyển 1 khóa học về bản nháp.**
+- ③ **Xem đăng ký tư vấn**: các đăng ký của khóa này.
+- ④ **Xem trang Academy**: mở trang Academy trên website, ở tab mới.
+- ⑤ **Xóa**: xem [Xóa khóa học](#xóa-khóa-học).
+
+Chọn nhiều dòng bằng ô vuông đầu dòng để **Xuất bản**, **Chuyển về nháp** hoặc **Xóa** nhiều khóa học cùng lúc.
+
+### Thêm khóa học
+
+<Steps>
+<Step>
+Bấm **Thêm khóa học**. Khóa học mới bắt đầu ở trạng thái **Bản nháp**, nên chưa hiện trên website cho tới khi bạn xuất bản.
+
+<Screenshot alt="Form thêm khóa học" src="/huong-dan/anh/quan-ly-academy/khoa-hoc-form.png" />
+
+- ① **Ảnh khóa học**: bấm vào khung để chọn ảnh trong thư viện hoặc tải ảnh lên, xem [Chọn ảnh](/huong-dan/bat-dau/quy-uoc-chung#chọn-ảnh).
+  Dùng ảnh ngang (tỉ lệ 16:9), vì ảnh làm nền cho cả thẻ carousel.
+- ② **Xuất bản**: để **Bản nháp** khi chưa điền xong.
+- ③ **Danh mục**: chọn nhóm của khóa học.
+- ④ **Tạo mới** (<kbd>Ctrl</kbd> + <kbd>S</kbd>): lưu khóa học. Bấm khi đã điền đủ các phần bên dưới.
+
+</Step>
+<Step>
+Điền phần **Thông tin chung**.
+
+<Screenshot alt="Phần Thông tin chung" src="/huong-dan/anh/quan-ly-academy/khoa-hoc-form-thong-tin-chung.png" />
+
+- ① **Tên khóa học**: tối đa 60 ký tự.
+- ② **Mô tả**: vài câu giới thiệu khóa học. Nên viết dưới 400 ký tự (bộ đếm chuyển đỏ khi quá 400) để thẻ carousel không
+  quá dài.
+- ③ **Học phí**: gõ số, ví dụ `18000000`, rồi bấm ra ngoài ô: CMS tự đổi thành **18.000.000 VND**. Gõ chữ (ví dụ "Liên
+  hệ") thì giữ nguyên.
+
+</Step>
+<Step>
+Điền phần **Giảng viên & lịch học**.
+
+<Screenshot alt="Phần Giảng viên và lịch học" src="/huong-dan/anh/quan-ly-academy/khoa-hoc-form-giang-vien.png" />
+
+- ① Mỗi giảng viên một khung: **Vai trò** (Giảng viên chính, Trợ giảng…) và **Tên**. Bấm tiêu đề khung để thu gọn hoặc mở.
+- ② **Thêm giảng viên**: tối đa 6 người.
+- ③ **Lộ trình**: thời gian học, ví dụ "Từ 1 đến 2 tháng".
+- ④ Mỗi dòng **Giờ học** một khung. **Nhãn** không bắt buộc: có nhãn thì website in đậm nhãn trước dấu hai chấm, ví dụ
+  "**Thời lượng**: 2h/ca, 3 buổi/tuần".
+- ⑤ **Thêm dòng giờ học**: tối đa 6 dòng.
+
+Kéo biểu tượng ⋮⋮ ở đầu khung để đổi thứ tự, bấm thùng rác để xóa khung, xem
+[Danh sách trong form](/huong-dan/bat-dau/quy-uoc-chung#danh-sách-trong-form).
+
+</Step>
+<Step>
+Điền **Chương trình học** và **Quyền lợi**: mỗi ô một dòng.
+
+<Screenshot alt="Phần Chương trình học" src="/huong-dan/anh/quan-ly-academy/khoa-hoc-form-chuong-trinh.png" />
+
+- ① Kéo để đổi thứ tự.
+- ② Mỗi ô một học phần. Website đánh số 01, 02… theo đúng thứ tự này.
+- ③ Xóa dòng.
+- ④ **Thêm học phần**: tối đa 20 học phần.
+
+Phần **Quyền lợi** ngay bên dưới dùng giống hệt, tối đa 12 dòng. Dòng để trống tự bỏ đi khi lưu.
+
+</Step>
+<Step>
+Bấm **Tạo mới**. Góc trên bên phải báo **Đã tạo khóa học.** ①, màn hình chuyển sang trang của khóa học vừa tạo, trạng thái
+**Bản nháp** ②.
+
+<Screenshot alt="Khóa học vừa tạo" src="/huong-dan/anh/quan-ly-academy/khoa-hoc-da-tao.png" />
+</Step>
+<Step>
+Khi nội dung đã sẵn sàng, chọn **Đã xuất bản** ở phần **Xuất bản** rồi bấm **Lưu thay đổi**. Khóa học hiện ở **cuối**
+carousel và cuối danh sách trên trang Academy; muốn đưa lên trước thì dùng nút **Sắp xếp** ở màn danh sách.
+</Step>
+</Steps>
+
+### Sửa khóa học
+
+Bấm vào dòng của khóa học. Form giống form thêm; thanh lưu ở đáy màn hình và các nút **Xem trên website** (mở trang
+Academy), **Nhân bản**, **Xóa** ở góc trên dùng như mọi màn sửa khác, xem [Sửa và lưu](/huong-dan/bat-dau/quy-uoc-chung#sửa-và-lưu).
+Trên website, mỗi khóa học không có trang riêng: mọi nội dung nằm trên trang Academy.
+
+### Tạm ẩn khóa học
+
+Chuyển khóa học về **Bản nháp**, trong form hoặc bằng menu **…** của danh sách. Khóa học biến khỏi carousel, danh sách và
+ô chọn của form đăng ký; học viên không gửi đăng ký cho khóa này được nữa. Các đăng ký đã nhận vẫn còn nguyên ở màn
+[Đăng ký tư vấn](/huong-dan/tong-quan/dang-ky-tu-van). Xuất bản lại thì khóa học hiện ở đúng vị trí cũ.
+
+### Xóa khóa học
+
+Bấm **…** ở dòng của khóa học rồi bấm **Xóa**. Hộp hỏi lại cho biết có bao nhiêu đăng ký tư vấn đang gắn với khóa này ①:
+các đăng ký đó **được giữ lại**.
+
+<Screenshot alt="Hộp hỏi lại khi xóa khóa học đã có đăng ký" src="/huong-dan/anh/quan-ly-academy/khoa-hoc-xoa.png" />
+
+Bấm **Xóa** để xóa, góc trên bên phải báo **Đã xóa khóa học.** Ở màn Đăng ký tư vấn, cột **Khóa học** của các đăng ký cũ
+ghi **Khóa học đã xóa**. Nút **Xóa** ở màn sửa khóa học cũng xóa được, nhưng hộp hỏi lại ở đó chỉ ghi **Xóa khóa học này?**,
+không nêu số đăng ký.
+
+<Callout type="error" title="Xóa rồi không lấy lại được">
+  Khóa học biến khỏi trang Academy ngay và không khôi phục được. Muốn tạm ngừng tuyển sinh, chuyển khóa học về **Bản
+  nháp** thay vì xóa.
+</Callout>
 
 ## Các trường thông tin
 
-<Draft />
+<FieldTable
+  fields={[
+    {
+      name: "Ảnh khóa học",
+      required: true,
+      description: "Nền của thẻ carousel. Ảnh ngang tỉ lệ 16:9, chủ thể nằm bên phải (bên trái là phần chữ).",
+      example: "Ảnh MC trên sân khấu một đêm diễn",
+    },
+    { name: "Tên khóa học", required: true, description: "Tối đa 60 ký tự.", example: "MC sự kiện doanh nghiệp" },
+    {
+      name: "Mô tả",
+      required: true,
+      description: "Giới thiệu khóa học. Nên dưới 400 ký tự; quá 600 ký tự thì không lưu được.",
+      example: "Khoá học dành cho những bạn muốn dẫn chương trình sự kiện doanh nghiệp…",
+    },
+    {
+      name: "Học phí",
+      required: true,
+      description: "Chỉ hiện trong hộp chương trình học. Gõ số thì CMS tự thêm dấu chấm và chữ VND.",
+      example: "18.000.000 VND",
+    },
+    {
+      name: "Giảng viên",
+      required: true,
+      description: "Từ 1 đến 6 dòng, mỗi dòng có Vai trò và Tên (đều bắt buộc).",
+      example: "Giảng viên chính: Lil'Bee",
+    },
+    { name: "Lộ trình", required: true, description: "Thời gian của khóa học.", example: "Từ 1 đến 2 tháng" },
+    {
+      name: "Giờ học",
+      required: true,
+      description: "Từ 1 đến 6 dòng. Nhãn không bắt buộc, Nội dung bắt buộc.",
+      example: "Thời lượng: 2h/ca, 3 buổi/tuần",
+    },
+    {
+      name: "Chương trình học",
+      required: true,
+      description: "Các học phần, mỗi ô một dòng, ít nhất 1, tối đa 20.",
+      example: "Kỹ năng giọng nói và phát âm",
+    },
+    {
+      name: "Quyền lợi",
+      required: true,
+      description: "Quyền lợi học viên, mỗi ô một dòng, ít nhất 1, tối đa 12.",
+      example: "Học 1:1 cùng với giảng viên",
+    },
+    {
+      name: "Xuất bản",
+      description:
+        "Đã xuất bản: hiện trên website. Bản nháp: ẩn, chỉ người dùng CMS thấy. Khóa mới mặc định là Bản nháp.",
+      example: "Đã xuất bản",
+    },
+    {
+      name: "Danh mục",
+      required: true,
+      description: "Nhóm của khóa học, dùng cho nút lọc trên website.",
+      example: "MC",
+    },
+  ]}
+/>
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+### Các câu báo lỗi khi lưu
+
+Bấm **Tạo mới** hoặc **Lưu thay đổi** khi còn thiếu, CMS không lưu, tô đỏ ô sai, thanh lưu báo **Còn … trường chưa hợp
+lệ** và góc trên bên phải báo **Vui lòng kiểm tra các trường được đánh dấu.** (xem
+[Trường bắt buộc và câu báo lỗi](/huong-dan/bat-dau/quy-uoc-chung#trường-bắt-buộc-và-câu-báo-lỗi)).
+
+| Câu báo lỗi                                | Ở ô                  | Cách sửa                           |
+| ------------------------------------------ | -------------------- | ---------------------------------- |
+| "Chọn ảnh khóa học."                       | Ảnh khóa học         | Chọn hoặc tải ảnh lên              |
+| "Nhập tên khóa học."                       | Tên khóa học         | Gõ tên                             |
+| "Tối đa 60 ký tự."                         | Tên khóa học         | Rút gọn tên                        |
+| "Nhập mô tả khóa học."                     | Mô tả                | Gõ mô tả                           |
+| "Mô tả tối đa 600 ký tự."                  | Mô tả                | Rút gọn mô tả                      |
+| "Nhập học phí."                            | Học phí              | Gõ học phí                         |
+| "Nhập vai trò.", "Nhập tên giảng viên."    | Một khung giảng viên | Điền đủ, hoặc xóa khung thừa       |
+| "Nhập lộ trình (ví dụ: Từ 2 đến 3 tháng)." | Lộ trình             | Gõ lộ trình                        |
+| "Nhập nội dung dòng."                      | Một khung giờ học    | Điền nội dung, hoặc xóa khung thừa |
+| "Thêm ít nhất 1 học phần."                 | Chương trình học     | Gõ ít nhất một học phần            |
+| "Thêm ít nhất 1 quyền lợi."                | Quyền lợi            | Gõ ít nhất một quyền lợi           |
+| "Chọn danh mục."                           | Danh mục             | Chọn danh mục                      |
+
+### Khóa học không hiện trên trang Academy
+
+Kiểm tra trạng thái là **Đã xuất bản** và bạn đã bấm **Lưu thay đổi** (thanh lưu báo **Đã lưu mọi thay đổi**). Rồi tải lại
+trang Academy. Khóa vừa xuất bản nằm ở cuối carousel và cuối danh sách.
+
+### Khóa học không có trong ô chọn của form đăng ký
+
+Ô chọn khóa học của form **Đăng ký tư vấn** chỉ có các khóa **đã xuất bản**, theo đúng thứ tự trên website. Kiểm tra trạng
+thái của khóa học.
 
 ## Liên quan
 
-<Draft />
+- [Danh mục khóa học](/huong-dan/quan-ly-academy/danh-muc-khoa-hoc): các nhóm khóa học và nút lọc trên website.
+- [Đăng ký tư vấn](/huong-dan/tong-quan/dang-ky-tu-van): đăng ký học viên gửi cho từng khóa học.
+- [Học viên](/huong-dan/quan-ly-academy/hoc-vien): câu chuyện học viên trên trang Academy.
+- [Trang › Academy](/huong-dan/trang/academy): các phần khác của trang Academy.

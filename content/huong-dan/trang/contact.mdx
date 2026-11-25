@@ -1,32 +1,99 @@
 ---
 title: "Contact"
-description: "Tiêu đề và nội dung trang liên hệ."
+description: "Dòng nhãn và tiêu đề của trang liên hệ. Email, số điện thoại, địa chỉ sửa ở Cài đặt website."
 ---
 
 <AdminPath trail={["Trang", "Contact"]} href="/admin/pages/contact" />
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Màn này sửa hai dòng chữ đầu trang Contact (`/contact`): **dòng nhãn** nhỏ màu cam và **tiêu đề** lớn.
+
+Email, số điện thoại, tên công ty, địa chỉ và các mạng xã hội trên trang Contact **không** sửa ở đây: chúng dùng chung
+với chân trang của mọi trang, và sửa một lần ở [Cài đặt website](/huong-dan/he-thong/cai-dat-website). Màn này chỉ hiện
+lại để bạn xem. Cả ba vai trò (Chủ sở hữu, Quản trị, Biên tập) đều dùng được màn này.
 
 ## Hiện ở đâu trên website
 
 <OnWebsite pages={[{ label: "Trang Contact", path: "/contact" }]}>
-  <Screenshot alt="Contact trên website" src="/huong-dan/anh/trang/contact-website.png" />
+  <Screenshot
+    alt="Trang Contact trên website"
+    src="/huong-dan/anh/trang/contact-website.png"
+    caption="① Dòng nhãn và ② tiêu đề: sửa ở màn này. ③ Email và ④ số điện thoại, địa chỉ, mạng xã hội: sửa ở Cài đặt website."
+  />
 </OnWebsite>
+
+| Trên CMS                                  | Trên trang Contact                                                               |
+| ----------------------------------------- | -------------------------------------------------------------------------------- |
+| Dòng nhãn                                 | Dòng chữ cam nhỏ đầu trang ①                                                     |
+| Tiêu đề                                   | Tiêu đề lớn ②                                                                    |
+| Thông tin liên hệ (sửa ở Cài đặt website) | Email lớn ③ (bấm để gửi email); số điện thoại, công ty và địa chỉ, mạng xã hội ④ |
+
+Tên các cột **GỌI HOOKED**, **ĐỊA CHỈ**, **KẾT NỐI** là chữ cố định của website. Trang Contact không có ô SEO: tiêu đề tab
+trình duyệt luôn là **Contact · Hooked Entertainment**, dòng mô tả trên Google tự ghép từ email và số điện thoại.
+
+Website cập nhật ngay khi bạn lưu: tải lại trang Contact là thấy.
 
 ## Các bước thao tác
 
-<Draft />
+<Steps>
+<Step>
+Trên menu bên trái, bấm **Trang › Contact**.
+
+<Screenshot alt="Màn Trang Contact" src="/huong-dan/anh/trang/contact.png" />
+
+- ① **Dòng nhãn** và ② **Tiêu đề**: hai ô sửa được.
+- ③ Khung **Thông tin liên hệ**: email, điện thoại, địa chỉ, mạng xã hội đang hiện trên website. Chỉ để xem.
+- ④ **Sửa trong Cài đặt**: mở màn Cài đặt website để sửa các thông tin ở khung ③.
+
+</Step>
+<Step>
+Sửa ô ① hoặc ②, rồi bấm **Lưu thay đổi** (<kbd>Ctrl</kbd> + <kbd>S</kbd>). Góc trên bên phải báo **Đã lưu Trang
+contact.**
+</Step>
+</Steps>
+
+Hai nút **Xem trang** và **Khôi phục mặc định** ở đầu màn: xem
+[Nội dung các trang](/huong-dan/bat-dau/quy-uoc-chung#nội-dung-các-trang).
+
+<Callout title="Đổi số điện thoại, email, địa chỉ">
+  Bấm **Sửa trong Cài đặt** ④, hoặc mở [Cài đặt website](/huong-dan/he-thong/cai-dat-website). Sửa ở đó thì trang
+  Contact và chân trang của mọi trang cùng đổi.
+</Callout>
 
 ## Các trường thông tin
 
-<Draft />
+<FieldTable
+  fields={[
+    {
+      name: "Dòng nhãn",
+      required: true,
+      description: "Dòng chữ cam nhỏ đầu trang.",
+      example: "CONTACT HOOKED",
+    },
+    {
+      name: "Tiêu đề",
+      required: true,
+      description: "Tiêu đề lớn của trang.",
+      example: "Liên hệ Hooked.",
+    },
+  ]}
+/>
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+### "Nhập dòng nhãn." và "Nhập tiêu đề."
+
+Bấm lưu khi ô **Dòng nhãn** ① hoặc **Tiêu đề** ② còn trống. Điền lại, hoặc bấm **Hoàn tác** để quay về nội dung đang dùng.
+
+<Screenshot alt="Lỗi để trống dòng nhãn và tiêu đề" src="/huong-dan/anh/trang/contact-loi.png" />
+
+### Đã sửa số điện thoại ở màn này nhưng không thấy ô nào
+
+Đúng vậy: màn này không có ô số điện thoại. Xem [Đổi số điện thoại, email, địa chỉ](#các-bước-thao-tác) ở trên.
 
 ## Liên quan
 
-<Draft />
+- [Cài đặt website](/huong-dan/he-thong/cai-dat-website): email, số điện thoại, địa chỉ, mạng xã hội.
+- [Nội dung các trang](/huong-dan/bat-dau/quy-uoc-chung#nội-dung-các-trang): Xem trang, Khôi phục mặc định, thanh lưu.
+- [Sửa ở đâu, hiện ở đâu](/huong-dan/tham-khao/sua-o-dau-hien-o-dau): bảng tra cho toàn website.
