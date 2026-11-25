@@ -1,11 +1,13 @@
 "use client";
 
+import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useState, type KeyboardEvent } from "react";
+import { useCallback, useEffect, useMemo, useState, type KeyboardEvent } from "react";
 
 import type { FeaturedStory } from "@/components/academy/academy-content";
+import { ButtonLink } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { cn } from "@/lib/utils";
@@ -14,7 +16,7 @@ import { cn } from "@/lib/utils";
  * Featured student stories carousel (Figma 03 · BEHAVIOR `Academy / Student stories` 2082:376,
  * instance 2083:115; Slide=1..3 — the CMS students marked `featured`). Loop + drag.
  * Copper panel (name, role, headline, "Xem câu chuyện →", round ←/→, quote mark) over the portrait.
- * Used from 768px; the mobile page shows a single static featured student instead (plan/03 §7.3).
+ * Used from 768px; phones get MobileStoryCarousel below.
  */
 export function StoryCarousel({ students, className }: { students: FeaturedStory[]; className?: string }) {
   const reducedMotion = usePrefersReducedMotion();
@@ -139,5 +141,101 @@ function StoryArrow({ direction, onClick }: { direction: "prev" | "next"; onClic
     >
       <Icon name={direction === "prev" ? "academy-arrow-left-ink" : "academy-arrow-right-ink"} size={24} />
     </button>
+  );
+}
+
+/** Phone autoplay: one story every 2 seconds. */
+const MOBILE_AUTOPLAY_MS = 2000;
+
+/**
+ * Featured students on phones (< 768px, `Academy / Featured student` 2823:5099 turned into a carousel): one student
+ * per slide — portrait, name, headline, "Xem câu chuyện" — swiped by hand and advancing on its own every 2s (looping).
+ * Autoplay holds while the finger is on it and while keyboard focus is inside; none under reduced motion. Dots under
+ * the slides show the position (and jump to a student).
+ */
+export function MobileStoryCarousel({ students, className }: { students: FeaturedStory[]; className?: string }) {
+  const reducedMotion = usePrefersReducedMotion();
+  const plugins = useMemo(
+    () => (reducedMotion ? [] : [Autoplay({ delay: MOBILE_AUTOPLAY_MS, stopOnInteraction: false })]),
+    [reducedMotion],
+  );
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 28 }, plugins);
+  const [selected, setSelected] = useState(0);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => setSelected(emblaApi.selectedScrollSnap());
+    emblaApi.on("select", onSelect).on("reInit", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect).off("reInit", onSelect);
+    };
+  }, [emblaApi]);
+
+  return (
+    <div
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Câu chuyện học viên tiêu biểu"
+      className={cn("flex flex-col gap-4", className)}
+    >
+      <div ref={emblaRef} className="relative overflow-hidden">
+        {/* Announced only when the visitor moves it, not on every autoplay step. */}
+        <div className="flex touch-pan-y" aria-live={plugins.length ? "off" : "polite"}>
+          {students.map((student, index) => (
+            <div
+              key={student.slug}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${index + 1} / ${students.length}: ${student.name}`}
+              inert={index !== selected}
+              className="flex min-w-0 flex-[0_0_100%] flex-col gap-4"
+            >
+              <div className="relative h-[360px] overflow-hidden">
+                <Image
+                  src={student.portrait.src}
+                  alt={student.portrait.alt}
+                  fill
+                  sizes="100vw"
+                  draggable={false}
+                  className="object-cover select-none"
+                />
+              </div>
+              <h3 className="text-[28px] leading-[31px] font-extrabold text-white">{student.name}</h3>
+              <p className="text-base leading-6 text-muted">{student.headline}</p>
+              {/* mt-auto: the button lines up on every slide whatever the headline length. */}
+              <ButtonLink href={student.href} variant="accent" className="mt-auto w-full">
+                Xem câu chuyện
+                <Icon name="arrow-up-right-dark-20" />
+              </ButtonLink>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {students.length > 1 ? (
+        <div className="flex h-6 items-center justify-center">
+          {students.map((student, index) => {
+            const active = index === selected;
+            return (
+              <button
+                key={student.slug}
+                type="button"
+                onClick={() => emblaApi?.scrollTo(index, reducedMotion)}
+                aria-label={`Học viên ${index + 1}: ${student.name}`}
+                aria-current={active || undefined}
+                className="flex h-6 w-7 items-center justify-center"
+              >
+                <span
+                  className={cn(
+                    "h-2 rounded-[4px] transition-[width,background-color] duration-300 ease-carousel",
+                    active ? "w-6 bg-accent" : "w-2 bg-[#5c5754]",
+                  )}
+                />
+              </button>
+            );
+          })}
+        </div>
+      ) : null}
+    </div>
   );
 }

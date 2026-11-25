@@ -131,6 +131,12 @@ command -v zip  >/dev/null || die "Khong tim thay lenh 'zip'."
 command -v pnpm >/dev/null || die "Khong tim thay lenh 'pnpm' (du an build bang pnpm)."
 command -v npm  >/dev/null || die "Khong tim thay lenh 'npm' (can de kiem tra package-lock.json cho hosting)."
 
+# Next bien dich next.config.ts bang SWC moi lan khoi dong, ma ban SWC cho Linux can glibc 2.29:
+# hosting CloudLinux 8 (glibc 2.28) se khong khoi dong duoc. Cau hinh phai la JavaScript thuan.
+[[ -f next.config.ts ]] && die "Co next.config.ts - hosting CloudLinux 8 khong chay duoc (SWC can glibc 2.29).
+     Dung next.config.mjs (JavaScript thuan), xem ghi chu dau file do."
+[[ -f next.config.mjs ]] || die "Khong thay next.config.mjs."
+
 STAMP="$(date +%Y%m%d-%H%M%S)"
 OUT="$ROOT/releases"
 WORK="$(mktemp -d)"
@@ -334,7 +340,7 @@ grep -qF -- "/$DB_NAME\"" "$WORK/env.check" \
      $(grep '^DATABASE_URL' "$WORK/env.check" | sed -E 's|//[^:]+:[^@]*@|//***:***@|')"
 
 # Nhung file ma hosting bat buoc phai co.
-for required in server.js package.json package-lock.json next.config.ts .next/BUILD_ID drizzle.config.ts scripts/db-data-migrate.ts; do
+for required in server.js package.json package-lock.json next.config.mjs .next/BUILD_ID drizzle.config.ts scripts/db-data-migrate.ts scripts/hosting-install.sh; do
   grep -qxF "$required" "$WORK/code.list" || die "Goi code thieu $required."
 done
 grep -q '^\.next/server/' "$WORK/code.list" || die "Goi code thieu .next/server — ban build chua vao goi."
@@ -388,18 +394,24 @@ Buoc tiep theo tren hosting cPanel
 
   Lan dau:
   1. MySQL Databases: tao database + user (ALL PRIVILEGES), dung ten da dien trong deploy.config
-  2. Setup Node.js App: Node >= 20.9, mode Production, startup file: server.js
+  2. Setup Node.js App: Node 22 (hoac 24), mode Production, startup file: server.js
      Environment variables: NODE_OPTIONS=--v8-pool-size=2
   3. Giai nen code_build vao thu muc ung dung (unzip -o) — da co san .env va package-lock.json
   4. Giai nen data_sql, nap file .sql vao database $DB_NAME (phpMyAdmin -> Import)
-  5. Terminal (sau dong 'source .../nodevenv/.../activate'):  npm ci --omit=dev
+  5. Bam "Run NPM Install" mot lan (tao symlink node_modules), roi Terminal (sau dong
+     'source .../nodevenv/.../activate'):  bash scripts/hosting-install.sh
+     KHONG chay 'npm ci' / 'npm install' thang trong thu muc ung dung: npm thay symlink
+     node_modules bang thu muc that va Setup Node.js App bao loi.
   6. Restart. Dang nhap /admin va DOI MAT KHAU admin ngay (dang la mat khau o may local)
 
   Cac lan sau (./scripts/release.sh --code-only):
-  1. Giai nen code_build de len (unzip -o) — anh trong storage/uploads khong bi mat
-  2. Neu co migration moi:  npm ci  &&  npm run db:migrate   (can devDependencies)
-     Khong co migration:    npm ci --omit=dev
-  3. Restart
+  1. Setup Node.js App: bam STOP APP (tien trinh cu con chay se ghi lai ban build cu len dia)
+  2. Terminal, trong thu muc ung dung:  rm -rf .next  &&  unzip -o code_build_<...>.zip
+     (xoa .next cu de khong sot file cua ban build truoc; anh trong storage/uploads
+     va node_modules nam ngoai .next nen khong bi mat)
+  3. Neu co migration moi:  bash scripts/hosting-install.sh --dev  &&  npm run db:migrate
+     Khong co migration:    bash scripts/hosting-install.sh
+  4. START APP. Favicon/anh tinh co the con cache o trinh duyet: kiem tra bang tab an danh
 
   Kiem tra: $SITE_URL , $SITE_URL/admin , $SITE_URL/api-docs
 EOF

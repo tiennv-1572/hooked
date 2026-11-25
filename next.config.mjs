@@ -1,6 +1,12 @@
-import type { NextConfig } from "next";
+/*
+ * Plain JavaScript on purpose (not next.config.ts): Next compiles a TypeScript config with its native SWC binary on
+ * every start, and the Linux build of SWC needs glibc 2.29 — CloudLinux 8 / AlmaLinux 8 hosting (cPanel) has 2.28, so
+ * the server could not start there (it then tries to download a WASM fallback with pnpm, which the host does not have).
+ * A .mjs config needs no compiler. scripts/release.sh refuses to package a next.config.ts.
+ */
 
-const nextConfig: NextConfig = {
+/** @type {import("next").NextConfig} */
+const nextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   images: {

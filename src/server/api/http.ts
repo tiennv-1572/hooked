@@ -1,4 +1,5 @@
 import { revalidateTag } from "next/cache";
+import { unstable_rethrow } from "next/navigation";
 import type { NextRequest } from "next/server";
 import type { ZodType } from "zod";
 
@@ -13,6 +14,9 @@ export function errorResponse(status: number, code: string, message: string, fie
 }
 
 export function handleError(error: unknown) {
+  // Not ours: Next's own control-flow errors (e.g. the build stopping a prerender at `cookies()` or `searchParams` to
+  // render the route per request) must reach Next, not be logged and answered with a 500.
+  unstable_rethrow(error);
   if (error instanceof CmsError) {
     const status = { not_found: 404, conflict: 409, invalid: 422, unknown: 500 }[error.code];
     return errorResponse(status, error.code, error.message);
