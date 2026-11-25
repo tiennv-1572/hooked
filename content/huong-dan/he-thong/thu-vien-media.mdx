@@ -1,30 +1,160 @@
 ---
 title: "Thư viện media"
-description: "Tải ảnh lên, sửa mô tả ảnh và dùng lại ảnh ở mọi màn của CMS."
+description: "Kho ảnh dùng chung của CMS: tải ảnh lên, tìm ảnh, xem thông tin, sao chép đường dẫn và xóa ảnh."
 ---
 
 <AdminPath trail={["Hệ thống", "Thư viện media"]} href="/admin/media" />
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Thư viện media là kho ảnh dùng chung của cả CMS: ảnh có sẵn của website (ảnh dự án, học viên, logo…) và mọi ảnh bạn tải
+lên, dù tải ở màn này hay ở một ô ảnh của màn khác. Ở màn này bạn:
+
+- tải một hay nhiều ảnh lên;
+- tìm ảnh theo tên, lọc theo loại và thư mục;
+- xem kích thước, dung lượng của ảnh và sao chép đường dẫn của nó;
+- xóa ảnh không còn dùng khỏi thư viện.
+
+Màn này không có ô sửa mô tả ảnh: trên website, ảnh tự lấy tên của mục chứa nó (tên khóa học, tên dự án…) làm mô tả.
+Không đổi được tên hay thư mục của ảnh đã tải lên. Cả ba vai trò (Chủ sở hữu, Quản trị, Biên tập) đều dùng được màn này.
 
 ## Hiện ở đâu trên website
 
-Màn này không trực tiếp hiển thị ra website.
+Màn này không trực tiếp hiển thị ra website. Ảnh trong thư viện chỉ hiện trên website khi được chọn ở một màn khác (khóa
+học, dự án, bài viết, trang chủ…): xem [Chọn ảnh](/huong-dan/bat-dau/quy-uoc-chung#chọn-ảnh).
 
 ## Các bước thao tác
 
-<Draft />
+### Xem thư viện
+
+Trên menu bên trái, bấm **Hệ thống › Thư viện media**.
+
+<Screenshot alt="Màn Thư viện media" src="/huong-dan/anh/he-thong/thu-vien-media-danh-sach.png" />
+
+- ① **Tải ảnh lên**: chọn ảnh trong máy để tải lên.
+- ② Ô **Tìm theo tên hoặc mô tả…**: gõ một phần tên tệp, thư viện lọc ngay.
+- ③ Loại tệp (xem bên dưới).
+- ④ Thư mục: chỉ xem ảnh của một thư mục (ảnh dự án, học viên, logo đối tác…).
+- ⑤ Số tệp và tổng dung lượng của các tệp đang xem.
+- ⑥ Xem dạng lưới (ảnh lớn) hoặc dạng danh sách (bảng có cột Thư mục, Kích thước, Dung lượng, Ngày thêm).
+- ⑦ Một ảnh: tên tệp, kích thước (rộng × cao, tính bằng điểm ảnh) và dung lượng. Bấm vào để xem thông tin chi tiết.
+
+Ô loại tệp ③ có bốn lựa chọn:
+
+<Screenshot alt="Bốn loại tệp" src="/huong-dan/anh/he-thong/thu-vien-media-loai.png" />
+
+- ① **Hình ảnh** (mặc định): mọi ảnh, trừ icon.
+- ② **Icon (SVG)**: các icon nhỏ của website.
+- ③ **Đã tải lên**: chỉ những ảnh đã tải lên qua CMS.
+- ④ **Tất cả**: mọi tệp.
+
+### Tải ảnh lên
+
+<Steps>
+<Step>
+Bấm **Tải ảnh lên** ① rồi chọn một hay nhiều ảnh trong máy. Hoặc kéo ảnh từ máy thả vào bất kỳ chỗ nào trên màn: màn
+hình hiện khung **Thả ảnh để tải lên** ①, thả chuột ra là ảnh được tải lên.
+
+<Screenshot alt="Kéo thả ảnh vào màn Thư viện media" src="/huong-dan/anh/he-thong/thu-vien-media-keo-tha.png" />
+
+</Step>
+<Step>
+Tải xong, góc trên bên phải báo **Đã tải lên 1 ảnh.** ① (tải nhiều ảnh thì báo số ảnh). Ảnh mới nằm đầu thư viện, có nhãn
+**Mới tải lên** ②.
+
+<Screenshot alt="Ảnh vừa tải lên" src="/huong-dan/anh/he-thong/thu-vien-media-da-tai-len.png" />
+</Step>
+</Steps>
+
+- Ảnh tải lên được xếp vào thư mục đang chọn ở ô ④. Để **Tất cả thư mục** thì ảnh vào thư mục **uploads**.
+- Nhãn **Mới tải lên** luôn đi kèm ảnh tải lên qua CMS, để phân biệt với ảnh có sẵn của website.
+- Tải ảnh ngay trong một ô ảnh (thẻ **Tải lên** của hộp **Chọn một ảnh**) cũng làm như vậy, và ảnh cũng được lưu vào thư
+  viện.
+
+### Xem thông tin và sao chép đường dẫn
+
+Bấm vào một ảnh. Bảng thông tin mở ra bên phải:
+
+<Screenshot alt="Thông tin chi tiết của một ảnh" src="/huong-dan/anh/he-thong/thu-vien-media-chi-tiet.png" />
+
+- ① **Kích thước**, **Dung lượng**, **Ngày thêm** và **Nguồn**: **Tải lên** (ảnh tải lên qua CMS), **Website** (ảnh có sẵn
+  của website).
+- ② **Đường dẫn** của ảnh.
+- ③ Nút sao chép đường dẫn, để dán vào chỗ khác (ví dụ ô **Đường dẫn** của hộp chọn ảnh).
+- ④ **Xóa khỏi thư viện** (xem bên dưới).
+
+Bấm **×** hoặc ra ngoài bảng để đóng.
+
+### Xóa ảnh
+
+<Steps>
+<Step>
+Bấm vào ảnh cần xóa, rồi bấm **Xóa khỏi thư viện** ở cuối bảng thông tin.
+</Step>
+<Step>
+Hộp hỏi lại hiện ra. Bấm **Xóa** ① để xóa, **Hủy** ② nếu đổi ý. Xóa xong, góc trên bên phải báo **Đã xóa tệp.**
+
+<Screenshot alt="Hộp hỏi lại trước khi xóa ảnh" src="/huong-dan/anh/he-thong/thu-vien-media-xoa.png" />
+</Step>
+</Steps>
+
+Xóa chỉ bỏ ảnh khỏi thư viện: nội dung đang dùng ảnh đó (khóa học, dự án, bài viết…) **vẫn hiện ảnh bình thường** trên
+website. Nhưng ảnh không còn trong thư viện để chọn lại; muốn dùng lại thì tải lên lần nữa.
 
 ## Các trường thông tin
 
-<Draft />
+Màn này không có form nhập. Giới hạn khi tải ảnh lên:
+
+<FieldTable
+  fields={[
+    {
+      name: "Định dạng",
+      description:
+        "PNG, JPG, WebP, GIF, SVG, AVIF. Hộp chọn ảnh chỉ ghi PNG, JPG, WebP, SVG nhưng GIF và AVIF cũng tải lên được.",
+      example: "anh-su-kien.jpg",
+    },
+    {
+      name: "Dung lượng",
+      description: "Tối đa 8 MB mỗi ảnh. CMS không tự thu nhỏ hay cắt ảnh khi tải lên.",
+      example: "302 KB",
+    },
+    {
+      name: "Tên tệp",
+      description:
+        "Giữ nguyên tên trong máy, hiện trong thư viện và dùng để tìm. Đặt tên dễ hiểu trước khi tải lên: không đổi được sau đó.",
+      example: "vui-fest-backstage.jpg",
+    },
+  ]}
+/>
+
+Kích thước nên dùng cho từng ô ảnh (ảnh ngang hay dọc, rộng bao nhiêu) ghi ở trang hướng dẫn của màn có ô đó.
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+### "Chỉ hỗ trợ ảnh PNG, JPG, WebP, GIF, SVG, AVIF."
+
+Tệp vừa chọn không phải ảnh, ví dụ PDF, Word, hay video. Ảnh không được tải lên. Lưu lại ở định dạng JPG hoặc PNG rồi tải
+lên lại.
+
+<Screenshot alt="Lỗi sai định dạng" src="/huong-dan/anh/he-thong/thu-vien-media-loi-dinh-dang.png" />
+
+### "Ảnh tối đa 8 MB."
+
+Ảnh nặng hơn 8 MB (thường là ảnh chụp thẳng từ máy ảnh). Giảm kích thước ảnh (ví dụ xuất lại ở chiều rộng khoảng 2000 điểm
+ảnh, định dạng JPG) rồi tải lên lại.
+
+### Tìm không thấy ảnh vừa tải lên
+
+Kiểm tra ô loại tệp ③ và ô thư mục ④: ảnh có thể nằm ở thư mục khác thư mục đang xem. Chọn **Đã tải lên** ở ô ③ và **Tất
+cả thư mục** ở ô ④ để xem mọi ảnh đã tải lên.
+
+### Đã xóa ảnh nhưng website vẫn hiện ảnh đó
+
+Đúng như thiết kế: xóa ở thư viện không gỡ ảnh khỏi nội dung đang dùng. Muốn ảnh không hiện trên website thì mở màn của
+nội dung đó (khóa học, dự án…) và thay hoặc gỡ ảnh ở ô ảnh.
 
 ## Liên quan
 
-<Draft />
+- [Chọn ảnh](/huong-dan/bat-dau/quy-uoc-chung#chọn-ảnh): chọn ảnh từ thư viện, tải lên hoặc dán đường dẫn trong một ô ảnh.
+- [Cài đặt website](/huong-dan/he-thong/cai-dat-website): ảnh chia sẻ mặc định của website.
+- [Khôi phục dữ liệu mẫu](/huong-dan/he-thong/khoi-phuc-du-lieu-mau): thư viện trở về danh sách ảnh ban đầu.

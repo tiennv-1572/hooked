@@ -1,32 +1,229 @@
 ---
 title: "Menu & điều hướng"
-description: "Các mục menu ở đầu trang và chân trang của website: thêm, đổi tên, sắp xếp, ẩn tạm."
+description: "Ba menu của website: đầu trang trên máy tính, menu điện thoại và cột Company ở chân trang. Thêm, đổi tên, sắp xếp, ẩn tạm."
 ---
 
 <AdminPath trail={["Hệ thống", "Menu & điều hướng"]} href="/admin/navigation" />
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Website có ba menu, mỗi menu là một danh sách riêng trên màn này:
+
+- **Desktop**: thanh menu ở đầu trang trên máy tính;
+- **Mobile**: menu mở bằng nút ☰ trên điện thoại;
+- **Footer**: cột **Company** ở chân trang của mọi trang.
+
+Ba danh sách độc lập với nhau: sửa menu Desktop không đổi menu Mobile. Ở mỗi danh sách bạn thêm mục (một trang có sẵn của
+website hoặc một liên kết bất kỳ), đổi tên, đổi đường dẫn, sắp xếp, ẩn tạm hoặc xóa mục. Cả ba vai trò (Chủ sở hữu, Quản
+trị, Biên tập) đều dùng được màn này.
+
+Cột **Social** ở chân trang (Facebook, Instagram…) không sửa ở đây mà ở
+[Cài đặt website](/huong-dan/he-thong/cai-dat-website).
 
 ## Hiện ở đâu trên website
 
 <OnWebsite pages={[{ label: "Menu đầu trang và chân trang", path: "/" }]}>
-  <Screenshot alt="Menu & điều hướng trên website" src="/huong-dan/anh/he-thong/menu-dieu-huong-website.png" />
+  <Screenshot
+    alt="Menu đầu trang trên máy tính"
+    src="/huong-dan/anh/he-thong/menu-dieu-huong-website.png"
+    caption="① Menu Desktop. ② Mục của trang đang xem tô màu cam. Website tự viết hoa các nhãn."
+  />
+  <Screenshot
+    alt="Cột Company ở chân trang"
+    src="/huong-dan/anh/he-thong/menu-dieu-huong-website-footer.png"
+    caption="① Menu Footer: cột Company ở chân trang của mọi trang."
+  />
 </OnWebsite>
+
+Trên điện thoại, menu Mobile mở bằng nút ☰ ① ở đầu trang:
+
+<Tabs items={["Nút mở menu", "Menu đang mở"]}>
+<Tab>
+
+<Screenshot
+  alt="Nút mở menu trên điện thoại"
+  src="/huong-dan/anh/he-thong/menu-dieu-huong-website-mobile-nut.png"
+  device="mobile"
+/>
+
+</Tab>
+<Tab>
+
+<Screenshot
+  alt="Menu điện thoại đang mở"
+  src="/huong-dan/anh/he-thong/menu-dieu-huong-website-mobile.png"
+  device="mobile"
+/>
+
+① Các mục của menu Mobile; mục của trang đang xem tô màu cam.
+
+</Tab>
+</Tabs>
+
+| Trên CMS        | Trên website                                                      |
+| --------------- | ----------------------------------------------------------------- |
+| Thẻ **Desktop** | Thanh menu đầu trang trên máy tính                                |
+| Thẻ **Mobile**  | Menu mở bằng nút ☰ trên điện thoại                               |
+| Thẻ **Footer**  | Cột **Company** ở chân trang                                      |
+| Nhãn            | Chữ của mục trên menu (menu Desktop tự viết hoa)                  |
+| Đường dẫn       | Trang mở ra khi bấm vào mục                                       |
+| Hiện            | Tắt thì mục không hiện trên website nhưng vẫn còn trong danh sách |
+| Tab mới         | Bật thì bấm vào mục sẽ mở trang trong tab mới của trình duyệt     |
+
+Website cập nhật ngay khi bạn lưu: tải lại trang là thấy menu mới.
 
 ## Các bước thao tác
 
-<Draft />
+### Xem màn
+
+Trên menu bên trái, bấm **Hệ thống › Menu & điều hướng**.
+
+<Screenshot alt="Màn Menu & điều hướng" src="/huong-dan/anh/he-thong/menu-dieu-huong-desktop.png" />
+
+- ① Ba thẻ **Desktop**, **Mobile**, **Footer**; số cạnh tên thẻ là số mục đang hiện.
+- ② Khung xem trước: menu sẽ trông như thế này trên website, cập nhật ngay khi bạn sửa (chưa cần lưu). Link **Trên website**
+  ở góc khung mở trang thật.
+- ③ **Đang xem**: chọn một trang để xem trước mục nào được tô cam khi đang ở trang đó.
+- ④ **Thêm mục**: thêm một mục vào cuối danh sách.
+- ⑤ **Khôi phục mặc định**: xem [Nội dung các trang](/huong-dan/bat-dau/quy-uoc-chung#nội-dung-các-trang).
+
+Danh sách mục nằm dưới khung xem trước; thanh lưu ở đáy màn hình. Hai thẻ **Mobile** và **Footer** có cùng cách làm, khung
+xem trước đặt bên phải:
+
+<Tabs items={["Mobile", "Footer"]}>
+<Tab>
+
+<Screenshot alt="Thẻ Mobile" src="/huong-dan/anh/he-thong/menu-dieu-huong-mobile.png" />
+
+① Xem trước menu trên màn hình điện thoại.
+
+</Tab>
+<Tab>
+
+<Screenshot alt="Thẻ Footer" src="/huong-dan/anh/he-thong/menu-dieu-huong-footer.png" />
+
+① Xem trước chân trang, cột **Company** có viền cam. ② **Sao chép từ menu khác** (xem [bên dưới](#sao-chép-cả-menu)).
+
+</Tab>
+</Tabs>
+
+### Một mục của menu
+
+<Screenshot alt="Một mục của menu" src="/huong-dan/anh/he-thong/menu-dieu-huong-mot-muc.png" />
+
+- ① Nút kéo: giữ và kéo lên, xuống để đổi thứ tự.
+- ② **Nhãn**: chữ hiện trên menu.
+- ③ **Đường dẫn**: trang mở ra khi bấm.
+- ④ **Chọn**: chọn đường dẫn từ danh sách trang, dự án, bài viết thay vì gõ tay.
+- ⑤ **Hiện**: tắt để ẩn tạm mục này khỏi website.
+- ⑥ **Tab mới**: bật để mở trang trong tab mới.
+- ⑦ Thùng rác: xóa mục.
+
+Mọi thay đổi trong danh sách (kể cả kéo thả, xóa mục) chỉ áp dụng khi bạn bấm **Lưu thay đổi** (<kbd>Ctrl</kbd> +
+
+<kbd>S</kbd>). Lưu xong, góc trên bên phải báo **Đã lưu Menu & điều hướng.**
+
+### Thêm mục
+
+<Steps>
+<Step>
+Mở thẻ của menu cần thêm, bấm **Thêm mục**.
+
+<Screenshot alt="Danh sách Thêm mục" src="/huong-dan/anh/he-thong/menu-dieu-huong-them-muc.png" />
+
+- ① Chọn một trang có sẵn của website. Nhãn và đường dẫn được điền sẵn; nhãn lấy tên tiếng Anh đang dùng trên website
+  (ví dụ **Student Stories** cho trang Học viên tiêu biểu), sửa lại nếu muốn.
+- ② Dấu ✓ cho biết trang đó đã có trong menu này.
+- ③ **Liên kết tùy chỉnh**: thêm một dòng trống để tự điền nhãn và đường dẫn, ví dụ trang một dự án hay một trang ngoài
+  website.
+
+</Step>
+<Step>
+Với liên kết tùy chỉnh, gõ **Nhãn**, rồi gõ **Đường dẫn** hoặc bấm **Chọn**: gõ vào ô tìm ① để lọc, rồi bấm vào trang cần
+dẫn tới. Danh sách có nhóm **Trang** ②, kéo xuống để thấy nhóm **Dự án** và **Bài viết**.
+
+<Screenshot alt="Chọn đường dẫn từ danh sách" src="/huong-dan/anh/he-thong/menu-dieu-huong-chon-trang.png" />
+
+Đường dẫn trong website bắt đầu bằng `/` (ví dụ `/academy`); trang ngoài website bắt đầu bằng `https://`.
+
+</Step>
+<Step>
+Bấm **Lưu thay đổi**.
+</Step>
+</Steps>
+
+### Ẩn tạm một mục
+
+Tắt **Hiện** ② ở dòng của mục. Dòng mờ đi, khung xem trước bỏ mục đó và ghi số mục đang ẩn ①, cuối danh sách cũng ghi ③.
+Bấm **Lưu thay đổi**: mục biến khỏi menu trên website nhưng vẫn còn trong danh sách, bật **Hiện** lại là có lại.
+
+<Screenshot alt="Một mục đang ẩn" src="/huong-dan/anh/he-thong/menu-dieu-huong-an-muc.png" />
+
+### Sắp xếp
+
+Giữ nút kéo ở đầu dòng, kéo lên hoặc xuống rồi thả ra, sau đó bấm **Lưu thay đổi**. Khác với một số danh sách khác của CMS,
+ở đây thứ tự **chưa** lưu ngay khi thả.
+
+### Sao chép cả menu
+
+Muốn menu Mobile giống hệt menu Desktop: mở thẻ **Mobile**, bấm **Sao chép từ menu khác** (cuối danh sách), chọn **Menu
+header (desktop)**. Hộp hỏi lại báo các mục hiện tại sẽ bị thay; bấm **Sao chép**, rồi bấm **Lưu thay đổi** để áp dụng.
 
 ## Các trường thông tin
 
-<Draft />
+<FieldTable
+  fields={[
+    {
+      name: "Nhãn",
+      required: true,
+      description: "Chữ hiện trên menu. Menu Desktop tự viết hoa toàn bộ.",
+      example: "Academy",
+    },
+    {
+      name: "Đường dẫn",
+      required: true,
+      description:
+        "Trang trong website bắt đầu bằng / ; trang ngoài website bắt đầu bằng https:// . Cũng nhận mailto: (gửi email) và tel: (gọi điện).",
+      example: "/academy",
+    },
+    {
+      name: "Hiện",
+      description: "Tắt để ẩn mục khỏi website mà không xóa.",
+      example: "Bật",
+    },
+    {
+      name: "Tab mới",
+      description: "Bật để mở trang trong tab mới. Nên bật cho trang ngoài website.",
+      example: "Tắt",
+    },
+  ]}
+/>
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+### "Nhập nhãn." và "Nhập đường dẫn."
+
+Bấm lưu khi một dòng còn trống nhãn hoặc đường dẫn (thường là dòng **Liên kết tùy chỉnh** vừa thêm). Điền vào, hoặc xóa dòng
+đó bằng thùng rác. Thanh lưu báo còn mấy trường chưa hợp lệ.
+
+### "Bắt đầu bằng / hoặc https://"
+
+Đường dẫn không đúng dạng, ví dụ thiếu dấu `/` ở đầu (`tuyen-dung` thay vì `/tuyen-dung`) hoặc thiếu `https://`.
+
+<Screenshot alt="Lỗi đường dẫn không đúng dạng" src="/huong-dan/anh/he-thong/menu-dieu-huong-loi.png" />
+
+### Đổi đường dẫn của dự án hay bài viết thì menu không tự đổi theo
+
+Menu lưu đường dẫn tại lúc bạn chọn. Nếu sau đó đổi đường dẫn hoặc xóa dự án, bài viết được trỏ tới, mục menu dẫn tới trang
+**Trang này không tồn tại**. Sửa lại đường dẫn của mục (bấm **Chọn** để chọn lại).
+
+### Đã sửa menu Desktop nhưng điện thoại vẫn như cũ
+
+Menu Desktop và Mobile là hai danh sách riêng. Sửa cả thẻ **Mobile**, hoặc dùng
+[Sao chép từ menu khác](#sao-chép-cả-menu).
 
 ## Liên quan
 
-<Draft />
+- [Cài đặt website](/huong-dan/he-thong/cai-dat-website): cột Social, thông tin liên hệ ở chân trang.
+- [Sửa ở đâu, hiện ở đâu](/huong-dan/tham-khao/sua-o-dau-hien-o-dau): bảng tra cho toàn website.
+- [Quy ước dùng chung](/huong-dan/bat-dau/quy-uoc-chung): thanh lưu, Hoàn tác, Khôi phục mặc định.

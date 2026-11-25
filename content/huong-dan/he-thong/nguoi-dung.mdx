@@ -1,13 +1,25 @@
 ---
 title: "Người dùng"
-description: "Mời người dùng, đặt vai trò, khóa tài khoản và tạo mật khẩu tạm khi có người quên mật khẩu."
+description: "Tài khoản đăng nhập CMS: mời người dùng, đổi vai trò, khóa tài khoản, cấp mật khẩu mới khi có người quên mật khẩu, xóa."
 ---
 
 <AdminPath trail={["Hệ thống", "Người dùng"]} href="/admin/users" />
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Màn **Người dùng** (trên màn hình gọi là **Người dùng & phân quyền**) liệt kê mọi tài khoản đăng nhập được vào CMS. Chủ sở
+hữu và Quản trị dùng màn này để:
+
+- mời người mới (tạo tài khoản kèm mật khẩu tạm);
+- đổi vai trò, khóa hoặc mở khóa tài khoản;
+- cấp mật khẩu mới cho người quên mật khẩu;
+- xóa tài khoản không còn dùng.
+
+Tài khoản **Biên tập** mở được màn này để xem nhưng không thay đổi được gì: xem
+[Vai trò và quyền truy cập](/huong-dan/bat-dau/vai-tro#biên-tập-viên-ở-màn-người-dùng).
+
+CMS **không gửi email**: mật khẩu tạm và mật khẩu mới do CMS tạo hiện trên màn hình để bạn tự gửi riêng cho người dùng (qua
+Zalo, tin nhắn…).
 
 ## Hiện ở đâu trên website
 
@@ -15,16 +27,228 @@ Màn này không trực tiếp hiển thị ra website.
 
 ## Các bước thao tác
 
-<Draft />
+### Xem danh sách
+
+Trên menu bên trái, bấm **Hệ thống › Người dùng**.
+
+<Screenshot alt="Màn Người dùng" src="/huong-dan/anh/he-thong/nguoi-dung-danh-sach.png" />
+
+- ① **Mời người dùng**: tạo tài khoản mới.
+- ② Ô **Tìm kiếm**: tìm theo tên hoặc email.
+- ③ Lọc theo **Vai trò** (bên cạnh là lọc theo **Trạng thái**).
+- ④ Vai trò: bấm để đổi ngay trong danh sách.
+- ⑤ Trạng thái: **Đang hoạt động**, **Đã mời** (chưa đăng nhập lần nào) hoặc **Đã khóa**.
+- ⑥ **Hoạt động**: lần đăng nhập gần nhất; với tài khoản Đã mời là lúc được mời.
+- ⑦ Nút **…**: các thao tác với tài khoản đó.
+- ⑧ Khóa nhỏ cạnh vai trò: tài khoản này không đổi được (xem [Những tài khoản không đổi được](#những-tài-khoản-không-đổi-được)).
+
+Tài khoản của bạn có nhãn **Bạn** cạnh tên. Bấm vào tên một người để mở bảng chi tiết.
+
+Dưới danh sách có hai bảng **Vai trò** và **Ma trận phân quyền**. Bảng Ma trận phân quyền hiện chưa khớp với những gì CMS
+thật sự cho phép: xem bảng đúng ở [Vai trò và quyền truy cập](/huong-dan/bat-dau/vai-tro).
+
+### Mời người dùng
+
+<Steps>
+<Step>
+Bấm **Mời người dùng**.
+</Step>
+<Step>
+Điền hộp **Mời người dùng**:
+
+<Screenshot alt="Hộp Mời người dùng đã điền" src="/huong-dan/anh/he-thong/nguoi-dung-moi.png" />
+
+- ① **Họ tên** và ② **Email** của người được mời. Email là tên đăng nhập của họ.
+- ③ **Vai trò**: mặc định là **Biên tập**. Quản trị chỉ chọn được **Quản trị** hoặc **Biên tập**.
+- ④ **Mật khẩu tạm**: CMS tạo sẵn một mật khẩu (dạng `hooked-` + 4 chữ + 4 số). Có thể gõ mật khẩu khác, tối thiểu 8 ký tự,
+  có cả chữ và số.
+- ⑤ Tạo mật khẩu khác; ⑥ sao chép mật khẩu.
+
+</Step>
+<Step>
+Bấm **Tạo tài khoản** ⑦. Góc trên bên phải hiện email và mật khẩu tạm của người được mời; bấm **Sao chép** ① để chép cả hai
+rồi gửi riêng cho họ. Thông báo này tự tắt sau một phút và **không hiện lại**: sao chép ngay.
+
+<Screenshot alt="Đã tạo tài khoản, thông báo có mật khẩu tạm" src="/huong-dan/anh/he-thong/nguoi-dung-moi-xong.png" />
+
+Tài khoản mới có trạng thái **Đã mời** ②.
+
+</Step>
+<Step>
+Người được mời đăng nhập CMS bằng email và mật khẩu tạm. Ngay lần đăng nhập đầu, tài khoản chuyển sang **Đang hoạt
+động**. Nhắc họ đổi mật khẩu ở [Tài khoản của tôi](/huong-dan/bat-dau/tai-khoan-cua-toi).
+</Step>
+</Steps>
+
+Người được mời làm mất mật khẩu tạm trước khi đăng nhập: bấm **…** ở dòng của họ, chọn **Tạo mật khẩu tạm mới** ①. Góc trên
+bên phải hiện mật khẩu tạm mới (mật khẩu cũ hết dùng được), sao chép và gửi lại. **Kích hoạt thủ công** ② chuyển tài khoản
+sang Đang hoạt động mà không chờ họ đăng nhập; họ vẫn đăng nhập bằng mật khẩu tạm.
+
+<Screenshot alt="Thao tác với tài khoản Đã mời" src="/huong-dan/anh/he-thong/nguoi-dung-thao-tac-da-moi.png" />
+
+### Đổi vai trò
+
+Bấm vào vai trò ở dòng của người đó (④ ở ảnh [danh sách](#xem-danh-sách)), chọn vai trò mới ①. Góc trên bên phải báo, ví
+dụ, **Đỗ Thanh Tú giờ là Quản trị.** Chọn **Chủ sở hữu** thì CMS hỏi lại trước (**Chỉ định**). Vai trò mới có hiệu lực ngay.
+
+<Screenshot alt="Đổi vai trò trong danh sách" src="/huong-dan/anh/he-thong/nguoi-dung-doi-vai-tro.png" />
+
+Mỗi vai trò làm được gì: xem [Vai trò và quyền truy cập](/huong-dan/bat-dau/vai-tro).
+
+### Các thao tác với một tài khoản
+
+Bấm **…** ở cuối dòng của tài khoản đang hoạt động:
+
+<Screenshot alt="Thao tác với một tài khoản đang hoạt động" src="/huong-dan/anh/he-thong/nguoi-dung-thao-tac.png" />
+
+- ① **Chỉnh sửa**: mở bảng chi tiết (xem [bên dưới](#sửa-thông-tin)).
+- ② **Đổi mật khẩu**: đặt mật khẩu mới cho người quên mật khẩu.
+- ③ **Khóa tài khoản** (tài khoản đã khóa thì là **Mở khóa**).
+- ④ **Xóa**.
+
+### Khóa và mở khóa
+
+Khóa khi một người tạm ngừng làm việc hay rời nhóm mà bạn muốn giữ lại tài khoản. Bấm **…** › **Khóa tài khoản**, rồi bấm
+**Khóa tài khoản** ① trong hộp hỏi lại.
+
+<Screenshot alt="Hộp hỏi lại trước khi khóa" src="/huong-dan/anh/he-thong/nguoi-dung-khoa.png" />
+
+Góc trên bên phải báo **Đã khóa tài khoản …** Người đó bị đẩy ra khỏi CMS ngay (kể cả đang mở CMS), và khi đăng nhập thì
+CMS báo **Tài khoản đã bị khóa.** Nội dung họ đã tạo vẫn giữ nguyên. Mở lại: **…** › **Mở khóa**, CMS báo **Đã mở khóa tài
+khoản …**
+
+### Cấp mật khẩu mới cho người quên mật khẩu
+
+<Steps>
+<Step>
+Bấm **…** ở dòng của người đó, chọn **Đổi mật khẩu**.
+</Step>
+<Step>
+Gõ mật khẩu mới vào ① và gõ lại vào ②, hoặc bấm **Tạo ngẫu nhiên** ④ để CMS tạo một mật khẩu. Các dòng ③ chuyển xanh khi
+mật khẩu đạt: ít nhất 8 ký tự, có cả chữ và số, hai lần nhập khớp nhau. Bấm hình con mắt trong ô để xem chữ đã gõ.
+
+<Screenshot alt="Hộp Đổi mật khẩu" src="/huong-dan/anh/he-thong/nguoi-dung-doi-mat-khau.png" />
+
+</Step>
+<Step>
+Bấm **Đổi mật khẩu** ⑤. Góc trên bên phải hiện email và mật khẩu mới; bấm **Sao chép** ① rồi gửi riêng cho người dùng.
+Thông báo này tự tắt sau một phút và không hiện lại.
+
+<Screenshot alt="Thông báo mật khẩu mới" src="/huong-dan/anh/he-thong/nguoi-dung-doi-mat-khau-xong.png" />
+</Step>
+</Steps>
+
+Mật khẩu cũ hết dùng được ngay. Nhắc người dùng đăng nhập bằng mật khẩu mới rồi tự đổi lại ở
+[Tài khoản của tôi](/huong-dan/bat-dau/tai-khoan-cua-toi).
+
+### Sửa thông tin
+
+Bấm vào tên một người (hoặc **…** › **Chỉnh sửa**). Bảng chi tiết mở ra bên phải, đầu bảng ghi ngày tham gia và lần hoạt động
+gần nhất:
+
+<Screenshot alt="Bảng chi tiết một người dùng" src="/huong-dan/anh/he-thong/nguoi-dung-chi-tiet.png" />
+
+- ① **Họ tên** và ② **Email đăng nhập**: đổi email thì người đó đăng nhập bằng email mới.
+- ③ **Vai trò** và ④ **Trạng thái**.
+- ⑤ **Xóa** tài khoản.
+- ⑥ **Lưu thay đổi**: sáng lên khi có thay đổi. Lưu xong, CMS báo **Đã lưu thông tin …**
+
+Với trạng thái **Đã mời**, dòng chú thích dưới ô ④ nói người dùng "chấp nhận lời mời qua email", nhưng CMS không gửi email:
+người được mời chỉ cần đăng nhập bằng mật khẩu tạm bạn gửi cho họ.
+
+### Xóa người dùng
+
+Bấm **…** › **Xóa** (hoặc **Xóa** ở bảng chi tiết), rồi bấm **Xóa người dùng** ① trong hộp hỏi lại. Góc trên bên phải báo
+**Đã xóa …**
+
+<Screenshot alt="Hộp hỏi lại trước khi xóa người dùng" src="/huong-dan/anh/he-thong/nguoi-dung-xoa.png" />
+
+<Callout type="warn" title="Xóa rồi không lấy lại được">
+  Người bị xóa mất quyền vào CMS ngay. Muốn tạm ngừng thì **khóa** tài khoản thay vì xóa. Nội dung người đó đã tạo vẫn
+  giữ nguyên.
+</Callout>
+
+### Những tài khoản không đổi được
+
+Dòng có khóa nhỏ cạnh vai trò thì không đổi vai trò, không khóa, không xóa được. Rê chuột lên khóa để xem lý do ①:
+
+<Screenshot alt="Lý do tài khoản không đổi được" src="/huong-dan/anh/he-thong/nguoi-dung-cua-ban.png" />
+
+- **Bạn không thể tự đổi vai trò, khóa hoặc xóa tài khoản của chính mình.** Ở dòng của bạn, nút **…** chỉ có **Tài khoản
+  của tôi** và **Chỉnh sửa** (sửa họ tên, email).
+- **Đây là chủ sở hữu duy nhất — cần ít nhất một chủ sở hữu đang hoạt động.** Muốn đổi, chỉ định thêm một Chủ sở hữu khác
+  trước.
+- **Chỉ chủ sở hữu mới thay đổi được chủ sở hữu khác.** Tài khoản Quản trị chỉ **Xem thông tin** được tài khoản Chủ sở
+  hữu, và không giao được vai trò Chủ sở hữu.
+- **Biên tập viên không quản lý được người dùng.**
 
 ## Các trường thông tin
 
-<Draft />
+<FieldTable
+  fields={[
+    {
+      name: "Họ tên",
+      required: true,
+      description: "Tên hiện trong CMS (menu tài khoản, danh sách người dùng). Từ 2 đến 60 ký tự.",
+      example: "Đỗ Thanh Tú",
+    },
+    {
+      name: "Email / Email đăng nhập",
+      required: true,
+      description: "Email dùng để đăng nhập. Không trùng email của người dùng khác.",
+      example: "tu.do@hooked.vn",
+    },
+    {
+      name: "Vai trò",
+      required: true,
+      description: "Chủ sở hữu, Quản trị hoặc Biên tập. Xem Vai trò và quyền truy cập.",
+      example: "Biên tập",
+    },
+    {
+      name: "Mật khẩu tạm",
+      required: true,
+      description: "Chỉ có khi mời. Tối thiểu 8 ký tự, có cả chữ và số. CMS tạo sẵn.",
+      example: "hooked-mnpq2468",
+    },
+    {
+      name: "Trạng thái",
+      description: "Đang hoạt động (đăng nhập được), Đã mời (chưa đăng nhập lần nào), Đã khóa (không đăng nhập được).",
+      example: "Đang hoạt động",
+    },
+  ]}
+/>
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+### "Nhập họ tên (ít nhất 2 ký tự)." và "Email không hợp lệ."
+
+Bấm **Tạo tài khoản** khi chưa điền họ tên hoặc email, hay email sai dạng. Điền đủ rồi bấm lại.
+
+### "Email này đã có trong danh sách người dùng."
+
+Đã có tài khoản dùng email này (không phân biệt chữ hoa, chữ thường). Tìm người đó trong danh sách: có thể tài khoản đang
+**Đã khóa** và chỉ cần mở khóa.
+
+### "Mật khẩu tạm tối thiểu 8 ký tự.", "Mật khẩu tạm cần có chữ.", "Mật khẩu tạm cần có số."
+
+Mật khẩu tạm gõ tay chưa đạt. Bấm nút tạo mật khẩu khác (⑤ ở ảnh [mời người dùng](#mời-người-dùng)) để CMS tạo một mật khẩu
+đạt yêu cầu.
+
+### "Mật khẩu chưa đạt: …" và "Mật khẩu xác nhận không khớp."
+
+Trong hộp **Đổi mật khẩu**: mật khẩu mới chưa đủ 8 ký tự hay chưa có cả chữ và số, hoặc hai lần nhập khác nhau. Bấm **Tạo
+ngẫu nhiên** cho nhanh.
+
+### Người dùng báo "Tài khoản đã bị khóa."
+
+Tài khoản đang **Đã khóa**. Nếu đúng người cần dùng CMS, bấm **…** › **Mở khóa**.
+
+### Không thấy nút Mời người dùng, hoặc nút bị mờ
+
+Bạn đang đăng nhập bằng tài khoản **Biên tập**. Nhờ Chủ sở hữu hoặc Quản trị mời người mới.
 
 ## Liên quan
 
-<Draft />
+- [Vai trò và quyền truy cập](/huong-dan/bat-dau/vai-tro): mỗi vai trò làm được gì.
+- [Đăng nhập và đăng xuất](/huong-dan/bat-dau/dang-nhap): đăng nhập lần đầu, quên mật khẩu.
+- [Tài khoản của tôi](/huong-dan/bat-dau/tai-khoan-cua-toi): tự đổi mật khẩu và hồ sơ.

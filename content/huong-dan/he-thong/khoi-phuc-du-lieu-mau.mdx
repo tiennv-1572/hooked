@@ -7,4 +7,51 @@ description: "Thay toàn bộ nội dung bằng dữ liệu mẫu. Chỉ Chủ s
   Chỉ tài khoản **Chủ sở hữu**. Mục này nằm trong menu tài khoản ở cuối menu bên trái.
 </Callout>
 
-<Draft />
+<Callout type="error" title="Không dùng trên website thật">
+  Khôi phục dữ liệu mẫu **xóa toàn bộ nội dung đang có** của website, kể cả các **đăng ký tư vấn** học viên đã gửi, và
+  không hoàn tác được. Chức năng này chỉ dành cho bản dùng thử hoặc bản đào tạo của CMS. Trên hooked.vn, không bấm
+  **Khôi phục**.
+</Callout>
+
+## Chức năng này làm gì
+
+**Khôi phục dữ liệu mẫu** đưa website về bộ dữ liệu mẫu có sẵn trong CMS (nội dung gốc lúc xây dựng website):
+
+- khóa học, danh mục khóa học, học viên, dự án, danh mục dự án, bài viết, đối tác trở về bản mẫu: mọi thứ thêm, sửa, xóa
+  sau đó đều mất;
+- nội dung các trang (trang chủ, Academy, About, Contact…), menu, cài đặt website, cài đặt hiển thị dự án trở về bản mẫu;
+- **đăng ký tư vấn bị xóa hết**, thay bằng các đăng ký mẫu (tên, số điện thoại giả);
+- thư viện media trở về danh sách ảnh ban đầu: ảnh đã tải lên biến khỏi thư viện.
+
+**Giữ nguyên**: các tài khoản người dùng, vai trò và mật khẩu của họ.
+
+Website cập nhật ngay sau khi khôi phục.
+
+## Các bước thao tác
+
+<Steps>
+<Step>
+Bấm vào tên của bạn ở cuối menu bên trái. Mục **Khôi phục dữ liệu mẫu** ① chỉ hiện với tài khoản Chủ sở hữu.
+
+<Screenshot alt="Mục Khôi phục dữ liệu mẫu trong menu tài khoản" src="/huong-dan/anh/he-thong/khoi-phuc-du-lieu-mau-menu.png" />
+</Step>
+<Step>
+Hộp hỏi lại hiện ra. Bấm **Hủy** ② nếu không chắc. Bấm **Khôi phục** ① để khôi phục: góc trên bên phải báo **Đã khôi phục
+dữ liệu mẫu.**
+
+<Screenshot alt="Hộp hỏi lại trước khi khôi phục" src="/huong-dan/anh/he-thong/khoi-phuc-du-lieu-mau-hoi-lai.png" />
+</Step>
+</Steps>
+
+## Lưu ý
+
+- Không có nút hoàn tác. Lỡ khôi phục trên website thật: báo ngay bộ phận kỹ thuật để khôi phục từ bản sao lưu database
+  (nếu có); những gì thay đổi sau lần sao lưu gần nhất sẽ mất.
+- Muốn sửa lại một trang về nội dung gốc, dùng nút **Khôi phục mặc định** của màn đó: chỉ điền lại form của trang đó, chưa đổi
+  gì cho tới khi bạn bấm lưu. Xem [Nội dung các trang](/huong-dan/bat-dau/quy-uoc-chung#nội-dung-các-trang).
+- Tài khoản Quản trị và Biên tập không thấy mục này, và CMS từ chối nếu họ tìm cách khôi phục.
+
+## Liên quan
+
+- [Vai trò và quyền truy cập](/huong-dan/bat-dau/vai-tro): việc chỉ Chủ sở hữu làm được.
+- [Đăng ký tư vấn](/huong-dan/tong-quan/dang-ky-tu-van): dữ liệu bị xóa khi khôi phục.
