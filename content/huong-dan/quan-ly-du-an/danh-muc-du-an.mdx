@@ -7,26 +7,230 @@ description: "Các dịch vụ dùng làm nút lọc trên trang Projects và nh
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Danh mục dự án là các dịch vụ Hooked làm trong từng dự án: Event production, Artist management, Media, Music consultant,
+International artists booking, DJ Contest. Một dự án có thể thuộc **nhiều** danh mục. Trên website, mỗi danh mục là một
+nút lọc ở đầu trang Projects, và tên các danh mục của một dự án hiện dưới tên thẻ của dự án đó. Ở màn này bạn:
+
+- thêm danh mục;
+- đổi tên, đổi đường dẫn lọc (slug);
+- sắp xếp thứ tự các nút lọc;
+- xem dự án nào thuộc danh mục nào;
+- xóa danh mục không còn dùng.
+
+Việc chọn danh mục cho một dự án làm ở màn [Dự án](/huong-dan/quan-ly-du-an/du-an), mục **Danh mục** của từng dự án. Cả
+ba vai trò (Chủ sở hữu, Quản trị, Biên tập) đều dùng được màn này.
 
 ## Hiện ở đâu trên website
 
-<OnWebsite pages={[{ label: "Trang Projects", path: "/projects" }]}>
-  <Screenshot alt="Danh mục dự án trên website" src="/huong-dan/anh/quan-ly-du-an/danh-muc-du-an-website.png" />
+<OnWebsite pages={[{ label: "Thanh lọc và thẻ dự án trên trang Projects", path: "/projects" }]}>
+  <Screenshot
+    alt="Thanh lọc dự án trên trang Projects"
+    src="/huong-dan/anh/quan-ly-du-an/danh-muc-du-an-website.png"
+    caption="① Mỗi danh mục là một nút lọc, xếp sau nút Tất cả, đúng thứ tự trên CMS. ② Dưới tên mỗi thẻ dự án là các danh mục của dự án đó."
+  />
 </OnWebsite>
+
+| Trên CMS         | Trên website                                                                                                                                                 |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Tên danh mục     | Nút lọc ở đầu trang Projects; dòng chữ dưới tên thẻ dự án; dòng chữ cam dưới tiêu đề và mục **Dịch vụ cung cấp** trên trang từng dự án                       |
+| Đường dẫn (slug) | Phần cuối của link mở trang Projects đã lọc sẵn theo danh mục, ví dụ `hooked.vn/projects?service=media`. Bấm một nút lọc thì thanh địa chỉ đổi theo link này |
+| Thứ tự           | Thứ tự các nút lọc, sau nút **Tất cả**                                                                                                                       |
+
+Website cập nhật ngay khi bạn lưu: tải lại trang Projects là thấy.
+
+<Callout title="Danh mục chưa có dự án vẫn có nút lọc">
+  Khác với [danh mục khóa học](/huong-dan/quan-ly-academy/danh-muc-khoa-hoc), danh mục dự án mới thêm là có nút lọc trên
+  website ngay, kể cả khi chưa có dự án nào. Bấm vào nút đó, website báo chưa có dự án (xem [bên
+  dưới](#bấm-nút-lọc-thì-website-báo-chưa-có-dự-án)).
+</Callout>
 
 ## Các bước thao tác
 
-<Draft />
+### Xem danh sách
+
+Trên menu bên trái, bấm **Quản lý dự án › Danh mục dự án**.
+
+<Screenshot alt="Màn Danh mục dự án" src="/huong-dan/anh/quan-ly-du-an/danh-muc-du-an-danh-sach.png" />
+
+- ① **Thêm danh mục**: mở hộp thêm danh mục mới.
+- ② Nút kéo ở đầu dòng: giữ và kéo lên, xuống để đổi thứ tự.
+- ③ Tên danh mục: bấm vào để đổi tên nhanh.
+- ④ Đường dẫn lọc (slug) của danh mục.
+- ⑤ Số dự án thuộc danh mục: bấm để xem đó là những dự án nào.
+- ⑥ Nút **…**: mở menu **Sửa nhãn & slug**, **Xem trên website**, **Xóa**.
+- ⑦ Khung **Thanh lọc trên website**: thanh lọc trên trang Projects sẽ trông như thế này.
+
+Nút **Xem trang Projects** cạnh nút ① mở trang Projects trên website ở tab mới.
+
+### Thêm danh mục
+
+<Steps>
+<Step>
+Bấm **Thêm danh mục** ở góc trên bên phải màn hình.
+</Step>
+<Step>
+Gõ tên vào ô **Tên danh mục** ①, tối đa 40 ký tự.
+
+<Screenshot alt="Hộp Thêm danh mục đã điền" src="/huong-dan/anh/quan-ly-du-an/danh-muc-du-an-them-moi.png" />
+
+Ô **Đường dẫn (slug)** ② tự điền theo tên: chữ thường, không dấu, các từ nối bằng dấu gạch ngang. Ví dụ "Ánh sáng sân
+khấu" thành `anh-sang-san-khau`. Muốn đặt khác thì sửa ngay trong ô. Nút ③ (**Tạo lại từ tiêu đề**) lấy lại slug theo tên.
+
+Đã gõ tay vào ô slug thì slug thôi chạy theo tên: dòng chữ dưới ô báo **Đã khóa — đổi tiêu đề không làm thay đổi đường
+dẫn.** Bấm nút ổ khóa cạnh nút ③ để slug lại tự chạy theo tên.
+
+</Step>
+<Step>
+Bấm **Thêm danh mục** ④. Hộp đóng lại, góc trên bên phải báo **Đã tạo danh mục.** Danh mục mới nằm cuối danh sách ①, và
+khung Thanh lọc có thêm nút của nó ②.
+
+<Screenshot alt="Danh mục mới ở cuối danh sách" src="/huong-dan/anh/quan-ly-du-an/danh-muc-du-an-sau-khi-them.png" />
+</Step>
+<Step>
+Mở màn [Dự án](/huong-dan/quan-ly-du-an/du-an), chọn danh mục mới cho các dự án thuộc dịch vụ này.
+</Step>
+</Steps>
+
+### Đổi tên
+
+**Đổi tên nhanh**: bấm vào tên danh mục trong danh sách, tên biến thành ô nhập. Gõ tên mới rồi bấm <kbd>Enter</kbd> (hoặc bấm
+ra chỗ khác) để lưu; bấm <kbd>Esc</kbd> để bỏ. Lưu xong, góc trên bên phải báo **Đã đổi tên thành “…”.** Đổi tên nhanh
+**không** đổi slug.
+
+**Hoặc dùng hộp Sửa**: bấm **…** ở cuối dòng rồi bấm **Sửa nhãn & slug** ①. Hộp **Sửa danh mục** sửa được cả tên lẫn slug,
+và cho biết danh mục đang được bao nhiêu dự án dùng. Sửa xong bấm **Lưu thay đổi**.
+
+<Screenshot alt="Menu của một danh mục" src="/huong-dan/anh/quan-ly-du-an/danh-muc-du-an-thao-tac.png" />
+
+Trong menu này, **Xem trên website** ② mở trang Projects đã lọc sẵn theo danh mục, ở tab mới; **Xóa** ③ xem
+[Xóa danh mục](#xóa-danh-mục).
+
+Tên mới hiện ngay trên nút lọc và ở mọi dự án thuộc danh mục.
+
+### Đổi đường dẫn (slug)
+
+Mở hộp **Sửa danh mục** như trên rồi sửa ô **Đường dẫn (slug)** ①. Hộp báo trước **Đổi đường dẫn sẽ làm các liên kết cũ
+không còn lọc đúng danh mục này.** ② Dòng ③ cho biết danh mục đang được bao nhiêu dự án dùng.
+
+<Screenshot alt="Đổi slug trong hộp Sửa danh mục" src="/huong-dan/anh/quan-ly-du-an/danh-muc-du-an-sua.png" />
+
+Link cũ, ví dụ link đã chia sẻ, không báo lỗi: website chọn danh mục có tên gần giống nhất với chữ trong link, không giống
+danh mục nào thì hiện **Tất cả**. Các nút ở khối **Dịch vụ** của trang chủ cũng dẫn tới trang Projects bằng link
+`/projects?service=…`, nên chỉ đổi slug khi thật cần, và đổi xong thì bấm thử các nút đó (sửa ở
+[Trang chủ](/huong-dan/noi-dung/trang-chu)).
+
+### Sắp xếp thứ tự
+
+Giữ chuột vào nút kéo ở đầu dòng (nút ② ở ảnh [danh sách](#xem-danh-sách)), kéo lên hoặc xuống rồi thả ra. Thứ tự được lưu
+ngay, không cần bấm lưu. Các nút lọc trên trang Projects xếp theo đúng thứ tự mới.
+
+### Xem dự án thuộc danh mục
+
+Bấm vào số dự án ① ở dòng của danh mục. Danh sách dự án hiện ra ngay bên dưới; bấm tên một dự án để mở dự án đó. Dự án chưa
+xuất bản có nhãn **Nháp**.
+
+<Screenshot
+  alt="Các dự án thuộc danh mục Media"
+  src="/huong-dan/anh/quan-ly-du-an/danh-muc-du-an-du-an-thuoc-danh-muc.png"
+/>
+
+### Xóa danh mục
+
+Bấm **…** ở cuối dòng rồi bấm **Xóa**. Có hai trường hợp:
+
+<Tabs items={["Danh mục chưa có dự án", "Danh mục đang có dự án"]}>
+<Tab>
+Hộp hỏi lại hiện ra. Bấm **Xóa** ① để xóa, **Hủy** nếu đổi ý. Xóa xong, góc trên bên phải báo **Đã xóa danh mục.** và nút lọc
+biến khỏi trang Projects.
+
+<Screenshot alt="Hộp hỏi lại trước khi xóa" src="/huong-dan/anh/quan-ly-du-an/danh-muc-du-an-xoa-xac-nhan.png" />
+</Tab>
+<Tab>
+Hộp **Danh mục “…” đang được dùng** liệt kê các dự án đang thuộc danh mục ①.
+
+<Screenshot alt="Xóa một danh mục đang có dự án" src="/huong-dan/anh/quan-ly-du-an/danh-muc-du-an-xoa-dang-dung.png" />
+
+Bấm **Gỡ khỏi … dự án & xóa** ②: danh mục được gỡ khỏi từng dự án, rồi bị xóa. Các dự án vẫn còn nguyên, chỉ mất danh mục
+này (dòng danh mục dưới tên thẻ và mục **Dịch vụ cung cấp** bớt đi một tên).
+
+Nếu có dự án **chỉ** thuộc danh mục này, hộp báo thêm "… sẽ không còn danh mục nào (chỉ hiện ở “Tất cả”)." Dự án đó
+không còn hiện khi lọc theo bất kỳ dịch vụ nào, và chỉ hiện trong lưới **Tất cả** nếu đang nằm trong một ô ở
+[Cài đặt hiển thị dự án](/huong-dan/quan-ly-du-an/cai-dat-hien-thi-du-an). Lần sau sửa dự án đó, phải chọn ít nhất một danh
+mục mới lưu được.
+
+</Tab>
+</Tabs>
+
+<Callout type="warn" title="Xóa rồi không hoàn tác được">
+  Lỡ xóa nhầm: thêm lại danh mục (cùng tên, cùng slug nếu muốn link cũ chạy như trước), rồi chọn lại danh mục đó cho
+  từng dự án ở màn [Dự án](/huong-dan/quan-ly-du-an/du-an).
+</Callout>
 
 ## Các trường thông tin
 
-<Draft />
+<FieldTable
+  fields={[
+    {
+      name: "Tên danh mục",
+      required: true,
+      description:
+        "Tên nút lọc trên trang Projects và tên dịch vụ trên các thẻ, trang dự án. Tối đa 40 ký tự. Không được trùng tên danh mục khác (không phân biệt chữ hoa, chữ thường).",
+      example: "Event production",
+    },
+    {
+      name: "Đường dẫn (slug)",
+      required: true,
+      description:
+        "Phần cuối link lọc /projects?service=…. Chỉ chữ thường không dấu, số và dấu gạch ngang. Không được trùng slug danh mục khác. Tự tạo từ tên khi thêm mới.",
+      example: "event-production",
+    },
+  ]}
+/>
+
+Thứ tự danh mục không phải là ô nhập: đổi bằng cách [kéo thả](#sắp-xếp-thứ-tự).
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+### "Nhập tên danh mục."
+
+Bấm **Thêm danh mục** (hoặc **Lưu thay đổi**) khi ô tên còn trống. Gõ tên rồi bấm lại.
+
+### "Tên này đã tồn tại."
+
+Đã có danh mục cùng tên, không phân biệt chữ hoa, chữ thường: "media" trùng với "Media". Đặt tên khác. Khi đổi tên nhanh
+trong danh sách, câu này hiện ở góc trên bên phải và danh mục giữ tên cũ.
+
+### "Tối đa 40 ký tự để nút lọc gọn gàng."
+
+Tên dài hơn 40 ký tự. Ô vẫn cho gõ tiếp, bộ đếm chuyển đỏ (ví dụ **42/40**), nhưng không lưu được. Rút gọn tên.
+
+<Screenshot alt="Lỗi tên quá dài" src="/huong-dan/anh/quan-ly-du-an/danh-muc-du-an-loi-qua-dai.png" />
+
+### "Slug này đã được dùng."
+
+Đã có danh mục khác dùng đúng slug này. Đặt slug khác, hoặc bấm nút **Tạo lại từ tiêu đề** để lấy slug theo tên.
+
+<Screenshot alt="Lỗi trùng slug" src="/huong-dan/anh/quan-ly-du-an/danh-muc-du-an-loi-slug-trung.png" />
+
+### "Chỉ dùng chữ thường không dấu, số và dấu gạch ngang."
+
+Slug có chữ hoa, chữ có dấu, khoảng trắng hoặc ký tự khác. Sửa lại, hoặc bấm **Tạo lại từ tiêu đề**. Slug để trống thì
+báo **Nhập đường dẫn.**
+
+### Bấm nút lọc thì website báo chưa có dự án
+
+Trang Projects ghi **Chưa có dự án nào thuộc dịch vụ này. Xem tất cả dự án của Hooked.** ② khi danh mục ① chưa có dự án nào
+**đã xuất bản**. Chọn danh mục này cho dự án ở màn [Dự án](/huong-dan/quan-ly-du-an/du-an) và kiểm tra dự án đang được xuất
+bản. Chưa định dùng danh mục thì xóa nó đi, để khách không gặp nút lọc trống.
+
+<Screenshot
+  alt="Nút lọc chưa có dự án trên website"
+  src="/huong-dan/anh/quan-ly-du-an/danh-muc-du-an-website-trong.png"
+/>
 
 ## Liên quan
 
-<Draft />
+- [Dự án](/huong-dan/quan-ly-du-an/du-an): chọn danh mục cho dự án, xuất bản dự án.
+- [Cài đặt hiển thị dự án](/huong-dan/quan-ly-du-an/cai-dat-hien-thi-du-an): lưới **Tất cả** trên trang Projects.
+- [Trang › Projects](/huong-dan/trang/projects): tiêu đề và giới thiệu của trang Projects.
+- [Trang chủ](/huong-dan/noi-dung/trang-chu): khối Dịch vụ có các nút dẫn tới trang Projects đã lọc.

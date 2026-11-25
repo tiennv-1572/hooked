@@ -7,29 +7,169 @@ description: "Chọn định dạng và dự án cho từng ô của lưới T�
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Trang Projects mở ra ở bộ lọc **Tất cả**: một lưới thẻ dự án to nhỏ xen kẽ. Màn này quyết định lưới đó gồm những ô nào,
+theo thứ tự nào, mỗi ô hiện dự án nào và ở định dạng (kích thước, vị trí) nào. Ở màn này bạn:
+
+- thêm ô, xóa ô;
+- chọn định dạng và dự án cho từng ô;
+- kéo thả để đổi thứ tự các ô;
+- xem trước lưới trước khi lưu.
+
+Một dự án có thể nằm ở nhiều ô. Màn này chỉ áp dụng cho bộ lọc **Tất cả**: khi khách bấm lọc theo một dịch vụ, website xếp
+mỗi dự án một hàng, theo thứ tự ở màn [Dự án](/huong-dan/quan-ly-du-an/du-an). Thay đổi chỉ lên website khi bạn bấm **Lưu
+thay đổi**. Cả ba vai trò (Chủ sở hữu, Quản trị, Biên tập) đều dùng được màn này.
 
 ## Hiện ở đâu trên website
 
 <OnWebsite pages={[{ label: "Lưới Tất cả trên trang Projects", path: "/projects" }]}>
   <Screenshot
-    alt="Cài đặt hiển thị dự án trên website"
+    alt="Lưới Tất cả trên trang Projects"
     src="/huong-dan/anh/quan-ly-du-an/cai-dat-hien-thi-du-an-website.png"
+    caption="Lưới Tất cả trên máy tính: mỗi thẻ là một ô, số ①–⑤ ứng với Ô 1–Ô 5 trên CMS. Ô 4 (Compact) đứng bên trái ô 3 (Wide), xem cách xếp ở dưới."
   />
 </OnWebsite>
 
+| Trên CMS        | Trên website                                                                                              |
+| --------------- | --------------------------------------------------------------------------------------------------------- |
+| Thứ tự các ô    | Thứ tự thẻ trong lưới **Tất cả**                                                                          |
+| Định dạng của ô | Kích thước và vị trí thẻ trên máy tính                                                                    |
+| Dự án của ô     | Thẻ của dự án đó. Ảnh bìa, tên, danh mục, nút ▶ của thẻ sửa ở màn [Dự án](/huong-dan/quan-ly-du-an/du-an) |
+
+Lưu xong, tải lại trang Projects là thấy lưới mới.
+
+### Các định dạng và cách xếp
+
+| Định dạng | Trên màn hình CMS ghi | Thẻ trên máy tính                   |
+| --------- | --------------------- | ----------------------------------- |
+| Landscape | Lớn, bên trái         | Lớn, chiếm hai cột bên trái         |
+| Portrait  | Nhỏ, bên phải         | Nhỏ, ở cột bên phải                 |
+| Compact   | Nhỏ, bên trái         | Nhỏ, ở cột bên trái                 |
+| Wide      | Lớn, bên phải         | Lớn, chiếm hai cột bên phải         |
+| Panorama  | Full chiều ngang      | Trọn chiều ngang, một mình một hàng |
+
+Lưới trên máy tính có 3 cột, mỗi định dạng luôn nằm ở đúng cột của nó. Các ô được xếp lần lượt từ trên xuống, ô nào cũng vào
+hàng đầu tiên còn trống ở các cột của nó. Vì vậy:
+
+- **Landscape** đi với **Portrait** thành một hàng, **Compact** đi với **Wide** thành một hàng, **Panorama** một mình một
+  hàng;
+- trong một cặp, ô đứng sau vẫn có thể nằm bên trái: như ảnh trên, Ô 4 (Compact) nằm bên trái Ô 3 (Wide).
+
+Khung **Xem trước** trên màn này xếp đúng như website, nên cứ nhìn khung đó để chọn.
+
 ## Các bước thao tác
 
-<Draft />
+### Xem màn hình
+
+Trên menu bên trái, bấm **Quản lý dự án › Cài đặt hiển thị dự án**.
+
+<Screenshot alt="Màn Cài đặt hiển thị dự án" src="/huong-dan/anh/quan-ly-du-an/cai-dat-hien-thi-du-an-man-hinh.png" />
+
+- ① Nút kéo: giữ và kéo lên, xuống để đổi thứ tự ô.
+- ② Định dạng của ô.
+- ③ Dự án của ô.
+- ④ Xóa ô.
+- ⑤ **Thêm ô**.
+- ⑥ **Xem trước**: lưới **Tất cả** trên máy tính sẽ trông như thế này, đổi ngay khi bạn sửa (trước cả khi lưu). Mỗi thẻ ghi
+  số ô và định dạng, ví dụ **Ô 1 · Landscape**.
+
+Nút **Xem trang** và **Khôi phục mặc định** ở góc trên dùng như các màn nội dung trang, xem
+[Nội dung các trang](/huong-dan/bat-dau/quy-uoc-chung#nội-dung-các-trang). **Khôi phục mặc định** điền lại 5 ô gốc của
+website; bấm **Lưu thay đổi** thì mới áp dụng.
+
+### Thêm ô
+
+<Steps>
+<Step>
+Bấm **Thêm ô** rồi chọn định dạng ①.
+
+<Screenshot alt="Chọn định dạng cho ô mới" src="/huong-dan/anh/quan-ly-du-an/cai-dat-hien-thi-du-an-them-o.png" />
+</Step>
+<Step>
+Ô mới nằm cuối danh sách. CMS chọn sẵn dự án đã xuất bản đầu tiên chưa có ô nào; mọi dự án đều đã có ô thì ô mới để trống
+**Chọn dự án**. Bấm ô dự án của ô mới và chọn dự án ①. Dự án đang nháp có chữ **Bản nháp** bên cạnh: chọn được, nhưng website
+chưa hiện cho tới khi dự án được xuất bản.
+
+<Screenshot alt="Chọn dự án cho ô mới" src="/huong-dan/anh/quan-ly-du-an/cai-dat-hien-thi-du-an-chon-du-an.png" />
+</Step>
+<Step>
+Xem lại khung **Xem trước**: ô mới ② nằm đúng chỗ chưa. Ví dụ dưới đây thêm một ô **Panorama** cho dự án đã có ở Ô 1 ①.
+
+<Screenshot alt="Khung Xem trước có ô mới" src="/huong-dan/anh/quan-ly-du-an/cai-dat-hien-thi-du-an-xem-truoc.png" />
+</Step>
+<Step>
+Bấm **Lưu thay đổi** (<kbd>Ctrl</kbd> + <kbd>S</kbd>). Góc trên bên phải báo **Đã lưu Cài đặt hiển thị dự án.** Tải lại trang
+Projects: thẻ của ô mới ⑥ đã có trong lưới.
+
+<Screenshot alt="Thẻ của ô mới trên website" src="/huong-dan/anh/quan-ly-du-an/cai-dat-hien-thi-du-an-website-o-moi.png" />
+</Step>
+</Steps>
+
+### Đổi định dạng, dự án, thứ tự hoặc xóa ô
+
+- Đổi định dạng: bấm ô định dạng ② của ô, chọn định dạng khác.
+- Đổi dự án: bấm ô dự án ③, chọn dự án khác.
+- Đổi thứ tự: giữ nút kéo ① ở đầu ô, kéo lên hoặc xuống rồi thả.
+- Xóa ô: bấm thùng rác ④. Dự án vẫn còn, chỉ không nằm trong lưới **Tất cả** nữa (nếu không còn ô nào khác của nó).
+
+Mọi thay đổi trên đều chờ bạn bấm **Lưu thay đổi**; bấm **Hoàn tác** ở thanh lưu để bỏ, xem
+[Sửa và lưu](/huong-dan/bat-dau/quy-uoc-chung#sửa-và-lưu).
 
 ## Các trường thông tin
 
-<Draft />
+<FieldTable
+  fields={[
+    {
+      name: "Định dạng",
+      required: true,
+      description: "Landscape, Portrait, Compact, Wide hoặc Panorama: kích thước và vị trí thẻ trên máy tính.",
+      example: "Landscape",
+    },
+    {
+      name: "Dự án",
+      required: true,
+      description: "Dự án hiện ở ô. Một dự án có thể nằm ở nhiều ô.",
+      example: "Devoid Music Festival",
+    },
+  ]}
+/>
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+### "Chọn dự án."
+
+Bấm lưu khi có ô ① chưa chọn dự án: câu báo lỗi ② hiện dưới ô đó, thanh lưu báo **Còn 1 trường chưa hợp lệ**. Chọn dự án cho
+ô, hoặc xóa ô.
+
+<Screenshot alt="Lỗi ô chưa chọn dự án" src="/huong-dan/anh/quan-ly-du-an/cai-dat-hien-thi-du-an-loi-chua-chon.png" />
+
+### Dự án mới xuất bản không có trong lưới Tất cả
+
+Lưới **Tất cả** chỉ gồm các dự án có ô ở màn này. Dưới nút **Thêm ô** có dòng **Chưa có trong lưới “Tất cả”: …** liệt kê các
+dự án đã xuất bản mà chưa có ô. Thêm một ô cho dự án đó rồi lưu.
+
+### Ô ghi "Bản nháp · không hiển thị" hoặc "Dự án đã bị xóa"
+
+Dự án của ô đang là bản nháp, hoặc đã bị xóa: website bỏ qua ô này, các ô khác dồn lên. Xuất bản lại dự án ở màn
+[Dự án](/huong-dan/quan-ly-du-an/du-an), chọn dự án khác cho ô, hoặc xóa ô.
+
+### Xóa hết các ô thì sao?
+
+Màn hình ghi **Chưa có ô nào — mọi dự án hiển thị full chiều ngang.** Khi đó lưới **Tất cả** hiện mọi dự án đã xuất bản, mỗi
+dự án một hàng trọn chiều ngang, theo thứ tự ở màn Dự án.
+
+### Trên máy tính bảng và điện thoại
+
+Thẻ to nhỏ theo định dạng chỉ có trên máy tính. Máy tính bảng xếp 2 cột đều nhau (riêng Panorama chiếm trọn một hàng),
+điện thoại xếp 1 cột; cả hai đều theo đúng thứ tự Ô 1, Ô 2… Trên điện thoại, ① là Ô 1, ② là Ô 2:
+
+<Screenshot
+  alt="Lưới Tất cả trên điện thoại"
+  src="/huong-dan/anh/quan-ly-du-an/cai-dat-hien-thi-du-an-website-dien-thoai.png"
+  device="mobile"
+/>
 
 ## Liên quan
 
-<Draft />
+- [Dự án](/huong-dan/quan-ly-du-an/du-an): xuất bản dự án; ảnh bìa, tên, video nổi bật của thẻ.
+- [Danh mục dự án](/huong-dan/quan-ly-du-an/danh-muc-du-an): các nút lọc ở đầu trang Projects.
+- [Trang › Projects](/huong-dan/trang/projects): tiêu đề và giới thiệu của trang Projects.

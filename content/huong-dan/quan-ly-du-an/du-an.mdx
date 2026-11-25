@@ -7,31 +7,357 @@ description: "Thêm, sửa, ẩn hiện các dự án và nội dung trang chi t
 
 ## Màn này dùng để làm gì
 
-<Draft />
+Mỗi dự án Hooked đã làm (Devoid Music Festival, SPIN Awards, “Xóm Húc” DJ Contest…) là một mục ở màn này. Dự án **đã xuất
+bản** có một thẻ trên trang Projects và một trang riêng, ví dụ `hooked.vn/projects/frequency-arena`. Ở màn này bạn:
+
+- thêm dự án; sửa tên, mô tả, danh mục, đối tác, ảnh, album ảnh, video;
+- xuất bản, hoặc chuyển về bản nháp để tạm ẩn;
+- sắp xếp thứ tự các dự án;
+- nhân bản, xóa dự án.
+
+Ô nào trong lưới **Tất cả** của trang Projects hiện dự án nào, to hay nhỏ, chỉnh ở
+[Cài đặt hiển thị dự án](/huong-dan/quan-ly-du-an/cai-dat-hien-thi-du-an). Cả ba vai trò (Chủ sở hữu, Quản trị, Biên tập)
+đều dùng được màn này.
 
 ## Hiện ở đâu trên website
 
 <OnWebsite
   pages={[
-    { label: "Trang Projects", path: "/projects" },
-    { label: "Trang một dự án", path: "/projects/xom-huc" },
+    { label: "Thẻ dự án trên trang Projects", path: "/projects" },
+    { label: "Trang một dự án", path: "/projects/frequency-arena" },
   ]}
 >
-  <Screenshot alt="Dự án trên website" src="/huong-dan/anh/quan-ly-du-an/du-an-website.png" />
+  <Screenshot
+    alt="Thẻ dự án trên trang Projects"
+    src="/huong-dan/anh/quan-ly-du-an/du-an-website-the.png"
+    caption="Thẻ dự án trên trang Projects. ① Ảnh bìa ② Nút phát video nổi bật ③ Tên dự án ④ Các danh mục. Bấm vào thẻ thì mở trang của dự án."
+  />
+  <Screenshot
+    alt="Đầu trang của một dự án"
+    src="/huong-dan/anh/quan-ly-du-an/du-an-website-chi-tiet.png"
+    caption="Đầu trang của một dự án. ① Tên dự án ② Các danh mục ③ Ảnh hero: bấm vào để xem album ảnh."
+  />
+  <Screenshot
+    alt="Mục Về dự án"
+    src="/huong-dan/anh/quan-ly-du-an/du-an-website-thong-tin.png"
+    caption="Mục Về dự án. ① Đối tác ② Dịch vụ cung cấp (các danh mục) ③ Mô tả dự án."
+  />
+  <Screenshot
+    alt="Mục Ảnh và video"
+    src="/huong-dan/anh/quan-ly-du-an/du-an-website-album.png"
+    caption="Mục Ảnh & video. ① Ảnh trong album ② Video ③ Nút dưới album."
+  />
 </OnWebsite>
+
+| Trên CMS                   | Trên website                                                                                                                                        |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tên dự án                  | Tên trên thẻ (viết hoa), tiêu đề trang dự án, tiêu đề tab trình duyệt                                                                               |
+| Đường dẫn (slug)           | Địa chỉ trang dự án: `hooked.vn/projects/` + slug                                                                                                   |
+| Mô tả dự án                | Mục **Mô tả dự án** trên trang dự án; đoạn mô tả khi chia sẻ link trang dự án lên mạng xã hội                                                       |
+| Danh mục                   | Dòng chữ dưới tên thẻ; dòng chữ cam dưới tiêu đề và mục **Dịch vụ cung cấp** trên trang dự án; nút lọc theo dịch vụ                                 |
+| Đối tác                    | Mục **Đối tác** trên trang dự án. Để trống thì mục này ẩn                                                                                           |
+| Ảnh bìa                    | Ảnh của thẻ trên trang Projects; ảnh khi chia sẻ link trang dự án                                                                                   |
+| Ảnh hero                   | Ảnh lớn đầu trang dự án                                                                                                                             |
+| Album ảnh                  | Mục **Ảnh & video** trên trang dự án                                                                                                                |
+| Nhãn liên kết và Đường dẫn | Nút dưới album: có đường dẫn thì mở trang đó (ví dụ kênh YouTube), để trống thì mở album ảnh ngay trên trang                                        |
+| Video YouTube              | Mục **Ảnh & video** trên trang dự án                                                                                                                |
+| Video nổi bật              | Nút ▶ giữa thẻ dự án mở video này. Không chọn thì thẻ không có nút ▶                                                                                |
+| Thứ tự                     | Thứ tự dự án khi khách bấm lọc theo một dịch vụ (lưới **Tất cả** đi theo [Cài đặt hiển thị dự án](/huong-dan/quan-ly-du-an/cai-dat-hien-thi-du-an)) |
+
+Trên máy tính, đưa chuột lên một thẻ dự án thì video nổi bật tự phát không tiếng ngay trên thẻ, hoặc các ảnh trong album
+chạy lần lượt nếu dự án chưa có video nổi bật. Website cập nhật ngay khi bạn lưu: tải lại trang là thấy.
+
+<Callout type="warn" title="Dự án mới xuất bản chưa có trong lưới Tất cả">
+  Trang Projects mở ra ở bộ lọc **Tất cả**, và lưới này chỉ gồm các dự án đã được đặt vào một ô ở [Cài đặt hiển thị dự
+  án](/huong-dan/quan-ly-du-an/cai-dat-hien-thi-du-an). Dự án mới xuất bản chỉ hiện khi khách bấm lọc theo một danh mục
+  của nó, và có trang riêng. Màn Cài đặt hiển thị dự án ghi rõ dự án nào **chưa có trong lưới** ①: thêm một ô cho dự án
+  đó.
+</Callout>
+
+<Screenshot alt="Dự án chưa có trong lưới Tất cả" src="/huong-dan/anh/quan-ly-du-an/du-an-chua-co-trong-luoi.png" />
 
 ## Các bước thao tác
 
-<Draft />
+### Xem danh sách
+
+Trên menu bên trái, bấm **Quản lý dự án › Dự án**.
+
+<Screenshot alt="Màn Dự án" src="/huong-dan/anh/quan-ly-du-an/du-an-danh-sach.png" />
+
+- ① **Thêm dự án**: mở form thêm mới.
+- ② **Sắp xếp**: đổi thứ tự dự án, xem [Sắp xếp thứ tự](/huong-dan/bat-dau/quy-uoc-chung#sắp-xếp-thứ-tự).
+- ③ **Danh mục**: mở màn [Danh mục dự án](/huong-dan/quan-ly-du-an/danh-muc-du-an).
+- ④ Ô tìm theo tên, slug, dịch vụ, đối tác.
+- ⑤ Lọc theo danh mục, ⑥ lọc theo trạng thái (**Đã xuất bản**, **Bản nháp**).
+- ⑦ **Lưới** / **Bảng**: xem dạng thẻ có ảnh, hoặc dạng bảng (cột Dự án, Danh mục, Media, Trạng thái, Thứ tự, Cập nhật).
+- ⑧ Số thứ tự: **#1** đứng đầu khi khách lọc theo dịch vụ.
+- ⑨ Nút **…**: menu thao tác của dự án.
+
+Mỗi thẻ ghi danh mục, số ảnh, số video và lần cập nhật cuối; dự án nháp có nhãn **Bản nháp** trên ảnh. Bấm vào thẻ để mở dự
+án. Đưa chuột lên ảnh thì góc trên bên trái hiện ô vuông: chọn nhiều dự án để **Xuất bản**, **Chuyển về nháp** hoặc **Xóa**
+cùng lúc.
+
+Menu **…** của một dự án:
+
+<Screenshot alt="Menu thao tác của một dự án" src="/huong-dan/anh/quan-ly-du-an/du-an-thao-tac.png" />
+
+- ① **Chỉnh sửa**: mở dự án.
+- ② **Xem trên website**: mở trang của dự án, ở tab mới.
+- ③ **Chuyển về bản nháp** (dự án đang nháp thì là **Xuất bản**): đổi trạng thái ngay. Góc trên bên phải báo, ví dụ,
+  **Đã chuyển “SPIN Awards” về bản nháp.**
+- ④ **Nhân bản**: xem [Nhân bản](/huong-dan/bat-dau/quy-uoc-chung#nhân-bản).
+- ⑤ **Xóa**: xem [Xóa dự án](#xóa-dự-án).
+
+### Thêm dự án
+
+<Steps>
+<Step>
+Bấm **Thêm dự án**. Dự án mới bắt đầu ở trạng thái **Bản nháp**, chưa hiện trên website cho tới khi bạn xuất bản.
+
+<Screenshot alt="Form thêm dự án" src="/huong-dan/anh/quan-ly-du-an/du-an-form.png" />
+
+- ① **Tên dự án**.
+- ② **Đường dẫn (slug)**: tự tạo từ tên, ví dụ "Đà Nẵng Beach Rave 2026" thành `da-nang-beach-rave-2026`, tức trang
+  `hooked.vn/projects/da-nang-beach-rave-2026`. Các nút cạnh ô dùng như ở
+  [Danh mục dự án](/huong-dan/quan-ly-du-an/danh-muc-du-an#thêm-danh-mục).
+- ③ **Mô tả dự án**: ô soạn thảo có in đậm, liên kết, danh sách…, xem [Ô soạn thảo](/huong-dan/bat-dau/quy-uoc-chung#ô-soạn-thảo).
+- ④ **Xuất bản**: để **Bản nháp** khi chưa điền xong.
+- ⑤ **Xem trước thẻ dự án**: thẻ trên trang Projects sẽ trông như thế này.
+
+</Step>
+<Step>
+Chọn **Danh mục** và điền **Đối tác**.
+
+<Screenshot alt="Phần Danh mục và Đối tác" src="/huong-dan/anh/quan-ly-du-an/du-an-form-danh-muc.png" />
+
+- ① Bấm vào một danh mục để chọn, bấm lần nữa để bỏ. Danh mục đã chọn có màu cam. Chọn ít nhất 1; website ghi các danh mục
+  theo đúng thứ tự bạn bấm chọn.
+- ② **Quản lý danh mục**: mở màn [Danh mục dự án](/huong-dan/quan-ly-du-an/danh-muc-du-an) khi cần thêm danh mục mới.
+- ③ Mỗi đối tác một ô. Kéo biểu tượng ⋮⋮ ở đầu ô để đổi thứ tự, bấm thùng rác để xóa ô.
+- ④ **Thêm đối tác**. Không có đối tác thì để trống: trang dự án sẽ không có mục **Đối tác**.
+
+</Step>
+<Step>
+Chọn **Ảnh bìa** và **Ảnh hero**, xem cách chọn ảnh ở [Chọn ảnh](/huong-dan/bat-dau/quy-uoc-chung#chọn-ảnh).
+
+<Screenshot alt="Phần Ảnh bìa và hero" src="/huong-dan/anh/quan-ly-du-an/du-an-form-anh.png" />
+
+- ① **Ảnh bìa (poster thẻ dự án)**: ảnh ngang 16:9 cho thẻ trên trang Projects. Dùng poster đã thiết kế sẵn khung và chữ:
+  website không viết thêm chữ lên ảnh.
+- ② **Ảnh hero (trang chi tiết)**: ảnh lớn đầu trang dự án, thường là một ảnh chụp sự kiện.
+- ③ **Dùng ảnh bìa**: lấy luôn ảnh bìa làm ảnh hero.
+
+</Step>
+<Step>
+Thêm **Album ảnh**.
+
+<Screenshot alt="Phần Album ảnh" src="/huong-dan/anh/quan-ly-du-an/du-an-form-album.png" />
+
+- ① **Thêm ảnh**: chọn nhiều ảnh cùng lúc trong thư viện (hoặc tải lên).
+- ② Kéo để đổi thứ tự ảnh.
+- ③ **Nhãn liên kết dưới album**: chữ trên nút dưới mục Ảnh & video, sẵn là "Xem toàn bộ album ảnh".
+- ④ **Đường dẫn**: để trống thì nút mở album ảnh ngay trên trang; điền link (bắt đầu bằng `https://` hoặc `/`) thì nút mở
+  link đó, ví dụ album trên kênh YouTube.
+
+</Step>
+<Step>
+Thêm **Video**: bấm **Thêm video** ⑤, rồi điền khung video vừa mở ra.
+
+<Screenshot alt="Phần Video" src="/huong-dan/anh/quan-ly-du-an/du-an-form-video.png" />
+
+- ① **Link hoặc ID YouTube**: dán nguyên link video (youtube.com, youtu.be, shorts…), CMS tự lấy mã video và báo dòng xanh
+  **ID video: …**.
+- ② **Tiêu đề video**: hiện dưới video trên trang dự án.
+- ③ **Đặt làm video nổi bật**: video phát khi khách bấm nút ▶ trên thẻ dự án. Bấm xong, nút thành **Đang là video nổi
+  bật** và khung video có nhãn **Nổi bật**.
+- ④ **Ảnh thumbnail**: tự lấy từ YouTube; bấm **Chọn ảnh riêng** để dùng ảnh khác.
+- ⑥ **Video nổi bật trên thẻ dự án**: chọn video nổi bật ở đây cũng được.
+
+Thêm video **không** tự đặt nó làm video nổi bật. Chưa chọn video nổi bật thì thẻ dự án không có nút ▶.
+
+</Step>
+<Step>
+Bấm **Tạo mới**. Góc trên bên phải báo **Đã tạo dự án.** ①, màn hình chuyển sang trang của dự án vừa tạo, trạng thái
+**Bản nháp** ②.
+
+<Screenshot alt="Dự án vừa tạo" src="/huong-dan/anh/quan-ly-du-an/du-an-da-tao.png" />
+</Step>
+<Step>
+Khi nội dung đã sẵn sàng, chọn **Đã xuất bản** ở phần **Xuất bản** rồi bấm **Lưu thay đổi**. Sau đó vào
+[Cài đặt hiển thị dự án](/huong-dan/quan-ly-du-an/cai-dat-hien-thi-du-an) thêm một ô cho dự án, để nó hiện trong lưới
+**Tất cả**.
+</Step>
+</Steps>
+
+### Sửa dự án
+
+Bấm vào thẻ của dự án. Form giống form thêm; thanh lưu ở đáy màn hình và các nút **Xem trên website**, **Nhân bản**, **Xóa**
+ở góc trên dùng như mọi màn sửa khác, xem [Sửa và lưu](/huong-dan/bat-dau/quy-uoc-chung#sửa-và-lưu). Bản sao tạo bằng
+**Nhân bản** có tên thêm **(bản sao)**, slug thêm `-ban-sao` và ở trạng thái **Bản nháp**.
+
+### Đổi đường dẫn (slug)
+
+Với dự án đã lưu, ô **Đường dẫn (slug)** đã khóa: đổi tên dự án không đổi địa chỉ trang. Sửa thẳng ô slug rồi bấm **Lưu
+thay đổi** thì trang dự án chuyển sang địa chỉ mới, còn địa chỉ cũ báo **Trang này không tồn tại**.
+
+<Callout type="warn" title="Đổi slug thì sửa lại các link tới dự án">
+  CMS không tự sửa những chỗ đã ghi sẵn địa chỉ dự án: thẻ trong mục **Dự án hợp tác** ở [Trang ›
+  Partners](/huong-dan/trang/partners) (đường dẫn được chép lúc thêm thẻ), các liên kết bạn tự gõ ở trang chủ hay trong
+  bài viết, và link đã chia sẻ ra ngoài. Sau khi đổi slug, sửa lại các chỗ đó.
+</Callout>
+
+### Tạm ẩn dự án
+
+Chuyển dự án về **Bản nháp**, trong form hoặc bằng menu **…** của danh sách. Thẻ dự án biến khỏi trang Projects (cả lưới
+**Tất cả** lẫn khi lọc), trang dự án báo **Trang này không tồn tại**. Ô của dự án ở Cài đặt hiển thị dự án vẫn còn, ghi
+**Bản nháp · không hiển thị** và được bỏ qua. Xuất bản lại thì dự án hiện lại đúng chỗ cũ.
+
+### Xóa dự án
+
+Bấm **…** ở thẻ của dự án rồi bấm **Xóa**. Hộp hỏi lại ghi rõ trang nào sẽ không còn truy cập được ①; ảnh trong thư viện
+media vẫn được giữ.
+
+<Screenshot alt="Hộp hỏi lại khi xóa dự án" src="/huong-dan/anh/quan-ly-du-an/du-an-xoa.png" />
+
+Bấm **Xóa** ② để xóa, góc trên bên phải báo **Đã xóa dự án.** Nút **Xóa** ở màn sửa dự án cũng xóa được, nhưng hộp hỏi lại ở
+đó chỉ ghi **Xóa dự án này? Hành động này không thể hoàn tác.**
+
+Dự án đã xóa mà còn nằm trong một ô ở Cài đặt hiển thị dự án thì ô đó ghi **Dự án đã bị xóa** và website bỏ qua nó: vào màn
+đó xóa ô hoặc chọn dự án khác.
+
+<Callout type="error" title="Xóa rồi không lấy lại được">
+  Trang dự án mất ngay và không khôi phục được. Muốn tạm ẩn thì chuyển dự án về **Bản nháp** thay vì xóa.
+</Callout>
 
 ## Các trường thông tin
 
-<Draft />
+<FieldTable
+  fields={[
+    {
+      name: "Tên dự án",
+      required: true,
+      description: "Tên trên thẻ và tiêu đề trang dự án.",
+      example: "Vui Fest Cát Bà",
+    },
+    {
+      name: "Đường dẫn (slug)",
+      required: true,
+      description:
+        "Địa chỉ trang dự án sau /projects/. Chữ thường không dấu, số, dấu gạch ngang; không trùng dự án khác. Tự tạo từ tên khi thêm mới.",
+      example: "vui-fest-cat-ba",
+    },
+    {
+      name: "Mô tả dự án",
+      required: true,
+      description: "Giới thiệu sự kiện, quy mô, phần việc của Hooked. Có in đậm, liên kết, danh sách.",
+      example: "Đêm nhạc EDM bên bờ biển Mỹ Khê với 5.000 khán giả…",
+    },
+    {
+      name: "Danh mục",
+      required: true,
+      description: "Ít nhất 1. Website ghi theo thứ tự bấm chọn.",
+      example: "Event production, Media",
+    },
+    {
+      name: "Đối tác",
+      description: "Mỗi ô một đối tác. Để trống thì trang dự án không có mục Đối tác.",
+      example: "Sun Group",
+    },
+    {
+      name: "Ảnh bìa (poster thẻ dự án)",
+      required: true,
+      description: "Ảnh ngang 16:9, poster đã có khung và chữ. Ảnh của thẻ và ảnh khi chia sẻ link.",
+      example: "Poster Vui Fest Cát Bà 2026",
+    },
+    {
+      name: "Ảnh hero (trang chi tiết)",
+      required: true,
+      description: "Ảnh lớn đầu trang dự án.",
+      example: "Ảnh đám đông trước sân khấu",
+    },
+    { name: "Ảnh trong album", description: "Mục Ảnh & video. Kéo thả để đổi thứ tự.", example: "6 ảnh sự kiện" },
+    {
+      name: "Nhãn liên kết dưới album",
+      required: true,
+      description: "Chữ trên nút dưới mục Ảnh & video.",
+      example: "Xem toàn bộ album ảnh",
+    },
+    {
+      name: "Đường dẫn (của nút dưới album)",
+      description: "Bắt đầu bằng https:// hoặc /. Để trống thì nút mở album ảnh ngay trên trang.",
+      example: "https://www.youtube.com/@hooked",
+    },
+    {
+      name: "Link hoặc ID YouTube",
+      required: true,
+      description: "Bắt buộc cho mỗi video đã thêm. Dán link, CMS tự lấy mã video 11 ký tự.",
+      example: "https://youtu.be/EmbpvTQbrCs",
+    },
+    {
+      name: "Tiêu đề video",
+      required: true,
+      description: "Bắt buộc cho mỗi video đã thêm.",
+      example: "Vui Fest Cát Bà | Recap",
+    },
+    { name: "Ảnh thumbnail", description: "Để trống thì dùng ảnh của YouTube.", example: "Ảnh riêng cho video" },
+    {
+      name: "Video nổi bật trên thẻ dự án",
+      description: "Video phát khi bấm ▶ trên thẻ. Không có thì thẻ không có nút ▶.",
+      example: "Vui Fest Cát Bà | Recap",
+    },
+    {
+      name: "Xuất bản",
+      description: "Đã xuất bản: có thẻ và trang riêng. Bản nháp: ẩn khỏi website. Dự án mới mặc định là Bản nháp.",
+      example: "Đã xuất bản",
+    },
+  ]}
+/>
 
 ## Lưu ý và lỗi thường gặp
 
-<Draft />
+### Các câu báo lỗi khi lưu
+
+Bấm **Tạo mới** hoặc **Lưu thay đổi** khi còn thiếu, CMS không lưu và tô đỏ ô sai, xem
+[Trường bắt buộc và câu báo lỗi](/huong-dan/bat-dau/quy-uoc-chung#trường-bắt-buộc-và-câu-báo-lỗi).
+
+| Câu báo lỗi                                            | Ở ô                      | Cách sửa                                                 |
+| ------------------------------------------------------ | ------------------------ | -------------------------------------------------------- |
+| "Nhập tên dự án."                                      | Tên dự án                | Gõ tên                                                   |
+| "Nhập đường dẫn."                                      | Đường dẫn (slug)         | Gõ slug, hoặc bấm **Tạo lại từ tiêu đề**                 |
+| "Chỉ dùng chữ thường không dấu, số và dấu gạch ngang." | Đường dẫn (slug)         | Bỏ chữ hoa, dấu, khoảng trắng                            |
+| "Đường dẫn này đã được dùng cho dự án khác."           | Đường dẫn (slug)         | Đặt slug khác                                            |
+| "Nhập mô tả dự án."                                    | Mô tả dự án              | Gõ mô tả                                                 |
+| "Chọn ít nhất 1 danh mục."                             | Danh mục                 | Bấm chọn một danh mục                                    |
+| "Chọn ảnh bìa (poster) cho thẻ dự án."                 | Ảnh bìa                  | Chọn hoặc tải ảnh lên                                    |
+| "Chọn ảnh hero cho trang chi tiết."                    | Ảnh hero                 | Chọn ảnh, hoặc bấm **Dùng ảnh bìa**                      |
+| "Nhập nhãn liên kết."                                  | Nhãn liên kết dưới album | Gõ nhãn                                                  |
+| "Bắt đầu bằng / hoặc https://"                         | Đường dẫn của nút album  | Dán link đầy đủ, ví dụ `https://www.youtube.com/@hooked` |
+| "Nhập link hoặc ID YouTube."                           | Một khung video          | Dán link, hoặc xóa khung thừa                            |
+| "Link hoặc ID YouTube không hợp lệ."                   | Một khung video          | Dán đúng link YouTube                                    |
+| "Nhập tiêu đề video."                                  | Một khung video          | Gõ tiêu đề                                               |
+
+Dán link không phải của YouTube thì dưới ô hiện **Chưa nhận ra link YouTube — kiểm tra lại đường dẫn.**
+
+### Dự án đã xuất bản nhưng không thấy trên trang Projects
+
+Trang Projects mở ở bộ lọc **Tất cả**, chỉ gồm các dự án có ô ở [Cài đặt hiển thị dự
+án](/huong-dan/quan-ly-du-an/cai-dat-hien-thi-du-an). Thêm một ô cho dự án ở màn đó. Kiểm tra thêm: dự án đang **Đã xuất
+bản** và bạn đã bấm **Lưu thay đổi** (thanh lưu báo **Đã lưu mọi thay đổi**).
+
+### Thẻ dự án không có nút ▶
+
+Dự án chưa có **Video nổi bật**. Chọn một video ở ô **Video nổi bật trên thẻ dự án**, hoặc bấm **Đặt làm video nổi bật** trong
+khung video, rồi lưu. Ô chọn ghi lựa chọn **Không có** kèm chú thích "Website hiển thị “Video đang được cập nhật.”", nhưng
+thực tế khi đó thẻ không có nút ▶.
+
+### Link dự án báo "Trang này không tồn tại"
+
+Dự án đang là **Bản nháp**, đã bị xóa, hoặc đã đổi slug. Mở dự án trong CMS để kiểm tra trạng thái và slug hiện tại.
 
 ## Liên quan
 
-<Draft />
+- [Danh mục dự án](/huong-dan/quan-ly-du-an/danh-muc-du-an): các dịch vụ và nút lọc trên trang Projects.
+- [Cài đặt hiển thị dự án](/huong-dan/quan-ly-du-an/cai-dat-hien-thi-du-an): lưới **Tất cả** trên trang Projects.
+- [Trang › Projects](/huong-dan/trang/projects): tiêu đề và giới thiệu của trang Projects.
+- [Trang › Partners](/huong-dan/trang/partners): mục Dự án hợp tác dẫn tới trang dự án.
+- [Thư viện media](/huong-dan/he-thong/thu-vien-media): nơi chứa ảnh bìa, ảnh album.

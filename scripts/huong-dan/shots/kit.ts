@@ -68,6 +68,8 @@ export type ShotOptions = {
   fitHeight?: boolean;
   /** Hidden for the picture only, e.g. the website's floating "Liên hệ nhanh" bar. */
   hide?: Locator[];
+  /** More the `area` must take in whole, e.g. an open dropdown list that hangs below it. */
+  include?: Locator[];
   marks?: Mark[];
   /** Margin around `area`, px. */
   padding?: number;
@@ -86,7 +88,7 @@ const SITE_URL = "https://hooked.vn";
  * Fails when the visible text holds an e-mail address that is not a sample one (see `allowEmails`).
  */
 export async function shot(page: Page, file: string, options: ShotOptions = {}) {
-  const { allowEmails, area, fitHeight = false, hide = [], marks = [], padding = 16 } = options;
+  const { allowEmails, area, fitHeight = false, hide = [], include = [], marks = [], padding = 16 } = options;
   const viewport = page.viewportSize();
 
   await settle(page);
@@ -109,7 +111,8 @@ export async function shot(page: Page, file: string, options: ShotOptions = {}) 
     })),
   );
   // The area grows to take in every mark and its number (a number beside a full-width box is outside the box).
-  const clip = area ? await clipAround(page, area, padding, boxes.map(markExtent)) : undefined;
+  const extra = await Promise.all(include.map((locator, index) => boxOf(locator, -index - 1)));
+  const clip = area ? await clipAround(page, area, padding, [...boxes.map(markExtent), ...extra]) : undefined;
 
   for (const locator of hide)
     await locator.evaluateAll((nodes) => nodes.forEach((node) => node.setAttribute("data-huong-dan-hidden", "")));
